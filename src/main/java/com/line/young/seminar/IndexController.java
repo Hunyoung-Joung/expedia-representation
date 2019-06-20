@@ -34,12 +34,12 @@ public class IndexController {
         return "index";
     }
     
-    @GetMapping("/personal_nformation")
+    @GetMapping("/personal_information")
     public String personalInformation(Model model) {
 
         logger.info("------------------ personalInformation");
 
-        return "personal_nformation";
+        return "personal_information";
     }
     
     @GetMapping("/seminar")
