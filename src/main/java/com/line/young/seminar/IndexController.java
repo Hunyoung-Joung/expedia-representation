@@ -33,7 +33,7 @@ public class IndexController {
 
         return "index";
     }
-    
+
     @GetMapping("/personal_information")
     public String personalInformation(Model model) {
 
