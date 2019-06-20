@@ -17,19 +17,27 @@ Copyright@ LINE 2019
 
 <body>
 	<!-- Header -->
-	<nav class="navbar navbar-light" style="background-color: #AEEA00;">
-	  <a class="navbar-brand" href="#">
-	    <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-	    Bootstrap
-	  </a>
-	</nav>
+	<ul class="nav justify-content-center" style="background-color: #AEEA00;">
+	  <li class="nav-item">
+	    <a class="nav-link active" href="#">Active</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="#">Link</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="#">Link</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link disabled" href="#">Disabled</a>
+	  </li>
+	</ul>
 	
     <!-- Html contents here -->
     <div th:replace="${template}"/>
     
     <!-- Footer -->
 	<nav class="navbar fixed-bottom navbar-light bg-light" style="background-color: #AEEA00;">
-	  <a class="navbar-brand" href="#">Fixed top</a>
+	  <a class="navbar-brand" href="#">Copyright@ LINE 2019</a>
 	</nav>
  
 
