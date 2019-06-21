@@ -17,30 +17,36 @@ Copyright@ LINE 2019
 
 <body>
 	<!-- Header -->
-    <nav class="navbar navbar-default navbar-static-top　justify-content-center" style="background-color: #AEEA00;">
-        <div class="container">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="https://devcenter.heroku.com/articles/how-heroku-works"><span class="glyphicon glyphicon-user"></span>user name</a>
-                </li>
-            </ul>
-            <ul class="nav ">
-                <li class="navbar-right">
-                    <a href="https://devcenter.heroku.com"><span class="glyphicon glyphicon-book"></span>個人情報保護方針</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div class="container fixed-top w-100">
+		<div class="navbar navbar-default">
+	    	<div class="navbar-inner">
+	      		<div class="container">
+		        	<ul class="nav navbar-nav">
+		          		<li class="active">
+		          			<a href="https://devcenter.heroku.com/articles/how-heroku-works"><span class="glyphicon glyphicon-user"></span>user name</a>
+		          		</li>
+		          		<li class="active">
+		          			<a href="https://devcenter.heroku.com"><span class="glyphicon glyphicon-book"></span>個人情報保護方針</a>
+		          		</li>
+	        		</ul>
+	      		</div>
+			</div>
+	  </div>
 	
     <!-- Html contents here -->
-    <div th:replace="${template}"/>
+    <div class="container justify-content-center">
+		<div th:replace="${template}"/>
+	</div> 
     
     <!-- Footer -->
-	<nav class="navbar fixed-bottom navbar-light bg-light　justify-content-center" style="background-color: #AEEA00;">
-        <div class="container">
-			Copyright@ LINE 2019
-        </div>
-	</nav>
+    <div class="container fixed-bottom w-100">
+		<div class="navbar navbar-default">
+	    	<div class="navbar-inner">
+	      		<div class="container">
+					Copyright@ LINE 2019
+	      		</div>
+			</div>
+	  </div>
  
 
     <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
