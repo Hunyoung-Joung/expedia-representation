@@ -44,11 +44,11 @@ public class PersonalInfoController {
     
     private final Logger logger = Logger.getLogger(this.getClass().getName());
     
-    @Value("${spring.datasource.url}")
-    private String dbUrl;
-
-    @Autowired
-    private DataSource dataSource;
+//    @Value("${spring.datasource.url}")
+//    private String dbUrl;
+//
+//    @Autowired
+//    private DataSource dataSource;
    
     private PersonalInfoRepository personalInfoRepository;
     
@@ -65,18 +65,29 @@ public class PersonalInfoController {
         return "PersonalInfo";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String newTask(ModelMap model, @ModelAttribute("newTask") @Valid PersonalInfo personalInfo,
-                          BindingResult result) {
-      if (!result.hasErrors()) {
-        this.personalInfoRepository.save(personalInfo);
-      }
-      return showAllPersonalInfos(model);
-    }
-
-    @RequestMapping(method = RequestMethod.DELETE)
-    public String deleteTask(ModelMap model, @RequestParam("taskId") String id) {
-      this.personalInfoRepository.deleteById(id);
-      return showAllPersonalInfos(model);
-    }
+//    @RequestMapping(method = RequestMethod.POST)
+//    public String newTask(ModelMap model, @ModelAttribute("newTask") @Valid PersonalInfo personalInfo,
+//                          BindingResult result) {
+//      if (!result.hasErrors()) {
+//        this.personalInfoRepository.save(personalInfo);
+//      }
+//      return showAllPersonalInfos(model);
+//    }
+//
+//    @RequestMapping(method = RequestMethod.DELETE)
+//    public String deleteTask(ModelMap model, @RequestParam("taskId") String id) {
+//      this.personalInfoRepository.deleteById(id);
+//      return showAllPersonalInfos(model);
+//    }
+    
+//    @Bean
+//    public DataSource dataSource() throws SQLException {
+//      if (dbUrl == null || dbUrl.isEmpty()) {
+//        return new HikariDataSource();
+//      } else {
+//        HikariConfig config = new HikariConfig();
+//        config.setJdbcUrl(dbUrl);
+//        return new HikariDataSource(config);
+//      }
+//    }
 }
