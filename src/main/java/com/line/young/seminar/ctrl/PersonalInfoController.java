@@ -65,20 +65,20 @@ public class PersonalInfoController {
         return "personal_information";
     }
 
-//    @RequestMapping(method = RequestMethod.POST)
-//    public String newTask(ModelMap model, @ModelAttribute("newTask") @Valid PersonalInfo personalInfo,
-//                          BindingResult result) {
-//      if (!result.hasErrors()) {
-//        this.personalInfoRepository.save(personalInfo);
-//      }
-//      return showAllPersonalInfos(model);
-//    }
-//
-//    @RequestMapping(method = RequestMethod.DELETE)
-//    public String deleteTask(ModelMap model, @RequestParam("taskId") String id) {
-//      this.personalInfoRepository.deleteById(id);
-//      return showAllPersonalInfos(model);
-//    }
+    @RequestMapping(method = RequestMethod.POST)
+    public String newTask(ModelMap model, @ModelAttribute("newPersonalInfo") @Valid PersonalInfo personalInfo,
+                          BindingResult result) {
+      if (!result.hasErrors()) {
+        this.personalInfoRepository.save(personalInfo);
+      }
+      return showAllPersonalInfos(model);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    public String deleteTask(ModelMap model, @RequestParam("userId") String id) {
+      this.personalInfoRepository.deleteById(id);
+      return showAllPersonalInfos(model);
+    }
     
 //    @Bean
 //    public DataSource dataSource() throws SQLException {
