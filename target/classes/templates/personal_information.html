@@ -20,20 +20,20 @@
 		</div>
     	<div class="col-sm-4">
       		<p id="display_name"></p>
-      		<input id="userId" type="text" class="form-control" th:field="*{userId}" />
-      		<input id="displayName" type="text" class="form-control" th:field="*{displayName}" />
-      		<input id="userName" type="text" class="form-control" th:field="*{userName}" />
-      		<input id="companyName" type="text" class="form-control" th:field="*{companyName}" />
+      		<input id="userId" type="text" class="form-control" />
+      		<input id="displayName" type="text" class="form-control"/>
+      		<input id="userName" type="text" class="form-control" />
+      		<input id="companyName" type="text" class="form-control" />
 
-			<select name="jobType" id="jobType" th:field="*{jobType}">
+			<select name="jobType" id="jobType">
 				<option value="1" selected="selected">営業</option>
 				<option value="2">開発</option>
 				<option value="3">企画</option>
 				<option value="4">その他</option>
 			</select>
 			    <div class="radio">
-      <label><input type="radio" name="optradio" checked th:field="*{isConfirmed}">Option 1</label>
-      <label><input type="radio" name="optradio" th:field="*{isConfirmed}">Option 2</label>
+      <label><input type="radio" name="optradio" checked>Option 1</label>
+      <label><input type="radio" name="optradio">Option 2</label>
 <!--
       <label><input type="radio" name="optradio" disabled>Option 3</label> -->
     </div>
