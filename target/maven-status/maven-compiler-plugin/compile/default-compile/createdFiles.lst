@@ -1,5 +1,4 @@
 com/line/young/seminar/repo/PersonalInfoRepository.class
-META-INF/spring-configuration-metadata.json
 com/line/young/seminar/ctrl/PersonalInfoController.class
 com/line/young/seminar/entity/PersonalInfo.class
 com/line/young/seminar/WebApplication.class

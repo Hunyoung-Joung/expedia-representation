@@ -2,4 +2,5 @@
 /Users/JP22601/eclipse-workspace/seminar-web/src/main/java/com/line/young/seminar/entity/PersonalInfo.java
 /Users/JP22601/eclipse-workspace/seminar-web/src/main/java/com/line/young/seminar/repo/PersonalInfoRepository.java
 /Users/JP22601/eclipse-workspace/seminar-web/src/main/java/com/line/young/seminar/ctrl/PersonalInfoController.java
+/Users/JP22601/eclipse-workspace/seminar-web/src/main/java/com/line/young/seminar/ctrl/indexController.java
 /Users/JP22601/eclipse-workspace/seminar-web/src/main/java/com/line/young/seminar/service/DatabaseConfig.java
