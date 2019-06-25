@@ -29,7 +29,7 @@ public class PersonalInfo {
     private String jobType;
     
     @Column(name="is_confirmed")
-    private String isConfirmed;
+    private boolean isConfirmed;
 
     public String getUserId() {
         return userId;
@@ -71,11 +71,11 @@ public class PersonalInfo {
         this.jobType = jobType;
     }
 
-    public String getIsConfirmed() {
+    public boolean getIsConfirmed() {
         return isConfirmed;
     }
 
-    public void setIsConfirmed(String isConfirmed) {
+    public void setIsConfirmed(boolean isConfirmed) {
         this.isConfirmed = isConfirmed;
     }
 
