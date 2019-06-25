@@ -43,17 +43,12 @@ import javax.sql.DataSource;
 public class PersonalInfoController {
     
     private final Logger logger = Logger.getLogger(this.getClass().getName());
-    
-//    @Value("${spring.datasource.url}")
-//    private String dbUrl;
-//
-//    @Autowired
-//    private DataSource dataSource;
    
     private PersonalInfoRepository personalInfoRepository;
     
     @Autowired
     public PersonalInfoController(PersonalInfoRepository repo) {
+        logger.info("##### Construct");
         this.personalInfoRepository = repo;
     }
     
@@ -66,12 +61,15 @@ public class PersonalInfoController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String newTask(ModelMap model, @ModelAttribute("newPersonalInfo") @Valid PersonalInfo personalInfo,
-                          BindingResult result) {
-      if (!result.hasErrors()) {
-        this.personalInfoRepository.save(personalInfo);
-      }
-      return showAllPersonalInfos(model);
+    public String insertPernalInfo(ModelMap model, 
+                                @ModelAttribute("newPersonalInfo") 
+                                @Valid PersonalInfo personalInfo,
+                                BindingResult result) {
+        logger.info("##### insert personal information");
+        if (!result.hasErrors()) {
+            this.personalInfoRepository.save(personalInfo);
+        }
+        return showAllPersonalInfos(model);
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
