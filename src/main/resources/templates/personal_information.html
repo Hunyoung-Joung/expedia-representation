@@ -20,10 +20,10 @@
 		</div>
     	<div class="col-sm-4">
       		<p id="display_name"></p>
-      		<input id="userId" type="text" class="form-control" placeholder="Lorem ipsum" th:field="*{userId}" />
-      		<input id="displayName" type="text" class="form-control" placeholder="Lorem ipsum" th:field="*{displayName}" />
-      		<input id="userName" type="text" class="form-control" placeholder="Lorem ipsum" th:field="*{userName}" />
-      		<input id="companyName" type="text" class="form-control" placeholder="Lorem ipsum" th:field="*{companyName}" />
+      		<input id="userId" type="text" class="form-control" th:field="*{userId}" />
+      		<input id="displayName" type="text" class="form-control" th:field="*{displayName}" />
+      		<input id="userName" type="text" class="form-control" th:field="*{userName}" />
+      		<input id="companyName" type="text" class="form-control" th:field="*{companyName}" />
 
 			<select name="jobType" id="jobType" th:field="*{jobType}">
 				<option value="1" selected="selected">営業</option>
