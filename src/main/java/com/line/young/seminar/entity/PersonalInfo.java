@@ -16,19 +16,19 @@ public class PersonalInfo {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private String userId;
     
-    @Column(name="display_name")
+    @Column(name="display_name", nullable = true)
     private String displayName;
     
-    @Column(name="user_name")
+    @Column(name="user_name", nullable = true)
     private String userName;
     
-    @Column(name="company_name")
+    @Column(name="company_name", nullable = true)
     private String companyName;
     
-    @Column(name="job_type")
+    @Column(name="job_type", nullable = false)
     private String jobType;
     
-    @Column(name="is_confirmed")
+    @Column(name="is_confirmed", nullable = true)
     private boolean isConfirmed;
 
     public String getUserId() {
