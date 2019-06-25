@@ -62,7 +62,7 @@ public class PersonalInfoController {
         Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
         model.addAttribute("PersonalInfos", personalInfos);
         model.addAttribute("newPersonalInfos", new PersonalInfo());
-        return "PersonalInfo";
+        return "personal_information";
     }
 
 //    @RequestMapping(method = RequestMethod.POST)
