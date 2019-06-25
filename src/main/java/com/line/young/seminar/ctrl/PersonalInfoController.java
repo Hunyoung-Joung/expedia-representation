@@ -61,7 +61,7 @@ public class PersonalInfoController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String insertPernalInfo(ModelMap model, 
+    public String insertPersonalInfo(ModelMap model, 
                                 @ModelAttribute("newPersonalInfo") 
                                 @Valid PersonalInfo personalInfo,
                                 BindingResult result) {
