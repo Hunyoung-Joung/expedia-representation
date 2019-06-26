@@ -8,28 +8,28 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="personal_info")
+@Table(name="personalInfo")
 //@Table(schema = "seminar-db", name = "personal_info")
 public class PersonalInfo {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="user_id", nullable = false)
+    @Column(name="userId", nullable = false)
     private String userId;
     
-    @Column(name="display_name", nullable = true)
+    @Column(name="displayName", nullable = true)
     private String displayName;
     
-    @Column(name="user_name", nullable = true)
+    @Column(name="userName", nullable = true)
     private String userName;
     
-    @Column(name="company_name", nullable = true)
+    @Column(name="companyName", nullable = true)
     private String companyName;
     
-    @Column(name="job_type", nullable = false)
+    @Column(name="jobType", nullable = false)
     private String jobType;
     
-    @Column(name="is_confirmed", nullable = true)
+    @Column(name="isConfirmed", nullable = true)
     private boolean isConfirmed;
 
     public String getUserId() {
