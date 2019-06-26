@@ -14,6 +14,7 @@ public class PersonalInfo {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="user_id", nullable = false)
     private String userId;
     
     @Column(name="display_name", nullable = true)
