@@ -10,7 +10,7 @@
 
 	</div>
 <div class="container">
-	<form th:action="@{/personal_information}" method="post" th:object="${personalInfo}">
+	<form th:action="@{/personal_information}" th:object="${personalInfo}" method="post" >
   	<div class="row">
 	    <div class="col-sm-4">
 	      	<h3><img width="50px" id="user_photo" src="/img/unknownuser.jpg"></img></h3>
@@ -20,7 +20,7 @@
 		</div>
     	<div class="col-sm-4">
       		<p id="display_name"></p>
-      		<input id="user_id" type="text" class="form-control" th:field="*{user_id}"/>
+      		<input id="user_id" name="user_id" type="text" class="form-control" th:field="*{user_id}"/>
       		<input id="display_name" type="text" class="form-control"/>
       		<input id="userName" type="text" class="form-control" />
       		<input id="companyName" type="text" class="form-control" />
@@ -32,8 +32,8 @@
 				<option value="4">その他</option>
 			</select>
 			    <div class="radio">
-      <label><input type="radio" name="optradio" checked>Option 1</label>
-      <label><input type="radio" name="optradio">Option 2</label>
+      <label><input type="radio" name="is_confirmed" value="true" checked>Option 1</label>
+      <label><input type="radio" name="is_confirmed" value="false" >Option 2</label>
 <!--
       <label><input type="radio" name="optradio" disabled>Option 3</label> -->
     </div>
