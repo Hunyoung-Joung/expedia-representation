@@ -7,7 +7,8 @@ import java.util.logging.Logger;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
+//import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +35,7 @@ public class PersonalInfoController {
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String showAllPersonalInfos(ModelMap model) {
+    public String showPersonalInfos(Model model) {
         Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
         model.addAttribute("PersonalInfos", personalInfos);
         model.addAttribute("newPersonalInfos", new PersonalInfo());
@@ -43,21 +44,26 @@ public class PersonalInfoController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String insertPersonalInfo(ModelMap model, 
-                                @ModelAttribute("newInsertPersonalInfo") 
-                                @Valid PersonalInfo personalInfo,
-                                BindingResult result) {
+//    public String addtPersonalInfo(ModelMap model, 
+//                                @ModelAttribute("newInsertPersonalInfo") 
+//                                @Valid PersonalInfo personalInfo,
+//                                BindingResult result) {
+    public String addtPersonalInfo(@Valid PersonalInfo personalInfo, BindingResult result, Model model)  {
         logger.info("##### insert personal information");
-        if (!result.hasErrors()) {
-            this.personalInfoRepository.save(personalInfo);
+        if (result.hasErrors()) {
+            return "personal_information";
         }
-        return showAllPersonalInfos(model);
+        personalInfoRepository.save(personalInfo);
+        model.addAttribute("personalInfos", personalInfoRepository.findAll());
+
+//        return showPersonalInfo(model);
+        return "personal_information";
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
-    public String deleteTask(ModelMap model, @RequestParam("userId") String id) {
+    public String deleteTask(Model model, @RequestParam("userId") String id) {
       this.personalInfoRepository.deleteById(id);
-      return showAllPersonalInfos(model);
+      return showPersonalInfos(model);
     }
     
 //    @Bean
