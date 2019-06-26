@@ -9,75 +9,76 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="personalInfo")
-//@Table(schema = "seminar-db", name = "personalInfo")
+//@Table(schema = "seminar-db", name = "personal_info")
 public class PersonalInfo {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="userId", nullable = false)
-    private String userId;
+    @Column(name="user_id", nullable = false)
+    private String user_id;
     
-    @Column(name="displayName", nullable = true)
-    private String displayName;
+    @Column(name="display_name", nullable = true)
+    private String display_name;
     
-    @Column(name="userName", nullable = true)
-    private String userName;
+    @Column(name="user_name", nullable = true)
+    private String user_name;
     
-    @Column(name="companyName", nullable = true)
-    private String companyName;
+    @Column(name="company_name", nullable = true)
+    private String company_name;
     
-    @Column(name="jobType", nullable = false)
-    private String jobType;
+    @Column(name="job_type", nullable = false)
+    private String job_type;
     
-    @Column(name="isConfirmed", nullable = true)
-    private boolean isConfirmed;
+    @Column(name="is_confirmed", nullable = true)
+    private boolean is_confirmed;
 
-    public String getUserId() {
-        return userId;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
-    public String getDisplayName() {
-        return displayName;
+    public String getDisplay_name() {
+        return display_name;
     }
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+    public void setDisplay_name(String display_name) {
+        this.display_name = display_name;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getCompany_name() {
+        return company_name;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
     }
 
-    public String getJobType() {
-        return jobType;
+    public String getJob_type() {
+        return job_type;
     }
 
-    public void setJobType(String jobType) {
-        this.jobType = jobType;
+    public void setJob_type(String job_type) {
+        this.job_type = job_type;
     }
 
-    public boolean getIsConfirmed() {
-        return isConfirmed;
+    public boolean isIs_confirmed() {
+        return is_confirmed;
     }
 
-    public void setIsConfirmed(boolean isConfirmed) {
-        this.isConfirmed = isConfirmed;
+    public void setIs_confirmed(boolean is_confirmed) {
+        this.is_confirmed = is_confirmed;
     }
+
 
 }
