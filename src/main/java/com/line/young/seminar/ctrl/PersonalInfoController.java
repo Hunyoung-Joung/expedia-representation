@@ -36,6 +36,7 @@ public class PersonalInfoController {
     
     @RequestMapping(method = RequestMethod.GET)
     public String showPersonalInfos(Model model) {
+        logger.info("##### insert personal information");
         Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
         model.addAttribute("PersonalInfos", personalInfos);
         model.addAttribute("newPersonalInfos", new PersonalInfo());
