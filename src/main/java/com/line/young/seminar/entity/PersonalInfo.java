@@ -12,8 +12,6 @@ import javax.persistence.Table;
 //@Table(schema = "seminar-db", name = "personal_info")
 public class PersonalInfo {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="user_id", nullable = false)
     private String user_id;
     
