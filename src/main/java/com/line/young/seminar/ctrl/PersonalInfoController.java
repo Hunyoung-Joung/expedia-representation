@@ -1,6 +1,7 @@
 package com.line.young.seminar.ctrl;
 
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,25 +37,24 @@ public class PersonalInfoController {
         this.personalInfoRepository = repo;
     }
     
-    @GetMapping("personal_information")
-    public String selectPersonalInfos(Model model) {
+    @RequestMapping(value="/personal_information/{id}", method = RequestMethod.GET)
+    public String selectPersonalInfo(Model model, @RequestParam(value="id", required=true) String id) {
         logger.info("##### find personal information");
+        Optional<PersonalInfo> personalInfo = this.personalInfoRepository.findById(id);
+        model.addAttribute("PersonalInfo", personalInfo);
+        
+        return "personal_information";
+    }
+    
+    @RequestMapping(value="/personal_information", method = RequestMethod.GET)
+    public String selectPersonalInfos(Model model) {
+        logger.info("##### find all of personal information");
         Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
         model.addAttribute("PersonalInfos", personalInfos);
         model.addAttribute("personalInfo", new PersonalInfo());
         
         return "personal_information";
     }
-    
-//    @RequestMapping(method = RequestMethod.GET/{id})
-//    public String selectPersonalInfo(Model model) {
-//        logger.info("##### find personal information");
-//        Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
-//        model.addAttribute("PersonalInfos", personalInfos);
-//        model.addAttribute("personalInfo", new PersonalInfo());
-//        
-//        return "personal_information";
-//    }
 
     @RequestMapping(method = RequestMethod.POST)
     public String addtPersonalInfo(@Valid PersonalInfo personalInfo, BindingResult result, Model model)  {
@@ -62,9 +63,9 @@ public class PersonalInfoController {
             return "personal_information";
         }
         personalInfoRepository.save(personalInfo);
-        model.addAttribute("personalInfos", personalInfoRepository.findAll());
+        model.addAttribute("personalInfo", personalInfoRepository.findById(personalInfo.getUser_id()));
 
-        return selectPersonalInfos(model);
+        return selectPersonalInfo(model, personalInfo.getUser_id());
 //        return "personal_information";
     }
 
