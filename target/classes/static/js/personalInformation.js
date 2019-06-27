@@ -114,11 +114,13 @@ $(document).ready(function(){
 function getProfile() {
 	alert("getProfile");
 	liff.getProfile().then(function(profile) {
-		alert("getProfile >> "+profile);
+		
 		displayName = profile.displayName;
 		$("img#userPhoto").attr("src",profile.pictureUrl);
 		$("span#displayName").text(displayName);
 		$("hidden#displayName").val(displayName);
+		
+		alert("getProfile.profile.displayname >> "+$("hidden#displayName").val());
 	}).catch((err) => {
 		showError(err);
 	});
