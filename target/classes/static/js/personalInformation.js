@@ -111,8 +111,9 @@ $(document).ready(function(){
  * @returns null
  */
 function getProfile() {
-	console.log("");
+	alert("getProfile");
 	liff.getProfile().then(function(profile) {
+		alert("getProfile >> "+profile);
 		displayName = profile.displayName;
 		$("img#userPhoto").attr("src",profile.pictureUrl);
 		$("span#displayName").text(displayName);
