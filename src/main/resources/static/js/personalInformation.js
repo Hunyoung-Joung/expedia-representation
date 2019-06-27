@@ -118,9 +118,9 @@ function getProfile() {
 		displayName = profile.displayName;
 		$("img#userPhoto").attr("src",profile.pictureUrl);
 		$("span#displayName").text(displayName);
-		$("hidden#displayName").val(displayName);
+		$("#displayName").val(displayName);
 		
-		alert("getProfile.profile.displayname >> "+$("hidden#displayName").val());
+		alert("getProfile.profile.displayname >> "+$("#displayName").val());
 	}).catch((err) => {
 		showError(err);
 	});
