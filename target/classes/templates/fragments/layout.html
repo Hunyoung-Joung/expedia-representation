@@ -18,6 +18,9 @@ th:fragment="layout (template, menu)">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
 </head>
 <body>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
     
 	<!-- Header -->
     <div class="container fixed-top w-100 text-center" style="background-color: #AEEA00;">
@@ -52,8 +55,4 @@ th:fragment="layout (template, menu)">
 			</div>
 		</div>
 	</div>  
-	
-    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
-    <script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
 </body>
