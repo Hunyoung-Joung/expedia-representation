@@ -28,6 +28,7 @@ $(document).ready(function(){
 		$("#userId").val(userId);
 		// get user profile from LIFF API
 		getProfile();
+		alert("getProfile.profile.displayname >> "+$("#displayName").val());
 	}, err => {
 		showError(err);
 	});
@@ -119,8 +120,6 @@ function getProfile() {
 		$("img#userPhoto").attr("src",profile.pictureUrl);
 		$("span#displayName").text(displayName);
 		$("#displayName").val(displayName);
-		
-		alert("getProfile.profile.displayname >> "+$("#displayName").val());
 	}).catch((err) => {
 		showError(err);
 	});
