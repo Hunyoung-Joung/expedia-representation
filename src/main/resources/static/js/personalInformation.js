@@ -24,11 +24,9 @@ $(document).ready(function(){
 	liff.init( function (data) {
 		// set userId from liff.init data
 		userId = data.context.userId;
-
 		$("#userId").val(userId);
 		// get user profile from LIFF API
 		getProfile();
-		alert("getProfile.profile.displayname >> "+$("#displayName").val());
 	}, err => {
 		showError(err);
 	});
@@ -77,33 +75,35 @@ $(document).ready(function(){
         });
 	});
 	
-	// leave from seminar join
-	$(document).on("click", "button#remove", function(){
-	    var sendData = {
-	    	"userId":userId
-	    }
-
-        $.ajax({
-            url: 'https://www.changchao.me/api/u/quit',
-            headers: {"api-key": apiKey},
-            type: 'POST',
-            contentType: "application/json",
-            dataType: 'json',
-            data: JSON.stringify(sendData),
-            // if it could put user data
-            success: function(data, status, xhr) { 
-            	// nothing to do
-            },
-            // if it couldn't put user data by error
-            error: function(xhr, status, err) { 
-    			// show error if it has
-            	showError(err);
-            },
-            // very necessary, if it is not work, then callback function never ending
-            complete: function (xhr, status) {
-            	liff.closeWindow();
-            }
-        });
+	// Seminar join submit
+	$(document).on("click", "#submit", function(){
+		
+		alert("submit >> "$("#userId").val()+", "+$("#displayName").val()+", "+$("#displayName").val());
+//	    var sendData = {
+//	    	"userId":userId
+//	    }
+//
+//        $.ajax({
+//            url: 'https://www.changchao.me/api/u/quit',
+//            headers: {"api-key": apiKey},
+//            type: 'POST',
+//            contentType: "application/json",
+//            dataType: 'json',
+//            data: JSON.stringify(sendData),
+//            // if it could put user data
+//            success: function(data, status, xhr) { 
+//            	// nothing to do
+//            },
+//            // if it couldn't put user data by error
+//            error: function(xhr, status, err) { 
+//    			// show error if it has
+//            	showError(err);
+//            },
+//            // very necessary, if it is not work, then callback function never ending
+//            complete: function (xhr, status) {
+//            	liff.closeWindow();
+//            }
+//        });
 	});
 });
 
@@ -113,9 +113,7 @@ $(document).ready(function(){
  * @returns null
  */
 function getProfile() {
-	alert("getProfile");
 	liff.getProfile().then(function(profile) {
-		
 		displayName = profile.displayName;
 		$("img#userPhoto").attr("src",profile.pictureUrl);
 		$("span#displayName").text(displayName);

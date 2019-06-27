@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 //import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,21 +35,27 @@ public class PersonalInfoController {
         this.personalInfoRepository = repo;
     }
     
-    @RequestMapping(method = RequestMethod.GET)
-    public String showPersonalInfos(Model model) {
+    @GetMapping("personal_information")
+    public String selectPersonalInfos(Model model) {
         logger.info("##### find personal information");
-//        Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
-//        model.addAttribute("PersonalInfos", personalInfos);
+        Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
+        model.addAttribute("PersonalInfos", personalInfos);
         model.addAttribute("personalInfo", new PersonalInfo());
         
         return "personal_information";
     }
+    
+//    @RequestMapping(method = RequestMethod.GET/{id})
+//    public String selectPersonalInfo(Model model) {
+//        logger.info("##### find personal information");
+//        Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
+//        model.addAttribute("PersonalInfos", personalInfos);
+//        model.addAttribute("personalInfo", new PersonalInfo());
+//        
+//        return "personal_information";
+//    }
 
     @RequestMapping(method = RequestMethod.POST)
-//    public String addtPersonalInfo(ModelMap model, 
-//                                @ModelAttribute("newInsertPersonalInfo") 
-//                                @Valid PersonalInfo personalInfo,
-//                                BindingResult result) {
     public String addtPersonalInfo(@Valid PersonalInfo personalInfo, BindingResult result, Model model)  {
         logger.info("##### insert personal information");
         if (result.hasErrors()) {
@@ -57,14 +64,14 @@ public class PersonalInfoController {
         personalInfoRepository.save(personalInfo);
         model.addAttribute("personalInfos", personalInfoRepository.findAll());
 
-//        return showPersonalInfo(model);
-        return "personal_information";
+        return selectPersonalInfos(model);
+//        return "personal_information";
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
     public String deleteTask(Model model, @RequestParam("userId") String id) {
       this.personalInfoRepository.deleteById(id);
-      return showPersonalInfos(model);
+      return selectPersonalInfos(model);
     }
     
 //    @Bean
