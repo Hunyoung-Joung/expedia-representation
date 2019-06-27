@@ -37,7 +37,7 @@ public class PersonalInfoController {
         this.personalInfoRepository = repo;
     }
     
-    @RequestMapping(value="/personal_information/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
     public String selectPersonalInfo(Model model, @RequestParam(value="id", required=true) String id) {
         logger.info("##### find personal information");
         Optional<PersonalInfo> personalInfo = this.personalInfoRepository.findById(id);
@@ -46,7 +46,7 @@ public class PersonalInfoController {
         return "personal_information";
     }
     
-    @RequestMapping(value="/personal_information", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String selectPersonalInfos(Model model) {
         logger.info("##### find all of personal information");
         Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
