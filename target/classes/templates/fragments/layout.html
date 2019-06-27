@@ -2,7 +2,9 @@
 Copyright@ LINE 2019
 -->
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="jp" th:fragment="layout (template, menu)">
+<html xmlns:th="http://www.thymeleaf.org" lang="jp" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+th:fragment="layout (template, menu)">
 <head>
     <title>LINE Technical Partner Seminar</title>
     <meta charset="UTF-8">
@@ -23,7 +25,10 @@ Copyright@ LINE 2019
 			<div class="container">
 				<ul class="nav navbar-nav row">
 					<li class="active col-xs-6">
-						<a href="https://devcenter.heroku.com/articles/how-heroku-works"><span class="glyphicon glyphicon-user"></span> user name</a>
+						<a href="https://seminar-web.herokuapp.com/personal_information">
+							<span class="glyphicon glyphicon-users"></span>
+							<p id="displayName"></p>
+						</a>
 					</li>
 					<li class="active col-xs-6">
 						<a href="https://devcenter.heroku.com"><span class="glyphicon glyphicon-book"></span> 個人情報保護方針</a>

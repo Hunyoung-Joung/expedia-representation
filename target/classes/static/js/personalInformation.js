@@ -16,50 +16,21 @@ var jobType = "";
 var isConfirmed = false;
 
 $(document).ready(function(){
-	$.get("/config/young").done(function( data ) {
-		apiKey = JSON.parse(JSON.stringify(data)).apiKey;
-		/**
-		 * Initializing for LIFF
-		 * 
-		 * @returns null
-		 */
-		liff.init( function (data) {
-			// from privacy policy viewer
-			if ("" != window.location.search.substring(1)) {
-				param = decodeURIComponent(window.location.search.substring(1));
-				isConfirmed = param.split("&")[0].split("=")[1];
-				userName = param.split("&")[1].split("=")[1];
-				companyName = param.split("&")[2].split("=")[1];
-				jobType = param.split("&")[3].split("=")[1];
-			}
-			// set userId from liff.init data
-			userId = data.context.userId;
-			// get user data from a database use to CLOVA API
-	        $.ajax({
-	            url: 'https://www.changchao.me/api/u/'+userId,
-	            headers: {"api-key": apiKey},
-	            type: 'GET',
-	            contentType: "application/json",
-	            dataType: 'json',
-	            // if it could get user data
-	            success: function(data_, status, xhr) { 
-	            	setProfile(data_, isConfirmed); 
-	            },
-	            // if it couldn't get user data by error
-	            error: function(xhr, status, err) { 
-	    			// show error if it has
-	            	console.log("--------LIFF");
-	            	showError(err);
-	            },
-	            complete: function (xhr, status) {
-	            	// nothing to do
-	            }
-	        });
-		}, err => {
-			
-			showError(err);
-		});
+	// get user profile from LIFF API
+	getProfile();
+	/**
+	 * Initializing for LIFF
+	 * 
+	 * @returns null
+	 */
+	liff.init( function (data) {
+		// set userId from liff.init data
+		userId = data.context.userId;
+		$("p#userId").val(userId);
+	}, err => {
+		showError(err);
 	});
+});
 	// show privacy policy viewer
 	$("a#show_privacy_policy").click(function(){
         liff.openWindow({
@@ -142,8 +113,8 @@ $(document).ready(function(){
 function getProfile() {
 	liff.getProfile().then(function(profile) {
 		displayName = profile.displayName;
-		$("img#user_photo").attr("src",profile.pictureUrl);
-		$("p#display_name").text(displayName);
+		$("img#userPhoto").attr("src",profile.pictureUrl);
+		$("p#displayName").text(displayName);
 	}).catch((err) => {
 		showError(err);
 	});
@@ -179,18 +150,6 @@ function setProfile(data_, isConfirmed) {
 		}
 		$("button#confirm").text("　修　正　").after("　<button class='btn remove' id='remove'>　不参加　</button>");
 	}
-}
-
-/**
- * 
- * @param isConfirmed
- * @returns
- */
-function togglePrivacyPolicyConfirmation(isConfirmed) {
-	if (isConfirmed == true) {
-		$("span#confirmation").text("済み");
-		$("a#show_privacy_policy").text("");
-	} 
 }
 
 /**

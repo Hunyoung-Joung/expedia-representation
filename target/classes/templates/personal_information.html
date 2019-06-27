@@ -5,8 +5,8 @@
 <script th:src="@{https://d.line-scdn.net/liff/1.0/sdk.js}"></script>
 <div class="container">
     <div class="error_division"></div>
-	<div class="jumbotron text-center">
-	  	<h1>参加者情報</h1>
+	<div class="text-center">
+	  	<h2>参加者情報</h2>
 	</div>
 	<div class="container">
 		<form th:action="@{/personal_information}" th:object="${personalInfo}" method="post" >
@@ -14,7 +14,7 @@
 	  	<table class="table">
 	    	<tbody>
 	      		<tr>
-	        		<td><img width="50px" id="user_photo" src="/img/unknownuser.jpg"></img></td>
+	        		<td><img width="50px" id="userPhoto" src="/img/unknownuser.jpg"></img></td>
 	        		<td><input id="displayName" name="display_name" type="text" th:field="*{display_name}" disabled /></td>
 	      		</tr>
 	      		<tr>
