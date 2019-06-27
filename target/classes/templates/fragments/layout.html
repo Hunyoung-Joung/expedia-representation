@@ -29,7 +29,7 @@ th:fragment="layout (template, menu)">
 				<ul class="nav navbar-nav row">
 					<li class="active col-xs-6">
 						<a href="https://seminar-web.herokuapp.com/personal_information">
-							<span class="glyphicon glyphicon-users"></span><p id="displayName"></p>
+							<span class="glyphicon glyphicon-users"></span><span id="displayName"></span>
 						</a>
 					</li>
 					<li class="active col-xs-6">
@@ -42,7 +42,7 @@ th:fragment="layout (template, menu)">
 	
     <!-- Html contents here -->
     <div class="container text-center">
-		<div th:replace="${template}"/>
+		<div th:replace="${template}"></div>
 	</div> 
     
     <!-- Footer -->
