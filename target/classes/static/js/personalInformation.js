@@ -25,7 +25,7 @@ $(document).ready(function(){
 		// set userId from liff.init data
 		userId = data.context.userId;
 
-		$("hidden#userId").val(userId);
+		$("#userId").val(userId);
 		// get user profile from LIFF API
 		getProfile();
 	}, err => {
