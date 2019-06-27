@@ -16,8 +16,6 @@ var jobType = "";
 var isConfirmed = false;
 
 $(document).ready(function(){
-	// get user profile from LIFF API
-	getProfile();
 	/**
 	 * Initializing for LIFF
 	 * 
@@ -26,7 +24,10 @@ $(document).ready(function(){
 	liff.init( function (data) {
 		// set userId from liff.init data
 		userId = data.context.userId;
+		alert("init >> "+userId);
 		$("p#userId").val(userId);
+		// get user profile from LIFF API
+		getProfile();
 	}, err => {
 		showError(err);
 	});
