@@ -2,14 +2,11 @@ package com.line.young.seminar.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="personal_info")
-//@Table(schema = "seminar-db", name = "personal_info")
 public class PersonalInfo {
 
     @Id
@@ -78,6 +75,4 @@ public class PersonalInfo {
     public void setIs_confirmed(boolean is_confirmed) {
         this.is_confirmed = is_confirmed;
     }
-
-
 }
