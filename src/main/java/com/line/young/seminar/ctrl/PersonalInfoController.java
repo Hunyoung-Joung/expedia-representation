@@ -46,7 +46,7 @@ public class PersonalInfoController {
         return "personal_information";
     }
     
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value="/", method = RequestMethod.GET)
     public String selectPersonalInfos(Model model) {
         logger.info("##### find all of personal information");
         Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
