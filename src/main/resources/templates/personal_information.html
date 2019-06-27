@@ -15,20 +15,20 @@
 	    	<tbody>
 	      		<tr>
 	        		<td><img width="50px" id="user_photo" src="/img/unknownuser.jpg"></img></td>
-	        		<td><input id="displayName" name="display_name" type="text" th:field="*{"display_name"}" disabled /></td>
+	        		<td><input id="displayName" name="display_name" type="text" th:field="*{display_name}" disabled /></td>
 	      		</tr>
 	      		<tr>
 	        		<td>名前</td>
-	        		<td><input id="userName" name="user_name" type="text" class="form-control" th:field="*{"user_name"}"/></td>
+	        		<td><input id="userName" name="user_name" type="text" class="form-control" th:field="*{user_name}"/></td>
 	      		</tr>
 	      		<tr>
 	        		<td>会社名</td>
-	        		<td><input id="companyName" name="company_name" type="text" class="form-control" th:field="*{"company_name"}"/></td>
+	        		<td><input id="companyName" name="company_name" type="text" class="form-control" th:field="*{company_name}"/></td>
 	      		</tr>
 	      		<tr>
 	        		<td>職種（必須）</td>
 	        		<td>
-						<select name="job_type" id="jobType">
+						<select id="jobType" name="job_type" th:field="*{job_type}">
 							<option value="1" selected="selected">営業</option>
 							<option value="2">開発</option>
 							<option value="3">企画</option>
@@ -40,8 +40,8 @@
 	        		<td>個人情報保護方針確認</td>
 	        		<td>
 						<div class="radio">
-	      					<label><input type="radio" name="is_confirmed" value="true" th:field="*{"is_confirmed"}">確認済み</label>
-	      					<label><input type="radio" name="is_confirmed" value="false" th:field="*{"is_confirmed"}">未確認</label>
+	      					<label><input id="isConfirmed" type="radio" name="is_confirmed" value="true" th:field="*{is_confirmed}">確認済み</label>
+	      					<label><input id="isConfirmed" type="radio" name="is_confirmed" value="false" th:field="*{is_confirmed}">未確認</label>
 	    				</div>
 	        		</td>
 				</tr>
