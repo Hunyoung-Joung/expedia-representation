@@ -13,9 +13,8 @@
 		<input id="userId" name="user_id" type="hidden" class="form-control" th:field="*{user_id}"/>
 	  	<table class="table">
 	    	<tbody>
-	      		<tr>
+	      		<tr colspan="2" class="col-md-4">
 	        		<td><img width="50px" id="userPhoto" src="/img/unknownuser.jpg"></img></td>
-	        		<td><input id="displayName" name="display_name" type="text" th:field="*{display_name}" disabled /></td>
 	      		</tr>
 	      		<tr>
 	        		<td>名前</td>
@@ -45,7 +44,7 @@
 	    				</div>
 	        		</td>
 				</tr>
-				<tr colspan="2" align="center">
+				<tr colspan="2" class="col-md-4">
 	        		<td><button type="submit" class="btn btn-default">Submit</button></td>
 				</tr>
 	    	</tbody>
