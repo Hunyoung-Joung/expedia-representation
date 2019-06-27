@@ -24,8 +24,8 @@ $(document).ready(function(){
 	liff.init( function (data) {
 		// set userId from liff.init data
 		userId = data.context.userId;
-		alert("init >> "+userId);
-		$("p#userId").val(userId);
+
+		$("hidden#userId").val(userId);
 		// get user profile from LIFF API
 		getProfile();
 	}, err => {
@@ -118,6 +118,7 @@ function getProfile() {
 		displayName = profile.displayName;
 		$("img#userPhoto").attr("src",profile.pictureUrl);
 		$("span#displayName").text(displayName);
+		$("hidden#displayName").val(displayName);
 	}).catch((err) => {
 		showError(err);
 	});
