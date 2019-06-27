@@ -30,7 +30,7 @@ $(document).ready(function(){
 	}, err => {
 		showError(err);
 	});
-});
+
 	// show privacy policy viewer
 	$("a#show_privacy_policy").click(function(){
         liff.openWindow({
