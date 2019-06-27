@@ -78,7 +78,7 @@ $(document).ready(function(){
 	// Seminar join submit
 	$(document).on("click", "#submit", function(){
 		
-		alert("submit >> "$("#userId").val()+", "+$("#displayName").val()+", "+$("#displayName").val());
+		alert("submit >> "+$("#userId").val()+", "+$("#displayName").val()+", "+$("#displayName").val());
 //	    var sendData = {
 //	    	"userId":userId
 //	    }
