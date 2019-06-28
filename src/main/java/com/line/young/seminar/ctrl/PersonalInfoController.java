@@ -36,7 +36,8 @@ public class PersonalInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
-    @GetMapping("{userId}")
+//    @GetMapping("{userId}")
+    @RequestMapping("/{userId}")
     public String find(@PathVariable String userId, Model model) {
         logger.info("##### find by id: userId? "+userId);
         Optional<PersonalInfo> personalInfo = personalInfoService.findOne(userId);
