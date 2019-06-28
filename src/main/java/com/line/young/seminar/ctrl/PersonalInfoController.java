@@ -36,8 +36,8 @@ public class PersonalInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
-    @RequestMapping(value="{userId}", method={RequestMethod.GET, RequestMethod.POST})
-    public String index(@PathVariable String userId, Model model) {
+    @RequestMapping(method={RequestMethod.GET, RequestMethod.POST})
+    public String index(@RequestParam("userId") String userId, Model model) {
         logger.info("##### init personal information: userId?"+userId);
         model.addAttribute("personalInfo", new PersonalInfo());
         return "personal_information";
