@@ -1,7 +1,6 @@
 package com.line.young.seminar.ctrl;
 
 import java.sql.SQLException;
-import java.util.Optional;
 import java.util.logging.Logger;
 
 
@@ -37,18 +36,19 @@ public class PersonalInfoController {
         this.personalInfoRepository = repo;
     }
     
-    @RequestMapping(value="/{id}", method = RequestMethod.GET)
-    public String selectPersonalInfo(Model model, @RequestParam(value="id", required=true) String id) {
-        logger.info("##### find personal information");
-        Optional<PersonalInfo> personalInfo = this.personalInfoRepository.findById(id);
-        model.addAttribute("PersonalInfo", personalInfo);
+    @RequestMapping(method = RequestMethod.GET)
+    public String selectPersonalInfos(Model model) {
+        logger.info("##### find personal informations");
+        Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
+        model.addAttribute("PersonalInfos", personalInfos);
+        model.addAttribute("personalInfo", new PersonalInfo());
         
         return "personal_information";
     }
     
-    @RequestMapping(value="/", method = RequestMethod.GET)
-    public String selectPersonalInfos(Model model) {
-        logger.info("##### find all of personal information");
+    @RequestMapping(method=RequestMethod.GET, value={"/{id}"})
+    public String selectPersonalInfo(Model model, @PathVariable("userId") String userId) {
+        logger.info("##### find personal information? id = "+userId);
         Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
         model.addAttribute("PersonalInfos", personalInfos);
         model.addAttribute("personalInfo", new PersonalInfo());
@@ -63,9 +63,9 @@ public class PersonalInfoController {
             return "personal_information";
         }
         personalInfoRepository.save(personalInfo);
-        model.addAttribute("personalInfo", personalInfoRepository.findById(personalInfo.getUser_id()));
+        model.addAttribute("personalInfos", personalInfoRepository.findAll());
 
-        return selectPersonalInfo(model, personalInfo.getUser_id());
+        return selectPersonalInfos(model);
 //        return "personal_information";
     }
 
