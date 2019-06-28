@@ -38,11 +38,10 @@ public class PersonalInfoController {
         this.personalInfoRepository = repo;
     }
     
-    @RequestMapping(method=RequestMethod.GET, value={"/{id}"})
-    @ResponseBody
-    public String selectPersonalInfos(Model model, 
-                                    @PathVariable String userId) {
-        logger.info("##### find personal informations? id = "+userId);
+    @RequestMapping(method=RequestMethod.GET)
+//    @ResponseBody
+    public String selectPersonalInfos(Model model) {
+        logger.info("##### find personal informations");
         Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
         model.addAttribute("PersonalInfos", personalInfos);
         model.addAttribute("personalInfo", new PersonalInfo());
@@ -51,7 +50,7 @@ public class PersonalInfoController {
     }
     
     @RequestMapping(method=RequestMethod.GET, value={"/{id}"})
-    public String selectPersonalInfo(Model model, @PathVariable("userId") String userId) {
+    public String selectPersonalInfo(Model model, @PathVariable String userId) {
         logger.info("##### find personal information? id = "+userId);
         Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
         model.addAttribute("PersonalInfos", personalInfos);
@@ -69,7 +68,7 @@ public class PersonalInfoController {
         personalInfoRepository.save(personalInfo);
         model.addAttribute("personalInfos", personalInfoRepository.findAll());
 
-        return selectPersonalInfos(model, personalInfo.getUser_id());
+        return selectPersonalInfo(model, personalInfo.getUser_id());
 //        return "personal_information";
     }
 
