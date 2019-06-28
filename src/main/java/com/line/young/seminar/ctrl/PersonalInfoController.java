@@ -37,7 +37,7 @@ public class PersonalInfoController {
     private PersonalInfoService personalInfoService;
     
     @RequestMapping(method=RequestMethod.GET)
-    public String selectPersonalInfos(Model model) {
+    public String findAll(Model model) {
         logger.info("##### find personal informations");
         Iterable<PersonalInfo> personalInfos = personalInfoService.findAll();
         model.addAttribute("PersonalInfos", personalInfos);
