@@ -67,15 +67,15 @@ public class PersonalInfoController {
         personalInfoRepository.save(personalInfo);
         model.addAttribute("personalInfos", personalInfoRepository.findAll());
 
-        return selectPersonalInfos(model);
+        return selectPersonalInfos(model, personalInfo.getUser_id(), personalInfo.getUser_id());
 //        return "personal_information";
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
-    public String deleteTask(Model model, @RequestParam("userId") String id) {
-      this.personalInfoRepository.deleteById(id);
-      return selectPersonalInfos(model);
-    }
+//    @RequestMapping(method = RequestMethod.DELETE)
+//    public String deleteTask(Model model, @RequestParam("userId") String id) {
+//      this.personalInfoRepository.deleteById(id);
+//      return selectPersonalInfos(model);
+//    }
     
 //    @Bean
 //    public DataSource dataSource() throws SQLException {
