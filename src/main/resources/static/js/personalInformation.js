@@ -36,7 +36,7 @@ $(document).ready(function(){
             type: 'GET',
             contentType: "application/json",
             dataType: 'json',
-            data: JSON.stringify(sendData),
+//            data: JSON.stringify(sendData),
             // if it could put user data
             success: function(data, status, xhr) { 
             	// nothing to do

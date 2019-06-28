@@ -49,7 +49,7 @@ public class PersonalInfoController {
         return "personal_information";
     }
     
-    @RequestMapping(method=RequestMethod.GET, value={"/{id}"})
+    @RequestMapping(method=RequestMethod.GET, value={"/api/{id}"})
     public String selectPersonalInfo(Model model, @PathVariable String userId) {
         logger.info("##### find personal information? id = "+userId);
         Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
