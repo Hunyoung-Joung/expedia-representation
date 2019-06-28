@@ -10,7 +10,7 @@
 	  	<h2>参加者情報</h2>
 	</div>
 	<div class="container">
-		<form th:action="@{/personal_information}" th:object="${personalInfo}" th:method="post" >
+		<form th:action="@{/personalInfo}" th:object="${personalInfo}" th:method="post" >
 		<input id="userId" name="user_id" type="hidden" class="form-control" th:value="*{user_id}"/>
 		<input id="displayName" name="display_name" type="hidden" class="form-control" th:value="*{display_name}"/>
 	  	<table class="table">

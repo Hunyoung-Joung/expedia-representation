@@ -28,7 +28,7 @@ import com.line.young.seminar.service.PersonalInfoService;
 
 
 @Controller
-@RequestMapping("/personal_information")
+@RequestMapping("/personalInfo")
 public class PersonalInfoController {
     
     private final Logger logger = Logger.getLogger(this.getClass().getName());
@@ -36,14 +36,22 @@ public class PersonalInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
-    @RequestMapping(method=RequestMethod.GET)
-    public String findAll(Model model) {
-        logger.info("##### find personal informations");
-        Iterable<PersonalInfo> personalInfos = personalInfoService.findAll();
-        model.addAttribute("PersonalInfos", personalInfos);
-        
+    @GetMapping("{userId}")
+    public String find(@PathVariable String userId, Model model) {
+        logger.info("##### find by id: userId? "+userId);
+        Optional<PersonalInfo> personalInfo = personalInfoService.findOne(userId);
+        model.addAttribute("personalInfo", personalInfo);
         return "personal_information";
     }
+    
+//    @RequestMapping(method=RequestMethod.GET)
+//    public String findAll(Model model) {
+//        logger.info("##### find personal informations");
+//        Iterable<PersonalInfo> personalInfos = personalInfoService.findAll();
+//        model.addAttribute("PersonalInfos", personalInfos);
+//        
+//        return "personal_information";
+//    }
     
     @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
     public String selectPersonalInfo(@PathVariable String userId, Model model) {
