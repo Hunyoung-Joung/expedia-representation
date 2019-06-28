@@ -29,28 +29,28 @@ $(document).ready(function(){
 		getProfile();
 		//
 	    var sendData = {"userId":userId}
-
-        $.ajax({
-            url: 'https://seminar-web.herokuapp.com/personal_information/api/'+userId,
-//            headers: {"api-key": apiKey},
-            type: 'GET',
-            contentType: "application/json",
-            dataType: 'json',
-//            data: JSON.stringify(sendData),
-            // if it could put user data
-            success: function(data, status, xhr) { 
-            	// nothing to do
-            },
-            // if it couldn't put user data by error
-            error: function(xhr, status, err) { 
-    			// show error if it has
-            	showError(err);
-            },
-            // very necessary, if it is not work, then callback function never ending
-            complete: function (xhr, status) {
-alert(data);
-            }
-        });
+//
+//        $.ajax({
+//            url: 'https://seminar-web.herokuapp.com/personal_information/api/'+userId,
+////            headers: {"api-key": apiKey},
+//            type: 'GET',
+//            contentType: "application/json",
+//            dataType: 'json',
+////            data: JSON.stringify(sendData),
+//            // if it could put user data
+//            success: function(data, status, xhr) { 
+//            	// nothing to do
+//            },
+//            // if it couldn't put user data by error
+//            error: function(xhr, status, err) { 
+//    			// show error if it has
+//            	showError(err);
+//            },
+//            // very necessary, if it is not work, then callback function never ending
+//            complete: function (xhr, status) {
+//alert(data);
+//            }
+//        });
 	}, err => {
 		showError(err);
 	});
