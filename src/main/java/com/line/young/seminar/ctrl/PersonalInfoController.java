@@ -1,6 +1,7 @@
 package com.line.young.seminar.ctrl;
 
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.line.young.seminar.entity.PersonalInfo;
 import com.line.young.seminar.repo.PersonalInfoRepository;
+import com.line.young.seminar.service.PersonalInfoService;
 
 
 
@@ -31,13 +33,8 @@ public class PersonalInfoController {
     
     private final Logger logger = Logger.getLogger(this.getClass().getName());
    
-    private PersonalInfoRepository personalInfoRepository;
-    
     @Autowired
-    public PersonalInfoController(PersonalInfoRepository repo) {
-        logger.info("##### Construct");
-        this.personalInfoRepository = repo;
-    }
+    private PersonalInfoService personalInfoService;
     
 //    @RequestMapping(method=RequestMethod.GET)
 ////    @ResponseBody
@@ -50,16 +47,11 @@ public class PersonalInfoController {
 //        return "personal_information";
 //    }
     
-    @PostMapping("/")
-    public String selectPersonalInfo(@ModelAttribute @Valid PersonalInfo personalInfo,
-                                   BindingResult bindingResult, Model model) {
-        logger.info("##### find personal information? getUser_id = "+personalInfo.getUser_id());
-        if (bindingResult.hasErrors()) { // (2)
-            return "personal_information";
-        }
-        
-//        model.addAttribute("PersonalInfos", personalInfos);
-//        model.addAttribute("personalInfo", new PersonalInfo());
+    @GetMapping("{userId}")
+    public String selectPersonalInfo(@PathVariable String userId, Model model) {
+        logger.info("##### find personal information? userId = "+userId);
+        Optional<PersonalInfo> personalInfo = personalInfoService.findOne(userId);
+        model.addAttribute("personalInfo", personalInfo);
         
         return "personal_information";
     }
@@ -67,9 +59,9 @@ public class PersonalInfoController {
     @RequestMapping(method=RequestMethod.GET, value={"/api/{userId}"})
     public String selectPersonalInfo(Model model, @PathVariable String userId) {
         logger.info("##### find personal information? id = "+userId);
-        Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
-        model.addAttribute("PersonalInfos", personalInfos);
-        model.addAttribute("personalInfo", new PersonalInfo());
+//        Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
+//        model.addAttribute("PersonalInfos", personalInfos);
+//        model.addAttribute("personalInfo", new PersonalInfo());
         
         return "personal_information";
     }
@@ -77,11 +69,11 @@ public class PersonalInfoController {
     @RequestMapping(method = RequestMethod.POST)
     public String addtPersonalInfo(@Valid PersonalInfo personalInfo, BindingResult result, Model model)  {
         logger.info("##### insert personal information");
-        if (result.hasErrors()) {
-            return "personal_information";
-        }
-        personalInfoRepository.save(personalInfo);
-        model.addAttribute("personalInfos", personalInfoRepository.findAll());
+//        if (result.hasErrors()) {
+//            return "personal_information";
+//        }
+//        personalInfoRepository.save(personalInfo);
+//        model.addAttribute("personalInfos", personalInfoRepository.findAll());
 
         return selectPersonalInfo(model, personalInfo.getUser_id());
 //        return "personal_information";
