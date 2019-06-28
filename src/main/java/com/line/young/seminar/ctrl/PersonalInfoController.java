@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,13 +39,27 @@ public class PersonalInfoController {
         this.personalInfoRepository = repo;
     }
     
-    @RequestMapping(method=RequestMethod.GET)
-//    @ResponseBody
-    public String selectPersonalInfos(Model model) {
-        logger.info("##### find personal informations");
-        Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
-        model.addAttribute("PersonalInfos", personalInfos);
-        model.addAttribute("personalInfo", new PersonalInfo());
+//    @RequestMapping(method=RequestMethod.GET)
+////    @ResponseBody
+//    public String selectPersonalInfos(Model model) {
+//        logger.info("##### find personal informations");
+//        Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
+//        model.addAttribute("PersonalInfos", personalInfos);
+//        model.addAttribute("personalInfo", new PersonalInfo());
+//        
+//        return "personal_information";
+//    }
+    
+    @PostMapping("/")
+    public String selectPersonalInfo(@ModelAttribute @Valid PersonalInfo personalInfo,
+                                   BindingResult bindingResult, Model model) {
+        logger.info("##### find personal information? getUser_id = "+personalInfo.getUser_id());
+        if (bindingResult.hasErrors()) { // (2)
+            return "personal_information";
+        }
+        
+//        model.addAttribute("PersonalInfos", personalInfos);
+//        model.addAttribute("personalInfo", new PersonalInfo());
         
         return "personal_information";
     }

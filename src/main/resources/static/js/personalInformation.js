@@ -32,7 +32,7 @@ $(document).ready(function(){
 
         $.ajax({
             url: 'https://seminar-web.herokuapp.com/personal_information/api/'+userId,
-            headers: {"api-key": apiKey},
+//            headers: {"api-key": apiKey},
             type: 'GET',
             contentType: "application/json",
             dataType: 'json',
