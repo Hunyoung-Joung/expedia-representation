@@ -48,7 +48,7 @@ $(document).ready(function(){
             },
             // very necessary, if it is not work, then callback function never ending
             complete: function (xhr, status) {
-            	liff.closeWindow();
+alert(data);
             }
         });
 	}, err => {
