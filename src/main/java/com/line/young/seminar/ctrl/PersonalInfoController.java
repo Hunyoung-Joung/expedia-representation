@@ -36,22 +36,20 @@ public class PersonalInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
+    @RequestMapping(method={RequestMethod.GET, RequestMethod.POST})
+    public String index(Model model) {
+        logger.info("##### init personal information");
+        model.addAttribute("personalInfo", new PersonalInfo());
+        return "personal_information";
+    }
+    
 //    @GetMapping("{userId}")
-    @RequestMapping(value="{userId}", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value="{userId}", method={RequestMethod.GET, RequestMethod.POST})
 //    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String find(@PathVariable String userId, Model model) {
         logger.info("##### find by id: userId? "+userId);
         Optional<PersonalInfo> personalInfo = personalInfoService.findOne(userId);
         model.addAttribute("personalInfo", personalInfo);
-        return "personal_information";
-    }
-    
-    @RequestMapping(method=RequestMethod.GET)
-    public String findAll(Model model) {
-        logger.info("##### find personal informations");
-        Iterable<PersonalInfo> personalInfos = personalInfoService.findAll();
-        model.addAttribute("PersonalInfos", personalInfos);
-        model.addAttribute("personalInfo", new PersonalInfo());
         return "personal_information";
     }
     
