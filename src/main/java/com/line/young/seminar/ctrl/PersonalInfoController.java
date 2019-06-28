@@ -36,16 +36,14 @@ public class PersonalInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
-//    @RequestMapping(method=RequestMethod.GET)
-////    @ResponseBody
-//    public String selectPersonalInfos(Model model) {
-//        logger.info("##### find personal informations");
-//        Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
-//        model.addAttribute("PersonalInfos", personalInfos);
-//        model.addAttribute("personalInfo", new PersonalInfo());
-//        
-//        return "personal_information";
-//    }
+    @RequestMapping(method=RequestMethod.GET)
+    public String selectPersonalInfos(Model model) {
+        logger.info("##### find personal informations");
+        Iterable<PersonalInfo> personalInfos = personalInfoService.findAll();
+        model.addAttribute("PersonalInfos", personalInfos);
+        
+        return "personal_information";
+    }
     
     @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
     public String selectPersonalInfo(@PathVariable String userId, Model model) {
