@@ -47,7 +47,7 @@ public class PersonalInfoController {
 //        return "personal_information";
 //    }
     
-    @RequestMapping(method=RequestMethod.GET, value={"/"}, params={"userId"})
+    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
     public String selectPersonalInfo(@PathVariable String userId, Model model) {
         logger.info("##### find personal information? userId = "+userId);
         Optional<PersonalInfo> personalInfo = personalInfoService.findOne(userId);
