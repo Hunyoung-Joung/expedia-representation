@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.line.young.seminar.entity.PersonalInfo;
 import com.line.young.seminar.repo.PersonalInfoRepository;
 
@@ -36,10 +38,10 @@ public class PersonalInfoController {
         this.personalInfoRepository = repo;
     }
     
-    @RequestMapping(method=RequestMethod.GET, value={"","{id}"})
+    @RequestMapping(method=RequestMethod.GET, value={"/{id}"})
+    @ResponseBody
     public String selectPersonalInfos(Model model, 
-                                    @RequestParam(value="userId", required=false) String userId, 
-                                    @PathVariable("userId") String userId2) {
+                                    @PathVariable String userId) {
         logger.info("##### find personal informations? id = "+userId);
         Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
         model.addAttribute("PersonalInfos", personalInfos);
@@ -67,7 +69,7 @@ public class PersonalInfoController {
         personalInfoRepository.save(personalInfo);
         model.addAttribute("personalInfos", personalInfoRepository.findAll());
 
-        return selectPersonalInfos(model, personalInfo.getUser_id(), personalInfo.getUser_id());
+        return selectPersonalInfos(model, personalInfo.getUser_id());
 //        return "personal_information";
     }
 
