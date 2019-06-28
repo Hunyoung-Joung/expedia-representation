@@ -36,9 +36,11 @@ public class PersonalInfoController {
         this.personalInfoRepository = repo;
     }
     
-    @RequestMapping(method = RequestMethod.GET)
-    public String selectPersonalInfos(Model model) {
-        logger.info("##### find personal informations");
+    @RequestMapping(method=RequestMethod.GET, value={"","{id}"})
+    public String selectPersonalInfos(Model model, 
+                                    @RequestParam(value="userId", required=false) String userId, 
+                                    @PathVariable("userId") String userId2) {
+        logger.info("##### find personal informations? id = "+userId);
         Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
         model.addAttribute("PersonalInfos", personalInfos);
         model.addAttribute("personalInfo", new PersonalInfo());
