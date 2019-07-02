@@ -10,7 +10,7 @@
 	  	<h2>参加者情報</h2>
 	</div>
 	<div class="container">
-		<form th:action="@{/personalInfo/{userId}(userId=*{userId})}" th:method="post" th:object="personalInfo">
+		<form th:action="@{/personalInfo/{userId}(userId=*{userId})}" th:method="post" th:object="*{personalInfo}">
 	  	<table class="table">
 	    	<tbody>
 	      		<tr>
