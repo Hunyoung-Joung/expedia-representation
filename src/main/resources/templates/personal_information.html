@@ -11,6 +11,8 @@
 	</div>
 	<div class="container">
 		<form th:action="@{/personalInfo}" th:method="post" th:object="${personalInfo}">
+		<input name="user_id" type="hidden" class="form-control" th:field="*{user_id}"/>
+		<input name="display_name" type="hidden" class="form-control" th:field="*{display_name}"/>
 	  	<table class="table">
 	    	<tbody>
 	      		<tr>
@@ -22,12 +24,12 @@
 	      		</tr>
 	      		<tr>
 	        		<td>会社名</td>
-	        		<td><input id="companyName" type="text" class="form-control" th:value="*{company_name}"/></td>
+	        		<td><input id="companyName" type="text" class="form-control" th:field="*{company_name}"/></td>
 	      		</tr>
 	      		<tr>
 	        		<td>職種（必須）</td>
 	        		<td>
-						<select id="jobType" th:value="*{job_type}">
+						<select id="jobType" th:field="*{job_type}">
 							<option value="1" selected="selected">営業</option>
 							<option value="2">開発</option>
 							<option value="3">企画</option>
@@ -39,8 +41,8 @@
 	        		<td>個人情報保護方針確認</td>
 	        		<td>
 						<div class="radio">
-	      					<label><input id="isConfirmed" type="radio" value="true" th:value="*{is_confirmed}">確認済み</label>
-	      					<label><input id="isConfirmed" type="radio" value="false" th:value="*{is_confirmed}">未確認</label>
+	      					<label><input id="isConfirmed" type="radio" value="true" th:field="*{is_confirmed}">確認済み</label>
+	      					<label><input id="isConfirmed" type="radio" value="false" th:field="*{is_confirmed}">未確認</label>
 	    				</div>
 	        		</td>
 				</tr>

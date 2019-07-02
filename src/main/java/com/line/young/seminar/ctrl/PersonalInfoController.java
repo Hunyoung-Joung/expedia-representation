@@ -43,7 +43,7 @@ public class PersonalInfoController {
         if (null == userId) {
             model.addAttribute("personalInfo", new PersonalInfo());
         } else {
-            PersonalInfo personalInfo = personalInfoService.findOne(userId).get();
+            PersonalInfo personalInfo = this.findById(userId, new PersonalInfo());
             model.addAttribute("personalInfo", personalInfo);
         }
 
@@ -51,14 +51,13 @@ public class PersonalInfoController {
     }
     
 //    @GetMapping("{userId}")
-//    @RequestMapping(value="{userId}", method={RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value="{userId}", method={RequestMethod.GET, RequestMethod.POST})
 //    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
-    public Model find(@PathVariable String userId, Model model) {
+    public PersonalInfo findById(@PathVariable String userId, @ModelAttribute PersonalInfo personalInfo) {
         logger.info("##### find by id: userId? "+userId);
-        Optional<PersonalInfo> personalInfo = personalInfoService.findOne(userId);
-        model.addAttribute("personalInfo", personalInfo.get());
-        logger.info("##### find by id: model display name? "+personalInfo.get().getUser_name());
-        return model;
+        personalInfo = personalInfoService.findOne(userId).get();
+        logger.info("##### find by id: model display name? "+personalInfo.getUser_name());
+        return personalInfo;
     }
     
     @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
