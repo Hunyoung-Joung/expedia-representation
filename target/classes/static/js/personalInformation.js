@@ -141,10 +141,8 @@ function getProfile() {
 		displayName = profile.displayName;
 		
 		$("#userPhoto").attr("src", profile.pictureUrl).attr('alt', profile.pictureUrl);
-		$("#displayName").text(displayName);
-//		$("input[name=display_name]").val(displayName);
-//		$("#displayName").val(user_name);
-//		$("input[name=user_name]").val(displayName);
+		$("#displayName").val(displayName);
+
 	}).catch((err) => {
 		showError(err);
 	});
