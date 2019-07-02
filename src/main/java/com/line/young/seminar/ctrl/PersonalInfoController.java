@@ -43,8 +43,8 @@ public class PersonalInfoController {
         if (null == userId) {
             model.addAttribute("personalInfo", new PersonalInfo());
         } else {
-            model = (Model) personalInfoService.findOne(userId).get();
-            model.addAttribute("personalInfo", model);
+            PersonalInfo personalInfo = personalInfoService.findOne(userId).get();
+            model.addAttribute("personalInfo", personalInfo);
         }
 
         return "personal_information";
