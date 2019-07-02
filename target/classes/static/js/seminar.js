@@ -13,42 +13,7 @@ var category = "";
 var content = "";
 
 $(document).ready(function(){
-	$.get("/config/young").done(function( data ) {
-		apiKey = JSON.parse(JSON.stringify(data)).apiKey;
-		/**
-		 * Initializing for LIFF
-		 * 
-		 * @returns
-		 */
-		liff.init(function(data) {
-			// set userId from liff.init data
-			userId = data.context.userId;
-			// get user data from a database use to CLOVA API
-			
-	        $.ajax({
-	            url: 'https://www.changchao.me/api/u/s/'+userId,
-	            headers: {"api-key": apiKey},
-	            type: 'GET',
-	            contentType: "application/json",
-	            dataType: 'json',
-	            // if it could get user data
-	            success: function(data_, status, xhr) { 
-	            	seminarId = JSON.parse(JSON.stringify(data_)).seminarId;
-	            },
-	            // if it couldn't get user data by error
-	            error: function(xhr, status, err) { 
-	    			// show error if it has
-	            	showError(err);
-	            },
-	            complete: function (xhr, status) {
-	            	// nothing to do
-	            }
-	        });
-		}, err => {
-			showError(err);
-		});
-	});
-	
+
 	$("a#show_map").click(function(){
         liff.openWindow({
             url: 'https://www.relo-kaigi.jp/comfort/shinjyuku/',
@@ -71,40 +36,8 @@ $(document).ready(function(){
 		
 		if ((content == "") || (content == "セミナー内容に対して質問をしてください") || (category == "0")) {
 			showError("エラー：カテゴリーが選択されていないか、質問が入力されていません");
-//			$("textarea#content").val("エラー：カテゴリーが選択されていないか、質問が入力されていません");
 			return;
 		}
-		
-	    var sendData = {
-	    	"userId":userId,
-	    	"seminarId":seminarId,
-	    	"category":category,
-	    	"content":content
-	    }
-
-        $.ajax({
-            url: 'https://www.changchao.me/api/q/add',
-            headers: {"api-key": apiKey},
-            type: 'POST',
-            contentType: "application/json",
-            dataType: 'json',
-            data: JSON.stringify(sendData),
-            // if it could put user data
-            success: function(data, status, xhr) { 
-            	// nothing to do
-            },
-            // if it couldn't put user data by error
-            error: function(xhr, status, err) { 
-    			// show error if it has
-            	showError(err);
-            },
-            // very necessary, if it is not work, then callback function never ending
-            complete: function (xhr, status) {
-            	$("textarea#content").val("セミナー内容に対して質問をしてください");
-            	$('select#category').val("0");
-            	$("div.error_division").text("");
-            }
-        });
 	});
 });
 

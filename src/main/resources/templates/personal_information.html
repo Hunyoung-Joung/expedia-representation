@@ -1,3 +1,6 @@
+<!-- 
+Copyright@ LINE 2019
+-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
 
@@ -38,11 +41,11 @@
 	        		</td>
 				</tr>
 				<tr>
-	        		<td>個人情報保護方針確認</td>
+	        		<td>参加可否</td>
 	        		<td>
 						<div class="radio">
-	      					<label><input id="isConfirmed" type="radio" value="true" th:field="*{is_confirmed}">確認済み</label>
-	      					<label><input id="isConfirmed" type="radio" value="false" th:field="*{is_confirmed}">未確認</label>
+	      					<label><input id="isConfirmed" type="radio" value="true" th:field="*{is_confirmed}">参加</label>
+	      					<label><input id="isConfirmed" type="radio" value="false" th:field="*{is_confirmed}">不参加</label>
 	    				</div>
 	        		</td>
 				</tr>

@@ -1,32 +1,25 @@
 package com.line.young.seminar.ctrl;
 
-import java.sql.SQLException;
-import java.util.Optional;
 import java.util.logging.Logger;
-
-
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-//import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.line.young.seminar.entity.PersonalInfo;
-import com.line.young.seminar.repo.PersonalInfoRepository;
 import com.line.young.seminar.service.PersonalInfoService;
 
 
-
+/**
+ * 
+ * @author JP22601
+ *
+ */
 @Controller
 @RequestMapping("/personalInfo")
 public class PersonalInfoController {
@@ -77,6 +70,21 @@ public class PersonalInfoController {
     /**
      * 
      * @param model
+     * @return
+     */
+    @RequestMapping(method=RequestMethod.GET)
+    public String findAll(Model model) {
+        logger.info("##### find all of users");
+  
+        Iterable<PersonalInfo> personalInfos = personalInfoService.findAll();
+        model.addAttribute("personalInfos", personalInfos);
+
+        return "user_list";
+    }
+    
+    /**
+     * 
+     * @param model
      * @param personalInfo
      * @param result
      * @return
@@ -89,40 +97,23 @@ public class PersonalInfoController {
 
         return index(personalInfo.getUser_id(), model);
     }
-    
-    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
-    public String selectPersonalInfo(@PathVariable String userId, Model model) {
-        logger.info("##### find personal information? userId = "+userId);
-        Optional<PersonalInfo> personalInfo = personalInfoService.findOne(userId);
-        model.addAttribute("personalInfo", personalInfo);
-        
-        return "personal_information";
-    }
-    
-    @RequestMapping(method=RequestMethod.GET, value={"/api/{userId}"})
-    public String selectPersonalInfo(Model model, @PathVariable String userId) {
-        logger.info("##### find personal information? id = "+userId);
-//        Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
-//        model.addAttribute("PersonalInfos", personalInfos);
-//        model.addAttribute("personalInfo", new PersonalInfo());
-        
-        return "personal_information";
-    }
-
-//    @RequestMapping(method = RequestMethod.DELETE)
-//    public String deleteTask(Model model, @RequestParam("userId") String id) {
-//      this.personalInfoRepository.deleteById(id);
-//      return selectPersonalInfos(model);
+//    
+//    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
+//    public String selectPersonalInfo(@PathVariable String userId, Model model) {
+//        logger.info("##### find personal information? userId = "+userId);
+//        Optional<PersonalInfo> personalInfo = personalInfoService.findOne(userId);
+//        model.addAttribute("personalInfo", personalInfo);
+//        
+//        return "personal_information";
 //    }
-    
-//    @Bean
-//    public DataSource dataSource() throws SQLException {
-//      if (dbUrl == null || dbUrl.isEmpty()) {
-//        return new HikariDataSource();
-//      } else {
-//        HikariConfig config = new HikariConfig();
-//        config.setJdbcUrl(dbUrl);
-//        return new HikariDataSource(config);
-//      }
+//    
+//    @RequestMapping(method=RequestMethod.GET, value={"/api/{userId}"})
+//    public String selectPersonalInfo(Model model, @PathVariable String userId) {
+//        logger.info("##### find personal information? id = "+userId);
+////        Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
+////        model.addAttribute("PersonalInfos", personalInfos);
+////        model.addAttribute("personalInfo", new PersonalInfo());
+//        
+//        return "personal_information";
 //    }
 }
