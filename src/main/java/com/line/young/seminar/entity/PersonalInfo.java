@@ -75,4 +75,10 @@ public class PersonalInfo {
     public void setIs_confirmed(boolean is_confirmed) {
         this.is_confirmed = is_confirmed;
     }
+    
+    @Override
+    public String toString() {
+        return "PersonalInfo [user_id="+user_id+", display_name="+display_name+", user_name="+user_name+", company_name="
+                +company_name+", job_type=" +job_type+", is_confirmed="+is_confirmed+"]";
+    }
 }
