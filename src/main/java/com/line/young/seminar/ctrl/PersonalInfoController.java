@@ -27,7 +27,6 @@ import com.line.young.seminar.service.PersonalInfoService;
 
 
 
-
 @Controller
 @RequestMapping("/personalInfo")
 public class PersonalInfoController {
@@ -37,6 +36,12 @@ public class PersonalInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
+    /**
+     * 
+     * @param userId
+     * @param model
+     * @return
+     */
     @RequestMapping(method=RequestMethod.GET)
     public String index(@RequestParam("userId") String userId, Model model) {
         logger.info("##### init personal information: userId?"+userId);
@@ -51,18 +56,31 @@ public class PersonalInfoController {
         return "personal_information";
     }
 
+    /**
+     * 
+     * @param userId
+     * @param personalInfo
+     * @return
+     */
     @RequestMapping(value="{userId}", method=RequestMethod.GET)
     public PersonalInfo findById(@PathVariable String userId, @ModelAttribute PersonalInfo personalInfo) {
         logger.info("##### find by id: userId? "+userId);
-        if (null != personalInfoService.findOne(userId)) {
-            personalInfo = personalInfoService.findOne(userId).get();
-        } else {
+        if (null == personalInfoService.findOne(userId)) {
             personalInfo = new PersonalInfo();
+        } else {
+            personalInfo = personalInfoService.findOne(userId).get();
         }
         logger.info("##### find personalInfo? "+personalInfo.toString());
         return personalInfo;
     }
     
+    /**
+     * 
+     * @param model
+     * @param personalInfo
+     * @param result
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST)
     public String addtPersonalInfo(Model model, @ModelAttribute("personalInfo") @Valid PersonalInfo personalInfo, BindingResult result)  {
         logger.info("##### add personal information");
