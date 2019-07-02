@@ -139,9 +139,11 @@ $(document).ready(function(){
 function getProfile() {
 	liff.getProfile().then(function(profile) {
 		displayName = profile.displayName;
-		$("img#userPhoto").attr("src",profile.pictureUrl);
-		$("span#displayName").text(displayName);
-		$("#displayName").val(displayName);
+		$("#userPhoto").attr("src",profile.pictureUrl);
+		$("#displayName").text(displayName);
+//		$("input[name=display_name]").val(displayName);
+//		$("#displayName").val(user_name);
+//		$("input[name=user_name]").val(displayName);
 	}).catch((err) => {
 		showError(err);
 	});
