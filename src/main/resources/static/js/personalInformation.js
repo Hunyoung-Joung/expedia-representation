@@ -107,27 +107,27 @@ $(document).ready(function(){
 	    	"userId":userId
 	    }
 
-        $.ajax({
-            url: 'https://www.changchao.me/api/u/quit',
-            headers: {"api-key": apiKey},
-            type: 'POST',
-            contentType: "application/json",
-            dataType: 'json',
-            data: JSON.stringify(sendData),
-            // if it could put user data
-            success: function(data, status, xhr) { 
-            	// nothing to do
-            },
-            // if it couldn't put user data by error
-            error: function(xhr, status, err) { 
-    			// show error if it has
-            	showError(err);
-            },
-            // very necessary, if it is not work, then callback function never ending
-            complete: function (xhr, status) {
-            	liff.closeWindow();
-            }
-        });
+//        $.ajax({
+//            url: 'https://www.changchao.me/api/u/quit',
+//            headers: {"api-key": apiKey},
+//            type: 'POST',
+//            contentType: "application/json",
+//            dataType: 'json',
+//            data: JSON.stringify(sendData),
+//            // if it could put user data
+//            success: function(data, status, xhr) { 
+//            	// nothing to do
+//            },
+//            // if it couldn't put user data by error
+//            error: function(xhr, status, err) { 
+//    			// show error if it has
+//            	showError(err);
+//            },
+//            // very necessary, if it is not work, then callback function never ending
+//            complete: function (xhr, status) {
+//            	liff.closeWindow();
+//            }
+//        });
 	});
 });
 

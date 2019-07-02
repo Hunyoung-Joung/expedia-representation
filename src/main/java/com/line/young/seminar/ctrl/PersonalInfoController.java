@@ -36,7 +36,7 @@ public class PersonalInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
-    @RequestMapping(method={RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(method=RequestMethod.GET)
     public String index(@RequestParam("userId") String userId, Model model) {
         logger.info("##### init personal information: userId?"+userId);
         
@@ -50,11 +50,20 @@ public class PersonalInfoController {
         return "personal_information";
     }
 
-    @RequestMapping(value="{userId}", method={RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value="{userId}", method=RequestMethod.GET)
     public PersonalInfo findById(@PathVariable String userId, @ModelAttribute PersonalInfo personalInfo) {
         logger.info("##### find by id: userId? "+userId);
         personalInfo = personalInfoService.findOne(userId).get();
         return personalInfo;
+    }
+    
+    @RequestMapping(method = RequestMethod.POST)
+    public String addtPersonalInfo(@RequestParam("personalInfo") PersonalInfo personalInfo, Model model)  {
+        logger.info("##### add personal information");
+        personalInfo = personalInfoService.save(personalInfo);
+        model.addAttribute("personalInfo", this.findById(personalInfo.getUser_id(), new PersonalInfo()));
+
+        return "personal_information";
     }
     
     @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
@@ -73,16 +82,6 @@ public class PersonalInfoController {
 //        model.addAttribute("PersonalInfos", personalInfos);
 //        model.addAttribute("personalInfo", new PersonalInfo());
         
-        return "personal_information";
-    }
-
-    @RequestMapping(method = RequestMethod.POST)
-    public String addtPersonalInfo(@RequestParam("personalInfo") PersonalInfo personalInfo, Model model)  {
-        logger.info("##### add personal information");
-        personalInfo = personalInfoService.save(personalInfo);
-        model.addAttribute("personalInfo", this.findById(personalInfo.getUser_id(), new PersonalInfo()));
-
-//        return "redirect:/index";
         return "personal_information";
     }
 
