@@ -65,10 +65,10 @@ public class PersonalInfoController {
     @RequestMapping(value="{userId}", method=RequestMethod.GET)
     public PersonalInfo findById(@PathVariable String userId, @ModelAttribute PersonalInfo personalInfo) {
         logger.info("##### find by id: userId? "+userId);
-        if (null == personalInfoService.findOne(userId)) {
-            personalInfo = new PersonalInfo();
-        } else {
+        if (personalInfoService.findOne(userId).isPresent()) {
             personalInfo = personalInfoService.findOne(userId).get();
+        } else {
+            personalInfo = new PersonalInfo();
         }
         logger.info("##### find personalInfo? "+personalInfo.toString());
         return personalInfo;
