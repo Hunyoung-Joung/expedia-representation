@@ -49,14 +49,11 @@ public class PersonalInfoController {
 
         return "personal_information";
     }
-    
-//    @GetMapping("{userId}")
+
     @RequestMapping(value="{userId}", method={RequestMethod.GET, RequestMethod.POST})
-//    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public PersonalInfo findById(@PathVariable String userId, @ModelAttribute PersonalInfo personalInfo) {
         logger.info("##### find by id: userId? "+userId);
         personalInfo = personalInfoService.findOne(userId).get();
-        logger.info("##### find by id: model display name? "+personalInfo.getUser_name());
         return personalInfo;
     }
     
@@ -80,16 +77,13 @@ public class PersonalInfoController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String addtPersonalInfo(@Valid PersonalInfo personalInfo, BindingResult result, Model model)  {
-        logger.info("##### insert personal information");
-//        if (result.hasErrors()) {
-//            return "personal_information";
-//        }
-//        personalInfoRepository.save(personalInfo);
-//        model.addAttribute("personalInfos", personalInfoRepository.findAll());
+    public String addtPersonalInfo(@RequestParam("personalInfo") PersonalInfo personalInfo, Model model)  {
+        logger.info("##### add personal information");
+        personalInfo = personalInfoService.save(personalInfo);
+        model.addAttribute("personalInfo", this.findById(personalInfo.getUser_id(), new PersonalInfo()));
 
-        return selectPersonalInfo(model, personalInfo.getUser_id());
-//        return "personal_information";
+//        return "redirect:/index";
+        return "personal_information";
     }
 
 //    @RequestMapping(method = RequestMethod.DELETE)
