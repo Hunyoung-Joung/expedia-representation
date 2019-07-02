@@ -56,7 +56,7 @@ public class PersonalInfoController {
         logger.info("##### find by id: userId? "+userId);
         Optional<PersonalInfo> personalInfo = personalInfoService.findOne(userId);
         model.addAttribute("personalInfo", personalInfo.get());
-        logger.info("##### find by id: model display name? "+personalInfo.get().getDisplay_name());
+        logger.info("##### find by id: model display name? "+personalInfo.get().getUser_name());
         return model;
     }
     

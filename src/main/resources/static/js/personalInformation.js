@@ -139,6 +139,7 @@ $(document).ready(function(){
 function getProfile() {
 	liff.getProfile().then(function(profile) {
 		displayName = profile.displayName;
+		alert(profile.pictureUrl);
 		$("#userPhoto").attr("src",profile.pictureUrl);
 		$("#displayName").text(displayName);
 //		$("input[name=display_name]").val(displayName);
