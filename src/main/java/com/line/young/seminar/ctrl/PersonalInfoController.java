@@ -54,7 +54,7 @@ public class PersonalInfoController {
     @RequestMapping(value="{userId}", method=RequestMethod.GET)
     public PersonalInfo findById(@PathVariable String userId, @ModelAttribute PersonalInfo personalInfo) {
         logger.info("##### find by id: userId? "+userId);
-        if (null == personalInfoService.findOne(userId).get()) {
+        if (null == personalInfoService.findOne(userId)) {
             personalInfo = personalInfoService.findOne(userId).get();
         } else {
             personalInfo = new PersonalInfo();
