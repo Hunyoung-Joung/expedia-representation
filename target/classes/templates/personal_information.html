@@ -10,6 +10,7 @@
 	  	<h2>参加者情報</h2>
 	</div>
 	<div class="container">
+		<form th:action="@{/personalInfo/{userId}(userId=*{userId})}" th:method="put" th:object="personalInfo">
 	  	<table class="table">
 	    	<tbody>
 	      		<tr>
@@ -17,7 +18,7 @@
 	      		</tr>
 	      		<tr>
 	        		<td>名前</td>
-	        		<td><input id="userName" type="text" class="form-control" th:value="*{user_name}"/></td>
+	        		<td><input id="userName" type="text" class="form-control" th:field="*{user_name}"/></td>
 	      		</tr>
 	      		<tr>
 	        		<td>会社名</td>
@@ -45,18 +46,18 @@
 				</tr>
 				<tr>
 	        		<td colspan="2" class="col-md-4">
-						<form th:action="@{personalInfo/}" th:object="${personalInfo}" th:method="post" >
+						<!-- <form th:action="@{personalInfo/}" th:object="${personalInfo}" th:method="post" >
 						<input name="user_id" type="hidden" class="form-control"/>
 						<input name="display_name" type="hidden" class="form-control" />
 						<input name="user_name" type="hidden" class="form-control"/>
 						<input name="company_name" type="hidden" class="form-control" />
 						<input name="job_type" type="hidden" class="form-control" />
 						<input name="is_confirmed" type="hidden" class="form-control" />
-		        		<button id="submit" type="submit" class="btn btn-default">　確　認　</button></td>
-		        		</form>
+		        		<button id="submit" type="submit" class="btn btn-default">　確　認　</button></td> -->
 				</tr>
 	    	</tbody>
 	  	</table>
+	  	</form>
 	</div>
 </div>
 
