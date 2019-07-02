@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 //import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,12 +59,12 @@ public class PersonalInfoController {
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public String addtPersonalInfo(@RequestParam("personalInfo") PersonalInfo personalInfo, Model model)  {
+    public String addtPersonalInfo(Model model, @ModelAttribute("personalInfo") @Valid PersonalInfo personalInfo, BindingResult result)  {
         logger.info("##### add personal information");
         personalInfo = personalInfoService.save(personalInfo);
         model.addAttribute("personalInfo", this.findById(personalInfo.getUser_id(), new PersonalInfo()));
 
-        return "personal_information";
+        return index(personalInfo.getUser_id(), model);
     }
     
     @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
