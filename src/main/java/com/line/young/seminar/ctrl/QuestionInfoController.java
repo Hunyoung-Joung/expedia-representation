@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +31,8 @@ public class QuestionInfoController {
    
     @Autowired
     private QuestionInfoService questionInfoService;
-
-    @RequestMapping(value="/{userId, seminarId}", method=RequestMethod.GET)
+    @GetMapping
+//    @RequestMapping(value="/{userId, seminarId}", method=RequestMethod.GET)
     public String init(@RequestParam("userId") String userId, @RequestParam("seminarId") String seminarId, Model model) 
             throws Exception {
         logger.info("##### init question information: seminarId?"+seminarId+", userId?"+userId);
