@@ -23,15 +23,15 @@ Copyright@ LINE 2019
 	      		</tr>
 	      		<tr>
 	        		<td align="right">名前</td>
-	        		<td><input id="userName" type="text" class="form-control" th:field="*{user_name}"/></td>
+	        		<td align="left" width="50%"><input id="userName" type="text" class="form-control" th:field="*{user_name}" /></td>
 	      		</tr>
 	      		<tr>
 	        		<td align="right">会社名</td>
-	        		<td><input id="companyName" type="text" class="form-control" th:field="*{company_name}"/></td>
+	        		<td align="left" width="50%"><input id="companyName" type="text" class="form-control" th:field="*{company_name}"/></td>
 	      		</tr>
 	      		<tr>
 	        		<td align="right">職種（必須）</td>
-	        		<td>
+	        		<td align="left" width="50%">
 						<select id="jobType" th:field="*{job_type}">
 							<option value="1" selected="selected">営業</option>
 							<option value="2">開発</option>
@@ -42,7 +42,7 @@ Copyright@ LINE 2019
 				</tr>
 				<tr>
 	        		<td align="right">参加可否</td>
-	        		<td>
+	        		<td align="left" width="50%">
 						<div class="radio">
 	      					<label><input id="isConfirmed" type="radio" value="true" th:field="*{is_confirmed}">参加</label>
 	      					<label><input id="isConfirmed" type="radio" value="false" th:field="*{is_confirmed}">不参加</label>
