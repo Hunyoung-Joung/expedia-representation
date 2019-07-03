@@ -24,7 +24,7 @@ import com.line.young.seminar.service.QuestionInfoService;
  *
  */
 @Controller
-@RequestMapping("/questionInfo")
+@RequestMapping("/seminar")
 public class QuestionInfoController {
     
     private final Logger logger = Logger.getLogger(this.getClass().getName());
@@ -45,7 +45,7 @@ public class QuestionInfoController {
 //            model.addAttribute("questionlInfo", questionlInfo);
         }
 
-        return "question_information";
+        return "seminar";
     }
 
 
