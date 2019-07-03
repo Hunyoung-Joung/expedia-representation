@@ -25,9 +25,8 @@ th:fragment="layout (template, menu)">
     
 	<!-- Header -->
     <div class="container fixed-top text-center" style="background-color: #AEEA00;">
-		<div class="navbar-inner">
-			<div class="container">
-				<ul class="nav navbar row">
+
+				<ul class="nav navbarrow">
 					<li class="active col-xs-6">
 						<a href="https://seminar-web.herokuapp.com/personal_information">
 							<span class="glyphicon glyphicon-user"></span> <span id="headerDisplayName" th:text="${displayName}"></span>
@@ -37,8 +36,7 @@ th:fragment="layout (template, menu)">
 						<a href="https://terms.line.me/line_rules/?lang=ja"><span class="glyphicon glyphicon-book"></span> 個人情報保護方針</a>
 					</li>
 				</ul>
-			</div>
-		</div>
+
 	</div>
 	
     <!-- Html contents here -->
