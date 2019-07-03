@@ -36,7 +36,7 @@ public class PersonalInfoController {
      * @return
      */
     @RequestMapping(method=RequestMethod.GET)
-    public String index(@RequestParam("userId") String userId, Model model) {
+    public String init(@RequestParam("userId") String userId, Model model) {
         logger.info("##### init personal information: userId?"+userId);
         
         if (null == userId) {
@@ -95,7 +95,7 @@ public class PersonalInfoController {
         personalInfo = personalInfoService.save(personalInfo);
         model.addAttribute("personalInfo", this.findById(personalInfo.getUser_id(), new PersonalInfo()));
 
-        return index(personalInfo.getUser_id(), model);
+        return init(personalInfo.getUser_id(), model);
     }
 //    
 //    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
