@@ -6,13 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.line.young.seminar.entity.PersonalInfo;
 import com.line.young.seminar.service.PersonalInfoService;
 
@@ -22,8 +21,7 @@ import com.line.young.seminar.service.PersonalInfoService;
  * @author JP22601
  *
  */
-//@Controller
-@RestController
+@Controller
 @RequestMapping("/personalInfo")
 public class PersonalInfoController {
     
@@ -38,8 +36,9 @@ public class PersonalInfoController {
      * @param model
      * @return
      */
-    @RequestMapping(value="/", method=RequestMethod.GET)
+//    @RequestMapping(value="/", method=RequestMethod.GET)
 //    @RequestMapping(value="/")
+    @GetMapping
     public String init(@RequestParam("userId") String userId, Model model) {
         logger.info("##### init personal information: userId?"+userId);
         
