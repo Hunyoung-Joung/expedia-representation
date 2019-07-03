@@ -35,7 +35,8 @@ public class PersonalInfoController {
      * @param model
      * @return
      */
-    @RequestMapping(value="/", method=RequestMethod.GET)
+//    @RequestMapping(value="/", method=RequestMethod.GET)
+    @RequestMapping(value="/")
     public String init(@RequestParam("userId") String userId, Model model) {
         logger.info("##### init personal information: userId?"+userId);
         
