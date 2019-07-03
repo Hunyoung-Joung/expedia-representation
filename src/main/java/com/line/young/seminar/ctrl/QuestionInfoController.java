@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.line.young.seminar.entity.PersonalInfo;
 import com.line.young.seminar.entity.QuestionInfo;
+import com.line.young.seminar.service.PersonalInfoService;
 import com.line.young.seminar.service.QuestionInfoService;
 
 
@@ -31,16 +33,25 @@ public class QuestionInfoController {
    
     @Autowired
     private QuestionInfoService questionInfoService;
+    
+    @Autowired
+    private PersonalInfoService personalInfoService;
+    
     @GetMapping
 //    @RequestMapping(value="/{userId, seminarId}", method=RequestMethod.GET)
-    public String init(@RequestParam("userId") String userId, @RequestParam("seminarId") String seminarId, Model model) 
+    public String init(@RequestParam("userId") String userId, Model model) 
             throws Exception {
-        logger.info("##### init question information: seminarId?"+seminarId+", userId?"+userId);
-        
-        if (null == userId || null == seminarId) {
+        logger.info("##### init question information: userId?"+userId);
+        PersonalInfo personalInfo = new PersonalInfo();
+        if (null == userId) {
             throw new Exception();
         } else {
-            model.addAttribute("questionInfo", new QuestionInfo());
+            if (personalInfoService.findOne(userId).isPresent()) {
+                personalInfo = personalInfoService.findOne(userId).get();
+            } else {
+                throw new Exception();
+            }
+            model.addAttribute("displayName", personalInfo.getDisplay_name());
 //            QuestionInfo questionlInfo = this.findById(userId, new QuestionInfo());
 //            model.addAttribute("questionlInfo", questionlInfo);
         }

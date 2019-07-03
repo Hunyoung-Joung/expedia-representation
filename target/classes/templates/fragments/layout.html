@@ -29,7 +29,7 @@ th:fragment="layout (template, menu)">
 				<ul class="nav navbar-nav row">
 					<li class="active col-xs-6">
 						<a href="https://seminar-web.herokuapp.com/personal_information">
-							<span class="glyphicon glyphicon glyphicon glyphicon-user"></span> <span id="headerDisplayName"></span>
+							<span class="glyphicon glyphicon glyphicon glyphicon-user"></span> <span id="headerDisplayName" th:text="${displayName}"></span>
 						</a>
 					</li>
 					<li class="active col-xs-6">

@@ -13,6 +13,8 @@ var category = "";
 var content = "";
 
 $(document).ready(function(){
+	
+//	$("#headerDisplayName").text(displayName);
 
 	$("a#show_map").click(function(){
         liff.openWindow({
