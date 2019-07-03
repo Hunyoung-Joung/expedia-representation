@@ -13,23 +13,23 @@ public class QuestionInfoService {
     @Autowired
     private QuestionInfoRepository questionInfoRepository;
 
-    public Iterable<QuestionInfo> findAll() {
+    public Iterable<QuestionInfo> findAllOfQuestionInfo() {
         return questionInfoRepository.findAll();
     }
 
-    public Optional<QuestionInfo> findOne(String userId) {
+    public Optional<QuestionInfo> findOneOfQuestionInfo(String userId) {
         return questionInfoRepository.findById(userId);
     }
 
-    public QuestionInfo save(QuestionInfo questionInfo) {
+    public QuestionInfo saveOfQuestionInfo(QuestionInfo questionInfo) {
         return questionInfoRepository.save(questionInfo);
     }
 
-    public void delete(String userId) {
+    public void deleteOfQuestionInfo(String userId) {
         questionInfoRepository.deleteById(userId);
     }
     
-    public void deleteAll() {
+    public void deleteAllOfQuestionInfo() {
         questionInfoRepository.deleteAll();
     }
 }
