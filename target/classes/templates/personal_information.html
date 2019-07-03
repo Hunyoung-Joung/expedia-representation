@@ -22,15 +22,15 @@ Copyright@ LINE 2019
 	        		<td colspan="2" class="col-md-4"><img width="50px" id="userPhoto" src="/img/unknownuser.jpg"></img></td>
 	      		</tr>
 	      		<tr>
-	        		<td>名前</td>
+	        		<td align="right">名前</td>
 	        		<td><input id="userName" type="text" class="form-control" th:field="*{user_name}"/></td>
 	      		</tr>
 	      		<tr>
-	        		<td>会社名</td>
+	        		<td align="right">会社名</td>
 	        		<td><input id="companyName" type="text" class="form-control" th:field="*{company_name}"/></td>
 	      		</tr>
 	      		<tr>
-	        		<td>職種（必須）</td>
+	        		<td align="right">職種（必須）</td>
 	        		<td>
 						<select id="jobType" th:field="*{job_type}">
 							<option value="1" selected="selected">営業</option>
@@ -41,7 +41,7 @@ Copyright@ LINE 2019
 	        		</td>
 				</tr>
 				<tr>
-	        		<td>参加可否</td>
+	        		<td align="right">参加可否</td>
 	        		<td>
 						<div class="radio">
 	      					<label><input id="isConfirmed" type="radio" value="true" th:field="*{is_confirmed}">参加</label>
