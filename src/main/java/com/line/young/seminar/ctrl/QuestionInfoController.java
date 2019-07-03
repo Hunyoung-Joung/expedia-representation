@@ -32,7 +32,7 @@ public class QuestionInfoController {
     private QuestionInfoService questionInfoService;
 
     @RequestMapping(value="{userId, seminarId}", method=RequestMethod.GET)
-    public String index(@RequestParam("userId") String userId, @RequestParam("seminarId") String seminarId, Model model) 
+    public String init(@RequestParam("userId") String userId, @RequestParam("seminarId") String seminarId, Model model) 
             throws Exception {
         logger.info("##### init question information: seminarId?"+seminarId+", userId?"+userId);
         
