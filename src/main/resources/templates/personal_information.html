@@ -3,14 +3,13 @@ Copyright@ LINE 2019
 -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
-
 <body>
 <script th:src="@{/js/personalInformation.js}"></script>
 <script th:src="@{https://d.line-scdn.net/liff/1.0/sdk.js}"></script>
 <div class="container">
     <div class="error_division"></div>
 	<div class="text-center">
-	  	<h2>参加者情報</h2>
+	  	<h4>参加者情報</h4>
 	</div>
 	<div class="container">
 		<form th:action="@{/personalInfo}" th:method="post" th:object="${personalInfo}">
@@ -43,7 +42,7 @@ Copyright@ LINE 2019
 				<tr>
 	        		<td colspan="2" class="col-md-4">
 						<div class="radio">
-	      					<label><input id="isConfirmed" type="radio" value="true" th:field="*{is_confirmed}">参加</label>
+	      					<label><input id="isConfirmed" type="radio" value="true" th:field="*{is_confirmed}" checked>参加</label> 
 	      					<label><input id="isConfirmed" type="radio" value="false" th:field="*{is_confirmed}">不参加</label>
 	    				</div>
 	        		</td>
@@ -58,102 +57,5 @@ Copyright@ LINE 2019
 	  	</form>
 	</div>
 </div>
-
-<!-- 
-
-  	<div class="row">
-	    <div class="col-sm-4">
-	      	<h3><img width="50px" id="user_photo" src="/img/unknownuser.jpg"></img></h3>
-	      	<h3>名前</h3>
-	      	<h3>会社名</h3>
-	      	<h3>職種（必須）</h3>
-		</div>
-    	<div class="col-sm-4">
-      		<p id="display_name"></p>
-      		<input id="user_id" name="user_id" type="text" class="form-control" th:field="*{user_id}"/>
-      		<input id="display_name" type="text" class="form-control"/>
-      		<input id="userName" type="text" class="form-control" />
-      		<input id="companyName" type="text" class="form-control" />
-
-			<select name="job_type" id="jobType">
-				<option value="1" selected="selected">営業</option>
-				<option value="2">開発</option>
-				<option value="3">企画</option>
-				<option value="4">その他</option>
-			</select>
-			    <div class="radio">
-      <label><input type="radio" name="is_confirmed" value="true" checked>Option 1</label>
-      <label><input type="radio" name="is_confirmed" value="false" >Option 2</label>
-
-      <label><input type="radio" name="optradio" disabled>Option 3</label> 
-    </div>
-    	</div>
-  	</div>
-	<button type="submit" class="btn btn-default">Submit</button>
-
-	</form>
-</div>
-
-    
-    <div class="content">
-		<table>	
-			<tr>
-				<td width="40%" align="right">
-					<img width="50px" id="user_photo" src="/img/unknownuser.jpg"></img>
-				</td>
-				<td>
-					<p id="display_name"></p>
-				</td>
-			</tr>
-			<tr>
-				<td width="40%" align="right">
-					<label>名前</label>
-				</td>
-				<td>
-					<input type="text" name="user_name" id="user_name">
-				</td>
-			</tr>
-			<tr>
-				<td width="40%" align="right">
-					<label>会社名</label>
-				</td>
-				<td>
-					<input type="text" name="company_name" id="company_name">
-				</td>
-			</tr>
-			<tr>
-				<td width="40%" align="right">
-					<label>職種（必須）</label>
-				</td>
-				<td>
-                    <select name="position_name" id="position_name">
-                        <option value="1" selected="selected">営業</option>
-                        <option value="2">開発</option>
-                        <option value="3">企画</option>
-                        <option value="4">その他</option>
-                    </select>
-				</td>
-			</tr>
-			<tr>
-				<td width="40%" align="right">
-					<label>個人情報保護方針確認</label>
-				</td>
-				<td>
-					<span id="confirmation"></span><a id="show_privacy_policy" href="#" >個人情報保護方針を確認する</a>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<hr>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<button class="btn confirm" id="confirm"> 参　加 </button>
-				</td>
-			</tr>
-		</table>
-	</div>
- -->
 </body>
 </html>
