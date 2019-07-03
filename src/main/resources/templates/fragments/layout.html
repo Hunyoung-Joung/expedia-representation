@@ -24,10 +24,10 @@ th:fragment="layout (template, menu)">
     <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
     
 	<!-- Header -->
-    <div class="container fixed-top w-100 text-center" style="background-color: #AEEA00;">
+    <div class="container fixed-top text-center" style="background-color: #AEEA00;">
 		<div class="navbar-inner">
 			<div class="container">
-				<ul class="nav navbar-nav row">
+				<ul class="nav navbar row">
 					<li class="active col-xs-6">
 						<a href="https://seminar-web.herokuapp.com/personal_information">
 							<span class="glyphicon glyphicon-user"></span> <span id="headerDisplayName" th:text="${displayName}"></span>
@@ -47,7 +47,7 @@ th:fragment="layout (template, menu)">
 	</div> 
     
     <!-- Footer -->
-    <div class="container fixed-bottom w-100 text-center" style="background-color: #AEEA00;">
+    <div class="container fixed-bottom text-center" style="background-color: #AEEA00;">
 	    <div class="row">
 	        <div class="col text-center"><H5>Copyright@ LINE 2019</H5></div>
 	    </div>
