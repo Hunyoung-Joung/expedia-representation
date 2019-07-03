@@ -35,7 +35,7 @@ public class PersonalInfoController {
      * @param model
      * @return
      */
-    @RequestMapping(value= {"/"}, method=RequestMethod.GET)
+    @RequestMapping(value="/", method=RequestMethod.GET)
     public String init(@RequestParam("userId") String userId, Model model) {
         logger.info("##### init personal information: userId?"+userId);
         
@@ -55,7 +55,7 @@ public class PersonalInfoController {
      * @param personalInfo
      * @return
      */
-    @RequestMapping(value="{userId}", method=RequestMethod.GET)
+    @RequestMapping(value="/{userId}", method=RequestMethod.GET)
     public PersonalInfo findById(@PathVariable String userId, @ModelAttribute PersonalInfo personalInfo) {
         logger.info("##### find by id: userId? "+userId);
         if (personalInfoService.findOne(userId).isPresent()) {
@@ -72,7 +72,7 @@ public class PersonalInfoController {
      * @param model
      * @return
      */
-    @RequestMapping(method=RequestMethod.GET)
+    @RequestMapping(value="/findAll", method=RequestMethod.GET)
     public String findAll(Model model) {
         logger.info("##### find all of users");
   

@@ -31,7 +31,7 @@ public class QuestionInfoController {
     @Autowired
     private QuestionInfoService questionInfoService;
 
-    @RequestMapping(value="{userId, seminarId}", method=RequestMethod.GET)
+    @RequestMapping(value="/{userId, seminarId}", method=RequestMethod.GET)
     public String init(@RequestParam("userId") String userId, @RequestParam("seminarId") String seminarId, Model model) 
             throws Exception {
         logger.info("##### init question information: seminarId?"+seminarId+", userId?"+userId);
