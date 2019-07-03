@@ -16,7 +16,7 @@ Copyright@ LINE 2019
 		<form th:action="@{/personalInfo}" th:method="post" th:object="${personalInfo}">
 		<input id="userId" name="user_id" type="hidden" class="form-control" th:field="*{user_id}"/>
 		<input id="displayName" name="display_name" type="hidden" class="form-control" th:field="*{display_name}"/>
-	  	<table class="table">
+	  	<table class="table" style="border: none; border-collapse: collapse;" border="0">
 	    	<tbody>
 	      		<tr>
 	        		<td colspan="2" class="col-md-4"><img width="50px" id="userPhoto" src="/img/unknownuser.jpg"></img></td>
