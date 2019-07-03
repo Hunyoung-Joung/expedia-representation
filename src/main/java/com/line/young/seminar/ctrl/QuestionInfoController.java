@@ -59,17 +59,17 @@ public class QuestionInfoController {
     }
 
 
-//    @RequestMapping(value="{userId}", method=RequestMethod.GET)
-//    public QuestionInfo findById(@PathVariable String userId, @ModelAttribute questionlInfo questionlInfo) {
-//        logger.info("##### find by id: userId? "+userId);
-//        if (questionlInfoService.findOne(userId).isPresent()) {
-//            questionlInfo = questionlInfoService.findOne(userId).get();
-//        } else {
-//            questionlInfo = new questionlInfo();
-//        }
-//        logger.info("##### find questionlInfo? "+questionlInfo.toString());
-//        return questionlInfo;
-//    }
+    @RequestMapping(value="{userId}", method=RequestMethod.GET)
+    public QuestionInfo findById(@PathVariable String userId, @ModelAttribute QuestionInfo questionInfo) {
+        logger.info("##### find by id: userId? "+userId);
+        if (questionInfoService.findOneOfQuestionInfo(userId).isPresent()) {
+            questionInfo = questionInfoService.findOneOfQuestionInfo(userId).get();
+        } else {
+            questionInfo = new QuestionInfo();
+        }
+        logger.info("##### find questionlInfo? "+questionInfo.toString());
+        return questionInfo;
+    }
     
 
 //    @RequestMapping(method=RequestMethod.GET)
@@ -83,14 +83,14 @@ public class QuestionInfoController {
 //    }
 //    
 //
-//    @RequestMapping(method = RequestMethod.POST)
-//    public String addtquestionlInfo(Model model, @ModelAttribute("questionlInfo") @Valid questionlInfo questionlInfo, BindingResult result)  {
-//        logger.info("##### add questionl information");
-//        questionlInfo = QuestionlInfoService.save(questionlInfo);
-//        model.addAttribute("questionlInfo", this.findById(questionlInfo.getUser_id(), new questionlInfo()));
-//
-//        return index(questionlInfo.getUser_id(), model);
-//    }
+    @RequestMapping(method = RequestMethod.POST)
+    public String addtquestionlInfo(Model model, @ModelAttribute("questionInfo") @Valid QuestionInfo questionInfo, BindingResult result) throws Exception  {
+        logger.info("##### add question information");
+        questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
+        model.addAttribute("questionlInfo", this.findById(questionInfo.getUser_id(), new QuestionInfo()));
+
+        return init(questionInfo.getUser_id(), model);
+    }
 //    
 //    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
 //    public String selectquestionlInfo(@PathVariable String userId, Model model) {
