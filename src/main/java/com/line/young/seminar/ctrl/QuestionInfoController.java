@@ -52,8 +52,7 @@ public class QuestionInfoController {
                 throw new Exception();
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
-//            QuestionInfo questionlInfo = this.findById(userId, new QuestionInfo());
-//            model.addAttribute("questionlInfo", questionlInfo);
+            model.addAttribute("questionlInfo", new QuestionInfo());//TODO
         }
 
         return "seminar";
