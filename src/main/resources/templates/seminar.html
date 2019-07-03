@@ -33,23 +33,27 @@ Copyright@ LINE 2019
 	        		</td>
 	      		</tr>
 	      		<tr>
-	        		<td align="right" colspan="2" class="col-md-4">
+	        		<td align="right" >
 	        			<span class="glyphicon glyphicon-list-alt"></span> アジェンダ
+	        		</td>
+	        		<td align="left" width="70%">
+	        			<p></p>
 	        		</td>
 	      		</tr>
 	      		<tr>
-	        		<td colspan="2" class="col-md-4">
+	        		<td align="left" colspan="2" class="col-md-4">
 						<ul class="list-group">
-						  	<li class="list-group-item">最新API状況アップデート</li>
 						  	<li class="list-group-item">
-						  		LINE Pay APIのご紹介
+						  		<span class="glyphicon glyphicon-tag"></span> 最新API状況アップデート</li>
+						  	<li class="list-group-item">
+						  		<span class="glyphicon glyphicon-tag"></span> LINE Pay APIのご紹介
 								<ul class="list-group">
 							  		<li class="list-group-item">LINE Payのオーバーオール紹介</li>
 							  		<li class="list-group-item">v2での事例紹介とv3を組み合わせた時の実現できる世界観紹介</li>
 								</ul>
 						  	</li>
 						  	<li class="list-group-item">
-						  		クラスメソッド様事例紹介
+						  		<span class="glyphicon glyphicon-tag"></span> クラスメソッド様事例紹介
 								<ul class="list-group">
 							  		<li class="list-group-item">Developer IO Cafeの世界観</li>
 							  		<li class="list-group-item">Native AppへのLINE Pay決済組込みについて</li>
@@ -59,72 +63,34 @@ Copyright@ LINE 2019
 						</ul>
 	        		</td>
 	      		</tr>
+	      		<form th:action="@{/seminar}" th:method="post" th:object="${questionInfo}">
+	      		<tr>
+	        		<td colspan="2" class="col-md-4">
+	                    <select class = "btn dropdown-toggle" id="qCategory" th:field="*{q_category}">
+	                    	<option value="0" selected="selected">--カテゴリーを選択してください--</option>
+	                        <option value="1">LINE Things</option>
+	                        <option value="2">CLOVA</option>
+	                        <option value="3">勉強会運営BOT</option>
+	                        <option value="4">その他</option>
+	                    </select>
+	        		</td>
+	      		</tr>
+	      		<tr>
+	        		<td colspan="2" class="col-md-4">
+					    <div class="form-group">
+					      	<label for="comment">セミナー内容に対する質問:</label>
+					      	<textarea class="form-control" rows="5" id="qContents" th:field="*{q_contents}"></textarea>
+					    </div>
+	        		</td>
+	      		</tr>
+				<tr>
+	        		<td colspan="2" class="col-md-4">
+		        		<button id="submit" type="submit" class="btn btn-default">　送　信　</button>
+		        	</td>
+				</tr>
+				</form>
 	    	</tbody>
 	  	</table>
-	  	
-	  	
-		<table>	
-			<tr>
-				<td>
-
-					
-					<p>3. アジェンダ</p>
-					<ul class="title">
-					  	<li>Opening</li>
-					  	<li>LINE Thingsご紹介
-							<ul class="sub">
-								<li>LINE Thingsの概要</li>
-								<li>LINE Thingsの強み・メリット</li>
-								<li>ユースケースご紹介・デモ</li>
-							</ul>
-					  	</li>
-					  	<li>休憩</li>
-					  	<li>CLOVAのご紹介
-							<ul class="sub">
-								<li>CLOVAの概要</li>
-								<li>CLOVAの作り方</li>
-								<li>事例・ユースケースのご紹介</li>
-								<li>CLOVAとMessagingAPIの連隊について</li>
-								<li>勉強会運営Botご紹介・デモ</li>
-							</ul>
-					  	</li>
-					  	<li>QA</li>
-					</ul>
-					
-				</td>
-			</tr>
-			<tr>
-				<td align="center">
-					<hr>
-				</td>
-			</tr>
-			<tr>
-				<td align="center">
-                    <select name="category" id="category">
-                    	<option value="0" selected="selected">--カテゴリーを選択してください--</option>
-                        <option value="1">LINE Things</option>
-                        <option value="2">CLOVA</option>
-                        <option value="3">勉強会運営BOT</option>
-                        <option value="4">その他</option>
-                    </select>
-				</td>
-			</tr>
-			<tr>
-				<td align="center">
-					<textarea rows="5" cols="35%" id="content">セミナー内容に対して質問をしてください</textarea>
-				</td>
-			</tr>
-			<tr>
-				<td align="center">
-					<hr>
-				</td>
-			</tr>
-			<tr>
-				<td align="center">
-					<button class="btn submit" id="submit"> 送　信 </button>
-				</td>
-			</tr>
-		</table>
 	</div>
 </div>
 </body>
