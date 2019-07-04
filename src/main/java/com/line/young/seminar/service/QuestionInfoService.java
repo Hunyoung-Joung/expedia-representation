@@ -24,9 +24,9 @@ public class QuestionInfoService {
 //        return questionInfoRepository.fifindById(userId);
 //    }
     
-    public List<QuestionInfo> findAllUserQuestion(String userId) {
-        return questionInfoRepository.findAllUserQuestion(userId);
-    }
+//    public List<QuestionInfo> findAllUserQuestion(String userId) {
+//        return questionInfoRepository.findAllUserQuestion(userId);
+//    }
 
     public QuestionInfo saveOfQuestionInfo(QuestionInfo questionInfo) {
         return questionInfoRepository.save(questionInfo);
