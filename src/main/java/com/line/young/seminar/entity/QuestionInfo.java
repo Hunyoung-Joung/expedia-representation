@@ -6,11 +6,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="question_info")
-//@IdClass(QuestionInfoPK.class)
+@NamedQuery(name = "QuestionInfo.findAllUserQuestion",
+query = "SELECT q_no,user_id,seminar_id,q_category,q_contents,is_selected "
+        + "FROM question_info "
+        + "WHERE user_id = :userId"
+        + "ORDER BY question_info.q_no DESC")
 public class QuestionInfo {
 
     @Id
@@ -18,6 +23,7 @@ public class QuestionInfo {
     @Column(name="q_no", nullable = false)
     private Long q_no;
     
+    @Id
     @Column(name="user_id", nullable = false)
     private String user_id;
     

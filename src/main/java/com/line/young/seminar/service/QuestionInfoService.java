@@ -1,5 +1,6 @@
 package com.line.young.seminar.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,19 @@ public class QuestionInfoService {
     
     @Autowired
     private QuestionInfoRepository questionInfoRepository;
+    
 
     public Iterable<QuestionInfo> findAllOfQuestionInfo() {
         return questionInfoRepository.findAll();
     }
 
-    public Optional<QuestionInfo> findOneOfQuestionInfo(String userId) {
-        return questionInfoRepository.findById(userId);
+//    public Optional<QuestionInfo> findOneOfQuestionInfo(String userId) {
+//        
+//        return questionInfoRepository.fifindById(userId);
+//    }
+    
+    public List<QuestionInfo> findAllUserQuestion(String userId) {
+        return questionInfoRepository.findAllUserQuestion(userId);
     }
 
     public QuestionInfo saveOfQuestionInfo(QuestionInfo questionInfo) {
