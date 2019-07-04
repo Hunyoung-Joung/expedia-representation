@@ -16,14 +16,13 @@ query = "SELECT q_no,user_id,seminar_id,q_category,q_contents,is_selected "
         + "FROM question_info "
         + "WHERE user_id = :userId"
         + "ORDER BY question_info.q_no DESC")
-public class QuestionInfo {
+public class QuestionInfo  {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="q_no", nullable = false)
     private Long q_no;
-    
-    @Id
+
     @Column(name="user_id", nullable = false)
     private String user_id;
     
