@@ -18,11 +18,9 @@ public class QuestionInfo {
     @Column(name="q_no", nullable = false)
     private Long q_no;
     
-//    @Id
     @Column(name="user_id", nullable = false)
     private String user_id;
     
-//    @Id
     @Column(name="seminar_id", nullable = false)
     private String seminar_id;
     
@@ -32,7 +30,7 @@ public class QuestionInfo {
     @Column(name="q_contents", nullable = false)
     private String q_contents;
     
-    @Column(name="is_selected", nullable = false)
+    @Column(name="is_selected", nullable = true)
     private boolean is_selected;
 
     
