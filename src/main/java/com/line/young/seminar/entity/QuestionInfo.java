@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="question_info")
-@IdClass(QuestionInfoPK.class)
+//@IdClass(QuestionInfoPK.class)
 public class QuestionInfo {
 
     @Id
@@ -18,11 +18,11 @@ public class QuestionInfo {
     @Column(name="q_no", nullable = false)
     private Long q_no;
     
-    @Id
+//    @Id
     @Column(name="user_id", nullable = false)
     private String user_id;
     
-    @Id
+//    @Id
     @Column(name="seminar_id", nullable = false)
     private String seminar_id;
     
