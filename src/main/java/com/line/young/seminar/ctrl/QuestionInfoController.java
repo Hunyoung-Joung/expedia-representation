@@ -37,11 +37,14 @@ public class QuestionInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
+    private String userId = "";
+    
     @GetMapping
 //    @RequestMapping(value="/{userId, seminarId}", method=RequestMethod.GET)
     public String init(@RequestParam("userId") String userId, Model model) 
             throws Exception {
         logger.info("##### init question information: userId?"+userId);
+        this.userId = userId;
         PersonalInfo personalInfo = new PersonalInfo();
         if (null == userId) {
             throw new Exception();
@@ -86,6 +89,8 @@ public class QuestionInfoController {
     @RequestMapping(method = RequestMethod.POST)
     public String addtquestionlInfo(Model model, @ModelAttribute("questionInfo") @Valid QuestionInfo questionInfo, BindingResult result) throws Exception  {
         logger.info("##### add question information");
+        questionInfo.setUser_id(this.userId);
+        questionInfo.setSeminar_id("4");
         questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
         model.addAttribute("questionlInfo", this.findById(questionInfo.getUser_id(), new QuestionInfo()));
 
