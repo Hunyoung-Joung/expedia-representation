@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @NamedQuery(name = "QuestionInfo.findAllUserQuestion",
 query = "SELECT q_no,user_id,seminar_id,q_category,q_contents,is_selected "
         + "FROM question_info "
-        + "WHERE user_id = :userId"
+        + "WHERE user_id = :userId "
         + "ORDER BY question_info.q_no DESC")
 public class QuestionInfo  {
 
