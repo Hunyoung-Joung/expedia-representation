@@ -7,6 +7,8 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
 import com.line.young.seminar.entity.QuestionInfo;
 
 public interface QuestionInfoRepository extends CrudRepository<QuestionInfo, String> {
@@ -20,5 +22,5 @@ public interface QuestionInfoRepository extends CrudRepository<QuestionInfo, Str
 //        .setParameter("userId", userId)
 //        .getResultList();
 //    }
-//    List<QuestionInfo> findAllUserQuestion(String userId);
+    List<QuestionInfo> findAllUserQuestion(@Param("userId") String userId);
 }
