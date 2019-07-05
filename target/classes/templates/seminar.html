@@ -110,7 +110,7 @@ Copyright@ LINE 2019
           		<tr th:each="questionInfo:${questionInfos}" th:object="${questionInfo}">
             		<td th:text="*{seminar_id}"></td>
             		<td th:text="*{q_category}"></td>
-            		<td th:text="*{g_contents}"></td>
+            		<td th:text="*{q_contents}"></td>
             		<!--  
             		<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}(id=*{id})}">参照</a></td>
             		<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}/edit(id=*{id})}">編集</a></td>

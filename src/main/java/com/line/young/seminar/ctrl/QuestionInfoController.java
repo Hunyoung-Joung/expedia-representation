@@ -57,7 +57,7 @@ public class QuestionInfoController {
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
             model.addAttribute("questionInfo", new QuestionInfo());
-            model.addAttribute("questionlInfos", this.findByUserId(userId, new ArrayList<QuestionInfo>()));
+            model.addAttribute("questionInfos", this.findByUserId(userId, new ArrayList<QuestionInfo>()));
             logger.info("##### init question information models? "+model.toString());
         }
 
@@ -82,40 +82,40 @@ public class QuestionInfoController {
 //    public String findAll(Model model) {
 //        logger.info("##### find all of users");
 //  
-//        Iterable<questionlInfo> questionlInfos = questionlInfoService.findAll();
-//        model.addAttribute("questionlInfos", questionlInfos);
+//        Iterable<questionInfo> questionInfos = questionInfoService.findAll();
+//        model.addAttribute("questionInfos", questionInfos);
 //
 //        return "user_list";
 //    }
     
 
     @RequestMapping(method = RequestMethod.POST)
-    public String addtquestionlInfo(Model model, @Valid QuestionInfo questionInfo) throws Exception  {
+    public String addtquestionInfo(Model model, @Valid QuestionInfo questionInfo) throws Exception  {
         logger.info("##### add question information");
         questionInfo.setUser_id(this.userId_);
         questionInfo.setSeminar_id("3");
         questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
-//        model.addAttribute("questionlInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
+//        model.addAttribute("questionInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
 
         return init(questionInfo.getUser_id(), model);
     }
 //    
 //    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
-//    public String selectquestionlInfo(@PathVariable String userId, Model model) {
-//        logger.info("##### find questionl information? userId = "+userId);
-//        Optional<questionlInfo> questionlInfo = questionlInfoService.findOne(userId);
-//        model.addAttribute("questionlInfo", questionlInfo);
+//    public String selectquestionInfo(@PathVariable String userId, Model model) {
+//        logger.info("##### find question information? userId = "+userId);
+//        Optional<questionInfo> questionInfo = questionInfoService.findOne(userId);
+//        model.addAttribute("questionInfo", questionInfo);
 //        
-//        return "questionl_information";
+//        return "question_information";
 //    }
 //    
 //    @RequestMapping(method=RequestMethod.GET, value={"/api/{userId}"})
-//    public String selectquestionlInfo(Model model, @PathVariable String userId) {
-//        logger.info("##### find questionl information? id = "+userId);
-////        Iterable<questionlInfo> questionlInfos = this.questionlInfoRepository.findAll();
-////        model.addAttribute("questionlInfos", questionlInfos);
-////        model.addAttribute("questionlInfo", new questionlInfo());
+//    public String selectquestionInfo(Model model, @PathVariable String userId) {
+//        logger.info("##### find question information? id = "+userId);
+////        Iterable<questionInfo> questionInfos = this.questionInfoRepository.findAll();
+////        model.addAttribute("questionInfos", questionInfos);
+////        model.addAttribute("questionInfo", new questionInfo());
 //        
-//        return "questionl_information";
+//        return "question_information";
 //    }
 }
