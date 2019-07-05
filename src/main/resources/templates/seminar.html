@@ -66,7 +66,7 @@ Copyright@ LINE 2019
 	      		</tr>
 	      		<form th:action="@{/seminar}" th:method="post" th:object="${questionInfo}">
 	      		<tr>
-	        		<td colspan="2" class="col-md-4">
+	        		<td class="col-md-4">
 	                    <select class = "btn dropdown-toggle" id="qCategory" th:field="*{q_category}">
 	                    	<option value="0" selected="selected">--カテゴリーを選択してください--</option>
 	                        <option value="1">LINE Things</option>
@@ -75,11 +75,13 @@ Copyright@ LINE 2019
 	                        <option value="4">その他</option>
 	                    </select>
 	        		</td>
+	        		<td class="col-md-4">
+	                    <label for="comment">セミナー内容に対する質問:</label>
+	        		</td>
 	      		</tr>
 	      		<tr>
 	        		<td colspan="2" class="col-md-4">
 					    <div class="form-group">
-					      	<label for="comment">セミナー内容に対する質問:</label>
 					      	<textarea class="form-control" rows="5" id="qContents" th:field="*{q_contents}"></textarea>
 					    </div>
 	        		</td>
@@ -92,6 +94,33 @@ Copyright@ LINE 2019
 				</form>
 	    	</tbody>
 	  	</table>
+	  	
+		<table class="table">
+        	<thead>
+          		<tr>
+            		<th>セミナー</th>
+            		<th>カテゴリー</th>
+            		<th>質問内容</th>
+            		<!--<th></th>
+            		<th></th>-->
+          		</tr>
+        	</thead>
+        	<tbody>
+          		<tr th:each="seminar:${questionInfos}" th:object="${questionInfos}">
+            		<td th:text="*{seminar_id}"></td>
+            		<td th:text="*{q_category}"></td>
+            		<td th:text="*{g_contents}"></td>
+            		<!--  
+            		<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}(id=*{id})}">参照</a></td>
+            		<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}/edit(id=*{id})}">編集</a></td>-->
+            		<td>
+              			<form th:action="@{/players/{id}(id=*{id})}" th:method="delete">
+                			<input class="btn btn-default btn-xs" type="submit" value="削除" />
+              			</form>
+            		</td>
+          		</tr>
+        	</tbody>
+      	</table>
 	</div>
 </div>
 </body>
