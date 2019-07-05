@@ -1,5 +1,7 @@
 package com.line.young.seminar.ctrl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,17 +64,17 @@ public class QuestionInfoController {
     }
 
 
-//    @RequestMapping(value="{userId}", method=RequestMethod.GET)
-//    public QuestionInfo findById(@PathVariable String userId, @ModelAttribute QuestionInfo questionInfo) {
-//        logger.info("##### find by id: userId? "+userId);
-//        if (!questionInfoService.findAllUserQuestion(userId).isEmpty()) {
-////            questionInfo = questionInfoService.findOneOfQuestionInfo(userId).get();
-//        } else {
-//            questionInfo = new QuestionInfo();
-//        }
+    @RequestMapping(value="{userId}", method=RequestMethod.GET)
+    public List<QuestionInfo> findByUserId(@PathVariable String userId, @ModelAttribute List<QuestionInfo> questionInfos) {
+        logger.info("##### find by id: userId? "+userId);
+        if (!questionInfoService.findAllUserQuestion(userId).isEmpty()) {
+            questionInfos = questionInfoService.findAllUserQuestion(userId);
+        } else {
+            questionInfos = new ArrayList<QuestionInfo>();
+        }
 //        logger.info("##### find questionlInfo? "+questionInfo.toString());
-//        return questionInfo;
-//    }
+        return questionInfos;
+    }
     
 
 //    @RequestMapping(method=RequestMethod.GET)
@@ -84,18 +86,18 @@ public class QuestionInfoController {
 //
 //        return "user_list";
 //    }
-//    
-//
-//    @RequestMapping(method = RequestMethod.POST)
-//    public String addtquestionlInfo(Model model, @ModelAttribute("questionInfo") @Valid QuestionInfo questionInfo, BindingResult result) throws Exception  {
-//        logger.info("##### add question information");
-//        questionInfo.setUser_id(this.userId_);
-//        questionInfo.setSeminar_id("4");
-//        questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
-//        model.addAttribute("questionlInfo", this.findById(questionInfo.getUser_id(), new QuestionInfo()));
-//
-//        return init(questionInfo.getUser_id(), model);
-//    }
+    
+
+    @RequestMapping(method = RequestMethod.POST)
+    public String addtquestionlInfo(Model model, @ModelAttribute("questionInfo") @Valid QuestionInfo questionInfo, BindingResult result) throws Exception  {
+        logger.info("##### add question information");
+        questionInfo.setUser_id(this.userId_);
+        questionInfo.setSeminar_id("4");
+        questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
+        model.addAttribute("questionlInfo", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
+
+        return init(questionInfo.getUser_id(), model);
+    }
 //    
 //    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
 //    public String selectquestionlInfo(@PathVariable String userId, Model model) {
