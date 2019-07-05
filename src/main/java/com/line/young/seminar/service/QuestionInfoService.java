@@ -2,6 +2,7 @@ package com.line.young.seminar.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,6 +15,7 @@ import com.line.young.seminar.repo.QuestionInfoRepository;
 
 @Service
 public class QuestionInfoService {
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
     
     @Autowired
     private QuestionInfoRepository questionInfoRepository;
@@ -29,6 +31,7 @@ public class QuestionInfoService {
 //    }
     
     public List<QuestionInfo> findAllUserQuestion(String userId) {
+        logger.info("## QuestionInfoService findAllUserQuestion userId? "+userId);
         QuestionInfoRepositoryImpl impl = new QuestionInfoRepositoryImpl();
         return impl.findByUserId(userId);
     }
