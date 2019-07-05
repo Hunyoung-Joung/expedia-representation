@@ -19,6 +19,15 @@ public class QuestionInfoService {
     
     @Autowired
     private QuestionInfoRepository questionInfoRepository;
+    
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    public List<QuestionInfo> findByUserId(String userId){
+      return entityManager.createNamedQuery("QuestionInfo.findAllUserQuestion")
+        .setParameter("userId", userId)
+        .getResultList();
+    }
 
 
     public Iterable<QuestionInfo> findAllOfQuestionInfo() {
@@ -32,8 +41,7 @@ public class QuestionInfoService {
     
     public List<QuestionInfo> findAllUserQuestion(String userId) {
         logger.info("## QuestionInfoService findAllUserQuestion userId? "+userId);
-        QuestionInfoRepositoryImpl impl = new QuestionInfoRepositoryImpl();
-        return impl.findByUserId(userId);
+        return this.findByUserId(userId);
     }
 
     public QuestionInfo saveOfQuestionInfo(QuestionInfo questionInfo) {
@@ -49,15 +57,15 @@ public class QuestionInfoService {
     }
 }
 
-@Repository("QuestionInfoRepositoryImpl")
-class QuestionInfoRepositoryImpl {
-
-  @PersistenceContext
-  private EntityManager entityManager;
-
-  public List<QuestionInfo> findByUserId(String userId){
-    return entityManager.createNamedQuery("QuestionInfo.findAllUserQuestion")
-      .setParameter("userId", userId)
-      .getResultList();
-  }
-}
+//@Repository("QuestionInfoRepositoryImpl")
+//class QuestionInfoRepositoryImpl {
+//
+//  @PersistenceContext
+//  private EntityManager entityManager;
+//
+//  public List<QuestionInfo> findByUserId(String userId){
+//    return entityManager.createNamedQuery("QuestionInfo.findAllUserQuestion")
+//      .setParameter("userId", userId)
+//      .getResultList();
+//  }
+//}
