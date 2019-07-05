@@ -107,7 +107,7 @@ Copyright@ LINE 2019
           		</tr>
         	</thead>
         	<tbody>
-          		<tr th:each="seminar:${questionInfos}" th:object="${questionInfos}">
+          		<tr th:each="questionInfo:${questionInfos}" th:object="${questionInfo}">
             		<td th:text="*{seminar_id}"></td>
             		<td th:text="*{q_category}"></td>
             		<td th:text="*{g_contents}"></td>
