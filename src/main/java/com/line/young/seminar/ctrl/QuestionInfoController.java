@@ -57,6 +57,7 @@ public class QuestionInfoController {
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
             model.addAttribute("questionInfo", new QuestionInfo());
+            model.addAttribute("questionlInfos", this.findByUserId(userId, new ArrayList<QuestionInfo>()));
             logger.info("##### init question information models? "+model.toString());
         }
 
@@ -94,7 +95,7 @@ public class QuestionInfoController {
         questionInfo.setUser_id(this.userId_);
         questionInfo.setSeminar_id("3");
         questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
-        model.addAttribute("questionlInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
+//        model.addAttribute("questionlInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
 
         return init(questionInfo.getUser_id(), model);
     }
