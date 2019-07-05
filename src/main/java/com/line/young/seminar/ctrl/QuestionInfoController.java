@@ -42,8 +42,7 @@ public class QuestionInfoController {
     private String userId_ = "";
     
     @GetMapping
-    public String init(@RequestParam("userId") String userId, Model model) 
-            throws Exception {
+    public String init(@RequestParam("userId") String userId, Model model) throws Exception {
         this.userId_ = userId;
         PersonalInfo personalInfo = new PersonalInfo();
 //        List<QuestionInfo> personalInfos = new ArrayList<QuestionInfo>();
@@ -57,7 +56,8 @@ public class QuestionInfoController {
                 throw new Exception();
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
-            model.addAttribute("questionInfo", new QuestionInfo());//TODO
+            model.addAttribute("questionInfo", new QuestionInfo());
+            logger.info("##### init question information models? "+model.toString());
         }
 
         return "seminar";
@@ -68,6 +68,8 @@ public class QuestionInfoController {
     public List<QuestionInfo> findByUserId(@PathVariable String userId, @ModelAttribute List<QuestionInfo> questionInfos) {
         if (!questionInfoService.findAllUserQuestion(userId).isEmpty()) {
             questionInfos = questionInfoService.findAllUserQuestion(userId);
+            
+            logger.info("##### findByUserId? "+questionInfos.size());
         } else {
             questionInfos = new ArrayList<QuestionInfo>();
         }
@@ -87,7 +89,7 @@ public class QuestionInfoController {
     
 
     @RequestMapping(method = RequestMethod.POST)
-    public String addtquestionlInfo(Model model, @ModelAttribute("questionInfo") @Valid QuestionInfo questionInfo, BindingResult result) throws Exception  {
+    public String addtquestionlInfo(Model model, @Valid QuestionInfo questionInfo) throws Exception  {
         logger.info("##### add question information");
         questionInfo.setUser_id(this.userId_);
         questionInfo.setSeminar_id("3");
