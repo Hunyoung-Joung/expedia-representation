@@ -12,8 +12,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="question_info")
 @NamedQuery(name = "QuestionInfo.findAllUserQuestion",
-query = //"SELECT q_no, user_id,seminar_id, q_category, q_contents, is_selected "
-        "SELECT info "
+query = "SELECT q_no, user_id,seminar_id, q_category, q_contents, is_selected "
+        //"SELECT info "
         + "FROM question_info info"
         + "WHERE info.user_id = :userId "
         + "ORDER BY info.q_no DESC")
