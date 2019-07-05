@@ -29,7 +29,8 @@ public class QuestionInfoService {
 //    }
     
     public List<QuestionInfo> findAllUserQuestion(String userId) {
-        return QuestionInfoRepositoryImpl.findByUserId(userId);
+        QuestionInfoRepositoryImpl impl = new QuestionInfoRepositoryImpl();
+        return impl.findByUserId(userId);
     }
 
     public QuestionInfo saveOfQuestionInfo(QuestionInfo questionInfo) {
@@ -49,9 +50,9 @@ public class QuestionInfoService {
 class QuestionInfoRepositoryImpl {
 
   @PersistenceContext
-  private static EntityManager entityManager;
+  private EntityManager entityManager;
 
-  public static List<QuestionInfo> findByUserId(String userId){
+  public List<QuestionInfo> findByUserId(String userId){
     return entityManager.createNamedQuery("QuestionInfo.findAllUserQuestion")
       .setParameter("userId", userId)
       .getResultList();
