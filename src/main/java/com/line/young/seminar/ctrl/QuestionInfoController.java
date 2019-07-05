@@ -88,7 +88,7 @@ public class QuestionInfoController {
 //    }
     
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value="{userId}", method = RequestMethod.POST)
     public String addtquestionlInfo(@RequestParam("userId") String userId, Model model, @ModelAttribute("questionInfo") @Valid QuestionInfo questionInfo, BindingResult result) throws Exception  {
         logger.info("##### add question information");
         questionInfo.setUser_id(userId);
