@@ -102,6 +102,7 @@ Copyright@ LINE 2019
             		<th>カテゴリー</th>
             		<th>質問内容</th>
             		<!--<th></th>
+            		<th></th>
             		<th></th>-->
           		</tr>
         	</thead>
@@ -112,12 +113,12 @@ Copyright@ LINE 2019
             		<td th:text="*{g_contents}"></td>
             		<!--  
             		<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}(id=*{id})}">参照</a></td>
-            		<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}/edit(id=*{id})}">編集</a></td>-->
+            		<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}/edit(id=*{id})}">編集</a></td>
             		<td>
               			<form th:action="@{/players/{id}(id=*{id})}" th:method="delete">
                 			<input class="btn btn-default btn-xs" type="submit" value="削除" />
               			</form>
-            		</td>
+            		</td>-->
           		</tr>
         	</tbody>
       	</table>
