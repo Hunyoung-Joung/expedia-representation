@@ -39,14 +39,14 @@ public class QuestionInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
-//    private String userId_ = "";
+    private String userId_ = "";
     
     @GetMapping
 //    @RequestMapping(value="/{userId, seminarId}", method=RequestMethod.GET)
     public String init(@RequestParam("userId") String userId, Model model) 
             throws Exception {
         logger.info("##### init question information: userId?"+userId);
-//        this.userId_ = userId;
+        this.userId_ = userId;
         PersonalInfo personalInfo = new PersonalInfo();
         if (null == userId) {
             throw new Exception();
@@ -88,10 +88,10 @@ public class QuestionInfoController {
 //    }
     
 
-    @RequestMapping(value="{userId}", method = RequestMethod.POST)
-    public String addtquestionlInfo(@RequestParam("userId") String userId, Model model, @ModelAttribute("questionInfo") @Valid QuestionInfo questionInfo, BindingResult result) throws Exception  {
+    @RequestMapping(method = RequestMethod.POST)
+    public String addtquestionlInfo(Model model, @ModelAttribute("questionInfo") @Valid QuestionInfo questionInfo, BindingResult result) throws Exception  {
         logger.info("##### add question information");
-        questionInfo.setUser_id(userId);
+        questionInfo.setUser_id(this.userId_);
         questionInfo.setSeminar_id("3");
         questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
         model.addAttribute("questionlInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
