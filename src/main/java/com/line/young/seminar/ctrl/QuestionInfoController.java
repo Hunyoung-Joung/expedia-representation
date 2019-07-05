@@ -42,22 +42,22 @@ public class QuestionInfoController {
     private String userId_ = "";
     
     @GetMapping
-//    @RequestMapping(value="/{userId, seminarId}", method=RequestMethod.GET)
     public String init(@RequestParam("userId") String userId, Model model) 
             throws Exception {
-        logger.info("##### init question information: userId?"+userId);
         this.userId_ = userId;
         PersonalInfo personalInfo = new PersonalInfo();
+//        List<QuestionInfo> personalInfos = new ArrayList<QuestionInfo>();
         if (null == userId) {
             throw new Exception();
         } else {
             if (personalInfoService.findOne(userId).isPresent()) {
                 personalInfo = personalInfoService.findOne(userId).get();
+//                personalInfos = questionInfoService.findAllUserQuestion(userId);
             } else {
                 throw new Exception();
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
-            model.addAttribute("questionInfo", new QuestionInfo());//TODO
+//            model.addAttribute("questionInfos", new QuestionInfo());//TODO
         }
 
         return "seminar";
@@ -66,13 +66,11 @@ public class QuestionInfoController {
 
     @RequestMapping(value="{userId}", method=RequestMethod.GET)
     public List<QuestionInfo> findByUserId(@PathVariable String userId, @ModelAttribute List<QuestionInfo> questionInfos) {
-        logger.info("##### find by id: userId? "+userId);
         if (!questionInfoService.findAllUserQuestion(userId).isEmpty()) {
             questionInfos = questionInfoService.findAllUserQuestion(userId);
         } else {
             questionInfos = new ArrayList<QuestionInfo>();
         }
-//        logger.info("##### find questionlInfo? "+questionInfo.toString());
         return questionInfos;
     }
     
