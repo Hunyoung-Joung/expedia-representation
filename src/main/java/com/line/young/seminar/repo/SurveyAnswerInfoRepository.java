@@ -6,7 +6,6 @@ package com.line.young.seminar.repo;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
 import com.line.young.seminar.entity.SurveyAnswerInfo;
 

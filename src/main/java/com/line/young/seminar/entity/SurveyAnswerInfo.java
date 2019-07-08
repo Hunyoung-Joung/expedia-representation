@@ -8,18 +8,18 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="survey_info")
+@Table(name="survey_answer_info")
 @NamedQueries(value = {
     @NamedQuery(name = "SurveyAnswerInfo.findByUserId",
-    query = " SELECT info "
-            + " FROM survey_answer_info info "
-            + "WHERE info.user_id = :userId "
-            + "ORDER BY info.survey_no DESC"),
+    query = " SELECT answer_info "
+            + " FROM survey_answer_info answer_info "
+            + "WHERE answer_info.user_id = :userId "
+            + "ORDER BY answer_info.survey_no DESC"),
     @NamedQuery(name = "SurveyAnswerInfo.findBySeminarId",
-    query = " SELECT infos "
-            + " FROM survey_answer_info infos "
-            + "WHERE infos.seminar_id = :seminarId "
-            + "ORDER BY info.survey_no DESC")}
+    query = " SELECT answer_infos "
+            + " FROM survey_answer_info answer_infos "
+            + "WHERE answer_infos.seminar_id = :seminarId "
+            + "ORDER BY answer_infos.survey_no DESC")}
 )
 public class SurveyAnswerInfo  {
 
