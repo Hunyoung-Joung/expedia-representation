@@ -12,12 +12,12 @@ import javax.persistence.Table;
 @NamedQueries(value = {
     @NamedQuery(name = "SurveyAnswerInfo.findByUserId",
     query = " SELECT answer_info "
-            + " FROM survey_answer_info answer_info "
+            + " FROM SurveyAnswerInfo answer_info "
             + "WHERE answer_info.user_id = :userId "
             + "ORDER BY answer_info.survey_no DESC"),
     @NamedQuery(name = "SurveyAnswerInfo.findBySeminarId",
     query = " SELECT answer_infos "
-            + " FROM survey_answer_info answer_infos "
+            + " FROM SurveyAnswerInfo answer_infos "
             + "WHERE answer_infos.seminar_id = :seminarId "
             + "ORDER BY answer_infos.survey_no DESC")}
 )
