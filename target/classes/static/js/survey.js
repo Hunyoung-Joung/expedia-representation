@@ -14,46 +14,7 @@ var surveyAnswers = [];
 var checkBoxVals = [];
 
 $(document).ready(function(){
-	$.get("/config/young").done(function( data ) {
-		apiKey = JSON.parse(JSON.stringify(data)).apiKey;
-		/**
-		 * Initializing for LIFF
-		 * 
-		 * @returns
-		 */
-		liff.init(function(data) {
-			// set userId from liff.init data
-			userId = data.context.userId;
-			
-			// get seminar question data from a database through API
-		    $.ajax({
-	            url: 'https://www.changchao.me/api/sv/s?seminarId='+seminarId,
-	            headers: {"api-key": apiKey},
-	            type: 'GET',
-	            contentType: "application/json",
-	            dataType: 'json',
-	            // if it could get user data
-	            success: function(data_, status, xhr) { 
-	            	let questions = JSON.parse(JSON.stringify(data_)).surveyInfo; // if it has not any survey data with seminar id -> []
-	            	// set questions as new
-	            	setSurveyQuestion(questions);
-	            	// is it attendance?
-	            	getUserSurveyInfo();
-	            },
-	            // if it couldn't get user data by error
-	            error: function(xhr, status, err) { 
-	            	// show error if it has
-	            	showError(err);
-	            },
-	            complete: function (xhr, status) {
-	            	// nothing to do
-	            }
-		    });
-		
-		}, err => {
-			showError(err);
-		});
-	});
+
 	// when range bar value changes, then the answer field  is changed follow to the range bar value
 	// some of browser couldn't detect class selector
 	$('input[type=range]').on('input', function () {

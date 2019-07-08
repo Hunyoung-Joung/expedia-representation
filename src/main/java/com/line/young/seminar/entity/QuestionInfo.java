@@ -5,15 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="question_info")
 @NamedQuery(name = "QuestionInfo.findAllUserQuestion",
-query = //"SELECT q_no, user_id,seminar_id, q_category, q_contents, is_selected "
-        "SELECT info "
+query = "SELECT info "
         + "FROM QuestionInfo info "
         + "WHERE info.user_id = :userId "
         + "ORDER BY info.q_no DESC")

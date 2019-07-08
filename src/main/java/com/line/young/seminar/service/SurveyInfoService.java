@@ -14,7 +14,7 @@ import com.line.young.seminar.entity.QuestionInfo;
 import com.line.young.seminar.repo.QuestionInfoRepository;
 
 @Service
-public class QuestionInfoService {
+public class SurveyInfoService {
     private final Logger logger = Logger.getLogger(this.getClass().getName());
     
     @Autowired
@@ -35,7 +35,7 @@ public class QuestionInfoService {
         return questionInfoRepository.findAll();
     }
     
-    public List<QuestionInfo> findAllrQuestionByUserId(String userId) {
+    public List<QuestionInfo> findAllUserQuestion(String userId) {
         logger.info("## QuestionInfoService findAllUserQuestion userId? "+userId);
         return this.findByUserId(userId);
     }

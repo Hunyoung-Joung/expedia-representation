@@ -15,7 +15,7 @@ import com.line.young.seminar.entity.QuestionInfo;
  * 
  *
  */
-public interface QuestionInfoRepository extends CrudRepository<QuestionInfo, String> {
+public interface SurveryInfoRepository extends CrudRepository<QuestionInfo, String> {
 
-    List<QuestionInfo> findAllrQuestionByUserId(@Param("userId") String userId);
+    List<QuestionInfo> findAllUserSurvey(@Param("userId") String userId);
 }
