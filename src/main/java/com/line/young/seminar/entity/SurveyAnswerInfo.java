@@ -10,12 +10,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name="survey_answer_info")
 @NamedQueries(value = {
-    @NamedQuery(name = "SurveyAnswerInfo.findByUserId",
+    @NamedQuery(name = "SurveyAnswerInfo.findAnswerByUserId",
     query = " SELECT answer_info "
             + " FROM SurveyAnswerInfo answer_info "
             + "WHERE answer_info.user_id = :userId "
             + "ORDER BY answer_info.survey_no DESC"),
-    @NamedQuery(name = "SurveyAnswerInfo.findBySeminarId",
+    @NamedQuery(name = "SurveyAnswerInfo.findAllAnswerBySeminarId",
     query = " SELECT answer_infos "
             + " FROM SurveyAnswerInfo answer_infos "
             + "WHERE answer_infos.seminar_id = :seminarId "
