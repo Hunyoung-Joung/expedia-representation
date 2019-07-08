@@ -24,7 +24,7 @@ th:fragment="layout (template, menu)">
     <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
     
 	<!-- Header -->
-    <div class="container fixed-top text-center" style="background-color: #AEEA00; width:500px;display:inline-block;">
+    <div class="container fixed-top text-center" style="background-color: #AEEA00; width:auto;">
 		<ul class="nav navbarrow">
 			<li class="active col-xs-6">
 				<a href="https://seminar-web.herokuapp.com/personalInfo?userId=${userId}">
@@ -38,12 +38,11 @@ th:fragment="layout (template, menu)">
 	</div>
 	
     <!-- Html contents here -->
-    <div class="container text-center" style="width:500px;">
-		<div th:replace="${template}"></div>
+    <div class="container text-center" style="width:auto;" th:replace="${template}">
 	</div> 
     
     <!-- Footer -->
-    <div class="container fixed-bottom text-center" style="background-color: #AEEA00; width:500px;">
+    <div class="container fixed-bottom text-center" style="background-color: #AEEA00; width:auto;">
 	    <div class="row">
 	        <div class="col text-center"><H5>Copyright@ LINE 2019</H5></div>
 	    </div>
