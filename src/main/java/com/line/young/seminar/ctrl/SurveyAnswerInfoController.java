@@ -52,6 +52,8 @@ public class SurveyAnswerInfoController {
         } else {
             if (personalInfoService.findOne(userId).isPresent()) {
                 personalInfo = personalInfoService.findOne(userId).get();
+                
+                logger.info("## init findAllAnswerByIds userId? "+userId+", seminarId? 4");
                 surveyAnswerInfo = this.findByIds(userId, "4", surveyAnswerInfo); // TODO
  
             } else {
