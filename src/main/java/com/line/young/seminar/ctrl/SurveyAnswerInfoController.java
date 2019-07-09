@@ -54,9 +54,9 @@ public class SurveyAnswerInfoController {
                 personalInfo = personalInfoService.findOne(userId).get();
                 
                 logger.info("## init findAllAnswerByIds userId? "+userId+", seminarId? 4");
-                surveyAnswerInfo.setSeminar_id("4");// TODO
                 surveyAnswerInfo = this.findByIds(userId, "4", surveyAnswerInfo); // TODO
- 
+                surveyAnswerInfo.setUser_id(userId);
+                surveyAnswerInfo.setSeminar_id("4");// TODO
             } else {
                 throw new Exception();
             }
