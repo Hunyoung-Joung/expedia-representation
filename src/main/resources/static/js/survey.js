@@ -63,10 +63,11 @@ $(document).ready(function(){
 	});
 	
 	// Submit survey answers
-	$("button#submit").click(function(){
+	$("submit").click(function(){
 //		alert("アンケートはセミナー参加後に入力できます");
 //		return;
-		
+		var userId = $('#userId').val();
+		var seminarId = $('#seminarId').val();
 		let surveyInfo = [];
 		$('input#q4_answer').val(checkBoxVals);
 		$(".survey_answers").each(function() {
@@ -75,7 +76,7 @@ $(document).ready(function(){
 		    
 			for (var i=0; i<surveyQuestions.length; i++) {
 				if ((i+1) == target_number) {
-					var obj = {"surveyNo":(i+1),"surveyAnswer": $(this).val()};
+					var obj = {"seminar_id":seminarId,"user_id":userId,"survey_no":(i+1),"survey_answer": $(this).val()};
 					surveyInfo.push(obj);
 					return;
 				}
@@ -83,32 +84,30 @@ $(document).ready(function(){
 		});
 		
 	    var sendData = {
-	        "seminarId": seminarId,
-	        "userId": userId,
-	        "answers":surveyInfo
+	        "surveyAnswerInfos":surveyInfo
 	    };
-
-        $.ajax({
-	            url: 'https://www.changchao.me/api/sv/answer',
-	            headers: {"api-key": apiKey},
-	            type: 'POST',
-	            contentType: "application/json",
-	            dataType: 'json',
-	            data: JSON.stringify(sendData),
-	            // if it could put user data
-            success: function(data, status, xhr) { 
-            	// nothing to do
-            },
-            // if it couldn't put user data by error
-            error: function(xhr, status, err) { 
-    			// show error if it has
-            	showError(err);
-            },
-            // very necessary, if it is not work, then callback function never ending
-            complete: function (xhr, status) {
-            	liff.closeWindow();
-            }
-        });
+	    alert(sendData);
+//        $.ajax({
+//	            url: 'https://www.changchao.me/api/sv/answer',
+//	            headers: {"api-key": apiKey},
+//	            type: 'POST',
+//	            contentType: "application/json",
+//	            dataType: 'json',
+//	            data: JSON.stringify(sendData),
+//	            // if it could put user data
+//            success: function(data, status, xhr) { 
+//            	// nothing to do
+//            },
+//            // if it couldn't put user data by error
+//            error: function(xhr, status, err) { 
+//    			// show error if it has
+//            	showError(err);
+//            },
+//            // very necessary, if it is not work, then callback function never ending
+//            complete: function (xhr, status) {
+//            	liff.closeWindow();
+//            }
+//        });
 	});
 });
 

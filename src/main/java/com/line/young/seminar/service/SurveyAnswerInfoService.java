@@ -55,23 +55,9 @@ public class SurveyAnswerInfoService {
         return surveyAnswerInfoRepository.findAll();
     }
     
-//    public List<SurveyAnswerInfo> findAnswerByUserId(String userId) {
-//        logger.info("## SurveyAnswerInfoService findAnswerByUserId userId? "+userId);
-//        return this.findByUserId(userId);
-//    }
-//    
-//    public List<SurveyAnswerInfo> findAllAnswerBySeminarId(String seminarId) {
-//        logger.info("## SurveyAnswerInfoService findAllAnswerBySeminarId seminarId? "+seminarId);
-//        return this.findBySeminarId(seminarId);
-//    }
-//    public SurveyAnswerInfo findAllAnswerByIds(String userId, String seminarId) {
-//        logger.info("## SurveyAnswerInfoService findAllAnswerByIds userId? "+userId+", seminarId? "+seminarId);
-//        return this.findByIds(userId, seminarId);
-//    }
     
-    
-    public SurveyAnswerInfo saveOfSurveyAnswerInfo(SurveyAnswerInfo surveyAnswerInfo) {
-        return surveyAnswerInfoRepository.save(surveyAnswerInfo);
+    public Iterable<SurveyAnswerInfo> saveOfSurveyAnswerInfos(List<SurveyAnswerInfo> surveyAnswerInfos) {
+        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
     }
 //
 //    public void deleteOfQuestionInfo(String userId) {

@@ -9,11 +9,13 @@ Copyright@ LINE 2019
 <body>
 
     <div class="error_division"></div>
-    <div class="topnav">
+    <div class="text-center">
 	     <h4>第4回パートナー様向け勉強会　アンケート</h4>
     </div>
     
     <div class="container">
+		<input id="userId" name="user_id" type="hidden" class="form-control" th:field="*{user_id}"/>
+		<input id="seminarId" name="seminar_id" type="hidden" class="form-control" th:field="*{surveyAnswerInfo.seminar_id}"/>
 		<table class="table">
 	    	<tbody>
 				<tr>
@@ -23,7 +25,7 @@ Copyright@ LINE 2019
 		        	</td>
 				</tr>
 				<tr>
-	        		<td colspan="4" class="col-md-4  text-left">
+	        		<td colspan="4" width="25%" class="col-md-4  text-left">
 						<label id="q1_question"  class="survey_question">Q1. 勉強会内容について、理解できましたでしょうか。</label>
 		        	</td>
 				</tr>
@@ -31,7 +33,7 @@ Copyright@ LINE 2019
 	        		<td align="right" >
 	        			<small>そう思わない</small>
 	        		</td>
-	        		<td align="center" width="50%">
+	        		<td align="center" width="45%">
 						<div class="slidecontainer">
 						  <input type="range" min="1" max="5" value="3" class="slider" id="q1">
 						</div>

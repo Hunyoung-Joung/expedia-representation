@@ -54,6 +54,7 @@ public class SurveyAnswerInfoController {
                 personalInfo = personalInfoService.findOne(userId).get();
                 
                 logger.info("## init findAllAnswerByIds userId? "+userId+", seminarId? 4");
+                surveyAnswerInfo.setSeminar_id("4");// TODO
                 surveyAnswerInfo = this.findByIds(userId, "4", surveyAnswerInfo); // TODO
  
             } else {
@@ -94,14 +95,16 @@ public class SurveyAnswerInfoController {
     
 
     @RequestMapping(method = RequestMethod.POST)
-    public String addtquestionInfo(Model model, @Valid SurveyAnswerInfo surveyAnswerInfo) throws Exception  {
+    public String addtquestionInfo(Model model, @Valid String userId, @Valid List<SurveyAnswerInfo> surveyAnswerInfos) throws Exception  {
         logger.info("##### add surveyAnswerInfo information");
-        surveyAnswerInfo.setUser_id(this.userId_);
-        surveyAnswerInfo.setSeminar_id("4");
-        surveyAnswerInfo = surveyAnswerInfoService.saveOfSurveyAnswerInfo(surveyAnswerInfo);
+        
+        
+//        surveyAnswerInfo.setUser_id(this.userId_);
+//        surveyAnswerInfo.setSeminar_id("4");
+        surveyAnswerInfos = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(surveyAnswerInfos);
 //        model.addAttribute("questionInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
 
-        return init(surveyAnswerInfo.getUser_id(), model);
+        return init(userId, model);
     }
 //    
 //    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
