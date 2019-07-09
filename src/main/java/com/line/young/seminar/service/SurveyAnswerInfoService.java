@@ -40,6 +40,7 @@ public class SurveyAnswerInfoService {
 
     public SurveyAnswerInfo findAllAnswerByIds(String userId, String seminarId){
       return (SurveyAnswerInfo) entityManager.createNamedQuery("SurveyAnswerInfo.findAllAnswerByIds")
+        .setParameter("userId", userId)
         .setParameter("seminar_id", seminarId)
         .getSingleResult();
     }
