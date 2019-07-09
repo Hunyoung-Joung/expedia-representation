@@ -29,7 +29,7 @@ import com.line.young.seminar.service.SurveyAnswerInfoService;
  *
  */
 @Controller
-@RequestMapping("/seminar")
+@RequestMapping("/survey")
 public class SurveyAnswerInfoController {
     
     private final Logger logger = Logger.getLogger(this.getClass().getName());
@@ -62,7 +62,7 @@ public class SurveyAnswerInfoController {
             logger.info("##### init survey information models? "+model.toString());
         }
 
-        return "seminar";
+        return "survey";
     }
 
 
