@@ -23,7 +23,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "SurveyAnswerInfo.findAllAnswerByIds",
     query = " SELECT answer_infos "
             + " FROM SurveyAnswerInfo answer_infos "
-            + "WHERE answer_infos.user_id = :seminarId "
+            + "WHERE answer_infos.user_id = :userId "
             + "  AND answer_infos.seminar_id = :seminarId "
             + "ORDER BY answer_infos.survey_no DESC"),
     }
