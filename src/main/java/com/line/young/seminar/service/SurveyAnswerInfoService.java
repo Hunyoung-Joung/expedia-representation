@@ -25,10 +25,10 @@ public class SurveyAnswerInfoService {
     private EntityManager entityManager;
 
     @SuppressWarnings("unchecked")
-    public SurveyAnswerInfo findByUserId(String userId){
-      return (SurveyAnswerInfo) entityManager.createNamedQuery("SurveyAnswerInfo.findByUserId")
+    public List<SurveyAnswerInfo> findByUserId(String userId){
+      return entityManager.createNamedQuery("SurveyAnswerInfo.findByUserId")
         .setParameter("userId", userId)
-        .getSingleResult();
+        .getResultList();
     }
     
     @SuppressWarnings("unchecked")
@@ -38,12 +38,17 @@ public class SurveyAnswerInfoService {
         .getResultList();
     }
 
+    public SurveyAnswerInfo findByIds(String userId, String seminarId){
+      return (SurveyAnswerInfo) entityManager.createNamedQuery("SurveyAnswerInfo.findBySeminarId")
+        .setParameter("seminar_id", seminarId)
+        .getSingleResult();
+    }
 
     public Iterable<SurveyAnswerInfo> findAllOfSurveyAnswerInfo() {
         return surveyAnswerInfoRepository.findAll();
     }
     
-    public SurveyAnswerInfo findAnswerByUserId(String userId) {
+    public List<SurveyAnswerInfo> findAnswerByUserId(String userId) {
         logger.info("## SurveyAnswerInfoService findAnswerByUserId userId? "+userId);
         return this.findByUserId(userId);
     }
@@ -52,7 +57,12 @@ public class SurveyAnswerInfoService {
         logger.info("## SurveyAnswerInfoService findAllAnswerBySeminarId seminarId? "+seminarId);
         return this.findBySeminarId(seminarId);
     }
-
+    public SurveyAnswerInfo findAllAnswerByIds(String userId, String seminarId) {
+        logger.info("## SurveyAnswerInfoService findAllAnswerByIds userId? "+userId+", seminarId? "+seminarId);
+        return this.findByIds(userId, seminarId);
+    }
+    
+    
     public SurveyAnswerInfo saveOfSurveyAnswerInfo(SurveyAnswerInfo surveyAnswerInfo) {
         return surveyAnswerInfoRepository.save(surveyAnswerInfo);
     }

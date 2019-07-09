@@ -19,13 +19,20 @@ import javax.persistence.Table;
     query = " SELECT answer_infos "
             + " FROM SurveyAnswerInfo answer_infos "
             + "WHERE answer_infos.seminar_id = :seminarId "
-            + "ORDER BY answer_infos.survey_no DESC")}
+            + "ORDER BY answer_infos.survey_no DESC"),
+    @NamedQuery(name = "SurveyAnswerInfo.findAllAnswerByIds",
+    query = " SELECT answer_infos "
+            + " FROM SurveyAnswerInfo answer_infos "
+            + "WHERE answer_infos.user_id = :seminarId "
+            + "  AND answer_infos.seminar_id = :seminarId "
+            + "ORDER BY answer_infos.survey_no DESC"),
+    }
 )
 public class SurveyAnswerInfo  {
 
     @Id
     @Column(name="seminar_id", nullable = false)
-    private Long seminar_id;
+    private String seminar_id;
     
     @Column(name="user_id", nullable = false)
     private String user_id;
@@ -47,12 +54,12 @@ public class SurveyAnswerInfo  {
     }
 
 
-    public Long getSeminar_id() {
+    public String getSeminar_id() {
         return seminar_id;
     }
 
 
-    public void setSeminar_id(Long seminar_id) {
+    public void setSeminar_id(String seminar_id) {
         this.seminar_id = seminar_id;
     }
 
