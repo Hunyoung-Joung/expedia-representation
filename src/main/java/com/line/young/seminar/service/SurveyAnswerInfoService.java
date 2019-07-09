@@ -39,10 +39,15 @@ public class SurveyAnswerInfoService {
     }
 
     public SurveyAnswerInfo findAllAnswerByIds(String userId, String seminarId){
-      return (SurveyAnswerInfo) entityManager.createNamedQuery("SurveyAnswerInfo.findAllAnswerByIds")
+        Object obj = entityManager.createNamedQuery("SurveyAnswerInfo.findAllAnswerByIds")
         .setParameter("userId", userId)
         .setParameter("seminarId", seminarId)
         .getSingleResult();
+        if (null ==  obj) {
+            return new SurveyAnswerInfo();
+        } else {
+            return (SurveyAnswerInfo)obj;
+        }
     }
 
     public Iterable<SurveyAnswerInfo> findAllOfSurveyAnswerInfo() {
