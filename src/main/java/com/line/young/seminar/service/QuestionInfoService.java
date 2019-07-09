@@ -25,7 +25,7 @@ public class QuestionInfoService {
 
     @SuppressWarnings("unchecked")
     public List<QuestionInfo> findByUserId(String userId){
-      return entityManager.createNamedQuery("QuestionInfo.findAllUserQuestion")
+      return entityManager.createNamedQuery("QuestionInfo.findAllrQuestionByUserId")
         .setParameter("userId", userId)
         .getResultList();
     }
