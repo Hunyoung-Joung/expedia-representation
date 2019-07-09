@@ -34,14 +34,14 @@ public class SurveyAnswerInfoService {
     @SuppressWarnings("unchecked")
     public List<SurveyAnswerInfo> findAllAnswerBySeminarId(String seminarId){
       return entityManager.createNamedQuery("SurveyAnswerInfo.findAllAnswerBySeminarId")
-        .setParameter("seminar_id", seminarId)
+        .setParameter("seminarId", seminarId)
         .getResultList();
     }
 
     public SurveyAnswerInfo findAllAnswerByIds(String userId, String seminarId){
       return (SurveyAnswerInfo) entityManager.createNamedQuery("SurveyAnswerInfo.findAllAnswerByIds")
         .setParameter("userId", userId)
-        .setParameter("seminar_id", seminarId)
+        .setParameter("seminarId", seminarId)
         .getSingleResult();
     }
 

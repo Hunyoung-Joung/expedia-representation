@@ -21,11 +21,11 @@ import javax.persistence.Table;
             + "WHERE answer_infos.seminar_id = :seminarId "
             + "ORDER BY answer_infos.survey_no DESC"),
     @NamedQuery(name = "SurveyAnswerInfo.findAllAnswerByIds",
-    query = " SELECT answer_infos "
-            + " FROM SurveyAnswerInfo answer_infos "
-            + "WHERE answer_infos.user_id = :userId "
-            + "  AND answer_infos.seminar_id = :seminarId "
-            + "ORDER BY answer_infos.survey_no DESC"),
+    query = " SELECT answer "
+            + " FROM SurveyAnswerInfo answer "
+            + "WHERE answer.user_id = :userId "
+            + "  AND answer.seminar_id = :seminarId "
+            + "ORDER BY answer.survey_no DESC"),
     }
 )
 public class SurveyAnswerInfo  {
