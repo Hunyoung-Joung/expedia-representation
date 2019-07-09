@@ -73,44 +73,36 @@ $(document).ready(function(){
 		$(".survey_answers").each(function() {
 			var target_id = $(this).attr("id");
 			var target_number = target_id.substring(1,2);
-		    console.log(target_id+" - "+target_number+" --> "+$(this).val());
-//			for (var i=0; i<surveyQuestions.length; i++) {
-//				if ((i+1) == target_number) {
-					
-					var obj = {"seminar_id":seminarId,"user_id":userId,"survey_no":target_number,"survey_answer": $(this).val()};
-					
-					console.log(obj);
-					surveyInfo.push(obj);
-//					return;
-//				}
-//			}
+			var obj = {"seminar_id":seminarId,"user_id":userId,"survey_no":target_number,"survey_answer": $(this).val()};
+			surveyInfo.push(obj);
 		});
 		
 	    var sendData = {
+	    	"userId":userId
 	        "surveyAnswerInfos":surveyInfo
 	    };
-	    alert(JSON.stringify(sendData));
-//        $.ajax({
-//	            url: 'https://www.changchao.me/api/sv/answer',
-//	            headers: {"api-key": apiKey},
-//	            type: 'POST',
-//	            contentType: "application/json",
-//	            dataType: 'json',
-//	            data: JSON.stringify(sendData),
-//	            // if it could put user data
-//            success: function(data, status, xhr) { 
-//            	// nothing to do
-//            },
-//            // if it couldn't put user data by error
-//            error: function(xhr, status, err) { 
-//    			// show error if it has
-//            	showError(err);
-//            },
-//            // very necessary, if it is not work, then callback function never ending
-//            complete: function (xhr, status) {
-//            	liff.closeWindow();
-//            }
-//        });
+	    console.log(JSON.stringify(sendData));
+        $.ajax({
+	            url: 'https://seminar-web.herokuapp.com/survey/add',
+	            headers: {"api-key": apiKey},
+	            type: 'POST',
+	            contentType: "application/json",
+	            dataType: 'json',
+	            data: JSON.stringify(sendData),
+	            // if it could put user data
+            success: function(data, status, xhr) { 
+            	// nothing to do
+            },
+            // if it couldn't put user data by error
+            error: function(xhr, status, err) { 
+    			// show error if it has
+            	showError(err);
+            },
+            // very necessary, if it is not work, then callback function never ending
+            complete: function (xhr, status) {
+
+            }
+        });
 	});
 });
 

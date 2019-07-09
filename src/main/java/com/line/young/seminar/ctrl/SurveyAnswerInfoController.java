@@ -94,7 +94,8 @@ public class SurveyAnswerInfoController {
 //    }
     
 
-    @RequestMapping(method = RequestMethod.POST)
+//    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping("/add")
     public String addtquestionInfo(Model model, @Valid String userId, @Valid List<SurveyAnswerInfo> surveyAnswerInfos) throws Exception  {
         logger.info("##### add surveyAnswerInfo information");
         
