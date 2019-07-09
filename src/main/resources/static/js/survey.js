@@ -86,7 +86,7 @@ $(document).ready(function(){
 	    var sendData = {
 	        "surveyAnswerInfos":surveyInfo
 	    };
-	    alert(sendData);
+	    alert(JSON.stringify(sendData));
 //        $.ajax({
 //	            url: 'https://www.changchao.me/api/sv/answer',
 //	            headers: {"api-key": apiKey},
