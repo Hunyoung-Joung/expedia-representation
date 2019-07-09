@@ -67,8 +67,8 @@ public class QuestionInfoController {
 
     @RequestMapping(value="{userId}", method=RequestMethod.GET)
     public List<QuestionInfo> findByUserId(@PathVariable String userId, @ModelAttribute List<QuestionInfo> questionInfos) {
-        if (!questionInfoService.findAllrQuestionByUserId(userId).isEmpty()) {
-            questionInfos = questionInfoService.findAllrQuestionByUserId(userId);
+        if (!questionInfoService.findByUserId(userId).isEmpty()) {
+            questionInfos = questionInfoService.findByUserId(userId);
             
             logger.info("##### findByUserId? "+questionInfos.size());
         } else {

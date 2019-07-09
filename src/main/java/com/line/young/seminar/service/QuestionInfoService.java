@@ -35,10 +35,10 @@ public class QuestionInfoService {
         return questionInfoRepository.findAll();
     }
     
-    public List<QuestionInfo> findAllrQuestionByUserId(String userId) {
-        logger.info("## QuestionInfoService findAllUserQuestion userId? "+userId);
-        return this.findByUserId(userId);
-    }
+//    public List<QuestionInfo> findAllrQuestionByUserId(String userId) {
+//        logger.info("## QuestionInfoService findAllUserQuestion userId? "+userId);
+//        return this.findByUserId(userId);
+//    }
 
     public QuestionInfo saveOfQuestionInfo(QuestionInfo questionInfo) {
         return questionInfoRepository.save(questionInfo);
