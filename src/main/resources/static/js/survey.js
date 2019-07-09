@@ -73,17 +73,17 @@ $(document).ready(function(){
 		$(".survey_answers").each(function() {
 			var target_id = $(this).attr("id");
 			var target_number = target_id.substring(1,2);
-		    console.log(target_id+" - "+target_number);
-			for (var i=0; i<surveyQuestions.length; i++) {
-				if ((i+1) == target_number) {
+		    console.log(target_id+" - "+target_number+" --> "+$(this).val());
+//			for (var i=0; i<surveyQuestions.length; i++) {
+//				if ((i+1) == target_number) {
 					
 					var obj = {"seminar_id":seminarId,"user_id":userId,"survey_no":(i+1),"survey_answer": $(this).val()};
 					
 					console.log(obj);
 					surveyInfo.push(obj);
-					return;
-				}
-			}
+//					return;
+//				}
+//			}
 		});
 		
 	    var sendData = {
