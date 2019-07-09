@@ -63,7 +63,7 @@ $(document).ready(function(){
 	});
 	
 	// Submit survey answers
-	$("submit").click(function(){
+	$("#submit").click(function(){
 //		alert("アンケートはセミナー参加後に入力できます");
 //		return;
 		var userId = $('#userId').val();
