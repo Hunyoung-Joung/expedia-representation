@@ -77,7 +77,7 @@ $(document).ready(function(){
 //			for (var i=0; i<surveyQuestions.length; i++) {
 //				if ((i+1) == target_number) {
 					
-					var obj = {"seminar_id":seminarId,"user_id":userId,"survey_no":(i+1),"survey_answer": $(this).val()};
+					var obj = {"seminar_id":seminarId,"user_id":userId,"survey_no":target_number,"survey_answer": $(this).val()};
 					
 					console.log(obj);
 					surveyInfo.push(obj);
