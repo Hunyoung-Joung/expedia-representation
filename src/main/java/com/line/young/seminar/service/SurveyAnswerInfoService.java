@@ -39,14 +39,15 @@ public class SurveyAnswerInfoService {
     }
 
     public SurveyAnswerInfo findAllAnswerByIds(String userId, String seminarId){
-        Object obj = entityManager.createNamedQuery("SurveyAnswerInfo.findAllAnswerByIds")
+        @SuppressWarnings("unchecked")
+        List<SurveyAnswerInfo> surveyAnswerInfos = entityManager.createNamedQuery("SurveyAnswerInfo.findAllAnswerByIds")
         .setParameter("userId", userId)
         .setParameter("seminarId", seminarId)
-        .getSingleResult();
-        if (null ==  obj) {
+        .getResultList();
+        if (surveyAnswerInfos.isEmpty()) {
             return new SurveyAnswerInfo();
         } else {
-            return (SurveyAnswerInfo)obj;
+            return surveyAnswerInfos.get(0);
         }
     }
 
