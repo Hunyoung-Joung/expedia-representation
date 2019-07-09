@@ -70,8 +70,8 @@ public class SurveyAnswerInfoController {
     public SurveyAnswerInfo findByIds(@PathVariable String userId, @PathVariable String seminarId, 
             @ModelAttribute SurveyAnswerInfo surveyAnswerInfo) {
         
-        surveyAnswerInfo = surveyAnswerInfoService.findByIds(userId, seminarId);
-        if (null == surveyAnswerInfoService.findByIds(userId, seminarId)) {
+        surveyAnswerInfo = surveyAnswerInfoService.findAllAnswerByIds(userId, seminarId);
+        if (null == surveyAnswerInfoService.findAllAnswerByIds(userId, seminarId)) {
             surveyAnswerInfo = new SurveyAnswerInfo();
             
             logger.info("##### findByUserIds? "+surveyAnswerInfo.toString());

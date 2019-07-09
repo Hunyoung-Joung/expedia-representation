@@ -25,21 +25,21 @@ public class SurveyAnswerInfoService {
     private EntityManager entityManager;
 
     @SuppressWarnings("unchecked")
-    public List<SurveyAnswerInfo> findByUserId(String userId){
-      return entityManager.createNamedQuery("SurveyAnswerInfo.findByUserId")
+    public List<SurveyAnswerInfo> findAnswerByUserId(String userId){
+      return entityManager.createNamedQuery("SurveyAnswerInfo.findAnswerByUserId")
         .setParameter("userId", userId)
         .getResultList();
     }
     
     @SuppressWarnings("unchecked")
-    public List<SurveyAnswerInfo> findBySeminarId(String seminarId){
-      return entityManager.createNamedQuery("SurveyAnswerInfo.findBySeminarId")
+    public List<SurveyAnswerInfo> findAllAnswerBySeminarId(String seminarId){
+      return entityManager.createNamedQuery("SurveyAnswerInfo.findAllAnswerBySeminarId")
         .setParameter("seminar_id", seminarId)
         .getResultList();
     }
 
-    public SurveyAnswerInfo findByIds(String userId, String seminarId){
-      return (SurveyAnswerInfo) entityManager.createNamedQuery("SurveyAnswerInfo.findBySeminarId")
+    public SurveyAnswerInfo findAllAnswerByIds(String userId, String seminarId){
+      return (SurveyAnswerInfo) entityManager.createNamedQuery("SurveyAnswerInfo.findAllAnswerByIds")
         .setParameter("seminar_id", seminarId)
         .getSingleResult();
     }
@@ -48,19 +48,19 @@ public class SurveyAnswerInfoService {
         return surveyAnswerInfoRepository.findAll();
     }
     
-    public List<SurveyAnswerInfo> findAnswerByUserId(String userId) {
-        logger.info("## SurveyAnswerInfoService findAnswerByUserId userId? "+userId);
-        return this.findByUserId(userId);
-    }
-    
-    public List<SurveyAnswerInfo> findAllAnswerBySeminarId(String seminarId) {
-        logger.info("## SurveyAnswerInfoService findAllAnswerBySeminarId seminarId? "+seminarId);
-        return this.findBySeminarId(seminarId);
-    }
-    public SurveyAnswerInfo findAllAnswerByIds(String userId, String seminarId) {
-        logger.info("## SurveyAnswerInfoService findAllAnswerByIds userId? "+userId+", seminarId? "+seminarId);
-        return this.findByIds(userId, seminarId);
-    }
+//    public List<SurveyAnswerInfo> findAnswerByUserId(String userId) {
+//        logger.info("## SurveyAnswerInfoService findAnswerByUserId userId? "+userId);
+//        return this.findByUserId(userId);
+//    }
+//    
+//    public List<SurveyAnswerInfo> findAllAnswerBySeminarId(String seminarId) {
+//        logger.info("## SurveyAnswerInfoService findAllAnswerBySeminarId seminarId? "+seminarId);
+//        return this.findBySeminarId(seminarId);
+//    }
+//    public SurveyAnswerInfo findAllAnswerByIds(String userId, String seminarId) {
+//        logger.info("## SurveyAnswerInfoService findAllAnswerByIds userId? "+userId+", seminarId? "+seminarId);
+//        return this.findByIds(userId, seminarId);
+//    }
     
     
     public SurveyAnswerInfo saveOfSurveyAnswerInfo(SurveyAnswerInfo surveyAnswerInfo) {
