@@ -83,8 +83,8 @@ $(document).ready(function(){
 	    };
 	    console.log(JSON.stringify(sendData));
         $.ajax({
-	            url: 'https://seminar-web.herokuapp.com/survey/add',
-	            headers: {"api-key": apiKey},
+	            url: 'https://seminar-web.herokuapp.com/survey/api/ids',
+//	            headers: {"api-key": apiKey},
 	            type: 'POST',
 	            contentType: "application/json",
 	            dataType: 'json',

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.line.young.seminar.entity.PersonalInfo;
 import com.line.young.seminar.entity.SurveyAnswerInfo;
@@ -29,6 +30,7 @@ import com.line.young.seminar.service.SurveyAnswerInfoService;
  *
  */
 @Controller
+@RestController("/survey/api/add")
 @RequestMapping("/survey")
 public class SurveyAnswerInfoController {
     
@@ -95,7 +97,7 @@ public class SurveyAnswerInfoController {
     
 
 //    @RequestMapping(method = RequestMethod.POST)
-    @RequestMapping("/add")
+    @RequestMapping(value = "/ids") 
     public String addtquestionInfo(Model model, @Valid String userId, @Valid List<SurveyAnswerInfo> surveyAnswerInfos) throws Exception  {
         logger.info("##### add surveyAnswerInfo information");
         
