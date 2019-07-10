@@ -134,6 +134,8 @@ public class SurveyAnswerInfoController {
 @RestController("/survey")
 class SurveyAnswerInfoRestController {
     private final Logger logger = Logger.getLogger(this.getClass().getName());
+    @Autowired
+    private SurveyAnswerInfoService surveyAnswerInfoService;
     private SurveyAnswerInfoController surveyAnswerInfoController = new SurveyAnswerInfoController();
     @RequestMapping(value={"/api/add"})
     public String addtquestionInfo(Model model, @Valid String userId, @Valid List<SurveyAnswerInfo> surveyAnswerInfos) throws Exception  {
@@ -142,7 +144,7 @@ class SurveyAnswerInfoRestController {
         
 //        surveyAnswerInfo.setUser_id(this.userId_);
 //        surveyAnswerInfo.setSeminar_id("4");
-//        surveyAnswerInfos = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoController.surveyAnswerInfoService.saveOfSurveyAnswerInfos(surveyAnswerInfos);
+        surveyAnswerInfos = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(surveyAnswerInfos);
 //        model.addAttribute("questionInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
 
         return surveyAnswerInfoController.init(userId, model);
