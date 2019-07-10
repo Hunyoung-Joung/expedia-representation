@@ -98,18 +98,17 @@ public class SurveyAnswerInfoController {
     
 
 //    @RequestMapping(method = RequestMethod.POST)
-    @PostMapping(value = "/ids") 
-    public String addtquestionInfo(Model model, @Valid String userId, @Valid List<SurveyAnswerInfo> surveyAnswerInfos) throws Exception  {
-        logger.info("##### add surveyAnswerInfo information");
-        
-        
+//    @PostMapping(value = "/ids") 
+//    public String addtquestionInfo(Model model, @Valid String userId, @Valid List<SurveyAnswerInfo> surveyAnswerInfos) throws Exception  {
+//        logger.info("##### add surveyAnswerInfo information");
+//        
 //        surveyAnswerInfo.setUser_id(this.userId_);
 //        surveyAnswerInfo.setSeminar_id("4");
-        surveyAnswerInfos = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(surveyAnswerInfos);
-//        model.addAttribute("questionInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
-
-        return init(userId, model);
-    }
+//        surveyAnswerInfos = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(surveyAnswerInfos);
+////        model.addAttribute("questionInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
+//
+//        return init(userId, model);
+//    }
 //    
 //    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
 //    public String selectquestionInfo(@PathVariable String userId, Model model) {
@@ -139,7 +138,7 @@ class SurveyAnswerInfoRestController {
     private SurveyAnswerInfoController surveyAnswerInfoController = new SurveyAnswerInfoController();
 //    @RequestMapping(value={"/survey/api/add"})
     @PostMapping("/survey/api/add")
-    public String addtquestionInfo(Model model, @Valid @RequestBody String userId, @Valid @RequestBody String[] surveyAnswerInfos) 
+    public String addAnswerInfo(Model model, @Valid @RequestBody String userId, @Valid @RequestBody String[] surveyAnswerInfos) 
             throws Exception  {
         logger.info("##### add surveyAnswerInfo information");
         
