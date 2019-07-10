@@ -73,7 +73,7 @@ $(document).ready(function(){
 		$(".survey_answers").each(function() {
 			var target_id = $(this).attr("id");
 			var target_number = target_id.substring(1,2);
-			var obj = {"'seminar_id'":seminarId,"'user_id'":userId,"'survey_no'":target_number,"'survey_answer'": $(this).val()};
+			var obj = {'"seminar_id"':seminarId,'"user_id"':userId,'"survey_no"':target_number,'"survey_answer"': $(this).val()};
 			surveyInfo.push(obj);
 		});
 		
