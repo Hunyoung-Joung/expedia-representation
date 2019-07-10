@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.BasicJsonParser;
 import org.springframework.boot.json.JsonParser;
+import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -144,16 +145,18 @@ class SurveyAnswerInfoRestController {
     @PostMapping("/survey/api/add")
     public String addAnswerInfo(Model model, @Validated @RequestBody String surveyAnswerInfoList) 
             throws Exception  {
+        JsonParser springParser = JsonParserFactory.getJsonParser();
         
         JsonParser jsonParser = new BasicJsonParser();
-        JsonParser jsonParser_ = new BasicJsonParser();
+
         Map<String, Object> jsonMap = null;
-//        Map<String, Object> jsonMap_ = null;
 
         jsonMap = jsonParser.parseMap(surveyAnswerInfoList);
         String userId = jsonMap.get("userId").toString();
-        String[] obj = (String[]) jsonMap.get("surveyAnswerInfos");
-        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+obj[0]);
+        
+        List<Object> list = springParser.parseList(jsonMap.get("surveyAnswerInfos").toString());
+
+        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+list.get(0));
 //        jsonMap_ = jsonParser_.parseMap((String) obj);
         
 //        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+surveyAnswerInfos.get(0).getSeminar_id());
