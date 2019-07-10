@@ -130,3 +130,23 @@ public class SurveyAnswerInfoController {
 //        return "question_information";
 //    }
 }
+
+@Controller
+@RestController("/survey/api/add")
+class SurveyAnswerInfoRestController {
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private SurveyAnswerInfoController surveyAnswerInfoController = new SurveyAnswerInfoController();
+    @PostMapping(value = "/ids") 
+    public String addtquestionInfo(Model model, @Valid String userId, @Valid List<SurveyAnswerInfo> surveyAnswerInfos) throws Exception  {
+        logger.info("##### add surveyAnswerInfo information");
+        
+        
+//        surveyAnswerInfo.setUser_id(this.userId_);
+//        surveyAnswerInfo.setSeminar_id("4");
+//        surveyAnswerInfos = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoController.surveyAnswerInfoService.saveOfSurveyAnswerInfos(surveyAnswerInfos);
+//        model.addAttribute("questionInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
+
+        return surveyAnswerInfoController.init(userId, model);
+    }
+    
+}
