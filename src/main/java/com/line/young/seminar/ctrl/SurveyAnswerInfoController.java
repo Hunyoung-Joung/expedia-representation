@@ -130,13 +130,14 @@ public class SurveyAnswerInfoController {
 //    }
 }
 
-@RestController("/survey")
+@RestController
 class SurveyAnswerInfoRestController {
     private final Logger logger = Logger.getLogger(this.getClass().getName());
     @Autowired
     private SurveyAnswerInfoService surveyAnswerInfoService;
     private SurveyAnswerInfoController surveyAnswerInfoController = new SurveyAnswerInfoController();
-    @RequestMapping(value={"/api/add"})
+//    @RequestMapping(value={"/survey/api/add"})
+    @PostMapping("/survey/api/add")
     public String addtquestionInfo(Model model, @Valid String userId, @Valid List<SurveyAnswerInfo> surveyAnswerInfos) throws Exception  {
         logger.info("##### add surveyAnswerInfo information");
         
