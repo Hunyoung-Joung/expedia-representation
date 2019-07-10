@@ -34,11 +34,9 @@ public class SurveyAnswerInfo  {
 
     @Id
     @Column(name="seminar_id", nullable = false)
-    @JsonProperty("seminar_id")
     private String seminar_id;
     
     @Column(name="user_id", nullable = false)
-    @JsonProperty("user_id")
     private String user_id;
 
     @Column(name="survey_no", nullable = false)
