@@ -148,16 +148,15 @@ class SurveyAnswerInfoRestController {
 //        JsonParser springParser = JsonParserFactory.getJsonParser();
         
         JsonParser jsonParser = new BasicJsonParser();
-        List<Object> list = jsonParser.parseList(surveyAnswerInfoList);
-
         Map<String, Object> jsonMap = null;
 //
-//        jsonMap = jsonParser.parseMap(surveyAnswerInfoList);
+        jsonMap = jsonParser.parseMap(surveyAnswerInfoList);
         String userId = jsonMap.get("userId").toString();
+        String list = jsonMap.get("surveyAnswerInfos").toString();
 //        
 //        List<Object> list = springParser.parseList(jsonMap.get("surveyAnswerInfos").toString());
 
-        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+list.get(1));
+        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+list);
 //        jsonMap_ = jsonParser_.parseMap((String) obj);
         
 //        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+surveyAnswerInfos.get(0).getSeminar_id());
