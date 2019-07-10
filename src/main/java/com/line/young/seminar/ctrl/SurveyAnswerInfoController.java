@@ -138,13 +138,13 @@ class SurveyAnswerInfoRestController {
     private SurveyAnswerInfoController surveyAnswerInfoController = new SurveyAnswerInfoController();
 //    @RequestMapping(value={"/survey/api/add"})
     @PostMapping("/survey/api/add")
-    public String addtquestionInfo(Model model, @ModelAttribute(value="userId") String userId, @ModelAttribute(value="surveyAnswerInfos") List<SurveyAnswerInfo> surveyAnswerInfos) throws Exception  {
+    public String addtquestionInfo(Model model, @RequestParam(value ="userId") String userId, @RequestParam(value ="surveyAnswerInfos") List<String> surveyAnswerInfos) throws Exception  {
         logger.info("##### add surveyAnswerInfo information");
         
         
 //        surveyAnswerInfo.setUser_id(this.userId_);
 //        surveyAnswerInfo.setSeminar_id("4");
-        surveyAnswerInfos = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(surveyAnswerInfos);
+//        surveyAnswerInfos = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(surveyAnswerInfos);
 //        model.addAttribute("questionInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
 
         return surveyAnswerInfoController.init(userId, model);
