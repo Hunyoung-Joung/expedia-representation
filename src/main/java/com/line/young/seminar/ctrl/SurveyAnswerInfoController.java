@@ -130,7 +130,6 @@ public class SurveyAnswerInfoController {
 //    }
 }
 
-@Controller
 @RestController("/survey")
 class SurveyAnswerInfoRestController {
     private final Logger logger = Logger.getLogger(this.getClass().getName());
