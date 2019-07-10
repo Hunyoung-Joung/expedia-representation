@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -138,7 +139,7 @@ class SurveyAnswerInfoRestController {
     private SurveyAnswerInfoController surveyAnswerInfoController = new SurveyAnswerInfoController();
 //    @RequestMapping(value={"/survey/api/add"})
     @PostMapping("/survey/api/add")
-    public String addtquestionInfo(Model model, @ModelAttribute String userId, @ModelAttribute String[] surveyAnswerInfos) 
+    public String addtquestionInfo(Model model, @Valid @RequestBody String userId, @Valid @RequestBody String[] surveyAnswerInfos) 
             throws Exception  {
         logger.info("##### add surveyAnswerInfo information");
         
