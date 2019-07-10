@@ -31,7 +31,6 @@ import com.line.young.seminar.service.SurveyAnswerInfoService;
  *
  */
 @Controller
-@RestController("/survey/api/add")
 @RequestMapping("/survey")
 public class SurveyAnswerInfoController {
     
