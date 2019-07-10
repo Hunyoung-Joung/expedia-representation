@@ -138,7 +138,7 @@ class SurveyAnswerInfoRestController {
     private SurveyAnswerInfoController surveyAnswerInfoController = new SurveyAnswerInfoController();
 //    @RequestMapping(value={"/survey/api/add"})
     @PostMapping("/survey/api/add")
-    public String addtquestionInfo(Model model, @RequestParam String userId, @RequestParam String[] surveyAnswerInfos) 
+    public String addtquestionInfo(Model model, @ModelAttribute String userId, @ModelAttribute String[] surveyAnswerInfos) 
             throws Exception  {
         logger.info("##### add surveyAnswerInfo information");
         
