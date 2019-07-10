@@ -145,18 +145,19 @@ class SurveyAnswerInfoRestController {
     @PostMapping("/survey/api/add")
     public String addAnswerInfo(Model model, @Validated @RequestBody String surveyAnswerInfoList) 
             throws Exception  {
-        JsonParser springParser = JsonParserFactory.getJsonParser();
+//        JsonParser springParser = JsonParserFactory.getJsonParser();
         
         JsonParser jsonParser = new BasicJsonParser();
+        List<Object> list = jsonParser.parseList(surveyAnswerInfoList);
 
         Map<String, Object> jsonMap = null;
-
-        jsonMap = jsonParser.parseMap(surveyAnswerInfoList);
+//
+//        jsonMap = jsonParser.parseMap(surveyAnswerInfoList);
         String userId = jsonMap.get("userId").toString();
-        
-        List<Object> list = springParser.parseList(jsonMap.get("surveyAnswerInfos").toString());
+//        
+//        List<Object> list = springParser.parseList(jsonMap.get("surveyAnswerInfos").toString());
 
-        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+list.get(0));
+        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+list.get(1));
 //        jsonMap_ = jsonParser_.parseMap((String) obj);
         
 //        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+surveyAnswerInfos.get(0).getSeminar_id());
