@@ -146,17 +146,21 @@ class SurveyAnswerInfoRestController {
             throws Exception  {
         
         JsonParser jsonParser = new BasicJsonParser();
+        JsonParser jsonParser_ = new BasicJsonParser();
         Map<String, Object> jsonMap = null;
+//        Map<String, Object> jsonMap_ = null;
 
         jsonMap = jsonParser.parseMap(surveyAnswerInfoList);
         String userId = jsonMap.get("userId").toString();
-        List<SurveyAnswerInfo> surveyAnswerInfos = (List<SurveyAnswerInfo>)jsonMap.get("surveyAnswerInfos");
+        Object obj = jsonMap.get("surveyAnswerInfos");
+        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+obj);
+//        jsonMap_ = jsonParser_.parseMap((String) obj);
         
-        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+surveyAnswerInfos.get(0).getSeminar_id());
+//        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+surveyAnswerInfos.get(0).getSeminar_id());
         
 //        surveyAnswerInfo.setUser_id(this.userId_);
 //        surveyAnswerInfo.setSeminar_id("4");
-        surveyAnswerInfos = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(surveyAnswerInfos);
+//        surveyAnswerInfos = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(surveyAnswerInfos);
 //        model.addAttribute("questionInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
 
         return surveyAnswerInfoController.init(userId, model);
