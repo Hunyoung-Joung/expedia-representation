@@ -148,7 +148,7 @@ class SurveyAnswerInfoRestController {
 //        surveyAnswerInfos = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(surveyAnswerInfos);
 //        model.addAttribute("questionInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
 
-        return surveyAnswerInfoController.init(userId, model);
+        return surveyAnswerInfoController.init("", model);
     }
     
 }
