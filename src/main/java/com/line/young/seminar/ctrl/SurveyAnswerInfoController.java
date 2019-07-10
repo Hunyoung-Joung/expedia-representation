@@ -144,13 +144,15 @@ class SurveyAnswerInfoRestController {
     @PostMapping("/survey/api/add")
     public String addAnswerInfo(Model model, @Validated @RequestBody String surveyAnswerInfoList) 
             throws Exception  {
-        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+surveyAnswerInfoList);
+        
         JsonParser jsonParser = new BasicJsonParser();
         Map<String, Object> jsonMap = null;
 
         jsonMap = jsonParser.parseMap(surveyAnswerInfoList);
         String userId = jsonMap.get("userId").toString();
-        List<SurveyAnswerInfo> surveyAnswerInfos = (List<SurveyAnswerInfo>) jsonMap.get("surveyAnswerInfos");
+        List<SurveyAnswerInfo> surveyAnswerInfos = (List<SurveyAnswerInfo>)jsonMap.get("surveyAnswerInfos");
+        
+        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+surveyAnswerInfos.get(0).getSeminar_id());
         
 //        surveyAnswerInfo.setUser_id(this.userId_);
 //        surveyAnswerInfo.setSeminar_id("4");
