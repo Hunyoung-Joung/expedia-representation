@@ -2,9 +2,12 @@ package com.line.young.seminar.ctrl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.json.BasicJsonParser;
+import org.springframework.boot.json.JsonParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -142,14 +145,19 @@ class SurveyAnswerInfoRestController {
     public String addAnswerInfo(Model model, @Validated @RequestBody String surveyAnswerInfoList) 
             throws Exception  {
         logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+surveyAnswerInfoList);
-        
+        JsonParser jsonParser = new BasicJsonParser();
+        Map<String, Object> jsonMap = null;
+
+        jsonMap = jsonParser.parseMap(surveyAnswerInfoList);
+        String userId = jsonMap.get("userId").toString();
+        List<SurveyAnswerInfo> surveyAnswerInfos = (List<SurveyAnswerInfo>) jsonMap.get("surveyAnswerInfos");
         
 //        surveyAnswerInfo.setUser_id(this.userId_);
 //        surveyAnswerInfo.setSeminar_id("4");
-//        surveyAnswerInfos = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(surveyAnswerInfos);
+        surveyAnswerInfos = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(surveyAnswerInfos);
 //        model.addAttribute("questionInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
 
-        return surveyAnswerInfoController.init("", model);
+        return surveyAnswerInfoController.init(userId, model);
     }
     
 }
