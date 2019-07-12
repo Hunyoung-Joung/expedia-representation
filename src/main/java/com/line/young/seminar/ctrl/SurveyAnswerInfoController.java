@@ -151,7 +151,7 @@ class SurveyAnswerInfoRestController {
         userId = list.get(0).getUser_id();
 
         for (SurveyAnswerInfo surveyAnswerInfo: list) {
-            logger.info("##### add surveyAnswerInfo information userId?"+surveyAnswerInfo.getUser_id()+", getSurvey_answer? "+surveyAnswerInfo.getSurvey_answer());
+            logger.info("##### add surveyAnswerInfo information userId?"+userId+", getSurvey_answer? "+surveyAnswerInfo.getSurvey_answer());
         }
 
         list = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(list);

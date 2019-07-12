@@ -58,10 +58,12 @@ public class SurveyAnswerInfoService {
     
     public Iterable<SurveyAnswerInfo> saveOfSurveyAnswerInfos(List<SurveyAnswerInfo> surveyAnswerInfos) {
         for (SurveyAnswerInfo surveyAnswerInfo: surveyAnswerInfos) {
-            logger.info("##### saveOfSurveyAnswerInfos userId?"+surveyAnswerInfo.getUser_id()
-            +", getSurvey_answer? "+surveyAnswerInfo.getSurvey_answer());
             
-            surveyAnswerInfoRepository.save(surveyAnswerInfo);
+            surveyAnswerInfos.add(surveyAnswerInfoRepository.save(surveyAnswerInfo));
+            
+            logger.info("##### saveOfSurveyAnswerInfos userId?"+surveyAnswerInfo.getUser_id()
+            +", no? "+surveyAnswerInfo.getSurvey_no()
+            +", answer? "+surveyAnswerInfo.getSurvey_answer());
         }
 //        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
         return surveyAnswerInfos;
