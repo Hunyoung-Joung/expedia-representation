@@ -51,11 +51,11 @@ public class SurveyAnswerInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
-    private String userId_ = "";
+//    private String userId_ = "";
     
     @GetMapping
     public String init(@RequestParam("userId") String userId, Model model) throws Exception {
-        this.userId_ = userId;
+//        this.userId_ = userId;
         PersonalInfo personalInfo = new PersonalInfo();
         SurveyAnswerInfo surveyAnswerInfo = new SurveyAnswerInfo();
         if (null == userId) {
