@@ -49,7 +49,7 @@ public class SurveyAnswerInfo implements Serializable {
     @Column(name="survey_no", nullable = false)
     private String survey_no;
     
-    @Column(name="survey_answer", nullable = false)
+    @Column(name="survey_answer", nullable = true)
     private String survey_answer;
 
 
