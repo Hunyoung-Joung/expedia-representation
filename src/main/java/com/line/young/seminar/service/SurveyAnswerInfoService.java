@@ -59,14 +59,14 @@ public class SurveyAnswerInfoService {
     public Iterable<SurveyAnswerInfo> saveOfSurveyAnswerInfos(List<SurveyAnswerInfo> surveyAnswerInfos) {
         for (SurveyAnswerInfo surveyAnswerInfo: surveyAnswerInfos) {
             
-            surveyAnswerInfoRepository.save(surveyAnswerInfo);
+//            surveyAnswerInfoRepository.save(surveyAnswerInfo);
             
             logger.info("##### saveOfSurveyAnswerInfos userId?"+surveyAnswerInfo.getUser_id()
             +", no? "+surveyAnswerInfo.getSurvey_no()
             +", answer? "+surveyAnswerInfo.getSurvey_answer());
         }
-//        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
-        return surveyAnswerInfos;
+        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
+//        return surveyAnswerInfos;
     }
 //
 //    public void deleteOfQuestionInfo(String userId) {

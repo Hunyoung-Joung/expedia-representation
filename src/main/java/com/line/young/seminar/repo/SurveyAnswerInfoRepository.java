@@ -22,4 +22,11 @@ public interface SurveyAnswerInfoRepository extends CrudRepository<SurveyAnswerI
     List<SurveyAnswerInfo> findAllAnswerBySeminarId(@Param("seminarId") String seminarId);
     
     SurveyAnswerInfo findAllAnswerByIds(@Param("userId") String userId, @Param("seminarId") String seminarId);
+
+//    @Override
+//    default <S extends SurveyAnswerInfo> Iterable<S> saveAll(Iterable<S> entities) {
+//        // TODO Auto-generated method stub
+//        return null;
+//    }
+
 }
