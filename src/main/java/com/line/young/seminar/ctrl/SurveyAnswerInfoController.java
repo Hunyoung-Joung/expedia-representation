@@ -57,7 +57,7 @@ public class SurveyAnswerInfoController {
     public String init(@RequestParam("userId") String userId, Model model) throws Exception {
 //        this.userId_ = userId;
         PersonalInfo personalInfo = new PersonalInfo();
-        SurveyAnswerInfo surveyAnswerInfo = new SurveyAnswerInfo();
+        List<SurveyAnswerInfo> surveyAnswerInfos = new ArrayList<SurveyAnswerInfo>();
         if (null == userId) {
             throw new Exception();
         } else {
@@ -65,14 +65,14 @@ public class SurveyAnswerInfoController {
                 personalInfo = personalInfoService.findOne(userId).get();
                 
                 logger.info("## init findAllAnswerByIds userId? "+userId+", seminarId? 4");
-                surveyAnswerInfo = this.findByIds(userId, "3", surveyAnswerInfo); // TODO
-                surveyAnswerInfo.setUser_id(userId);
-                surveyAnswerInfo.setSeminar_id("3");// TODO
+                surveyAnswerInfos = this.findByIds(userId, "3", surveyAnswerInfos); // TODO
+//                surveyAnswerInfo.setUser_id(userId);
+//                surveyAnswerInfo.setSeminar_id("3");// TODO
             } else {
                 throw new Exception();
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
-            model.addAttribute("surveyAnswerInfo", surveyAnswerInfo);
+            model.addAttribute("surveyAnswerInfos", surveyAnswerInfos);
             logger.info("##### init survey information models? "+model.toString());
         }
 
@@ -81,16 +81,11 @@ public class SurveyAnswerInfoController {
 
 
     @RequestMapping(value="{userId, seminarId}", method=RequestMethod.GET)
-    public SurveyAnswerInfo findByIds(@PathVariable String userId, @PathVariable String seminarId, 
-            @ModelAttribute SurveyAnswerInfo surveyAnswerInfo) {
+    public List<SurveyAnswerInfo> findByIds(@PathVariable String userId, @PathVariable String seminarId, 
+            @ModelAttribute List<SurveyAnswerInfo> surveyAnswerInfos) {
         
-        surveyAnswerInfo = surveyAnswerInfoService.findAllAnswerByIds(userId, seminarId);
-        if (null == surveyAnswerInfoService.findAllAnswerByIds(userId, seminarId)) {
-            surveyAnswerInfo = new SurveyAnswerInfo();
-            
-            logger.info("##### findByUserIds? "+surveyAnswerInfo.toString());
-        } 
-        return surveyAnswerInfo;
+        surveyAnswerInfos = surveyAnswerInfoService.findAllAnswerByIds(userId, seminarId);
+        return surveyAnswerInfos;
     }
     
 
@@ -158,6 +153,7 @@ class SurveyAnswerInfoRestController {
         }
 
         list = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(list);
+        model.addAttribute("surveyAnswerInfos", list);
 
         return surveyAnswerInfoController.init(userId, model);
     }
