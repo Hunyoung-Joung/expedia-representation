@@ -1,6 +1,7 @@
 package com.line.young.seminar.ctrl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -153,7 +154,8 @@ class SurveyAnswerInfoRestController {
 //
         jsonMap = jsonParser.parseMap(surveyAnswerInfoList);
         String userId = jsonMap.get("userId").toString();
-        String list = jsonMap.get("surveyAnswerInfos").toString();
+        List<String> list = Arrays.asList(jsonMap.get("surveyAnswerInfos").toString().replaceAll("[", "").replaceAll("]", "").split("\\s*,\\s*"));
+        
 
 //        
 //        List<Object> list = springParser.parseList(jsonMap.get("surveyAnswerInfos").toString());
