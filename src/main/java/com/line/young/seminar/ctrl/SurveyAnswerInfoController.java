@@ -149,11 +149,11 @@ class SurveyAnswerInfoRestController {
         
         JsonParser jsonParser = new BasicJsonParser();
         Map<String, Object> jsonMap = null;
-        Map<String, List<String>> jsonMap_ = null;
+        List<String> jsonList = new ArrayList<String>();
 //
         jsonMap = jsonParser.parseMap(surveyAnswerInfoList);
         String userId = jsonMap.get("userId").toString();
-        List<String> list = jsonMap_.get("surveyAnswerInfos");
+        String list = jsonMap.get("surveyAnswerInfos").toString();
 
 //        
 //        List<Object> list = springParser.parseList(jsonMap.get("surveyAnswerInfos").toString());
