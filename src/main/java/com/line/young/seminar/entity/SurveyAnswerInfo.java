@@ -1,5 +1,7 @@
 package com.line.young.seminar.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -30,7 +32,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
             + "ORDER BY answer.survey_no DESC"),
     }
 )
-public class SurveyAnswerInfo  {
+public class SurveyAnswerInfo implements Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name="seminar_id", nullable = false)
