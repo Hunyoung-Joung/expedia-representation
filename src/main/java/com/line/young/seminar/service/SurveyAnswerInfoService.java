@@ -61,9 +61,7 @@ public class SurveyAnswerInfoService {
             
 //            surveyAnswerInfoRepository.save(surveyAnswerInfo);
             
-            logger.info("##### saveOfSurveyAnswerInfos userId?"+surveyAnswerInfo.getUser_id()
-            +", no? "+surveyAnswerInfo.getSurvey_no()
-            +", answer? "+surveyAnswerInfo.getSurvey_answer());
+            logger.info("##### saveOfSurveyAnswerInfos?"+surveyAnswerInfo.toString());
         }
         return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
 //        return surveyAnswerInfos;

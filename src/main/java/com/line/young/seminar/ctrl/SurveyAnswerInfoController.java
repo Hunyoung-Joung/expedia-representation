@@ -157,7 +157,7 @@ class SurveyAnswerInfoRestController {
         list = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(list);
         model.addAttribute("surveyAnswerInfos", list);
 
-        return surveyAnswerInfoController.init(userId, model);
+        return "survey";
     }
     
 }
