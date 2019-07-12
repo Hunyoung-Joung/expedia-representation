@@ -1,5 +1,6 @@
 package com.line.young.seminar.ctrl;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.json.BasicJsonParser;
+import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.line.young.seminar.entity.PersonalInfo;
 import com.line.young.seminar.entity.SurveyAnswerInfo;
 import com.line.young.seminar.service.PersonalInfoService;
@@ -146,28 +148,34 @@ class SurveyAnswerInfoRestController {
     @PostMapping("/survey/api/add")
     public String addAnswerInfo(Model model, @Validated @RequestBody String surveyAnswerInfoList) 
             throws Exception  {
-//        JsonParser springParser = JsonParserFactory.getJsonParser();
-        
-        JsonParser jsonParser = new BasicJsonParser();
-        Map<String, Object> jsonMap = null;
-        List<String> jsonList = new ArrayList<String>();
-//
-        jsonMap = jsonParser.parseMap(surveyAnswerInfoList);
-        String userId = jsonMap.get("userId").toString();
-        List<String> list = Arrays.asList(jsonMap.get("surveyAnswerInfos").toString().replaceAll("[", "").replaceAll("]", "").split("\\s*,\\s*"));
-        
+        String userId = "";
+        ObjectMapper objectMapper = new ObjectMapper();
+        SurveyAnswerInfo[] surveyAnswerInfos = objectMapper.readValue(surveyAnswerInfoList, SurveyAnswerInfo[].class);
+        List<SurveyAnswerInfo> list = Arrays.asList(surveyAnswerInfos);  
+        userId = surveyAnswerInfos[0].getUser_id();
+//        for (SurveyAnswerInfo surveyAnswerInfo: surveyAnswerInfos) {
+//            userId = surveyAnswerInfo.getUser_id();
+//        }
+//        
+//        JsonParser jsonParser = new JacksonJsonParser();
+//        Map<String, Object> jsonMap = null;
+//        List<String> jsonList = new ArrayList<String>();
+////
+//        jsonMap = jsonParser.parseMap(surveyAnswerInfoList);
+//        String userId = jsonMap.get("userId").toString();
+//        String list = jsonMap.get("surveyAnswerInfos").toString();
 
 //        
 //        List<Object> list = springParser.parseList(jsonMap.get("surveyAnswerInfos").toString());
 
-        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+list);
+        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+list.size());
 //        jsonMap_ = jsonParser_.parseMap((String) obj);
         
 //        logger.info("##### add surveyAnswerInfo information surveyAnswerInfoList? "+surveyAnswerInfos.get(0).getSeminar_id());
         
 //        surveyAnswerInfo.setUser_id(this.userId_);
 //        surveyAnswerInfo.setSeminar_id("4");
-//        surveyAnswerInfos = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(surveyAnswerInfos);
+        list = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(list);
 //        model.addAttribute("questionInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
 
         return surveyAnswerInfoController.init(userId, model);

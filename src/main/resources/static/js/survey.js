@@ -78,7 +78,6 @@ $(document).ready(function(){
 		});
 		
 	    var sendData = {
-	    	"userId":userId,
 	        "surveyAnswerInfos":surveyInfo
 	    };
 	    console.log(JSON.stringify(sendData));
