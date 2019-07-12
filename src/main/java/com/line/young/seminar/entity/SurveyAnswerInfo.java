@@ -36,9 +36,11 @@ public class SurveyAnswerInfo  {
     @Column(name="seminar_id", nullable = false)
     private String seminar_id;
     
+    @Id
     @Column(name="user_id", nullable = false)
     private String user_id;
-
+    
+    @Id
     @Column(name="survey_no", nullable = false)
     private String survey_no;
     
