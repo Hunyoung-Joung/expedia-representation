@@ -77,11 +77,11 @@ $(document).ready(function(){
 			surveyInfo.push(obj);
 		});
 		
-	    var sendData = {
-	        surveyInfo
-	    };
+//	    var sendData = {
+//	        surveyInfo
+//	    };
 	    
-	    console.log(JSON.stringify(sendData));
+	    console.log(JSON.stringify(surveyInfo));
 	    
         $.ajax({
 	            url: 'https://seminar-web.herokuapp.com/survey/api/add',
@@ -89,7 +89,7 @@ $(document).ready(function(){
 	            type: 'POST',
 	            contentType: "application/json",
 	            dataType: 'json',
-	            data: JSON.stringify(sendData),
+	            data: JSON.stringify(surveyInfo),
 	            // if it could put user data
             success: function(data, status, xhr) { 
             	// nothing to do
