@@ -14,6 +14,7 @@ Copyright@ LINE 2019
     </div>
     
     <div class="container">
+    	<form th:action="@{/survey}" th:method="post" >
 		<input id="userId" name="user_id" type="hidden" class="form-control" th:field="*{userId}"/>
 		<input id="seminarId" name="seminar_id" type="hidden" class="form-control" th:field="*{seminarId}"/>
 		<table class="table">
@@ -131,6 +132,7 @@ Copyright@ LINE 2019
 				</tr>
 			</tbody>
 		</table>
+	</form>	
 	</div>
 
 </body>
