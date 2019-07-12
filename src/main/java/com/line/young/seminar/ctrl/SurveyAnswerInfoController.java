@@ -72,6 +72,8 @@ public class SurveyAnswerInfoController {
                 throw new Exception();
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
+            model.addAttribute("userId", userId);
+            model.addAttribute("seminarId", "3"); // TODO
             model.addAttribute("surveyAnswerInfos", surveyAnswerInfos);
             logger.info("##### init survey information models? "+model.toString());
         }
