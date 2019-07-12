@@ -78,7 +78,7 @@ $(document).ready(function(){
 		});
 		
 	    var sendData = {
-	        "surveyAnswerInfos":surveyInfo
+	        surveyInfo
 	    };
 	    console.log(JSON.stringify(sendData));
         $.ajax({
