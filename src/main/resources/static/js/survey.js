@@ -80,7 +80,9 @@ $(document).ready(function(){
 	    var sendData = {
 	        surveyInfo
 	    };
+	    
 	    console.log(JSON.stringify(sendData));
+	    
         $.ajax({
 	            url: 'https://seminar-web.herokuapp.com/survey/api/add',
 //	            headers: {"api-key": apiKey},
