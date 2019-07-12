@@ -59,7 +59,7 @@ public class SurveyAnswerInfoService {
     public Iterable<SurveyAnswerInfo> saveOfSurveyAnswerInfos(List<SurveyAnswerInfo> surveyAnswerInfos) {
         for (SurveyAnswerInfo surveyAnswerInfo: surveyAnswerInfos) {
             
-            surveyAnswerInfos.add(surveyAnswerInfoRepository.save(surveyAnswerInfo));
+            surveyAnswerInfoRepository.save(surveyAnswerInfo);
             
             logger.info("##### saveOfSurveyAnswerInfos userId?"+surveyAnswerInfo.getUser_id()
             +", no? "+surveyAnswerInfo.getSurvey_no()
