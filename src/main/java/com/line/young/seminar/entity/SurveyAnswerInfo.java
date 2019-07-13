@@ -47,7 +47,7 @@ public class SurveyAnswerInfo implements Serializable {
     private String user_id;
     
     @Column(name="survey_no", nullable = false)
-    private String survey_no;
+    private int survey_no;
     
     @Column(name="survey_answer", nullable = true)
     private String survey_answer;
@@ -73,12 +73,12 @@ public class SurveyAnswerInfo implements Serializable {
     }
 
 
-    public String getSurvey_no() {
+    public int getSurvey_no() {
         return survey_no;
     }
 
 
-    public void setSurvey_no(String survey_no) {
+    public void setSurvey_no(int survey_no) {
         this.survey_no = survey_no;
     }
 
