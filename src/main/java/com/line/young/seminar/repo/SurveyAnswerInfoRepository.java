@@ -25,6 +25,6 @@ public interface SurveyAnswerInfoRepository extends JpaRepository<SurveyAnswerIn
     
     SurveyAnswerInfo findAllAnswerByIds(@Param("userId") String userId, @Param("seminarId") String seminarId);
 
-	Iterable<SurveyAnswerInfo> save(Iterable<SurveyAnswerInfo> surveyAnswerInfos);
+//	Iterable<SurveyAnswerInfo> save(Iterable<SurveyAnswerInfo> surveyAnswerInfos);
 
 }

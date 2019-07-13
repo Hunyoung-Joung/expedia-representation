@@ -58,15 +58,8 @@ public class SurveyAnswerInfoService {
         return surveyAnswerInfoRepository.findAll();
     }
     
-    public Iterable<SurveyAnswerInfo> saveOfSurveyAnswerInfos(Iterable<SurveyAnswerInfo> surveyAnswerInfos) {
-        for (SurveyAnswerInfo surveyAnswerInfo: surveyAnswerInfos) {
-            
-//            surveyAnswerInfoRepository.save(surveyAnswerInfo);
-            
-            logger.info("##### saveOfSurveyAnswerInfos?"+surveyAnswerInfo.toString());
-        }
-        return surveyAnswerInfoRepository.save(surveyAnswerInfos);
-//        return surveyAnswerInfoRepository.saveAll(range(0, 10).mapToObj(Model::new).collect(toList()));
+    public Iterable<SurveyAnswerInfo> saveOfSurveyAnswerInfos(List<SurveyAnswerInfo> surveyAnswerInfos) {
+        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
     }
     
     
