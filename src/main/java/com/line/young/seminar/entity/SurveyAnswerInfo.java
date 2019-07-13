@@ -95,7 +95,6 @@ public class SurveyAnswerInfo implements Serializable {
 
     @Override
     public String toString() {
-        return "SurveyInfo [seminar_id="+seminar_id+", user_id="+user_id+", survey_no="+survey_no+", seminar_id="
-                +seminar_id+", survey_answer="+survey_answer+"]";
+        return "SurveyInfo [seminar_id="+seminar_id+", user_id="+user_id+", survey_no="+survey_no+", survey_answer="+survey_answer+"]";
     }
 }

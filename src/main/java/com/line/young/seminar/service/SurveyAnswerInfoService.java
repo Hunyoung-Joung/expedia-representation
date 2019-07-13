@@ -10,9 +10,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.line.young.seminar.entity.SurveyAnswerInfo;
 import com.line.young.seminar.repo.SurveyAnswerInfoRepository;
+import static java.util.stream.IntStream.range;
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class SurveyAnswerInfoService {
@@ -62,8 +65,8 @@ public class SurveyAnswerInfoService {
             
             logger.info("##### saveOfSurveyAnswerInfos?"+surveyAnswerInfo.toString());
         }
-        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
-//        return surveyAnswerInfos;
+        return surveyAnswerInfoRepository.save(surveyAnswerInfos);
+//        return surveyAnswerInfoRepository.saveAll(range(0, 10).mapToObj(Model::new).collect(toList()));
     }
     
     
