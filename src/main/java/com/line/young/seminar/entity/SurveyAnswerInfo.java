@@ -58,15 +58,6 @@ public class SurveyAnswerInfo {
     
     @Column(name="survey_answer", nullable = true)
     private String survey_answer;
-    
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
 
     public String getUser_id() {
         return user_id;

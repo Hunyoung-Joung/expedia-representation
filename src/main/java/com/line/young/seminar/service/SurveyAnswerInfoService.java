@@ -11,6 +11,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.line.young.seminar.entity.PersonalInfo;
 import com.line.young.seminar.entity.SurveyAnswerInfo;
 import com.line.young.seminar.repo.SurveyAnswerInfoRepository;
 
@@ -56,8 +58,13 @@ public class SurveyAnswerInfoService {
         return surveyAnswerInfoRepository.findAll();
     }
     
+    public SurveyAnswerInfo save(SurveyAnswerInfo surveyAnswerInfo) {
+        return surveyAnswerInfoRepository.save(surveyAnswerInfo);
+    }
+    
     public Iterable<SurveyAnswerInfo> saveOfSurveyAnswerInfos(List<SurveyAnswerInfo> surveyAnswerInfos) {
     	for (SurveyAnswerInfo surveyAnswerInfo: surveyAnswerInfos) {
+    		
     		
 //    		List<String> param = new ArrayList<String>();
 //    		param.add(surveyAnswerInfo.getSeminar_id());
@@ -66,10 +73,11 @@ public class SurveyAnswerInfoService {
     		
 //    		Iterable<SurveyAnswerInfo> temp = surveyAnswerInfoRepository.findAllById(param);
 //    		if (null != temp) {
-    			surveyAnswerInfoRepository.save(surveyAnswerInfo);
+//    			surveyAnswerInfoRepository.save(surveyAnswerInfo);
 //    		}
       
     		logger.info("##### saveOfSurveyAnswerInfos?"+surveyAnswerInfo.toString());
+    		this.save(surveyAnswerInfo);
     	}
 //        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
         return surveyAnswerInfos;
