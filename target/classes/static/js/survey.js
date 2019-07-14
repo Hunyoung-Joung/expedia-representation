@@ -86,7 +86,24 @@ $(document).ready(function(){
 	            data: JSON.stringify(surveyInfo),
 	            // if it could put user data
             success: function(data, status, xhr) { 
-            	// nothing to do
+	        	// set each answers with question number
+	        	let answers = JSON.parse(JSON.stringify(data_)).answers; // if it has not any survey data with seminar id -> []
+	        	// There are answers already being.
+	            for(var i=0; i<answers.length; i++) {
+	            	surveyAnswers[i] = JSON.parse(JSON.stringify(answers[i]));
+	            }
+	            	
+	        	// fill out to answer filed follow answer length
+	        	var answerFieldLength = $(".survey_answers").length;
+	        	for(var i=0; i<answerFieldLength; i++) {
+	        		if (surveyAnswers[i].surveyNo == (i+1)) {
+	        			$($(".survey_answers").get(i)).val(surveyAnswers[i].surveyAnswer).trigger("change");
+	        		}
+	        	}
+	        	// answers are being
+	        	if (answers.length > 0) {
+	        			
+	        	}
             },
             // if it couldn't put user data by error
             error: function(xhr, status, err) { 

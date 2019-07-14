@@ -4,18 +4,16 @@
 
 package com.line.young.seminar.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-
 import com.line.young.seminar.entity.SurveyAnswerInfo;
 import com.line.young.seminar.repo.SurveyAnswerInfoRepository;
-import static java.util.stream.IntStream.range;
-import static java.util.stream.Collectors.toList;
+
 
 @Service
 public class SurveyAnswerInfoService {
@@ -59,8 +57,25 @@ public class SurveyAnswerInfoService {
     }
     
     public Iterable<SurveyAnswerInfo> saveOfSurveyAnswerInfos(List<SurveyAnswerInfo> surveyAnswerInfos) {
-        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
+    	for (SurveyAnswerInfo surveyAnswerInfo: surveyAnswerInfos) {
+    		
+//    		List<String> param = new ArrayList<String>();
+//    		param.add(surveyAnswerInfo.getSeminar_id());
+//    		param.add(surveyAnswerInfo.getUser_id());
+//    		param.add(String.valueOf(surveyAnswerInfo.getSurvey_no()));
+    		
+//    		Iterable<SurveyAnswerInfo> temp = surveyAnswerInfoRepository.findAllById(param);
+//    		if (null != temp) {
+    			surveyAnswerInfoRepository.save(surveyAnswerInfo);
+//    		}
+      
+    		logger.info("##### saveOfSurveyAnswerInfos?"+surveyAnswerInfo.toString());
+    	}
+//        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
+        return surveyAnswerInfos;
+
     }
+    
     
     
 //    public Iterable<SurveyAnswerInfo> saveOfSurveyAnswerInfos(List<SurveyAnswerInfo> surveyAnswerInfos) {
