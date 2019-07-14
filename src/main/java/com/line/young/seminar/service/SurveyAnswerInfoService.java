@@ -77,10 +77,12 @@ public class SurveyAnswerInfoService {
 //    		}
       
     		logger.info("##### saveOfSurveyAnswerInfos?"+surveyAnswerInfo.toString());
-    		this.save(surveyAnswerInfo);
+//    		this.save(surveyAnswerInfo);
     	}
-//        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
-        return surveyAnswerInfos;
+    	this.deleteAllOfSurveyAnswerInfo(surveyAnswerInfos);
+        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
+    	
+//        return surveyAnswerInfos;
 
     }
     
@@ -97,9 +99,13 @@ public class SurveyAnswerInfoService {
 ////        return surveyAnswerInfos;
 //    }
 //
-//    public void deleteOfQuestionInfo(String userId) {
-//        questionInfoRepository.deleteById(userId);
-//    }
+    public void deleteOfSurveyAnswerInfo(SurveyAnswerInfo surveyAnswerInfo) {
+    	surveyAnswerInfoRepository.delete(surveyAnswerInfo);
+    }
+    
+    public void deleteAllOfSurveyAnswerInfo(List<SurveyAnswerInfo> surveyAnswerInfos) {
+    	surveyAnswerInfoRepository.deleteAll(surveyAnswerInfos);
+    }
 //    
 //    public void deleteAllOfQuestionInfo() {
 //        questionInfoRepository.deleteAll();
