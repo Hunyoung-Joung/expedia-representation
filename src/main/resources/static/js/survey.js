@@ -64,8 +64,6 @@ $(document).ready(function(){
 	
 	// Submit survey answers
 	$("#submit").click(function(){
-//		alert("アンケートはセミナー参加後に入力できます");
-//		return;
 		var userId = $('#userId').val();
 		var seminarId = $('#seminarId').val();
 		let surveyInfo = [];
@@ -76,10 +74,6 @@ $(document).ready(function(){
 			var obj = {"seminar_id":seminarId,"user_id":userId,"survey_no":target_number,"survey_answer": $(this).val()};
 			surveyInfo.push(obj);
 		});
-		
-//	    var sendData = {
-//	        surveyInfo
-//	    };
 	    
 	    console.log(JSON.stringify(surveyInfo));
 	    

@@ -59,14 +59,9 @@ public class SurveyAnswerInfo {
     @Column(name="survey_answer", nullable = true)
     private String survey_answer;
     
-//    @CreationTimestamp
-//    @Column(name="date_at", nullable = true)
-//    private String date_at;
-    
     public Long getId() {
         return id;
     }
-
 
     public void setId(Long id) {
         this.id = id;

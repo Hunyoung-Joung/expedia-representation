@@ -4,8 +4,6 @@
 package com.line.young.seminar.repo;
 
 import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
@@ -17,14 +15,12 @@ import com.line.young.seminar.entity.SurveyAnswerInfo;
  * 
  *
  */
-public interface SurveyAnswerInfoRepository extends JpaRepository<SurveyAnswerInfo, String> {
+public interface SurveyAnswerInfoRepository extends CrudRepository<SurveyAnswerInfo, String> {
 
     SurveyAnswerInfo findAnswerByUserId(@Param("userId") String userId);
     
     List<SurveyAnswerInfo> findAllAnswerBySeminarId(@Param("seminarId") String seminarId);
     
     SurveyAnswerInfo findAllAnswerByIds(@Param("userId") String userId, @Param("seminarId") String seminarId);
-
-//	Iterable<SurveyAnswerInfo> save(Iterable<SurveyAnswerInfo> surveyAnswerInfos);
 
 }
