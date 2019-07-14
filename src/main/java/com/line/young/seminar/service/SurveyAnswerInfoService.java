@@ -104,6 +104,7 @@ public class SurveyAnswerInfoService {
     }
     
     public void deleteAllOfSurveyAnswerInfo(List<SurveyAnswerInfo> surveyAnswerInfos) {
+    	logger.info("##### deleteAllOfSurveyAnswerInfo?"+surveyAnswerInfos.size());
     	surveyAnswerInfoRepository.deleteAll(surveyAnswerInfos);
     }
 //    
