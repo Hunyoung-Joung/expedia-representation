@@ -77,9 +77,9 @@ public class SurveyAnswerInfoService {
 //    		}
       
     		logger.info("##### saveOfSurveyAnswerInfos?"+surveyAnswerInfo.toString());
-//    		this.save(surveyAnswerInfo);
+    		this.deleteOfSurveyAnswerInfo(surveyAnswerInfo);
     	}
-    	this.deleteAllOfSurveyAnswerInfo(surveyAnswerInfos);
+//    	this.deleteAllOfSurveyAnswerInfo(surveyAnswerInfos);
         return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
     	
 //        return surveyAnswerInfos;
