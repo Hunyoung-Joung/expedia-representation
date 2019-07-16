@@ -11,8 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.line.young.seminar.entity.PersonalInfo;
 import com.line.young.seminar.entity.SurveyAnswerInfo;
 import com.line.young.seminar.repo.SurveyAnswerInfoRepository;
 
@@ -67,16 +65,11 @@ public class SurveyAnswerInfoService {
                 surveyAnswerInfos.get(0).getSeminar_id());
         if (null != list) {
             for (SurveyAnswerInfo surveyAnswerInfo: list) {
-                
-                logger.info("##### saveOfSurveyAnswerInfos?"+surveyAnswerInfo.toString());
                 this.deleteOfSurveyAnswerInfo(surveyAnswerInfo);
             }
         }
 
-//    	this.deleteAllOfSurveyAnswerInfo(surveyAnswerInfos);
         return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
-    	
-//        return surveyAnswerInfos;
 
     }
     

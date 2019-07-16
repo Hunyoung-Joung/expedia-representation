@@ -87,7 +87,9 @@ $(document).ready(function(){
 	            // if it could put user data
             success: function(data, status, xhr) { 
 	        	// set each answers with question number
-	        	let answers = JSON.parse(JSON.stringify(data_)).answers; // if it has not any survey data with seminar id -> []
+	        	let answers = JSON.parse(JSON.stringify(data_)).answers;
+	        	console.log("answers --> "+answers);
+	        	
 	        	// There are answers already being.
 	            for(var i=0; i<answers.length; i++) {
 	            	surveyAnswers[i] = JSON.parse(JSON.stringify(answers[i]));
