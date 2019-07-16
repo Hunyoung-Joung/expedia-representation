@@ -3,8 +3,10 @@
  * by jounghunyoung@gmail.com
  * 
  */
-// API key
-// API key
+	var initData = /*[[${surveyAnswerInfos}]]*/ 'default';
+	
+	console.log(JSON.stringify(initData));
+	console.log(JSON.parse(JSON.stringify(initData)));
 var apiKey = "";
 const seminarId = "20190313-01";
 // elements
@@ -14,10 +16,7 @@ var surveyAnswers = [];
 var checkBoxVals = [];
 
 $(document).ready(function(){
-	var initData = /*[[${surveyAnswerInfos}]]*/ 'default';
-	
-	console.log(JSON.stringify(initData));
-	console.log(JSON.parse(JSON.stringify(initData)));
+
 //	JSON.parse(initData).each(function() {
 //		var target_id = $(this).attr("id");
 //		var target_number = target_id.substring(1,2);
