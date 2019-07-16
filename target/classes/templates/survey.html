@@ -94,9 +94,9 @@ Copyright@ LINE 2019
 				</tr>
 				<tr>
 	        		<td colspan="4" class="col-md-4  text-left">
-				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" th:field="*{surveyAnswerInfos[2]}"  > 最新APIアップデートについて<br>
-				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" th:field="*{surveyAnswerInfos[2]}" > LINE Pay APIご紹介<br>
-				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" th:field="*{surveyAnswerInfos[2]}" > クラスメソッド様事例紹介<br>
+				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" th:value="*{surveyAnswerInfos[2].survey_answer}"> 最新APIアップデートについて<br>
+				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" th:value="*{surveyAnswerInfos[2].survey_answer}"> LINE Pay APIご紹介<br>
+				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" th:value="*{surveyAnswerInfos[2].survey_answer}"> クラスメソッド様事例紹介<br>
 				  		<input type="hidden" name="q4_answer" id="q4_answer" class="survey_answers"></input>
 		        	</td>
 				</tr>
