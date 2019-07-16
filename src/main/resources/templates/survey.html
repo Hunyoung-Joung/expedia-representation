@@ -6,7 +6,14 @@ Copyright@ LINE 2019
 
 <body>
 <script th:src="@{/js/survey.js}" ></script>
+<script th:inline="javascript">
+/*<![CDATA[*/
 
+    var message = /*[[${surveyAnswerInfos}]]*/ 'default';
+    console.log(message);
+
+/*]]>*/
+</script>
     <div class="error_division"></div>
     <div class="text-center">
 	     <h4>第4回パートナー様向け勉強会　アンケート</h4>
