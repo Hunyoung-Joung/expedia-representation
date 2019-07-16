@@ -12,9 +12,10 @@ Copyright@ LINE 2019
     var surveyAnswerInfos = /*[[${surveyAnswerInfos}]]*/ 'default';
     $.each(surveyAnswerInfos, function(idx, val) {
         $.each(val, function(key, value) {
-			console.log(key+": "+value+" --> "+JSON.stringify(val));
+			console.log(key+": "+value+" --> "+JSON.parse(JSON.stringify(val)).survey_answer);
 			if (key == "survey_no") {
-				$("#q"+value+"_answer").val();
+				console.log(key+": "+value+" --> "+JSON.parse(JSON.stringify(val)).survey_answer);
+				$("#q"+value+"_answer").val(JSON.parse(JSON.stringify(val)).survey_answer);
 			}
 /* 	    	for(var i=0; i<answerFieldLength; i++) {
 	    		if (surveyAnswers[i].surveyNo == (i+1)) {
