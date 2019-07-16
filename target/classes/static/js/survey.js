@@ -3,10 +3,7 @@
  * by jounghunyoung@gmail.com
  * 
  */
-	var initData = /*[[${surveyAnswerInfos}]]*/ 'default';
-	
-	console.log(JSON.stringify(initData));
-	console.log(JSON.parse(JSON.stringify(initData)));
+
 var apiKey = "";
 const seminarId = "20190313-01";
 // elements

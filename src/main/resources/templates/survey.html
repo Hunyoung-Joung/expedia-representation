@@ -5,7 +5,7 @@ Copyright@ LINE 2019
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
 
 <body>
-<script th:src="@{/js/survey.js}" th:inline="javascript"></script>
+<script th:src="@{/js/survey.js}" ></script>
 
     <div class="error_division"></div>
     <div class="text-center">
@@ -17,7 +17,7 @@ Copyright@ LINE 2019
 		<input id="userId" name="user_id" type="hidden" class="form-control" th:value="*{userId}"/>
 		<input id="seminarId" name="seminar_id" type="hidden" class="form-control" th:value="*{seminarId}"/>
 		<table class="table">
-	    	<tbody th:each="surveyAnswerInfo : ${surveyAnswerInfos}">
+	    	<tbody th:each="surveyAnswerInfo,iter : ${surveyAnswerInfos.SurveyInfo}">
 				<tr>
 	        		<td colspan="4" class="col-md-4  text-center">
 					<label>弊社勉強会の改善の為にパートナー様の様々なご意見を頂いております。
@@ -42,7 +42,7 @@ Copyright@ LINE 2019
 	        			<small>そう思う</small>
 	        		</td>
 					<td width="10%" align="left">
-						<input type="text" maxlength="1" size="1" id="q1_answer" value="3" class="survey_answers" >
+						<input type="text" maxlength="1" size="1" id="q1_answer" class="survey_answers" th:value="*{surveyAnswerInfo.survey_answer}">
 					</td>
 	      		</tr>
 				<tr>
