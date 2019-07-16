@@ -12,7 +12,7 @@ Copyright@ LINE 2019
     var surveyAnswerInfos = /*[[${surveyAnswerInfos}]]*/ 'default';
     $.each(surveyAnswerInfos, function(idx, val) {
         $.each(val, function(key, value) {
-			console.log(key+": "+value+" --> "+JSON.parse(val[0]));
+			console.log(key+": "+value+" --> "+val[0]);
 			if (key == survey_no) {
 				$("#q"+value+"_answer").val();
 			}
