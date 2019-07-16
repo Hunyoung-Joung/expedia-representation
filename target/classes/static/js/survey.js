@@ -16,15 +16,6 @@ var surveyAnswerInfos;
 
 $(document).ready(function(){
 
-    $.each(surveyAnswerInfos, function(idx, val) {
-        $.each(val, function(key, value) {
-			if (key == "survey_no") {
-				ans = JSON.parse(JSON.stringify(val)).survey_answer;
-				$($(".survey_answers").get(parseInt(value)-1)).val(ans).trigger("change");
-			}
-  		});
-	});
-
 	// when range bar value changes, then the answer field  is changed follow to the range bar value
 	// some of browser couldn't detect class selector
 	$('input[type=range]').on('input', function () {
@@ -110,6 +101,15 @@ $(document).ready(function(){
             }
         });
 	});
+	
+    $.each(surveyAnswerInfos, function(idx, val) {
+        $.each(val, function(key, value) {
+			if (key == "survey_no") {
+				ans = JSON.parse(JSON.stringify(val)).survey_answer;
+				$($(".survey_answers").get(parseInt(value)-1)).val(ans).trigger("change");
+			}
+  		});
+	});
 });
 
 /**
@@ -141,28 +141,6 @@ function getUserSurveyInfo() {
             	// nothing to do
             }
     });
-}
-
-/**
- * survey answers set up to each answer field
- * 
- * @returns
- */
-function setSurveyAnswer() {
-
-            	
-        	// fill out to answer filed follow answer length
-        	var answerFieldLength = $(".survey_answers").length;
-        	for(var i=0; i<answerFieldLength; i++) {
-        		if (surveyAnswers[i].surveyNo == (i+1)) {
-        			$($(".survey_answers").get(i)).val(answers[i]).trigger("change");
-        		}
-        	}
-        	// answers are being
-        	if (answers.length > 0) {
-        			
-        	}
-
 }
 
 /**
