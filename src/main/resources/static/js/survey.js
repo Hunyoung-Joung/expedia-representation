@@ -20,7 +20,6 @@ $(document).ready(function(){
         $.each(val, function(key, value) {
 			if (key == "survey_no") {
 				ans = JSON.parse(JSON.stringify(val)).survey_answer;
-				console.log(key+": "+value+" --> "+ans);
 				$($(".survey_answers").get(parseInt(value)-1)).val(ans).trigger("change");
 			}
   		});
@@ -39,6 +38,7 @@ $(document).ready(function(){
 	// Synchronize with range bar
 	$('input[type=text]').on('change', function () {
 		var target_id = $(this).attr("id");
+		console.log(target_id+": "+target_id.substring(1,2)+" triggerd ");
 		var target_number = target_id.substring(1,2);
 		// reset the data, and focus out from the range and input field
 		$("input[id=q"+target_number+"]").val($(this).val()).blur();
