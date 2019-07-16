@@ -14,13 +14,6 @@ var checkBoxVals = [];
 
 $(document).ready(function(){
 
-//	JSON.parse(initData).each(function() {
-//		var target_id = $(this).attr("id");
-//		var target_number = target_id.substring(1,2);
-//		var obj = {"seminar_id":seminarId,"user_id":userId,"survey_no":target_number,"survey_answer": $(this).val()};
-//		surveyInfo.push(obj);
-//	});
-
 	// when range bar value changes, then the answer field  is changed follow to the range bar value
 	// some of browser couldn't detect class selector
 	$('input[type=range]').on('input', function () {
