@@ -80,9 +80,9 @@ public class SurveyAnswerInfoService {
 //    		this.deleteOfSurveyAnswerInfo(surveyAnswerInfo);
     	}
     	this.deleteAllOfSurveyAnswerInfo(surveyAnswerInfos);
-        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
+//        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
     	
-//        return surveyAnswerInfos;
+        return surveyAnswerInfos;
 
     }
     
