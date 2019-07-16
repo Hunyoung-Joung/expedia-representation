@@ -1,3 +1,8 @@
+/**
+ * Copyright@ LINE 
+ * by jounghunyoung@gmail.com
+ * 
+ */
 package com.line.young.seminar.ctrl;
 
 import java.util.logging.Logger;
@@ -18,7 +23,9 @@ import com.line.young.seminar.service.PersonalInfoService;
 
 /**
  * 
- * @author JP22601
+ * Personal information controller with service and entity
+ * 
+ * @author jounghunyoung@gmail.com
  *
  */
 @Controller
@@ -31,17 +38,14 @@ public class PersonalInfoController {
     private PersonalInfoService personalInfoService;
     
     /**
+     * Initial method
      * 
      * @param userId
      * @param model
      * @return
      */
-//    @RequestMapping(value="/", method=RequestMethod.GET)
-//    @RequestMapping(value="/")
     @GetMapping
     public String init(@RequestParam("userId") String userId, Model model) {
-        logger.info("##### init personal information: userId?"+userId);
-        
         if (null == userId) {
             model.addAttribute("personalInfo", new PersonalInfo());
         } else {
@@ -60,13 +64,11 @@ public class PersonalInfoController {
      */
     @RequestMapping(value="/{userId}", method=RequestMethod.GET)
     public PersonalInfo findById(@PathVariable String userId, @ModelAttribute PersonalInfo personalInfo) {
-        logger.info("##### find by id: userId? "+userId);
         if (personalInfoService.findOne(userId).isPresent()) {
             personalInfo = personalInfoService.findOne(userId).get();
         } else {
             personalInfo = new PersonalInfo();
         }
-        logger.info("##### find personalInfo? "+personalInfo.toString());
         return personalInfo;
     }
     
@@ -77,8 +79,6 @@ public class PersonalInfoController {
      */
     @RequestMapping(value="/findAll", method=RequestMethod.GET)
     public String findAll(Model model) {
-        logger.info("##### find all of users");
-  
         Iterable<PersonalInfo> personalInfos = personalInfoService.findAll();
         model.addAttribute("personalInfos", personalInfos);
 
