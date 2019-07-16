@@ -107,7 +107,7 @@ Copyright@ LINE 2019
 				</tr>
 				<tr>
 	        		<td colspan="4" class="col-md-4  text-left">
-						<textarea class="form-control survey_answers" rows="5" id="q5_answer" th:field="*{surveyAnswerInfos[1].survey_answer}"></textarea>
+						<textarea class="form-control survey_answers" rows="5" id="q5_answer" th:value="*{surveyAnswerInfos[1].survey_answer}"></textarea>
 		        	</td>
 				</tr>
 				<tr>
@@ -120,7 +120,7 @@ Copyright@ LINE 2019
 				<tr>
 	        		<td colspan="4" class="col-md-4  text-left">
 	        			<div class="form-group">
-							<textarea class="form-control survey_answers" rows="5" id="q6_answer" th:field="*{surveyAnswerInfos[0].survey_answer}"></textarea>
+							<textarea class="form-control survey_answers" rows="5" id="q6_answer" th:value="*{surveyAnswerInfos[0].survey_answer}"></textarea>
 						</div>
 		        	</td>
 				</tr>
