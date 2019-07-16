@@ -63,23 +63,16 @@ public class SurveyAnswerInfoService {
     }
     
     public Iterable<SurveyAnswerInfo> saveOfSurveyAnswerInfos(List<SurveyAnswerInfo> surveyAnswerInfos) {
-    	for (SurveyAnswerInfo surveyAnswerInfo: this.findAllAnswerByIds(surveyAnswerInfos.get(0).getUser_id(), 
-    	        surveyAnswerInfos.get(0).getSeminar_id())) {
-    		
-    		
-//    		List<String> param = new ArrayList<String>();
-//    		param.add(surveyAnswerInfo.getSeminar_id());
-//    		param.add(surveyAnswerInfo.getUser_id());
-//    		param.add(String.valueOf(surveyAnswerInfo.getSurvey_no()));
-    		
-//    		Iterable<SurveyAnswerInfo> temp = surveyAnswerInfoRepository.findAllById(param);
-//    		if (null != temp) {
-//    			surveyAnswerInfoRepository.save(surveyAnswerInfo);
-//    		}
-      
-    		logger.info("##### saveOfSurveyAnswerInfos?"+surveyAnswerInfo.toString());
-    		this.deleteOfSurveyAnswerInfo(surveyAnswerInfo);
-    	}
+        List<SurveyAnswerInfo> list = this.findAllAnswerByIds(surveyAnswerInfos.get(0).getUser_id(), 
+                surveyAnswerInfos.get(0).getSeminar_id());
+        if (null != list) {
+            for (SurveyAnswerInfo surveyAnswerInfo: list) {
+                
+                logger.info("##### saveOfSurveyAnswerInfos?"+surveyAnswerInfo.toString());
+                this.deleteOfSurveyAnswerInfo(surveyAnswerInfo);
+            }
+        }
+
 //    	this.deleteAllOfSurveyAnswerInfo(surveyAnswerInfos);
         return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
     	
