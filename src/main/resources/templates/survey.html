@@ -7,6 +7,7 @@ Copyright@ LINE 2019
 <body>
 <script th:src="@{/js/survey.js}" ></script>
 <script th:inline="javascript">
+console.log($($(".survey_answers").get(parseInt(0).val());
 /*<![CDATA[*/
 
     var surveyAnswerInfos = /*[[${surveyAnswerInfos}]]*/ 'default';
@@ -14,7 +15,7 @@ Copyright@ LINE 2019
         $.each(val, function(key, value) {
 			if (key == "survey_no") {
 				ans = JSON.parse(JSON.stringify(val)).survey_answer;
-				console.log($($(".survey_answers").get(parseInt(value)-1)).val());
+				
 				console.log(key+": "+value+" --> "+ans);
 				$($(".survey_answers").get(parseInt(value)-1)).val(ans).trigger("change");
 				//$("#q"+value+"_answer").val(ans);
