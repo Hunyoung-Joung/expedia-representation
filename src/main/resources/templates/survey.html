@@ -18,7 +18,7 @@ Copyright@ LINE 2019
 		<input id="seminarId" name="seminar_id" type="hidden" class="form-control" th:value="*{seminarId}"/>
 		<table class="table">
 	    	<tbody>
-				<tr th:each="surveyAnswerInfo,iterStat: ${surveyAnswerInfos}" th:if="${iterStat.index}==0">
+				<tr>
 	        		<td colspan="4" class="col-md-4  text-center">
 					<label>弊社勉強会の改善の為にパートナー様の様々なご意見を頂いております。
 					パートナー様の職種以外の個人情報はお預かりしませんので、自由なご意見お願い致します。</label>
@@ -42,7 +42,7 @@ Copyright@ LINE 2019
 	        			<small>そう思う</small>
 	        		</td>
 					<td width="10%" align="left">
-						<input type="text" maxlength="1" size="1" id="q1_answer" class="survey_answers" th:value="*{surveyAnswerInfo.survey_answer}">
+						<input type="text" maxlength="1" size="1" id="q1_answer" class="survey_answers" th:value="*{surveyAnswerInfo[0].survey_answer}">
 					</td>
 	      		</tr>
 				<tr>
