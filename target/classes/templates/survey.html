@@ -9,18 +9,19 @@ Copyright@ LINE 2019
 <script th:inline="javascript">
 
 /*<![CDATA[*/
-    var surveyAnswerInfos = /*[[${surveyAnswerInfos}]]*/ 'default';
+    surveyAnswerInfos = /*[[${surveyAnswerInfos}]]*/ 'default';
+    /*
     $.each(surveyAnswerInfos, function(idx, val) {
         $.each(val, function(key, value) {
 			if (key == "survey_no") {
 				ans = JSON.parse(JSON.stringify(val)).survey_answer;
-				
+				answers.put();
 				console.log(key+": "+value+" --> "+ans);
 				$($(".survey_answers").get(parseInt(value)-1)).val(ans).trigger("change");
 				//$("#q"+value+"_answer").val(ans);
 			}
   		});
-	});
+	});*/
 /*]]>*/
 </script>
     <div class="error_division"></div>

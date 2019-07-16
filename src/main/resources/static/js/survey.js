@@ -12,9 +12,21 @@ var surveyQuestions = [];
 var surveyAnswers = [];
 var checkBoxVals = [];
 
+var surveyAnswerInfos;
+
 $(document).ready(function(){
 	
 	console.log($($(".survey_answers").get(0)).val());
+	
+    $.each(surveyAnswerInfos, function(idx, val) {
+        $.each(val, function(key, value) {
+			if (key == "survey_no") {
+				ans = JSON.parse(JSON.stringify(val)).survey_answer;
+				console.log(key+": "+value+" --> "+ans);
+				$($(".survey_answers").get(parseInt(value)-1)).val(ans).trigger("change");
+			}
+  		});
+	});
 
 	// when range bar value changes, then the answer field  is changed follow to the range bar value
 	// some of browser couldn't detect class selector
@@ -158,42 +170,20 @@ function getUserSurveyInfo() {
  * @returns
  */
 function setSurveyAnswer() {
-    $.ajax({
-        url: 'https://www.changchao.me/api/sv/u?userId='+userId+'&seminarId='+seminarId,
-        headers: {"api-key": apiKey},
-        type: 'GET',
-        contentType: "application/json",
-        dataType: 'json',
-        // if it could get user data even if it empty
-        success: function(data_, status, xhr) { 
-        	// set each answers with question number
-        	let answers = JSON.parse(JSON.stringify(data_)).answers; // if it has not any survey data with seminar id -> []
-        	// There are answers already being.
-            for(var i=0; i<answers.length; i++) {
-            	surveyAnswers[i] = JSON.parse(JSON.stringify(answers[i]));
-            }
+
             	
         	// fill out to answer filed follow answer length
         	var answerFieldLength = $(".survey_answers").length;
         	for(var i=0; i<answerFieldLength; i++) {
         		if (surveyAnswers[i].surveyNo == (i+1)) {
-        			$($(".survey_answers").get(i)).val(surveyAnswers[i].surveyAnswer).trigger("change");
+        			$($(".survey_answers").get(i)).val(answers[i]).trigger("change");
         		}
         	}
         	// answers are being
         	if (answers.length > 0) {
         			
         	}
-        },
-        // if it couldn't get user data by error
-        error: function(xhr, status, err) { 
-        	// show error if it has
-        	showError(err);
-        },
-        complete: function (xhr, status) {
-        	// nothing to do
-        }
-    });
+
 }
 
 /**
