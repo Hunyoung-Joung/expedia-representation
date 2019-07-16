@@ -1,0 +1,45 @@
+<!-- 
+Copyright@ LINE 2019
+-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
+
+<body>
+<script th:src="@{/js/seminar.js}"></script>
+
+    <div class="error_division"></div>
+	<div class="text-center">
+	  	<h4>セミナー情報</h4>
+	</div>
+	<div class="container">
+		<table class="table">
+        	<thead>
+          		<tr>
+            		<th>セミナー</th>
+            		<th>カテゴリー</th>
+            		<th>質問内容</th>
+            		<!--<th></th>
+            		<th></th>
+            		<th></th>-->
+          		</tr>
+        	</thead>
+        	<tbody>
+          		<tr th:each="questionInfo:${questionInfos}" th:object="${questionInfo}">
+            		<td th:text="*{seminar_id}"></td>
+            		<td th:text="*{q_category}"></td>
+            		<td th:text="*{q_contents}"></td>
+            		<!--  
+            		<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}(id=*{id})}">参照</a></td>
+            		<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}/edit(id=*{id})}">編集</a></td>
+            		<td>
+              			<form th:action="@{/players/{id}(id=*{id})}" th:method="delete">
+                			<input class="btn btn-default btn-xs" type="submit" value="削除" />
+              			</form>
+            		</td>-->
+          		</tr>
+        	</tbody>
+      	</table>
+	</div>
+
+</body>
+</html>

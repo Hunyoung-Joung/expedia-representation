@@ -78,15 +78,15 @@ public class QuestionInfoController {
     }
     
 
-//    @RequestMapping(method=RequestMethod.GET)
-//    public String findAll(Model model) {
-//        logger.info("##### find all of users");
-//  
-//        Iterable<questionInfo> questionInfos = questionInfoService.findAll();
-//        model.addAttribute("questionInfos", questionInfos);
-//
-//        return "user_list";
-//    }
+    @RequestMapping(method=RequestMethod.POST)
+    public String findAll(@RequestParam("password") String password, Model model) {
+        logger.info("##### find all of users");
+  
+        Iterable<QuestionInfo> questionInfos = questionInfoService.findAllOfQuestionInfo();
+        model.addAttribute("questionInfos", questionInfos);
+
+        return "all_questions";
+    }
     
 
     @RequestMapping(method = RequestMethod.POST)
