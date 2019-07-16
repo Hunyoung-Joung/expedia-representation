@@ -7,7 +7,7 @@ Copyright@ LINE 2019
 <body>
 <script th:src="@{/js/survey.js}" ></script>
 <script th:inline="javascript">
-console.log($($(".survey_answers").get(parseInt(0).val());
+console.log($($(".survey_answers").get(0)).val());
 /*<![CDATA[*/
 
     var surveyAnswerInfos = /*[[${surveyAnswerInfos}]]*/ 'default';
