@@ -78,7 +78,7 @@ public class QuestionInfoController {
     }
     
 
-    @RequestMapping(method=RequestMethod.POST)
+    @RequestMapping(method=RequestMethod.POST, value={"/all_questions"}, params={"userId"})
     public String findAll(@RequestParam("password") String password, Model model) {
         logger.info("##### find all of users");
   
