@@ -17,7 +17,7 @@ Copyright@ LINE 2019
 		<input id="userId" name="user_id" type="hidden" class="form-control" th:value="*{userId}"/>
 		<input id="seminarId" name="seminar_id" type="hidden" class="form-control" th:value="*{seminarId}"/>
 		<table class="table">
-	    	<tbody th:each="surveyAnswerInfo,iter : ${surveyAnswerInfos.SurveyInfo}">
+	    	<tbody th:each="surveyAnswerInfo,iter : ${surveyAnswerInfos}">
 				<tr>
 	        		<td colspan="4" class="col-md-4  text-center">
 					<label>弊社勉強会の改善の為にパートナー様の様々なご意見を頂いております。
