@@ -13,6 +13,8 @@ var surveyAnswers = [];
 var checkBoxVals = [];
 
 $(document).ready(function(){
+	
+	console.log($($(".survey_answers").get(0)).val());
 
 	// when range bar value changes, then the answer field  is changed follow to the range bar value
 	// some of browser couldn't detect class selector
