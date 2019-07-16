@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -78,7 +79,7 @@ public class QuestionInfoController {
     }
     
 
-    @RequestMapping(method=RequestMethod.POST, value={"/all_questions"}, params={"userId"})
+    @PostMapping("/all_questions")
     public String findAll(@RequestParam("password") String password, Model model) {
         logger.info("##### find all of users");
   
