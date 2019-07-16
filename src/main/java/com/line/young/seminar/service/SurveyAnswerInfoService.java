@@ -79,10 +79,10 @@ public class SurveyAnswerInfoService {
     		logger.info("##### saveOfSurveyAnswerInfos?"+surveyAnswerInfo.toString());
 //    		this.deleteOfSurveyAnswerInfo(surveyAnswerInfo);
     	}
-    	this.deleteAllOfSurveyAnswerInfo(surveyAnswerInfos);
-//        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
+//    	this.deleteAllOfSurveyAnswerInfo(surveyAnswerInfos);
+        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
     	
-        return surveyAnswerInfos;
+//        return surveyAnswerInfos;
 
     }
     
