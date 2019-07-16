@@ -14,7 +14,7 @@ Copyright@ LINE 2019
         $.each(val, function(key, value) {
 			if (key == "survey_no") {
 				ans = JSON.parse(JSON.stringify(val)).survey_answer;
-				console.log($($(".survey_answers").get(value)).val());
+				console.log($($(".survey_answers").get(parseInt(value)-1)).val());
 				console.log(key+": "+value+" --> "+ans);
 				$($(".survey_answers").get(parseInt(value)-1)).val(ans).trigger("change");
 				//$("#q"+value+"_answer").val(ans);
