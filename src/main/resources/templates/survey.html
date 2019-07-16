@@ -5,8 +5,7 @@ Copyright@ LINE 2019
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
 
 <body>
-<script th:src="@{/js/survey.js}"></script>
-<body>
+<script th:src="@{/js/survey.js}" th:inline="javascript"></script>
 
     <div class="error_division"></div>
     <div class="text-center">
