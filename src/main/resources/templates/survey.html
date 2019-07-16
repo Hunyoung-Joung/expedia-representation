@@ -63,7 +63,7 @@ Copyright@ LINE 2019
 	        			<small>そう思う</small>
 	        		</td>
 					<td width="10%" align="left">
-						<input type="text" maxlength="1" size="1" id="q2_answer" value="3" class="survey_answers">
+						<input type="text" maxlength="1" size="1" id="q2_answer" value="3" class="survey_answers" th:value="*{surveyAnswerInfos[4].survey_answer}">
 					</td>
 	      		</tr>
 				<tr>
@@ -84,7 +84,7 @@ Copyright@ LINE 2019
 	        			<small>そう思う</small>
 	        		</td>
 					<td width="10%" align="left">
-						<input type="text" maxlength="1" size="1" id="q3_answer" value="3" class="survey_answers">
+						<input type="text" maxlength="1" size="1" id="q3_answer" value="3" class="survey_answers" th:value="*{surveyAnswerInfos[3].survey_answer}">
 					</td>
 	      		</tr>	      		
 				<tr>
@@ -94,9 +94,9 @@ Copyright@ LINE 2019
 				</tr>
 				<tr>
 	        		<td colspan="4" class="col-md-4  text-left">
-				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" value="1" > 最新APIアップデートについて<br>
-				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" value="2" > LINE Pay APIご紹介<br>
-				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" value="3" > クラスメソッド様事例紹介<br>
+				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" value="1" th:field="*{surveyAnswerInfos[2].survey_answer}"> 最新APIアップデートについて<br>
+				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" value="2" th:field="*{surveyAnswerInfos[2].survey_answer}"> LINE Pay APIご紹介<br>
+				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" value="3" th:field="*{surveyAnswerInfos[2].survey_answer}"> クラスメソッド様事例紹介<br>
 				  		<input type="hidden" name="q4_answer" id="q4_answer" class="survey_answers"></input>
 		        	</td>
 				</tr>
@@ -107,7 +107,7 @@ Copyright@ LINE 2019
 				</tr>
 				<tr>
 	        		<td colspan="4" class="col-md-4  text-left">
-						<textarea class="form-control survey_answers" rows="5" id="q5_answer" ></textarea>
+						<textarea class="form-control survey_answers" rows="5" id="q5_answer" th:field="*{surveyAnswerInfos[1].survey_answer}"></textarea>
 		        	</td>
 				</tr>
 				<tr>
@@ -120,7 +120,7 @@ Copyright@ LINE 2019
 				<tr>
 	        		<td colspan="4" class="col-md-4  text-left">
 	        			<div class="form-group">
-							<textarea class="form-control survey_answers" rows="5" id="q6_answer" ></textarea>
+							<textarea class="form-control survey_answers" rows="5" id="q6_answer" th:field="*{surveyAnswerInfos[0].survey_answer}"></textarea>
 						</div>
 		        	</td>
 				</tr>
