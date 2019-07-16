@@ -14,7 +14,7 @@ var surveyAnswers = [];
 var checkBoxVals = [];
 
 $(document).ready(function(){
-	var initData = ${"surveyAnswerInfos"};
+	var initData = /*[[${surveyAnswerInfos}]]*/ 'default';
 	
 	console.log(JSON.stringify(initData));
 	console.log(JSON.parse(JSON.stringify(initData)));
