@@ -18,7 +18,7 @@ Copyright@ LINE 2019
 		<input id="userId" name="user_id" type="hidden" class="form-control" th:value="*{userId}"/>
 		<input id="seminarId" name="seminar_id" type="hidden" class="form-control" th:value="*{seminarId}"/>
 		<table class="table">
-	    	<tbody>
+	    	<tbody th:each="surveyAnswerInfo : ${surveyAnswerInfos}">
 				<tr>
 	        		<td colspan="4" class="col-md-4  text-center">
 					<label>弊社勉強会の改善の為にパートナー様の様々なご意見を頂いております。
@@ -39,11 +39,11 @@ Copyright@ LINE 2019
 						  <input type="range" min="1" max="5" value="3" class="slider" id="q1">
 						</div>
 	        		</td>
-	        		<td width="20%" align="right" >
+	        		<td width="20%" align="left" >
 	        			<small>そう思う</small>
 	        		</td>
 					<td width="10%" align="left">
-						<input type="text" maxlength="1" size="1" id="q1_answer" value="3" class="survey_answers">
+						<input type="text" maxlength="1" size="1" id="q1_answer" class="survey_answers" name="survey_answer" th:value="*{surveyAnswerInfo.survey_answer}">
 					</td>
 	      		</tr>
 				<tr>
@@ -60,7 +60,7 @@ Copyright@ LINE 2019
 						  <input type="range" min="1" max="5" value="3" class="slider" id="q2">
 						</div>
 	        		</td>
-	        		<td width="20%" align="right" >
+	        		<td width="20%" align="left" >
 	        			<small>そう思う</small>
 	        		</td>
 					<td width="10%" align="left">
@@ -81,7 +81,7 @@ Copyright@ LINE 2019
 						  <input type="range" min="1" max="5" value="3" class="slider" id="q3">
 						</div>
 	        		</td>
-	        		<td width="20%" align="right" >
+	        		<td width="20%" align="left" >
 	        			<small>そう思う</small>
 	        		</td>
 					<td width="10%" align="left">
@@ -95,9 +95,9 @@ Copyright@ LINE 2019
 				</tr>
 				<tr>
 	        		<td colspan="4" class="col-md-4  text-left">
-				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" value="1" >最新APIアップデートについて<br>
-				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" value="2" >LINE Pay APIご紹介<br>
-				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" value="3" >クラスメソッド様事例紹介<br>
+				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" value="1" > 最新APIアップデートについて<br>
+				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" value="2" > LINE Pay APIご紹介<br>
+				  		<input type="checkbox" name="q4_answer" id="q4_multple_answer" value="3" > クラスメソッド様事例紹介<br>
 				  		<input type="hidden" name="q4_answer" id="q4_answer" class="survey_answers"></input>
 		        	</td>
 				</tr>
