@@ -10,8 +10,10 @@ Copyright@ LINE 2019
 /*<![CDATA[*/
 
     var surveyAnswerInfos = /*[[${surveyAnswerInfos}]]*/ 'default';
-    $.each(JSON.stringify(surveyAnswerInfos), function( key, value ) {
-    	  console.log(key + ": " + value );
+    $.each(surveyAnswerInfos, function(idx, val) {
+        $.each(val, function(key, value) {
+      	  console.log(key + ": " + value);
+  	});
 	});
 
 /*]]>*/
