@@ -10,7 +10,7 @@ Copyright@ LINE 2019
 /*<![CDATA[*/
 
     var surveyAnswerInfos = /*[[${surveyAnswerInfos}]]*/ 'default';
-    $.each( surveyAnswerInfos, function( key, value ) {
+    $.each(JSON.parse(surveyAnswerInfos), function( key, value ) {
     	  console.log(key + ": " + value );
 	});
 
