@@ -5,6 +5,7 @@
  */
 package com.line.young.seminar.ctrl;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import javax.validation.Valid;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.line.young.seminar.entity.PersonalInfo;
 import com.line.young.seminar.entity.UserInfo;
+import com.line.young.seminar.repo.QuestionInfoRepository;
+import com.line.young.seminar.repo.UsersRepository;
 import com.line.young.seminar.service.PersonalInfoService;
 import com.line.young.seminar.service.QuestionInfoService;
 
@@ -38,6 +41,9 @@ public class indexController {
     private final Logger logger = Logger.getLogger(this.getClass().getName());
     
     @Autowired
+    private UsersRepository usersRepository;
+    
+    @Autowired
     private QuestionInfoService questionInfoService;
     
     @Autowired
@@ -52,10 +58,22 @@ public class indexController {
     }
     
     @PostMapping(value = {"/auth"})
-    public String index(Model model, @ModelAttribute("userInfo") @Valid UserInfo userInfo, BindingResult result) {
+    public String index(Model model, @ModelAttribute("userInfo") @Valid UserInfo userInfo, BindingResult result) throws Exception {
         
         logger.info(userInfo.getId()+" : "+userInfo.getPassword());
         
-        return "index";
+        Optional<UserInfo> userInfos = usersRepository.findById(userInfo.getId());
+        String id = userInfos.get().getId();
+        String password = userInfos.get().getPassword();
+        if (null == id) {
+//            throw new Exception();
+            return "index";
+        } else {
+            if ((id == "admin") && (password == userInfo.getPassword())) {
+                return "admin";
+            } else {
+                return "index";
+            }
+        }
     }
 }
