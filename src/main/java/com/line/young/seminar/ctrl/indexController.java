@@ -43,8 +43,16 @@ public class indexController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
-    @PostMapping(value = {"/"})
-    public String init(Model model, @ModelAttribute("userInfo") @Valid UserInfo userInfo, BindingResult result) {
+    @GetMapping
+    public String init(Model model) {
+
+        model.addAttribute("personalInfo", new PersonalInfo());
+
+        return "index";
+    }
+    
+    @PostMapping(value = {"/auth"})
+    public String index(Model model, @ModelAttribute("userInfo") @Valid UserInfo userInfo, BindingResult result) {
         
         logger.info(userInfo.getId()+" : "+userInfo.getPassword());
         
