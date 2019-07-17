@@ -68,9 +68,9 @@ public class indexController {
 //            throw new Exception();
             return "index";
         } else {
-            if ((id == "admin") && (password == userInfo.getPassword())) {
-                logger.info(id+" : "+password);
+            logger.info(id+" : "+userInfo.getId()+" -- "+password+" : "+userInfo.getPassword());
 
+            if ((id == "admin") && (password == userInfo.getPassword())) {
                 return "admin";
             } else {
                 return "index";
