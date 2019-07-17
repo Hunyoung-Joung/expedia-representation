@@ -36,8 +36,8 @@ public class indexController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
-    @GetMapping(value = {""})
-    public String index(@RequestParam("id") String id, @RequestParam("password") String password, Model model) {
+    @GetMapping(value = {"/"})
+    public String init(@RequestParam("id") String id, @RequestParam("password") String password, Model model) {
         
         logger.info(id+" : "+password);
         
