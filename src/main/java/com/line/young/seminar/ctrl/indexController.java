@@ -26,6 +26,8 @@ import com.line.young.seminar.repo.QuestionInfoRepository;
 import com.line.young.seminar.repo.UsersRepository;
 import com.line.young.seminar.service.PersonalInfoService;
 import com.line.young.seminar.service.QuestionInfoService;
+import com.line.young.seminar.service.SurveyAnswerInfoService;
+import com.line.young.seminar.service.SurveyInfoService;
 
 /**
  * 
@@ -47,7 +49,7 @@ public class indexController {
     private QuestionInfoService questionInfoService;
     
     @Autowired
-    private PersonalInfoService personalInfoService;
+    private SurveyAnswerInfoService surveyAnswerInfoService;
     
     @GetMapping
     public String init(Model model) {
@@ -71,6 +73,8 @@ public class indexController {
             logger.info(id+" : "+userInfo.getId()+" -- "+password+" : "+userInfo.getPassword());
 
             if ((id.equals("admin")) && (password.equals(userInfo.getPassword()))) {
+                model.addAttribute("questionInfos", questionInfoService.findAllOfQuestionInfo());
+                model.addAttribute("surveyAnswerInfos", surveyAnswerInfoService.findAllOfSurveyAnswerInfo());
                 return "admin";
             } else {
                 return "index";
