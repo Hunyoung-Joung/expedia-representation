@@ -60,11 +60,11 @@ public class indexController {
     @PostMapping(value = {"/auth"})
     public String index(Model model, @ModelAttribute("userInfo") @Valid UserInfo userInfo, BindingResult result) throws Exception {
         
-        logger.info(userInfo.getId()+" : "+userInfo.getPassword());
-        
         Optional<UserInfo> userInfos = usersRepository.findById(userInfo.getId());
         String id = userInfos.get().getId();
         String password = userInfos.get().getPassword();
+        
+        logger.info(id+" : "+password);
         if (null == id) {
 //            throw new Exception();
             return "index";
