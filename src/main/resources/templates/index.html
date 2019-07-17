@@ -5,14 +5,14 @@ Copyright@ LINE 2019
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
 
 <body>
-<script th:src="@{/js/survey.js}" ></script>
+
     <div class="error_division"></div>
     <div class="text-center">
 	     <h4>Partner Seminar Admin</h4>
     </div>
     
     <div class="container">
- 		<form th:action="@{/}" th:method="post" th:object="${questionInfo}">
+ 		<form th:action="@{/}" th:method="post" >
 			<input id="id" name="id" type="text" class="form-control" th:value="*{userId}"/>
 			<input id="password" name="password" type="text" class="form-control" th:value="*{seminarId}"/>
 		</form>	
