@@ -70,7 +70,7 @@ public class indexController {
         } else {
             logger.info(id+" : "+userInfo.getId()+" -- "+password+" : "+userInfo.getPassword());
 
-            if ((id == "admin") && (password == userInfo.getPassword())) {
+            if ((id.equals("admin")) && (password.equals(userInfo.getPassword()))) {
                 return "admin";
             } else {
                 return "index";
