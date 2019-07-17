@@ -1,11 +1,22 @@
+<!-- 
+Copyright@ LINE 2019
+-->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>LINE Partner seminar</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
+
 <body>
-    <h1>LINE Partner seminar</h1>
-    <p></p>
+<script th:src="@{/js/survey.js}" ></script>
+    <div class="error_division"></div>
+    <div class="text-center">
+	     <h4>Partner Seminar Admin</h4>
+    </div>
+    
+    <div class="container">
+ 		<form th:action="@{/}" th:method="post" th:object="${questionInfo}">
+			<input id="id" name="id" type="text" class="form-control" th:value="*{userId}"/>
+			<input id="password" name="password" type="text" class="form-control" th:value="*{seminarId}"/>
+		</form>	
+	</div>
+
 </body>
 </html>
