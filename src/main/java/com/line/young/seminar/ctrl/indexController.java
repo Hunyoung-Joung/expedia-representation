@@ -64,12 +64,13 @@ public class indexController {
         String id = userInfos.get().getId();
         String password = userInfos.get().getPassword();
         
-        logger.info(id+" : "+password);
         if (null == id) {
 //            throw new Exception();
             return "index";
         } else {
             if ((id == "admin") && (password == userInfo.getPassword())) {
+                logger.info(id+" : "+password);
+
                 return "admin";
             } else {
                 return "index";
