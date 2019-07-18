@@ -1,10 +1,17 @@
 package com.line.young.seminar.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.jpa.repository.Temporal;
 
 @Entity
 @Table(name="personal_info")
@@ -36,8 +43,10 @@ public class PersonalInfo {
     @Column(name="is_confirmed", nullable = true)
     private boolean is_confirmed;
     
+    @UpdateTimestamp
+    @CreationTimestamp
     @Column(name="date_at")
-    private String date_at;
+    private Date date_at;
 
     public String getUser_id() {
         return user_id;
@@ -97,7 +106,7 @@ public class PersonalInfo {
     }
     
     
-    public String getDate_at() {
+    public Date getDate_at() {
         return date_at;
     }
 

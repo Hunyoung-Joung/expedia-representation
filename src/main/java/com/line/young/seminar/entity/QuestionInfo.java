@@ -1,5 +1,7 @@
 package com.line.young.seminar.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="question_info")
@@ -37,8 +42,10 @@ public class QuestionInfo  {
     @Column(name="is_selected", nullable = true)
     private boolean is_selected;
     
+    @UpdateTimestamp
+    @CreationTimestamp
     @Column(name="date_at")
-    private String date_at;
+    private Date date_at;
 
     
     public Long getQ_no() {
@@ -99,7 +106,7 @@ public class QuestionInfo  {
     public void setIs_selected(boolean is_selected) {
         this.is_selected = is_selected;
     }
-    public String getDate_at() {
+    public Date getDate_at() {
         return date_at;
     }
 
