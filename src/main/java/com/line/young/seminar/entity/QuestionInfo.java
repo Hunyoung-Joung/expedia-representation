@@ -42,10 +42,13 @@ public class QuestionInfo  {
     @Column(name="is_selected", nullable = true)
     private boolean is_selected;
     
-    @UpdateTimestamp
     @CreationTimestamp
-    @Column(name="date_at")
-    private Date date_at;
+    @Column(name="create_at")
+    private Date create_at;
+    
+    @UpdateTimestamp
+    @Column(name="update_at")
+    private Date update_at;
 
     
     public Long getQ_no() {
@@ -106,8 +109,21 @@ public class QuestionInfo  {
     public void setIs_selected(boolean is_selected) {
         this.is_selected = is_selected;
     }
-    public Date getDate_at() {
-        return date_at;
+
+    public Date getCreate_at() {
+        return create_at;
+    }
+
+    public void setCreate_at(Date create_at) {
+        this.create_at = create_at;
+    }
+
+    public Date getUpdate_at() {
+        return update_at;
+    }
+
+    public void setUpdate_at(Date update_at) {
+        this.update_at = update_at;
     }
 
     @Override
