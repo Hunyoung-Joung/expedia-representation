@@ -14,6 +14,7 @@ Copyright@ LINE 2019
 	<div class="container">
 		<form th:action="@{/personalInfo}" th:method="post" th:object="${personalInfo}">
 		<input id="userId" name="user_id" type="hidden" class="form-control" th:field="*{user_id}"/>
+		<input id="id" name="id" type="hidden" class="form-control" th:field="*{encrypt_id}"/>
 		<input id="displayName" name="display_name" type="hidden" class="form-control" th:field="*{display_name}"/>
 	  	<table class="table">
 	    	<tbody>

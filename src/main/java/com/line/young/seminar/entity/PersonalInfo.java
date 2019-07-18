@@ -9,10 +9,10 @@ import javax.persistence.Table;
 @Table(name="personal_info")
 public class PersonalInfo {
     
-    @Id
     @Column(name="encrypt_id", nullable = true)
     private String encrypt_id;
-
+    
+    @Id
     @Column(name="user_id", nullable = false)
     private String user_id;
     
