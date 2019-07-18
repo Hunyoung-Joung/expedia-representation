@@ -61,15 +61,13 @@ public class SurveyAnswerInfoController {
         if (null == encryptId) {
             throw new Exception();
         } else {
-            if (personalInfoService.findOne(encryptId).isPresent()) {
-                personalInfo = personalInfoService.findOne(encryptId).get();
+            if (personalInfoService.findByEncryptId(encryptId).isPresent()) {
+                personalInfo = personalInfoService.findByEncryptId(encryptId).get();
                 
                 logger.info("## init findAllAnswerByIds encryptId? "+encryptId+", seminarId? 4");
                 surveyAnswerInfos = this.findByIds(encryptId, "3", surveyAnswerInfos); // TODO
-//                surveyAnswerInfo.setUser_id(userId);
-//                surveyAnswerInfo.setSeminar_id("3");// TODO
             } else {
-                throw new Exception();
+                throw new Exception(); // TODO
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
             model.addAttribute("encryptId", encryptId);
