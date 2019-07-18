@@ -26,9 +26,9 @@ public class SurveyAnswerInfoService {
     private EntityManager entityManager;
 
     @SuppressWarnings("unchecked")
-    public List<SurveyAnswerInfo> findAnswerByUserId(String userId){
-      return entityManager.createNamedQuery("SurveyAnswerInfo.findAnswerByUserId")
-        .setParameter("userId", userId)
+    public List<SurveyAnswerInfo> findAnswerByEncryptId(String encryptId){
+      return entityManager.createNamedQuery("SurveyAnswerInfo.findAnswerByEncryptId")
+        .setParameter("encryptId", encryptId)
         .getResultList();
     }
     
@@ -61,7 +61,7 @@ public class SurveyAnswerInfoService {
     }
     
     public Iterable<SurveyAnswerInfo> saveOfSurveyAnswerInfos(List<SurveyAnswerInfo> surveyAnswerInfos) {
-        List<SurveyAnswerInfo> list = this.findAllAnswerByIds(surveyAnswerInfos.get(0).getUser_id(), 
+        List<SurveyAnswerInfo> list = this.findAllAnswerByIds(surveyAnswerInfos.get(0).getEncrypt_id(), 
                 surveyAnswerInfos.get(0).getSeminar_id());
         if (null != list) {
             for (SurveyAnswerInfo surveyAnswerInfo: list) {

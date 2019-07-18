@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="survey_answer_info")
 @NamedQueries(value = {
-    @NamedQuery(name = "SurveyAnswerInfo.findAnswerByUserId",
+    @NamedQuery(name = "SurveyAnswerInfo.findAnswerByEncryptId",
     query = " SELECT answer_info "
             + " FROM SurveyAnswerInfo answer_info "
             + "WHERE answer_info.encrypt_id = :encryptId "

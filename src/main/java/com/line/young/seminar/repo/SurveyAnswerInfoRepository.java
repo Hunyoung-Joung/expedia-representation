@@ -17,7 +17,7 @@ import com.line.young.seminar.entity.SurveyAnswerInfo;
  */
 public interface SurveyAnswerInfoRepository extends CrudRepository<SurveyAnswerInfo, String> {
 
-    SurveyAnswerInfo findAnswerByUserId(@Param("encryptId") String encryptId);
+    SurveyAnswerInfo findAnswerByEncryptId(@Param("encryptId") String encryptId);
     
     List<SurveyAnswerInfo> findAllAnswerBySeminarId(@Param("seminarId") String seminarId);
     
