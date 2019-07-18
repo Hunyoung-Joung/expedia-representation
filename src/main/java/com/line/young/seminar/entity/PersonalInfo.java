@@ -96,6 +96,11 @@ public class PersonalInfo {
         this.is_confirmed = is_confirmed;
     }
     
+    
+    public String getDate_at() {
+        return date_at;
+    }
+
     @Override
     public String toString() {
         return "PersonalInfo [user_id="+user_id+", encrypt_id="+encrypt_id+", display_name="+display_name+", user_name="+user_name+", company_name="

@@ -99,7 +99,9 @@ public class QuestionInfo  {
     public void setIs_selected(boolean is_selected) {
         this.is_selected = is_selected;
     }
-
+    public String getDate_at() {
+        return date_at;
+    }
 
     @Override
     public String toString() {

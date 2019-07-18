@@ -92,7 +92,9 @@ public class SurveyAnswerInfo {
         this.survey_answer = survey_answer;
     }
 
-
+    public String getDate_at() {
+        return date_at;
+    }
     @Override
     public String toString() {
         return "SurveyInfo [seminar_id="+seminar_id+", encrypt_id="+encrypt_id+", survey_no="+survey_no+", survey_answer="+survey_answer+"]";
