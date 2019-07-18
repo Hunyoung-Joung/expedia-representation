@@ -39,10 +39,10 @@ public class SurveyAnswerInfoService {
         .getResultList();
     }
 
-    public List<SurveyAnswerInfo> findAllAnswerByIds(String userId, String seminarId){
+    public List<SurveyAnswerInfo> findAllAnswerByIds(String encryptId, String seminarId){
         @SuppressWarnings("unchecked")
         List<SurveyAnswerInfo> surveyAnswerInfos = entityManager.createNamedQuery("SurveyAnswerInfo.findAllAnswerByIds")
-        .setParameter("userId", userId)
+        .setParameter("encryptId", encryptId)
         .setParameter("seminarId", seminarId)
         .getResultList();
         if (surveyAnswerInfos.isEmpty()) {
