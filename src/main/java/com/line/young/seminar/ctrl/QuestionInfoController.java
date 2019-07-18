@@ -50,8 +50,8 @@ public class QuestionInfoController {
     private String encryptId_ = "";
     
     @GetMapping
-    public String init(@RequestParam("id") String id, Model model) throws Exception {
-        this.encryptId_ = id;
+    public String init(@RequestParam("encryptId") String encryptId, Model model) throws Exception {
+        this.encryptId_ = encryptId;
         PersonalInfo personalInfo = new PersonalInfo();
 //        List<QuestionInfo> personalInfos = new ArrayList<QuestionInfo>();
         if (null == encryptId_) {
@@ -59,7 +59,6 @@ public class QuestionInfoController {
         } else {
             if (personalInfoService.findOne(encryptId_).isPresent()) {
                 personalInfo = personalInfoService.findOne(encryptId_).get();
-//                personalInfos = questionInfoService.findAllUserQuestion(userId);
             } else {
                 throw new Exception();
             }
@@ -78,7 +77,7 @@ public class QuestionInfoController {
         if (!questionInfoService.findByEncryptId(encryptId).isEmpty()) {
             questionInfos = questionInfoService.findByEncryptId(encryptId);
             
-            logger.info("##### findByUserId? "+questionInfos.size());
+            logger.info("##### find by encryptId? "+questionInfos.size());
         } else {
             questionInfos = new ArrayList<QuestionInfo>();
         }
