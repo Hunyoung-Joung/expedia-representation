@@ -37,7 +37,7 @@ public class PersonalInfo {
     private boolean is_confirmed;
     
     @Column(name="date_at")
-    private boolean  date_at;
+    private String date_at;
 
     public String getUser_id() {
         return user_id;

@@ -51,7 +51,7 @@ public class SurveyAnswerInfo {
     private String survey_answer;
     
     @Column(name="date_at")
-    private boolean  date_at;
+    private String date_at;
 
     public String getEncrypt_id() {
         return encrypt_id;

@@ -38,7 +38,7 @@ public class QuestionInfo  {
     private boolean is_selected;
     
     @Column(name="date_at")
-    private boolean  date_at;
+    private String date_at;
 
     
     public Long getQ_no() {
