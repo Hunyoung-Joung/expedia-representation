@@ -36,6 +36,9 @@ public class QuestionInfo  {
     
     @Column(name="is_selected", nullable = true)
     private boolean is_selected;
+    
+    @Column(name="time_at")
+    private boolean time_at;
 
     
     public Long getQ_no() {
