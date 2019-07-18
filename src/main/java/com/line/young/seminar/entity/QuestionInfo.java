@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @NamedQuery(name = "QuestionInfo.findAllrQuestionByUserId",
 query = " SELECT info "
         + " FROM QuestionInfo info "
-        + "WHERE info.user_id = :userId "
+        + "WHERE info.encrypt_id = :id "
         + "ORDER BY info.q_no DESC")
 public class QuestionInfo  {
 
@@ -22,8 +22,8 @@ public class QuestionInfo  {
     @Column(name="q_no", nullable = false)
     private Long q_no;
 
-    @Column(name="user_id", nullable = false)
-    private String user_id;
+    @Column(name="encrypt_id", nullable = false)
+    private String encrypt_id;
     
     @Column(name="seminar_id", nullable = false)
     private String seminar_id;
@@ -48,13 +48,13 @@ public class QuestionInfo  {
     }
 
 
-    public String getUser_id() {
-        return user_id;
+    public String getEncrypt_id() {
+        return encrypt_id;
     }
 
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setEncrypt_id(String encrypt_id) {
+        this.encrypt_id = encrypt_id;
     }
 
 
@@ -100,7 +100,7 @@ public class QuestionInfo  {
 
     @Override
     public String toString() {
-        return "PersonalInfo [q_no="+q_no+", user_id="+user_id+", seminar_id="+seminar_id+", q_category="
+        return "PersonalInfo [q_no="+q_no+", encrypt_id="+encrypt_id+", seminar_id="+seminar_id+", q_category="
                 +q_category+", q_contents=" +q_contents+", is_selected="+is_selected+"]";
     }
 }

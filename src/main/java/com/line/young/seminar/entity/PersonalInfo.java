@@ -8,8 +8,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name="personal_info")
 public class PersonalInfo {
-
+    
     @Id
+    @Column(name="encrypt_id", nullable = true)
+    private String encrypt_id;
+
     @Column(name="user_id", nullable = false)
     private String user_id;
     
@@ -34,6 +37,15 @@ public class PersonalInfo {
 
     public void setUser_id(String user_id) {
         this.user_id = user_id;
+    }
+    
+
+    public String getEncrypt_id() {
+        return encrypt_id;
+    }
+
+    public void setEncrypt_id(String encrypt_id) {
+        this.encrypt_id = encrypt_id;
     }
 
     public String getDisplay_name() {
@@ -78,7 +90,7 @@ public class PersonalInfo {
     
     @Override
     public String toString() {
-        return "PersonalInfo [user_id="+user_id+", display_name="+display_name+", user_name="+user_name+", company_name="
+        return "PersonalInfo [user_id="+user_id+", encrypt_id="+encrypt_id+", display_name="+display_name+", user_name="+user_name+", company_name="
                 +company_name+", job_type=" +job_type+", is_confirmed="+is_confirmed+"]";
     }
 }

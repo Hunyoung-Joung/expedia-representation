@@ -47,25 +47,25 @@ public class QuestionInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
-    private String userId_ = "";
+    private String encryptId_ = "";
     
     @GetMapping
-    public String init(@RequestParam("userId") String userId, Model model) throws Exception {
-        this.userId_ = userId;
+    public String init(@RequestParam("userId") String encryptId, Model model) throws Exception {
+        this.encryptId_ = encryptId;
         PersonalInfo personalInfo = new PersonalInfo();
 //        List<QuestionInfo> personalInfos = new ArrayList<QuestionInfo>();
-        if (null == userId) {
+        if (null == encryptId) {
             throw new Exception();
         } else {
-            if (personalInfoService.findOne(userId).isPresent()) {
-                personalInfo = personalInfoService.findOne(userId).get();
+            if (personalInfoService.findOne(encryptId).isPresent()) {
+                personalInfo = personalInfoService.findOne(encryptId).get();
 //                personalInfos = questionInfoService.findAllUserQuestion(userId);
             } else {
                 throw new Exception();
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
             model.addAttribute("questionInfo", new QuestionInfo());
-            model.addAttribute("questionInfos", this.findByUserId(userId, new ArrayList<QuestionInfo>()));
+            model.addAttribute("questionInfos", this.findByUserId(encryptId, new ArrayList<QuestionInfo>()));
             logger.info("##### init question information models? "+model.toString());
         }
 
@@ -100,12 +100,12 @@ public class QuestionInfoController {
     @RequestMapping(method = RequestMethod.POST)
     public String addtquestionInfo(Model model, @Valid QuestionInfo questionInfo) throws Exception  {
         logger.info("##### add question information");
-        questionInfo.setUser_id(this.userId_);
+        questionInfo.setEncrypt_id(encryptId_);
         questionInfo.setSeminar_id("3");
         questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
 //        model.addAttribute("questionInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
 
-        return init(questionInfo.getUser_id(), model);
+        return init(questionInfo.getEncrypt_id(), model);
     }
 //    
 //    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})

@@ -5,6 +5,7 @@
  */
 package com.line.young.seminar.ctrl;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.line.young.seminar.entity.PersonalInfo;
+import com.line.young.seminar.entity.UserInfo;
+import com.line.young.seminar.repo.PersonalInfoRepository;
+import com.line.young.seminar.repo.UsersRepository;
 import com.line.young.seminar.service.PersonalInfoService;
 
 
@@ -36,6 +40,7 @@ public class PersonalInfoController {
    
     @Autowired
     private PersonalInfoService personalInfoService;
+
     
     /**
      * Initial method
@@ -45,11 +50,15 @@ public class PersonalInfoController {
      * @return
      */
     @GetMapping
-    public String init(@RequestParam("userId") String userId, Model model) {
+    public String init(@RequestParam("userId") String userId, @RequestParam("id") String id, Model model) {
+        PersonalInfo personalInfo = new PersonalInfo();
         if (null == userId) {
-            model.addAttribute("personalInfo", new PersonalInfo());
+            model.addAttribute("personalInfo", personalInfo);
         } else {
-            PersonalInfo personalInfo = this.findById(userId, new PersonalInfo());
+            personalInfo = this.findById(userId, new PersonalInfo());
+            personalInfo.setUser_id(userId);
+            personalInfo.setEncrypt_id(id);
+            personalInfoService.save(personalInfo);
             model.addAttribute("personalInfo", personalInfo);
         }
 
@@ -98,7 +107,7 @@ public class PersonalInfoController {
         personalInfo = personalInfoService.save(personalInfo);
         model.addAttribute("personalInfo", this.findById(personalInfo.getUser_id(), new PersonalInfo()));
 
-        return init(personalInfo.getUser_id(), model);
+        return init(personalInfo.getUser_id(), personalInfo.getEncrypt_id(), model);
     }
 //    
 //    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
