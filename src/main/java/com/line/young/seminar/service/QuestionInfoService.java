@@ -24,9 +24,9 @@ public class QuestionInfoService {
     private EntityManager entityManager;
 
     @SuppressWarnings("unchecked")
-    public List<QuestionInfo> findByUserId(String userId){
-      return entityManager.createNamedQuery("QuestionInfo.findAllrQuestionByUserId")
-        .setParameter("userId", userId)
+    public List<QuestionInfo> findByEncryptId(String encryptId){
+      return entityManager.createNamedQuery("QuestionInfo.findAllrQuestionByEncryptId")
+        .setParameter("encryptId", encryptId)
         .getResultList();
     }
 
@@ -38,8 +38,8 @@ public class QuestionInfoService {
         return questionInfoRepository.save(questionInfo);
     }
 
-    public void deleteOfQuestionInfo(String userId) {
-        questionInfoRepository.deleteById(userId);
+    public void deleteOfQuestionInfo(String encryptId) {
+        questionInfoRepository.deleteById(encryptId);
     }
     
     public void deleteAllOfQuestionInfo() {

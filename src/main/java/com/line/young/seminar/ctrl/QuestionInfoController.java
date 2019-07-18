@@ -50,22 +50,22 @@ public class QuestionInfoController {
     private String encryptId_ = "";
     
     @GetMapping
-    public String init(@RequestParam("userId") String encryptId, Model model) throws Exception {
-        this.encryptId_ = encryptId;
+    public String init(@RequestParam("id") String id, Model model) throws Exception {
+        this.encryptId_ = id;
         PersonalInfo personalInfo = new PersonalInfo();
 //        List<QuestionInfo> personalInfos = new ArrayList<QuestionInfo>();
-        if (null == encryptId) {
+        if (null == encryptId_) {
             throw new Exception();
         } else {
-            if (personalInfoService.findOne(encryptId).isPresent()) {
-                personalInfo = personalInfoService.findOne(encryptId).get();
+            if (personalInfoService.findOne(encryptId_).isPresent()) {
+                personalInfo = personalInfoService.findOne(encryptId_).get();
 //                personalInfos = questionInfoService.findAllUserQuestion(userId);
             } else {
                 throw new Exception();
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
             model.addAttribute("questionInfo", new QuestionInfo());
-            model.addAttribute("questionInfos", this.findByUserId(encryptId, new ArrayList<QuestionInfo>()));
+            model.addAttribute("questionInfos", this.findByEncryptId(encryptId_, new ArrayList<QuestionInfo>()));
             logger.info("##### init question information models? "+model.toString());
         }
 
@@ -73,10 +73,10 @@ public class QuestionInfoController {
     }
 
 
-    @RequestMapping(value="{userId}", method=RequestMethod.GET)
-    public List<QuestionInfo> findByUserId(@PathVariable String userId, @ModelAttribute List<QuestionInfo> questionInfos) {
-        if (!questionInfoService.findByUserId(userId).isEmpty()) {
-            questionInfos = questionInfoService.findByUserId(userId);
+    @RequestMapping(value="{encryptId}", method=RequestMethod.GET)
+    public List<QuestionInfo> findByEncryptId(@PathVariable String encryptId, @ModelAttribute List<QuestionInfo> questionInfos) {
+        if (!questionInfoService.findByEncryptId(encryptId).isEmpty()) {
+            questionInfos = questionInfoService.findByEncryptId(encryptId);
             
             logger.info("##### findByUserId? "+questionInfos.size());
         } else {

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="question_info")
-@NamedQuery(name = "QuestionInfo.findAllrQuestionByUserId",
+@NamedQuery(name = "QuestionInfo.findAllrQuestionByEncryptId",
 query = " SELECT info "
         + " FROM QuestionInfo info "
         + "WHERE info.encrypt_id = :id "

@@ -5,7 +5,6 @@
  */
 package com.line.young.seminar.ctrl;
 
-import java.util.Optional;
 import java.util.logging.Logger;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.line.young.seminar.entity.PersonalInfo;
-import com.line.young.seminar.entity.UserInfo;
-import com.line.young.seminar.repo.PersonalInfoRepository;
-import com.line.young.seminar.repo.UsersRepository;
 import com.line.young.seminar.service.PersonalInfoService;
 
 
@@ -109,23 +105,5 @@ public class PersonalInfoController {
 
         return init(personalInfo.getUser_id(), personalInfo.getEncrypt_id(), model);
     }
-//    
-//    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
-//    public String selectPersonalInfo(@PathVariable String userId, Model model) {
-//        logger.info("##### find personal information? userId = "+userId);
-//        Optional<PersonalInfo> personalInfo = personalInfoService.findOne(userId);
-//        model.addAttribute("personalInfo", personalInfo);
-//        
-//        return "personal_information";
-//    }
-//    
-//    @RequestMapping(method=RequestMethod.GET, value={"/api/{userId}"})
-//    public String selectPersonalInfo(Model model, @PathVariable String userId) {
-//        logger.info("##### find personal information? id = "+userId);
-////        Iterable<PersonalInfo> personalInfos = this.personalInfoRepository.findAll();
-////        model.addAttribute("PersonalInfos", personalInfos);
-////        model.addAttribute("personalInfo", new PersonalInfo());
-//        
-//        return "personal_information";
-//    }
+
 }
