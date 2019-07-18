@@ -3,18 +3,23 @@ package com.line.young.seminar.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="personal_info")
+@NamedQuery(name = "PersonalInfo.findByEncryptId",
+query = " SELECT info "
+        + " FROM PersonalInfo info "
+        + "WHERE info.encrypt_id = :encryptId ")
 public class PersonalInfo {
-    
-    @Column(name="encrypt_id", nullable = true)
-    private String encrypt_id;
     
     @Id
     @Column(name="user_id", nullable = false)
     private String user_id;
+    
+    @Column(name="encrypt_id", nullable = false)
+    private String encrypt_id;
     
     @Column(name="display_name", nullable = true)
     private String display_name;
@@ -25,7 +30,7 @@ public class PersonalInfo {
     @Column(name="company_name", nullable = true)
     private String company_name;
     
-    @Column(name="job_type", nullable = false)
+    @Column(name="job_type", nullable = true)
     private String job_type;
     
     @Column(name="is_confirmed", nullable = true)

@@ -16,6 +16,6 @@ import com.line.young.seminar.entity.QuestionInfo;
  *
  */
 public interface QuestionInfoRepository extends CrudRepository<QuestionInfo, String> {
-
-    List<QuestionInfo> findAllrQuestionByEncryptId(@Param("encryptId") String encryptId); // need to @named query name SurveyAnswerInfo.findAllrQuestionByEncryptId"
+    // need to @named query name SurveyAnswerInfo.findAllrQuestionByEncryptId"
+    List<QuestionInfo> findAllrQuestionByEncryptId(@Param("encryptId") String encryptId); 
 }

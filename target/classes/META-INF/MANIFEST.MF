@@ -1,3 +1,10 @@
 Manifest-Version: 1.0
-Class-Path: 
+Built-By: JP22601
+Build-Jdk: 10.0.1
+Implementation-Title: seminar-web
+Implementation-Version: 1.0
+Implementation-Vendor-Id: com.line.young.seminar
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/seminar-web
+Created-By: Maven Integration for Eclipse
 

@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @NamedQuery(name = "QuestionInfo.findAllrQuestionByEncryptId",
 query = " SELECT info "
         + " FROM QuestionInfo info "
-        + "WHERE info.encrypt_id = :id "
+        + "WHERE info.encrypt_id = :encryptId "
         + "ORDER BY info.q_no DESC")
 public class QuestionInfo  {
 

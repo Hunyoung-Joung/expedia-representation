@@ -57,8 +57,8 @@ public class QuestionInfoController {
         if (null == encryptId) {
             throw new Exception();
         } else {
-            if (personalInfoService.findOne(encryptId).isPresent()) {
-                personalInfo = personalInfoService.findOne(encryptId).get();
+            if (personalInfoService.findByEncryptId(encryptId).isPresent()) {
+                personalInfo = personalInfoService.findByEncryptId(encryptId).get();
             } else {
                 throw new Exception();
             }
