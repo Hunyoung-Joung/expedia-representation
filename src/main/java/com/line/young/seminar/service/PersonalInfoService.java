@@ -18,16 +18,16 @@ public class PersonalInfoService {
         return personalInfoRepository.findAll();
     }
 
-    public Optional<PersonalInfo> findOne(String id) {
-        return personalInfoRepository.findById(id);
+    public Optional<PersonalInfo> findOne(String encryptId) {
+        return personalInfoRepository.findById(encryptId);
     }
 
     public PersonalInfo save(PersonalInfo personalInfo) {
         return personalInfoRepository.save(personalInfo);
     }
 
-    public void delete(String id) {
-        personalInfoRepository.deleteById(id);
+    public void delete(String encryptId) {
+        personalInfoRepository.deleteById(encryptId);
     }
     
     public void deleteAll() {

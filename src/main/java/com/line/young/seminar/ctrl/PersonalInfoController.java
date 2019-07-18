@@ -46,14 +46,14 @@ public class PersonalInfoController {
      * @return
      */
     @GetMapping
-    public String init(@RequestParam("userId") String userId, @RequestParam("id") String id, Model model) {
+    public String init(@RequestParam("userId") String userId, @RequestParam("encryptId") String encryptId, Model model) {
         PersonalInfo personalInfo = new PersonalInfo();
         if (null == userId) {
             model.addAttribute("personalInfo", personalInfo);
         } else {
             personalInfo = this.findById(userId, new PersonalInfo());
             personalInfo.setUser_id(userId);
-            personalInfo.setEncrypt_id(id);
+            personalInfo.setEncrypt_id(encryptId);
             personalInfoService.save(personalInfo);
             model.addAttribute("personalInfo", personalInfo);
         }
@@ -63,14 +63,14 @@ public class PersonalInfoController {
 
     /**
      * 
-     * @param userId
+     * @param encryptId
      * @param personalInfo
      * @return
      */
-    @RequestMapping(value="/{userId}", method=RequestMethod.GET)
-    public PersonalInfo findById(@PathVariable String userId, @ModelAttribute PersonalInfo personalInfo) {
-        if (personalInfoService.findOne(userId).isPresent()) {
-            personalInfo = personalInfoService.findOne(userId).get();
+    @RequestMapping(value="/{encryptId}", method=RequestMethod.GET)
+    public PersonalInfo findById(@PathVariable String encryptId, @ModelAttribute PersonalInfo personalInfo) {
+        if (personalInfoService.findOne(encryptId).isPresent()) {
+            personalInfo = personalInfoService.findOne(encryptId).get();
         } else {
             personalInfo = new PersonalInfo();
         }
@@ -101,7 +101,7 @@ public class PersonalInfoController {
     public String addtPersonalInfo(Model model, @ModelAttribute("personalInfo") @Valid PersonalInfo personalInfo, BindingResult result)  {
         logger.info("##### add personal information");
         personalInfo = personalInfoService.save(personalInfo);
-        model.addAttribute("personalInfo", this.findById(personalInfo.getUser_id(), new PersonalInfo()));
+        model.addAttribute("personalInfo", this.findById(personalInfo.getEncrypt_id(), new PersonalInfo()));
 
         return init(personalInfo.getUser_id(), personalInfo.getEncrypt_id(), model);
     }
