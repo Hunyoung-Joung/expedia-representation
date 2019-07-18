@@ -60,7 +60,7 @@ public class QuestionInfoController {
             if (personalInfoService.findByEncryptId(encryptId).isPresent()) {
                 personalInfo = personalInfoService.findByEncryptId(encryptId).get();
             } else {
-                throw new Exception();
+                throw new Exception(); // TODO
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
             model.addAttribute("questionInfo", new QuestionInfo());

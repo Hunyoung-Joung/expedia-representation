@@ -1,5 +1,7 @@
 package com.line.young.seminar.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="survey_answer_info")
@@ -50,8 +55,13 @@ public class SurveyAnswerInfo {
     @Column(name="survey_answer", nullable = true)
     private String survey_answer;
     
-    @Column(name="date_at")
-    private String date_at;
+    @CreationTimestamp
+    @Column(name="create_at")
+    private Date create_at;
+    
+    @UpdateTimestamp
+    @Column(name="update_at")
+    private Date update_at;
 
     public String getEncrypt_id() {
         return encrypt_id;
@@ -92,9 +102,14 @@ public class SurveyAnswerInfo {
         this.survey_answer = survey_answer;
     }
 
-    public String getDate_at() {
-        return date_at;
+    public Date getUpdate_at() {
+        return update_at;
     }
+
+    public void setUpdate_at(Date update_at) {
+        this.update_at = update_at;
+    }
+    
     @Override
     public String toString() {
         return "SurveyInfo [seminar_id="+seminar_id+", encrypt_id="+encrypt_id+", survey_no="+survey_no+", survey_answer="+survey_answer+"]";

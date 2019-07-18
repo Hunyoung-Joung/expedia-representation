@@ -109,7 +109,7 @@ Copyright@ LINE 2019
             		<th></th>
           		</tr>
         	</thead>
-        	<tbody>
+        	<tbody> <!-- TODO td size -->
           		<tr th:each="questionInfo:${questionInfos}" th:object="${questionInfo}">
             		<td th:text="*{q_category}"></td>
             		<td th:text="*{create_at}"></td>
