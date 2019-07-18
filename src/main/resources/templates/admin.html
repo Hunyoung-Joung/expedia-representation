@@ -15,27 +15,24 @@ Copyright@ LINE 2019
 		<table class="table">
         	<thead>
           		<tr>
-            		<th>セミナー</th>
             		<th>カテゴリー</th>
+            		<th>質問時間</th>
+            		<th>返答可否</th>
             		<th>質問内容</th>
-            		<!--<th></th>
             		<th></th>
-            		<th></th>-->
           		</tr>
         	</thead>
         	<tbody>
           		<tr th:each="questionInfo:${questionInfos}" th:object="${questionInfo}">
-            		<td th:text="*{seminar_id}"></td>
             		<td th:text="*{q_category}"></td>
+            		<td th:text="*{create_at}"></td>
+            		<td th:text="*{is_selected}"></td>
             		<td th:text="*{q_contents}"></td>
-            		<!--  
-            		<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}(id=*{id})}">参照</a></td>
-            		<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}/edit(id=*{id})}">編集</a></td>
             		<td>
-              			<form th:action="@{/players/{id}(id=*{id})}" th:method="delete">
+              			<form th:action="@{/seminar/{q_no}(q_no=*{q_no})}" th:method="delete">
                 			<input class="btn btn-default btn-xs" type="submit" value="削除" />
               			</form>
-            		</td>-->
+            		</td>
           		</tr>
         	</tbody>
       	</table>
@@ -43,33 +40,17 @@ Copyright@ LINE 2019
 
 
 	<div class="text-center">
-	  	<h4>質問情報</h4>
+	  	<h4>アンケート情報</h4>
 	</div>
 	<div class="container">
 		<table class="table">
         	<thead>
           		<tr>
-            		<th>セミナー</th>
-            		<th>カテゴリー</th>
-            		<th>質問内容</th>
-            		<!--<th></th>
-            		<th></th>
-            		<th></th>-->
           		</tr>
         	</thead>
         	<tbody>
           		<tr th:each="surveyAnswerInfo:${surveyAnswerInfos}" th:object="${surveyAnswerInfo}">
-            		<td th:text="*{seminar_id}"></td>
-            		<td th:text="*{user_id}"></td>
-            		<td th:text="*{q_contents}"></td>
-            		<!--  
-            		<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}(id=*{id})}">参照</a></td>
-            		<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}/edit(id=*{id})}">編集</a></td>
-            		<td>
-              			<form th:action="@{/players/{id}(id=*{id})}" th:method="delete">
-                			<input class="btn btn-default btn-xs" type="submit" value="削除" />
-              			</form>
-            		</td>-->
+
           		</tr>
         	</tbody>
       	</table>
