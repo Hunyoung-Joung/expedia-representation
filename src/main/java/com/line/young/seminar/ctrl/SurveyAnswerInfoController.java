@@ -54,25 +54,25 @@ public class SurveyAnswerInfoController {
 //    private String userId_ = "";
     
     @GetMapping
-    public String init(@RequestParam("userId") String userId, Model model) throws Exception {
+    public String init(@RequestParam("encryptId") String encryptId, Model model) throws Exception {
 //        this.userId_ = userId;
         PersonalInfo personalInfo = new PersonalInfo();
         List<SurveyAnswerInfo> surveyAnswerInfos = new ArrayList<SurveyAnswerInfo>();
-        if (null == userId) {
+        if (null == encryptId) {
             throw new Exception();
         } else {
-            if (personalInfoService.findOne(userId).isPresent()) {
-                personalInfo = personalInfoService.findOne(userId).get();
+            if (personalInfoService.findOne(encryptId).isPresent()) {
+                personalInfo = personalInfoService.findOne(encryptId).get();
                 
-                logger.info("## init findAllAnswerByIds userId? "+userId+", seminarId? 4");
-                surveyAnswerInfos = this.findByIds(userId, "3", surveyAnswerInfos); // TODO
+                logger.info("## init findAllAnswerByIds encryptId? "+encryptId+", seminarId? 4");
+                surveyAnswerInfos = this.findByIds(encryptId, "3", surveyAnswerInfos); // TODO
 //                surveyAnswerInfo.setUser_id(userId);
 //                surveyAnswerInfo.setSeminar_id("3");// TODO
             } else {
                 throw new Exception();
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
-            model.addAttribute("userId", userId);
+            model.addAttribute("encryptId", encryptId);
             model.addAttribute("seminarId", "3"); // TODO
             model.addAttribute("surveyAnswerInfos", surveyAnswerInfos);
             logger.info("##### init survey information models? "+model.toString());
@@ -82,11 +82,11 @@ public class SurveyAnswerInfoController {
     }
 
 
-    @RequestMapping(value="{userId, seminarId}", method=RequestMethod.GET)
-    public List<SurveyAnswerInfo> findByIds(@PathVariable String userId, @PathVariable String seminarId, 
+    @RequestMapping(value="{encryptId, seminarId}", method=RequestMethod.GET)
+    public List<SurveyAnswerInfo> findByIds(@PathVariable String encryptId, @PathVariable String seminarId, 
             @ModelAttribute List<SurveyAnswerInfo> surveyAnswerInfos) {
         
-        surveyAnswerInfos = surveyAnswerInfoService.findAllAnswerByIds(userId, seminarId);
+        surveyAnswerInfos = surveyAnswerInfoService.findAllAnswerByIds(encryptId, seminarId);
         return surveyAnswerInfos;
     }
     
@@ -144,20 +144,20 @@ class SurveyAnswerInfoRestController {
     @PostMapping("/survey/api/add")
     public String addAnswerInfo(Model model, @Validated @RequestBody String surveyAnswerInfoList) 
             throws Exception  {
-        String userId = "";
+        String encryptId = "";
         ObjectMapper objectMapper = new ObjectMapper();
         SurveyAnswerInfo[] surveyAnswerInfos = objectMapper.readValue(surveyAnswerInfoList, SurveyAnswerInfo[].class);
         List<SurveyAnswerInfo> list = Arrays.asList(surveyAnswerInfos);  
-        userId = list.get(0).getUser_id();
+        encryptId = list.get(0).getEncrypt_id();
 
         for (SurveyAnswerInfo surveyAnswerInfo: list) {
-            logger.info("##### add surveyAnswerInfo information userId?"+userId+", getSurvey_answer? "+surveyAnswerInfo.getSurvey_answer());
+            logger.info("##### add surveyAnswerInfo information encryptId?"+encryptId+", getSurvey_answer? "+surveyAnswerInfo.getSurvey_answer());
         }
 
         list = (@Valid List<SurveyAnswerInfo>) surveyAnswerInfoService.saveOfSurveyAnswerInfos(list);
         model.addAttribute("surveyAnswerInfos", list);
 
-        return "survey?userId="+userId;
+        return "survey?userId="+encryptId;
     }
     
 }

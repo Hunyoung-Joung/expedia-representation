@@ -7,7 +7,7 @@
 var apiKey = "";
 const seminarId = "20190313-01";
 // elements
-var userId = "";
+var encryptId = "";
 var surveyQuestions = [];
 var surveyAnswers = [];
 var checkBoxVals = [];
@@ -66,14 +66,14 @@ $(document).ready(function(){
 	
 	// Submit survey answers
 	$("#submit").click(function(){
-		var userId = $('#userId').val();
+		var encryptId = $('#encryptId').val();
 		var seminarId = $('#seminarId').val();
 		let surveyInfo = [];
 		$('input#q4_answer').val(checkBoxVals);
 		$(".survey_answers").each(function() {
 			var target_id = $(this).attr("id");
 			var target_number = target_id.substring(1,2);
-			var obj = {"seminar_id":seminarId,"user_id":userId,"survey_no":target_number,"survey_answer": $(this).val()};
+			var obj = {"seminar_id":seminarId,"encrypt_id":encryptId,"survey_no":target_number,"survey_answer": $(this).val()};
 			surveyInfo.push(obj);
 		});
 	    
@@ -112,36 +112,7 @@ $(document).ready(function(){
 	});
 });
 
-/**
- * 
- * @returns
- */
-function getUserSurveyInfo() {
-	// try to get user data who joined the seminar.
-    $.ajax({
-            url: 'https://www.changchao.me/api/u/s/'+userId,
-            headers: {"api-key": apiKey},
-            type: 'GET',
-            contentType: "application/json",
-            dataType: 'json',
-            // if it could get user's answer data
-            success: function(data, status, xhr) { 
-            	if (("{}" != JSON.stringify(data)) && (seminarId == JSON.parse(JSON.stringify(data)).seminarId)) {
-            		// try to get user answer
-            		setSurveyAnswer();
-//            		$("button#submit").text("　修　正　")
-            	}
-            },
-            // if it couldn't get user data by error
-            error: function(xhr, status, err) { 
-    			// show error if it has
-            	showError(err);
-            },
-            complete: function (xhr, status) {
-            	// nothing to do
-            }
-    });
-}
+
 
 /**
  * survey questions set up to each HTML question field
