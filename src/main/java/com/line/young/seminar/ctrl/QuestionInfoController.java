@@ -53,18 +53,18 @@ public class QuestionInfoController {
     public String init(@RequestParam("encryptId") String encryptId, Model model) throws Exception {
         this.encryptId_ = encryptId;
         PersonalInfo personalInfo = new PersonalInfo();
-//        List<QuestionInfo> personalInfos = new ArrayList<QuestionInfo>();
-        if (null == encryptId_) {
+        logger.info("##### init question information encryptId? "+encryptId);
+        if (null == encryptId) {
             throw new Exception();
         } else {
-            if (personalInfoService.findOne(encryptId_).isPresent()) {
-                personalInfo = personalInfoService.findOne(encryptId_).get();
+            if (personalInfoService.findOne(encryptId).isPresent()) {
+                personalInfo = personalInfoService.findOne(encryptId).get();
             } else {
                 throw new Exception();
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
             model.addAttribute("questionInfo", new QuestionInfo());
-            model.addAttribute("questionInfos", this.findByEncryptId(encryptId_, new ArrayList<QuestionInfo>()));
+            model.addAttribute("questionInfos", this.findByEncryptId(encryptId, new ArrayList<QuestionInfo>()));
             logger.info("##### init question information models? "+model.toString());
         }
 
