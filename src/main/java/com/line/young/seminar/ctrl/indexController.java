@@ -5,6 +5,8 @@
  */
 package com.line.young.seminar.ctrl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.line.young.seminar.entity.AdminQuestionInfo;
 import com.line.young.seminar.entity.PersonalInfo;
 import com.line.young.seminar.entity.QuestionInfo;
 import com.line.young.seminar.entity.UserInfo;
@@ -54,6 +57,9 @@ public class indexController {
     @Autowired
     private SurveyAnswerInfoService surveyAnswerInfoService;
     
+    @Autowired
+    private PersonalInfoService personalInfoService;
+    
     @GetMapping
     public String init(Model model) {
 
@@ -70,13 +76,21 @@ public class indexController {
         String password = userInfos.get().getPassword();
         
         if (null == id) {
-//            throw new Exception();
+//            throw new Exception(); // TODO
             return "index";
         } else {
-            logger.info(id+" : "+userInfo.getId()+" -- "+password+" : "+userInfo.getPassword());
-
+        	List<AdminQuestionInfo> adminQuestionInfos = new ArrayList<AdminQuestionInfo>();
             if ((id.equals("admin")) && (password.equals(userInfo.getPassword()))) {
+            	List<QuestionInfo> questionInfos = (List<QuestionInfo>) questionInfoService.findAllOfQuestionInfo();
+            	for (QuestionInfo questionInfo: questionInfos) {
+            		Optional<PersonalInfo> personalInfo = personalInfoService.findByEncryptId(questionInfo.getEncrypt_id());
+            		AdminQuestionInfo adminQuestionInfo = new AdminQuestionInfo();
+            		adminQuestionInfo.setPersonalInfo(personalInfo.get());
+            		adminQuestionInfo.setQuestionInfo(questionInfo);
+            		adminQuestionInfos.add(adminQuestionInfo);
+            	}
             	model.addAttribute("displayName", "Admin");
+            	model.addAttribute("adminQuestionInfos", adminQuestionInfos);
                 model.addAttribute("questionInfos", questionInfoService.findAllOfQuestionInfo());
                 model.addAttribute("surveyAnswerInfos", surveyAnswerInfoService.findAllOfSurveyAnswerInfo());
                 return "admin";
