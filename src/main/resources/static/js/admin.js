@@ -26,7 +26,7 @@ $(document).ready(function(){
 						questions.push(value);
 					} else if (key == "q_category") {
 						var categoryName;
-						switch (value) {
+						switch (parseInt(value)) {
 						  case 1:
 							  categoryName = "最新API状況アップデート";
 						    break;
@@ -60,7 +60,7 @@ $(document).ready(function(){
     	$(this).find('tr').each(function() {
     		$(this).find('td').each(function(j) {
 //    			$(this).text(ind * 2 + i + 1);
-    			console.log(i+", "+j);
+    			console.log(questionList.length);
     			console.log(questionList[i][j]);
     			$(this).text(questionList[i][j]);
     		});
