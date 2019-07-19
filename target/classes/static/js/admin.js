@@ -56,18 +56,28 @@ $(document).ready(function(){
         questionList.push(questions);
 	});
     
-    $.each(questionList, function( index, value ) {
-    	console.log( index + ": " + value );
+    $.each(questionList, function(idx, val) {
+    	console.log( idx + ": " + val);
         $('.q').each(function() {
-        	$(this).find('tr').each(function() {
-        		$(this).find('td').each(function(i) {
-        			console.log(value[i]);
-        			$(this).text(value[i]);
-        		});
-        	});
+            var tds = '<tr style="word-wrap: break-word">';
+            jQuery.each($('tr:last td', this), function () {
+                tds += '<td>' + $(this).html() + '</td>';
+            });
+            tds += '</tr>';
+            if ($('tbody', this).length > 0) {
+                $('tbody', this).append(tds);
+            } else {
+                $(this).append(tds);
+            }        	
+        	
+//        	$(this).find('tbody').each(function() {
+//        		$(this).find('td').each(function(i) {
+//        			console.log(value[i]);
+//        			$(this).text(value[i]);
+//        		});
+//        	});
     	});
 	});
-    
 });
 
 
