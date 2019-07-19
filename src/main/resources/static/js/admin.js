@@ -60,6 +60,7 @@ $(document).ready(function(){
     	$(this).find('tr').each(function(i) {
     		$(this).find('td').each(function(j) {
 //    			$(this).text(ind * 2 + i + 1);
+    			console.log(questionList[i]);
     			$(this).text(questionList[i]);
     		});
     	});
