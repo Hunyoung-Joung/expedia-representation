@@ -11,7 +11,7 @@ $(document).ready(function(){
     $.each(adminQuestionInfos, function(idx, val) {
     	console.log(idx+" : "+val);
         $.each(val, function(idx_, val_) {
-        	console.log(idx+" : "+JSON.parse(JSON.stringify(val)));
+        	console.log(idx_+" : "+JSON.parse(JSON.stringify(val_)));
 //			if (key == "q_no") {
 //				questionNo = JSON.parse(JSON.stringify(val)).survey_answer;
 //				$($(".questions").get(parseInt(value)-1)).val(ans);
