@@ -12,11 +12,9 @@ $(document).ready(function(){
 	
     $.each(adminQuestionInfos, function(idx, val) {
         $.each(val, function(idx_, val_) {
-        	console.log(idx_+" : "+JSON.parse(JSON.stringify(val_)));
 			if (idx_ == "personalInfo") {
 				$.each(val_, function(key, value) {
-					console.log(key+" : "+value);
-					if (key == display_name) {
+					if (key == "display_name") {
 						questions.push(value);
 					}
 				});
@@ -24,26 +22,32 @@ $(document).ready(function(){
 //				$($(".questions").get(parseInt(value)-1)).val(ans);
 			} else if (idx_ == "questionInfo") {
 				$.each(val_, function(key, value) {
-					questions.push(JSON.parse(JSON.stringify(value)).q_no);
-					var categoryName;
-					switch (JSON.parse(JSON.stringify(value)).q_category) {
-					  case 1:
-						  categoryName = "最新API状況アップデート";
-					    break;
-					  case 2:
-						  categoryName = "LINE Pay APIのご紹介";
-					    break;
-					  case 3:
-						  categoryName = "クラスメソッド様事例紹介";
-					    break;
-					  case 4:
-						  categoryName = "その他";
-					    break;
+					if (key == "q_no") {
+						questions.push(value);
+					} else if (key == "q_category") {
+						var categoryName;
+						switch (JSON.parse(JSON.stringify(value)).q_category) {
+						  case 1:
+							  categoryName = "最新API状況アップデート";
+						    break;
+						  case 2:
+							  categoryName = "LINE Pay APIのご紹介";
+						    break;
+						  case 3:
+							  categoryName = "クラスメソッド様事例紹介";
+						    break;
+						  case 4:
+							  categoryName = "その他";
+						    break;
+						}
+						questions.push(categoryName);
+					} else if (key == "q_contents") {
+						questions.push(value);
+					} else if (key == "is_selected") {
+						questions.push(value);
+					} else if (key == "update_at") {
+						questions.push(value);
 					}
-					questions.push(categoryName);
-					questions.push(JSON.parse(JSON.stringify(value)).q_contents);
-					questions.push(JSON.parse(JSON.stringify(value)).is_selected);
-					questions.push(JSON.parse(JSON.stringify(value)).update_at);
 				});
 			} else {
 				
