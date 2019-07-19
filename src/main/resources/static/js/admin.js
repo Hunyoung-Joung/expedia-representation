@@ -58,18 +58,26 @@ $(document).ready(function(){
     
     $.each(questionList, function( index, value ) {
     	console.log( index + ": " + value );
-	});
-    
-    $('.q').each(function(i) {
-    	$(this).find('tr').each(function(i) {
-    		$(this).find('td').each(function(j) {
-//    			$(this).text(ind * 2 + i + 1);
-    			console.log(questionList.length);
-    			console.log(questionList[i][j]);
-    			$(this).text(questionList[i][j]);
-    		});
+        $('.q').each(function() {
+        	$(this).find('tr').each(function() {
+        		$(this).find('td').each(function() {
+        			console.log(value[i][j]);
+        			$(this).text(value[i][j]);
+        		});
+        	});
     	});
 	});
+    
+//    $('.q').each(function() {
+//    	$(this).find('tr').each(function() {
+//    		$(this).find('td').each(function() {
+////    			$(this).text(ind * 2 + i + 1);
+//    			console.log(questionList.length);
+//    			console.log(questionList[i][j]);
+//    			$(this).text(questionList[i][j]);
+//    		});
+//    	});
+//	});
 });
 
 
