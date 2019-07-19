@@ -18,8 +18,6 @@ $(document).ready(function(){
 						questions.push(value);
 					}
 				});
-//				questionNo = JSON.parse(JSON.stringify(val)).survey_answer;
-//				$($(".questions").get(parseInt(value)-1)).val(ans);
 			} else if (idx_ == "questionInfo") {
 				$.each(val_, function(key, value) {
 					if (key == "q_no") {
@@ -65,7 +63,7 @@ $(document).ready(function(){
 	        			console.log("#######################"+val[i]);
 	        			$(this).text(val[i]);
         			});
-        		});
+        		}).append(this);
         	});        	
     	});
 	});
