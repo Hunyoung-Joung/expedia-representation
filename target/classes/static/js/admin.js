@@ -5,12 +5,12 @@
  */
 
 var adminQuestionInfos;
-var questions = [];
 var questionList = [];
 
 $(document).ready(function(){
 	
     $.each(adminQuestionInfos, function(idx, val) {
+    	var questions = [];
         $.each(val, function(idx_, val_) {
 			if (idx_ == "personalInfo") {
 				$.each(val_, function(key, value) {
@@ -60,6 +60,7 @@ $(document).ready(function(){
     	$(this).find('tr').each(function(i) {
     		$(this).find('td').each(function(j) {
 //    			$(this).text(ind * 2 + i + 1);
+    			console.log(i+", "+j);
     			console.log(questionList[i]);
     			$(this).text(questionList[i]);
     		});
