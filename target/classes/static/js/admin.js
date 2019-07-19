@@ -56,10 +56,11 @@ $(document).ready(function(){
         questionList.push(questions);
 	});
     
-    $('.q').each(function(ind) {
+    $('.q').each(function(idx) {
     	$(this).find('tr').each(function() {
     		$(this).find('td').each(function(i) {
-    			$(this).text(ind * 2 + i + 1);
+//    			$(this).text(ind * 2 + i + 1);
+    			$(this).text(questionList[idx*2+i][i]);
     		});
     	});
 	});
