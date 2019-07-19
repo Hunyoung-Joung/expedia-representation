@@ -58,9 +58,9 @@ $(document).ready(function(){
     
     $.each(questionList, function( index, value ) {
     	console.log( index + ": " + value );
-        $('.q').each(function() {
+        $('.q').each(function(i) {
         	$(this).find('tr').each(function() {
-        		$(this).find('td').each(function() {
+        		$(this).find('td').each(function(j) {
         			console.log(value[i][j]);
         			$(this).text(value[i][j]);
         		});
