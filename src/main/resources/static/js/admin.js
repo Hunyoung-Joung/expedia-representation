@@ -56,8 +56,8 @@ $(document).ready(function(){
         questionList.push(questions);
 	});
     
-    $('.q').each(function() {
-    	$(this).find('tr').each(function(i) {
+    $('.q').each(function(i) {
+    	$(this).find('tr').each(function() {
     		$(this).find('td').each(function(j) {
 //    			$(this).text(ind * 2 + i + 1);
     			console.log(i+", "+j);
