@@ -16,11 +16,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.line.young.seminar.entity.PersonalInfo;
+import com.line.young.seminar.entity.QuestionInfo;
 import com.line.young.seminar.entity.UserInfo;
 import com.line.young.seminar.repo.QuestionInfoRepository;
 import com.line.young.seminar.repo.UsersRepository;
@@ -83,27 +86,10 @@ public class indexController {
         }
     }
     
-    @PostMapping(value = {"/auth"})
-    public String update(Model model, @ModelAttribute("userInfo") @Valid UserInfo userInfo, BindingResult result) throws Exception {
-        
-        Optional<UserInfo> userInfos = usersRepository.findById(userInfo.getId());
-        String id = userInfos.get().getId();
-        String password = userInfos.get().getPassword();
-        
-        if (null == id) {
-//            throw new Exception();
-            return "index";
-        } else {
-            logger.info(id+" : "+userInfo.getId()+" -- "+password+" : "+userInfo.getPassword());
-
-            if ((id.equals("admin")) && (password.equals(userInfo.getPassword()))) {
-            	model.addAttribute("displayName", "Admin");
-                model.addAttribute("questionInfos", questionInfoService.findAllOfQuestionInfo());
-                model.addAttribute("surveyAnswerInfos", surveyAnswerInfoService.findAllOfSurveyAnswerInfo());
-                return "admin";
-            } else {
-                return "index";
-            }
-        }
+    @PutMapping("{id}")
+    public String put(@PathVariable Long q_no, @ModelAttribute QuestionInfo questionInfo) {
+    	questionInfo.setQ_no(q_no);
+    	questionInfoService.saveOfQuestionInfo(questionInfo);
+        return "redirect:/admin";
     }
 }

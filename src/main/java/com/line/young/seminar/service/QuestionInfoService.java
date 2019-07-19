@@ -45,4 +45,5 @@ public class QuestionInfoService {
     public void deleteAllOfQuestionInfo() {
         questionInfoRepository.deleteAll();
     }
+
 }
