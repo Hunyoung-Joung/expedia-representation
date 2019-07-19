@@ -56,8 +56,12 @@ $(document).ready(function(){
         questionList.push(questions);
 	});
     
+    $.each(questionList, function( index, value ) {
+    	console.log( index + ": " + value );
+	});
+    
     $('.q').each(function(i) {
-    	$(this).find('tr').each(function() {
+    	$(this).find('tr').each(function(i) {
     		$(this).find('td').each(function(j) {
 //    			$(this).text(ind * 2 + i + 1);
     			console.log(questionList.length);
