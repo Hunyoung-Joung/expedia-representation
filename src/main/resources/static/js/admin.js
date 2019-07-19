@@ -5,8 +5,8 @@
  */
 
 var adminQuestionInfos;
-let questions = [];
-let questionList = [];
+var questions = [];
+var questionList = [];
 
 $(document).ready(function(){
 	
