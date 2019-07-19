@@ -15,7 +15,10 @@ $(document).ready(function(){
         	console.log(idx_+" : "+JSON.parse(JSON.stringify(val_)));
 			if (idx_ == "personalInfo") {
 				$.each(val_, function(key, value) {
-					questions.push(JSON.parse(JSON.stringify(value)).display_name);
+					console.log(key+" : "+value);
+					if (key == display_name) {
+						questions.push(value);
+					}
 				});
 //				questionNo = JSON.parse(JSON.stringify(val)).survey_answer;
 //				$($(".questions").get(parseInt(value)-1)).val(ans);
