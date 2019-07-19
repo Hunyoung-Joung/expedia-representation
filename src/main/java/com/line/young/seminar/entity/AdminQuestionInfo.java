@@ -2,10 +2,13 @@ package com.line.young.seminar.entity;
 
 import javax.persistence.Entity;
 
+import org.springframework.data.annotation.Id;
+
 
 @Entity
 public class AdminQuestionInfo {
 
+	@Id
     private PersonalInfo PersonalInfo;
     
     private QuestionInfo QuestionInfo;
