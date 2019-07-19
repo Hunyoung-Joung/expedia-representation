@@ -10,12 +10,13 @@ $(document).ready(function(){
 	
     $.each(adminQuestionInfos, function(idx, val) {
     	console.log(idx+" : "+val);
-//        $.each(val, function(key, value) {
+        $.each(val, function(idx_, val_) {
+        	console.log(idx+" : "+val);
 //			if (key == "q_no") {
 //				questionNo = JSON.parse(JSON.stringify(val)).survey_answer;
 //				$($(".questions").get(parseInt(value)-1)).val(ans);
 //			}
-//  		});
+  		});
 	});
 });
 
