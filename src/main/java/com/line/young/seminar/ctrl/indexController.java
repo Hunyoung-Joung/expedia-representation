@@ -73,6 +73,31 @@ public class indexController {
             logger.info(id+" : "+userInfo.getId()+" -- "+password+" : "+userInfo.getPassword());
 
             if ((id.equals("admin")) && (password.equals(userInfo.getPassword()))) {
+            	model.addAttribute("displayName", "Admin");
+                model.addAttribute("questionInfos", questionInfoService.findAllOfQuestionInfo());
+                model.addAttribute("surveyAnswerInfos", surveyAnswerInfoService.findAllOfSurveyAnswerInfo());
+                return "admin";
+            } else {
+                return "index";
+            }
+        }
+    }
+    
+    @PostMapping(value = {"/auth"})
+    public String update(Model model, @ModelAttribute("userInfo") @Valid UserInfo userInfo, BindingResult result) throws Exception {
+        
+        Optional<UserInfo> userInfos = usersRepository.findById(userInfo.getId());
+        String id = userInfos.get().getId();
+        String password = userInfos.get().getPassword();
+        
+        if (null == id) {
+//            throw new Exception();
+            return "index";
+        } else {
+            logger.info(id+" : "+userInfo.getId()+" -- "+password+" : "+userInfo.getPassword());
+
+            if ((id.equals("admin")) && (password.equals(userInfo.getPassword()))) {
+            	model.addAttribute("displayName", "Admin");
                 model.addAttribute("questionInfos", questionInfoService.findAllOfQuestionInfo());
                 model.addAttribute("surveyAnswerInfos", surveyAnswerInfoService.findAllOfSurveyAnswerInfo());
                 return "admin";

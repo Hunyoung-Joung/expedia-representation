@@ -100,7 +100,7 @@ public class QuestionInfoController {
     public String addtquestionInfo(Model model, @Valid QuestionInfo questionInfo) throws Exception  {
         logger.info("##### add question information");
         questionInfo.setEncrypt_id(encryptId_);
-        questionInfo.setSeminar_id("3");
+        questionInfo.setSeminar_id("3"); // TODO
         questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
 //        model.addAttribute("questionInfos", this.findByUserId(questionInfo.getUser_id(), new ArrayList<QuestionInfo>()));
 
