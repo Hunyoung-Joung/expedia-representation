@@ -14,7 +14,7 @@ $(document).ready(function(){
 			if (idx_ == "personalInfo") {
 				$.each(val_, function(key, value) {
 					console.log(key+" : "+JSON.parse(JSON.stringify(value)));
-				}
+				});
 //				questionNo = JSON.parse(JSON.stringify(val)).survey_answer;
 //				$($(".questions").get(parseInt(value)-1)).val(ans);
 			} else if (idx_ == "questionInfo") {
