@@ -80,9 +80,9 @@ $(document).ready(function(){
             					$($(this).find("#qNo")).val(val[i]);
             				} else if (i == 4) {
             					if (val[i] == true) {
-            						$($(this).find("#isSelected").index(0)).attr('checked', 'checked');
+            						$($(this).find("#isSelected").index(0)).prop("checked", true);
             					} else {
-            						$($(this).find("#isSelected").index(1)).attr('checked', 'checked');
+            						$($(this).find("#isSelected").index(1)).prop("checked", true);
             					}
             				} else {
             					$(this).text(val[i]);
