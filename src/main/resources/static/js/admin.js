@@ -54,7 +54,7 @@ $(document).ready(function(){
         questionList.push(questions);
 	});
     
-	var innerHtml = "<tr style='word-wrap: break-word'><td class='col-sm-3'>" +
+	var innerHtml = "<tr class='inner' style='word-wrap: break-word'><td class='col-sm-3'>" +
 			"</td><td>" +
 			"</td><td class='col-sm-3'>" +
 			"</td><td class='col-sm-5'>" +
@@ -64,16 +64,16 @@ $(document).ready(function(){
     // Array stack to reverse order by question no
     $.each(questionList.reverse(), function(idx, val) {
     	$('.q tbody').append(innerHtml);
-//        $('.q').each(function() {
-//        	$(this).find('tbody').each(function() {
-//        		$(this).find('tr').each(function() {
-        			$('td').each(function(i) {
+        $('.q').each(function() {
+        	$(this).find('tbody').each(function() {
+        		$(this).closest('tr').next().find('.inner').each(function() {
+        			$(this).find('td').each(function(i) {
 	        			console.log("#######################"+val[i]);
 	        			$(this).text(val[i]);
         			});
-//        		});
-//        	});        	
-//    	});
+        		});
+        	});        	
+    	});
 
 	});
 });
