@@ -56,7 +56,7 @@ $(document).ready(function(){
     
     // Array stack to reverse order by question no
     $.each(questionList.reverse(), function(idx, val) {
-    	var addHtml = $('.q tbody').html('
+    	var innerHtml = ('
           		<tr style="word-wrap: break-word">
         		<td class="col-sm-3"></td>
         		<td></td>
@@ -70,7 +70,7 @@ $(document).ready(function(){
         		<td class="col-sm-2"></td>
       		</tr>'
     	);
-    	$('.q tbody').append(addHtml);
+    	$('.q tbody').append(innerHtml);
         $('.q').each(function() {
         	$(this).find('tbody').each(function() {
         		$(this).find('tr').each(function() {
