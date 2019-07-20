@@ -69,7 +69,7 @@ $(document).ready(function(){
 			"<td class='col-sm-2'></td>" +
 			"</tr>";
     // Array stack to reverse order by question no
-    $.each(questionList, function(idx, val) {
+    $.each((questionList.reverse()), function(idx, val) {
     	$('.q tbody').append(innerHtml);
         $('.q').each(function() {
         	$(this).find('tbody').each(function() {
@@ -80,9 +80,9 @@ $(document).ready(function(){
             					$($(this).find("#qNo")).val(val[i]);
             				} else if (i == 4) {
             					if (val[i] == true) {
-            						$($(this).find("#isSelected")).index(0).attr('checked', 'checked');
+            						$($(this).find("#isSelected")).index(0)).attr('checked', 'checked');
             					} else {
-            						$($(this).find("#isSelected")).index(1).attr('checked', 'checked');
+            						$($(this).find("#isSelected")).index(1)).attr('checked', 'checked');
             					}
             				} else {
             					$(this).text(val[i]);
