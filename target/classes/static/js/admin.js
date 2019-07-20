@@ -55,7 +55,7 @@ $(document).ready(function(){
 	});
     
     // Array stack to reverse order by question no
-    $.each(questionList.reverse(), function(idx, val) {
+    $.each(questionList, function(idx, val) {
         $('.q').each(function() {
         	$(this).find('tbody').each(function() {
         		$(this).find('tr').each(function() {
