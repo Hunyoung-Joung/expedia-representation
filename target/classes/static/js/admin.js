@@ -55,22 +55,33 @@ $(document).ready(function(){
 	});
     
 	var innerHtml = "<tr class='inner' style='word-wrap: break-word'><td class='col-sm-3'>" +
-			"</td><td>" +
+			"</td><input id='qNo' name='q_no' type='hidden' class='form-control'/><td>" +
 			"</td><td class='col-sm-3'>" +
 			"</td><td class='col-sm-5'>" +
-			"</td><td class='col-sm-2'><form th:action='@{/seminar/{q_no}(q_no=*{q_no})}' th:method='update'><input class='btn btn-default btn-xs' type='submit' value='削除' /></form></td>" +
+			"</td><td class='col-sm-2'>" +
+			"<form th:action='@{/seminar/{q_no}(q_no=*{q_no})}' th:method='update'><input class='btn btn-default btn-xs' type='submit' value='削除' />" +
+			"<div class='radio text-center'>" +
+			"<label><input id='isSelected' name='is_selected' type='radio' value='true' >可能</label>" +
+			"<label><input id='isSelected' name='is_selected' type='radio' value='false'>不可</label>" +
+			"</div>" +
+			"</form>" +
+			"</td>" +
 			"<td class='col-sm-2'></td>" +
 			"</tr>";
     // Array stack to reverse order by question no
-    $.each(questionList.reverse(), function(idx, val) {
+    $.each(questionList, function(idx, val) {
     	$('.q tbody').append(innerHtml);
         $('.q').each(function() {
         	$(this).find('tbody').each(function() {
         		$(this).find('.inner').each(function() {
-        			console.log($(this).index()+"#######################"+idx);
         			if ($(this).index() == idx) {
             			$(this).find('td').each(function(i) {
-    	        			console.log("#######################"+val[i]);
+            				if (i == 1) {
+            					$($(this).find("#qNo")).val(val[i]);
+            				}
+            				if (i == 4) {
+            					$($(this).find("#isSelected")).val(val[i]);
+            				}
     	        			$(this).text(val[i]);
             			});
         			}
