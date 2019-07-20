@@ -63,8 +63,8 @@ $(document).ready(function(){
 			"</tr>";
     // Array stack to reverse order by question no
     $.each(questionList.reverse(), function(idx, val) {
-//    	$('.q tbody').append(innerHtml);
-    	$('.q tbody').append(innerHtml).each(function() {
+    	$('.q tbody').append(innerHtml);
+//        $('.q').each(function() {
         	$(this).find('tbody').each(function() {
         		$(this).find('tr').each(function() {
         			$(this).find('td').each(function(i) {
@@ -73,7 +73,7 @@ $(document).ready(function(){
         			});
         		});
         	});        	
-    	});
+//    	});
 
 	});
 });
