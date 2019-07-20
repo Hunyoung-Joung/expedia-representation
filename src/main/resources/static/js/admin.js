@@ -66,11 +66,14 @@ $(document).ready(function(){
     	$('.q tbody').append(innerHtml);
         $('.q').each(function() {
         	$(this).find('tbody').each(function() {
-        		$(this).closest('tr').next().find('.inner').each(function() {
-        			$(this).find('td').each(function(i) {
-	        			console.log("#######################"+val[i]);
-	        			$(this).text(val[i]);
-        			});
+        		$(this).find('.inner').each(function() {
+        			console.log($(this).index()+"#######################"+idx);
+        			if ($(this).index() == idx) {
+            			$(this).find('td').each(function(i) {
+    	        			console.log("#######################"+val[i]);
+    	        			$(this).text(val[i]);
+            			});
+        			}
         		});
         	});        	
     	});
