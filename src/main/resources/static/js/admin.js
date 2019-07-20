@@ -56,19 +56,19 @@ $(document).ready(function(){
     
     // Array stack to reverse order by question no
     $.each(questionList.reverse(), function(idx, val) {
-    	var innerHtml = '
-          		<tr style="word-wrap: break-word">
-        		<td class="col-sm-3"></td>
+    	var innerHtml = "
+          		<tr style='word-wrap: break-word'>
+        		<td class='col-sm-3'></td>
         		<td></td>
-        		<td class="col-sm-3"></td>
-        		<td class="col-sm-5"></td>
-        		<td class="col-sm-2">
-          			<form th:action="@{/seminar/{q_no}(q_no=*{q_no})}" th:method="update">
-            			<input class="btn btn-default btn-xs" type="submit" value="削除" />
+        		<td class='col-sm-3'></td>
+        		<td class='col-sm-5'></td>
+        		<td class='col-sm-2'>
+          			<form th:action='@{/seminar/{q_no}(q_no=*{q_no})}' th:method='update'>
+            			<input class='btn btn-default btn-xs' type='submit' value='削除' />
           			</form>
         		</td>
-        		<td class="col-sm-2"></td>
-      		</tr>';
+        		<td class='col-sm-2'></td>
+      		</tr>";
     	$('.q tbody').append(innerHtml);
         $('.q').each(function() {
         	$(this).find('tbody').each(function() {
