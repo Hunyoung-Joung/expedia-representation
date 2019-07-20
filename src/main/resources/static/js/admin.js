@@ -59,9 +59,9 @@ $(document).ready(function(){
 			"</td><td class='col-sm-3'>" +
 			"</td><td class='col-sm-5'>" +
 			"</td><td class='col-sm-2'>" +
-			"<form th:action='@{/seminar/{q_no}(q_no=*{q_no})}' th:method='update'><input class='btn btn-default btn-xs' type='submit' value='削除' />" +
+			"<form th:action='@{/{q_no}(q_no=*{q_no})}' th:method='update'>" +
 			"<div class='radio text-center'>" +
-			"<label><input id='isSelected' name='is_selected' type='radio' value='true' >可能</label>" +
+			"<label><input id='isSelected' name='is_selected' type='radio' value='true' >可能</label> " +
 			"<label><input id='isSelected' name='is_selected' type='radio' value='false'>不可</label>" +
 			"</div>" +
 			"</form>" +
@@ -79,7 +79,11 @@ $(document).ready(function(){
             				if (i == 1) {
             					$($(this).find("#qNo")).val(val[i]);
             				} else if (i == 4) {
-            					$($(this).find("#isSelected")).val(val[i]);
+            					if (val[i] == true) {
+            						$($(this).find("#isSelected")).index(0).attr('checked', 'checked');
+            					} else {
+            						$($(this).find("#isSelected")).index(1).attr('checked', 'checked');
+            					}
             				} else {
             					$(this).text(val[i]);
             				}
