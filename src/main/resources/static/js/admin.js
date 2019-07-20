@@ -78,11 +78,11 @@ $(document).ready(function(){
             			$(this).find('td').each(function(i) {
             				if (i == 1) {
             					$($(this).find("#qNo")).val(val[i]);
-            				}
-            				if (i == 4) {
+            				} else if (i == 4) {
             					$($(this).find("#isSelected")).val(val[i]);
+            				} else {
+            					$(this).text(val[i]);
             				}
-    	        			$(this).text(val[i]);
             			});
         			}
         		});
