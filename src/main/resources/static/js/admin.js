@@ -63,11 +63,11 @@ $(document).ready(function(){
 			"</tr>";
     // Array stack to reverse order by question no
     $.each(questionList.reverse(), function(idx, val) {
-    	$('.q tbody').append(innerHtml);
-        $('.q').each(function() {
-        	$(this).next().find('tbody').each(function() {
-        		$(this).next().find('tr').each(function() {
-        			$(this).next().find('td').each(function(i) {
+//    	$('.q tbody').append(innerHtml);
+    	$('.q tbody').append(innerHtml).each(function() {
+        	$(this).find('tbody').each(function() {
+        		$(this).find('tr').each(function() {
+        			$(this).find('td').each(function(i) {
 	        			console.log("#######################"+val[i]);
 	        			$(this).text(val[i]);
         			});
