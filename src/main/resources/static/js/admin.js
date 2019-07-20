@@ -54,9 +54,8 @@ $(document).ready(function(){
         questionList.push(questions);
 	});
     
+    // Array stack to reverse order by question no
     $.each(questionList.reverse(), function(idx, val) {
-    	var addHtml = $('.q tbody').html();
-    	$('.q tbody').append(addHtml);
         $('.q').each(function() {
         	$(this).find('tbody').each(function() {
         		$(this).find('tr').each(function() {
@@ -67,6 +66,7 @@ $(document).ready(function(){
         		});
         	});        	
     	});
+        $('.q tbody').append($('.q tbody').html());
 	});
 });
 
