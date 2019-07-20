@@ -54,10 +54,9 @@ $(document).ready(function(){
         questionList.push(questions);
 	});
     
-    $.each(questionList, function(idx, val) {
+    $.each(questionList.reverse(), function(idx, val) {
     	var addHtml = $('.q tbody').html();
-//    	console.log( idx + ": " + val);
-//    	console.log("#######################"+$('.q tbody').html());
+    	$('.q tbody').append(addHtml);
         $('.q').each(function() {
         	$(this).find('tbody').each(function() {
         		$(this).find('tr').each(function() {
@@ -68,7 +67,6 @@ $(document).ready(function(){
         		});
         	});        	
     	});
-        $('.q tbody').append(addHtml);
 	});
 });
 
