@@ -112,11 +112,14 @@ Copyright@ LINE 2019
         	</thead>
         	<tbody>
           		<tr class="row" th:each="questionInfo:${questionInfos}" th:object="${questionInfo}" style="word-wrap: break-word">
-            		<td class="col-sm-3">
-            			<span th:if="${q_category} == '1'" >最新API状況アップデート</span>
-
-            		</td>
+            		<td class="col-sm-3"　 th:text="*{q_category}"></td>
             		<td class="col-sm-5" th:text="*{q_contents}"></td>
+<div th:switch="${q_contents}">
+    <p th:case="1" th:text="最新API状況アップデート"></p>
+    <p th:case="2" th:text="LINE Pay APIのご紹介"></p>
+    <p th:case="3" th:text="クラスメソッド様事例紹介"></p>
+    <p th:case="*">その他</p>
+</div>
             		<td class="col-sm-2" th:text="*{is_selected}"></td>
             		<td class="col-sm-3" th:text="*{update_at}"></td>
             		<td class="col-sm-2">
