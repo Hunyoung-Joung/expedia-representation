@@ -15,7 +15,7 @@ var content = "";
 $(document).ready(function(){
 
 	$("#show_map").click(function(){
-        window.open("https://www.relo-kaigi.jp/comfort/shinjyuku/access/");
+        window.open("https://www.relo-kaigi.jp/comfort/shinjyuku/access/",'popUpWindow','height=500,width=400,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');
 	});
 	
 	$("textarea#content").mouseover(function(){
