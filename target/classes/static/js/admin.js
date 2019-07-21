@@ -73,12 +73,13 @@ $(document).ready(function(){
 			"<td class='col-sm-3'></td>" +
 			"<td class='col-sm-5'></td>" +
 			"<td class='col-sm-2'>" +
-//			"<form th:action='@{/seminar/{q_no}(q_no=*{q_no})}' th:method='put' th:object='${questionInfo}'>" +
+			"<form action='' method='post' >" +
+			"<input type='hidden' name='_method' value='put'>" +
 			"<div class='radio text-center'>" +
 			"<label><input id='isSelected1' name='is_selected' type='radio' value='true' >可能</label> " +
 			"<label><input id='isSelected2' name='is_selected' type='radio' value='false' >不可</label>" +
 			"</div>" +
-//			"</form>" +
+			"</form>" +
 			"</td>" +
 			"<td class='col-sm-2'></td>" +
 			"</tr>";
