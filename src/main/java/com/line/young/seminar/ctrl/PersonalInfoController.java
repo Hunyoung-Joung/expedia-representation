@@ -23,7 +23,7 @@ import com.line.young.seminar.service.PersonalInfoService;
 
 /**
  * 
- * Personal information controller with service and entity
+ * Personal information controller
  * 
  * @author jounghunyoung@gmail.com
  *
@@ -50,18 +50,19 @@ public class PersonalInfoController {
         PersonalInfo personalInfo = new PersonalInfo();
         if (null == userId) {
             model.addAttribute("personalInfo", personalInfo);
+            return "error";
         } else {
             personalInfo = this.findById(userId, new PersonalInfo());
             personalInfo.setUser_id(userId);
             personalInfo.setEncrypt_id(encryptId);
             personalInfoService.save(personalInfo);
             model.addAttribute("personalInfo", personalInfo);
+            return "personal_information";
         }
-
-        return "personal_information";
     }
 
     /**
+     * Find personal data by encrypted id 
      * 
      * @param encryptId
      * @param personalInfo
@@ -99,7 +100,6 @@ public class PersonalInfoController {
      */
     @RequestMapping(method = RequestMethod.POST)
     public String addtPersonalInfo(Model model, @ModelAttribute("personalInfo") @Valid PersonalInfo personalInfo, BindingResult result)  {
-        logger.info("##### add personal information");
         personalInfo = personalInfoService.save(personalInfo);
         model.addAttribute("personalInfo", this.findById(personalInfo.getEncrypt_id(), new PersonalInfo()));
 

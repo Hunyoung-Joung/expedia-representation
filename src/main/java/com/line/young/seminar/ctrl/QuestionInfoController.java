@@ -55,22 +55,21 @@ public class QuestionInfoController {
     public String init(@RequestParam("encryptId") String encryptId, Model model) throws Exception {
         this.encryptId_ = encryptId;
         PersonalInfo personalInfo = new PersonalInfo();
-        logger.info("##### init question information encryptId? "+encryptId);
+
         if (null == encryptId) {
-            throw new Exception();
+        	return "error";
         } else {
             if (personalInfoService.findByEncryptId(encryptId).isPresent()) {
                 personalInfo = personalInfoService.findByEncryptId(encryptId).get();
             } else {
-                throw new Exception(); // TODO
+            	return "error";
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
             model.addAttribute("questionInfo", new QuestionInfo());
             model.addAttribute("questionInfos", this.findByEncryptId(encryptId, new ArrayList<QuestionInfo>()));
-            logger.info("##### init question information models? "+model.toString());
+            
+            return "seminar";
         }
-
-        return "seminar";
     }
 
 
@@ -78,8 +77,6 @@ public class QuestionInfoController {
     public List<QuestionInfo> findByEncryptId(@PathVariable String encryptId, @ModelAttribute List<QuestionInfo> questionInfos) {
         if (!questionInfoService.findByEncryptId(encryptId).isEmpty()) {
             questionInfos = questionInfoService.findByEncryptId(encryptId);
-            
-            logger.info("##### find by encryptId? "+questionInfos.size());
         } else {
             questionInfos = new ArrayList<QuestionInfo>();
         }
@@ -89,7 +86,6 @@ public class QuestionInfoController {
 
     @PostMapping("/all_questions")
     public String findAll(@RequestParam("password") String password, Model model) {
-        logger.info("##### find all of users");
   
         Iterable<QuestionInfo> questionInfos = questionInfoService.findAllOfQuestionInfo();
         model.addAttribute("questionInfos", questionInfos);
@@ -100,7 +96,6 @@ public class QuestionInfoController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String addtquestionInfo(Model model, @Valid QuestionInfo questionInfo) throws Exception  {
-        logger.info("##### add question information");
         questionInfo.setEncrypt_id(encryptId_);
         questionInfo.setSeminar_id("3"); // TODO
         questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
@@ -113,23 +108,4 @@ public class QuestionInfoController {
     	questionInfoService.deleteById(q_no);
     	return init(encryptId_, model);
     }
-//    
-//    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
-//    public String selectquestionInfo(@PathVariable String userId, Model model) {
-//        logger.info("##### find question information? userId = "+userId);
-//        Optional<questionInfo> questionInfo = questionInfoService.findOne(userId);
-//        model.addAttribute("questionInfo", questionInfo);
-//        
-//        return "question_information";
-//    }
-//    
-//    @RequestMapping(method=RequestMethod.GET, value={"/api/{userId}"})
-//    public String selectquestionInfo(Model model, @PathVariable String userId) {
-//        logger.info("##### find question information? id = "+userId);
-////        Iterable<questionInfo> questionInfos = this.questionInfoRepository.findAll();
-////        model.addAttribute("questionInfos", questionInfos);
-////        model.addAttribute("questionInfo", new questionInfo());
-//        
-//        return "question_information";
-//    }
 }

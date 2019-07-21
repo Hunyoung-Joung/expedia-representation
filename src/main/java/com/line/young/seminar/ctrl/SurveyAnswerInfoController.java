@@ -59,7 +59,7 @@ public class SurveyAnswerInfoController {
         PersonalInfo personalInfo = new PersonalInfo();
         List<SurveyAnswerInfo> surveyAnswerInfos = new ArrayList<SurveyAnswerInfo>();
         if (null == encryptId) {
-            throw new Exception();
+        	return "error";
         } else {
             if (personalInfoService.findByEncryptId(encryptId).isPresent()) {
                 personalInfo = personalInfoService.findByEncryptId(encryptId).get();
@@ -67,7 +67,7 @@ public class SurveyAnswerInfoController {
                 logger.info("## init findAllAnswerByIds encryptId? "+encryptId+", seminarId? 4");
                 surveyAnswerInfos = this.findByIds(encryptId, "3", surveyAnswerInfos); // TODO
             } else {
-                throw new Exception(); // TODO
+            	return "error";
             }
             model.addAttribute("displayName", personalInfo.getDisplay_name());
             model.addAttribute("encryptId", encryptId);
