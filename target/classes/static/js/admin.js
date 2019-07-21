@@ -94,6 +94,7 @@ $(document).ready(function(){
             				if (i == 1) {
             					$($(this).find("#qNo")).val(val[i]);
             				} else if (i == 4) {
+            					$($(this).find("form")).attr('"action=/seminar/"+val[1]');
             					if (val[i] == true) {
             						$($(this).find("#isSelected1")).prop("checked", true);
             					} else {
