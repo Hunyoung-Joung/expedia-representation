@@ -79,6 +79,7 @@ $(document).ready(function(){
 			"<label><input id='isSelected1' name='is_selected' type='radio' value='true' >可能</label> " +
 			"<label><input id='isSelected2' name='is_selected' type='radio' value='false' >不可</label>" +
 			"</div>" +
+			"<button id='submit' type='submit' class='btn btn-default'>変更</button>" +
 			"</form>" +
 			"</td>" +
 			"<td class='col-sm-2'></td>" +
