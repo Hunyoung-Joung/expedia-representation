@@ -9,7 +9,7 @@ var questionList = [];
 
 $(document).ready(function(){
 	
-	$('#showData').on('change', function () {
+	$('#showData').on('click', function () {
 		var isChecked = $(this).is(':checked');
 		
 		console.log(" -- "+$(this).index());
