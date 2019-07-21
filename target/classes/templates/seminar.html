@@ -113,7 +113,7 @@ Copyright@ LINE 2019
         	<tbody>
           		<tr class="row" th:each="questionInfo:${questionInfos}" th:object="${questionInfo}" style="word-wrap: break-word">
             		<td class="col-sm-3"　 th:text="*{q_category}"></td>
-            		<td class="col-sm-5" th:text="*{q_contents}"></td>
+            		<td class="col-sm-5" ></td>
 <div th:switch="${q_contents}">
     <p th:case="1" th:text="最新API状況アップデート"></p>
     <p th:case="2" th:text="LINE Pay APIのご紹介"></p>
