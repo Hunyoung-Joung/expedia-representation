@@ -94,7 +94,7 @@ $(document).ready(function(){
             					$($(this).find("#qNo")).val(val[i]);
             				} else if (i == 4) {
             					if (val[i] == true) {
-            						console.log(" selected = "+$(this).find("#isSelected").index(0).attr("name"));
+            						console.log(" selected = "+$(this).find("[name='is_selected']").index(0).val());
             						$($(this).find("#isSelected").index(0)).prop("checked", true);
             					} else {
             						$($(this).find("#isSelected").index(1)).prop("checked", true);
