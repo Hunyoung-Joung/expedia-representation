@@ -109,9 +109,9 @@ public class QuestionInfoController {
     }
     
     @DeleteMapping("{q_no}")
-    public String deleteById(@PathVariable Long q_no, @ModelAttribute QuestionInfo questionInfo) {
+    public String deleteById(Model model, @PathVariable Long q_no, @ModelAttribute QuestionInfo questionInfo) throws Exception {
     	questionInfoService.deleteById(q_no);
-        return "redirect:/admin";
+    	return init(questionInfo.getEncrypt_id(), model);
     }
 //    
 //    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
