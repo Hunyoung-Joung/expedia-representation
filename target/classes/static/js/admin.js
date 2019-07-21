@@ -94,9 +94,10 @@ $(document).ready(function(){
             					$($(this).find("#qNo")).val(val[i]);
             				} else if (i == 4) {
             					if (val[i] == true) {
-            						$($(this).find("#isSelected1")).prop("checked", true);
+            						console.log(" selected = "+$(this).find("#isSelected").index(0).attr("name"));
+            						$($(this).find("#isSelected").index(0)).prop("checked", true);
             					} else {
-            						$($(this).find("#isSelected2")).prop("checked", true);
+            						$($(this).find("#isSelected").index(1)).prop("checked", true);
             					}
             				} else {
             					$(this).text(val[i]);
