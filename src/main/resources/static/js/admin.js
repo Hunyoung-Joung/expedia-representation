@@ -9,6 +9,20 @@ var questionList = [];
 
 $(document).ready(function(){
 	
+	$('#showData').on('change', function () {
+		var isChecked = $(this).is(':checked');
+		
+		console.log(" -- "+$(this).index());
+//		if (isChecked) {
+//			checkBoxVals.push($(this).val());
+//		} else {
+//			var idx = checkBoxVals.indexOf($(this).val());
+//			if (idx > -1) {
+//				checkBoxVals.splice(idx, 1);
+//			}
+//		}
+	});
+	
     $.each(adminQuestionInfos, function(idx, val) {
     	var questions = [];
         $.each(val, function(idx_, val_) {
