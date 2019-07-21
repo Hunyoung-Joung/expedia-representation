@@ -94,10 +94,9 @@ $(document).ready(function(){
             					$($(this).find("#qNo")).val(val[i]);
             				} else if (i == 4) {
             					if (val[i] == true) {
-            						console.log(" selected = "+$(this).find("[name='is_selected']").index(0).val());
-            						$($(this).find("#isSelected").index(0)).prop("checked", true);
+            						$($(this).find("#isSelected1")).prop("checked", true);
             					} else {
-            						$($(this).find("#isSelected").index(1)).prop("checked", true);
+            						$($(this).find("#isSelected2")).prop("checked", true);
             					}
             				} else {
             					$(this).text(val[i]);
@@ -109,6 +108,12 @@ $(document).ready(function(){
     	});
 
 	});
+    
+    var isSelected = $("input:radio[name='is_selected']");
+    var selectedIndex = isSelected.index(radioButtons.filter(':checked'));
+    $('input:radio[name='is_selected']').on('change', function () {
+    	console.log(" -- "+selectedIndex);
+    });
 });
 
 
