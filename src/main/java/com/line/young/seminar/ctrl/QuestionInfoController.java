@@ -111,7 +111,7 @@ public class QuestionInfoController {
     @DeleteMapping("{q_no}")
     public String deleteById(Model model, @PathVariable Long q_no, @ModelAttribute QuestionInfo questionInfo) throws Exception {
     	questionInfoService.deleteById(q_no);
-    	return init(questionInfo.getEncrypt_id(), model);
+    	return init(encryptId_, model);
     }
 //    
 //    @RequestMapping(method= {RequestMethod.GET, RequestMethod.POST}, value={"/"}, params={"userId"})
