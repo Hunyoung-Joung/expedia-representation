@@ -81,20 +81,11 @@ $(document).ready(function(){
 	    
         $.ajax({
 	            url: 'https://seminar-web.herokuapp.com/survey/api/add',
-//	            headers: {"api-key": apiKey},
 	            type: 'POST',
 	            contentType: "application/json",
 	            dataType: 'json',
 	            data: JSON.stringify(surveyInfo),
 	            // if it could put user data
-            success: function(data, status, xhr) { 
-
-            },
-            // if it couldn't put user data by error
-            error: function(xhr, status, err) { 
-    			// show error if it has
-            	showError(err);
-            },
             // very necessary, if it is not work, then callback function never ending
             complete: function (xhr, status) {
 
