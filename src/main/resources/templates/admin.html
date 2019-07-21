@@ -16,30 +16,6 @@ Copyright@ LINE 2019
 	  	<h4>質問情報</h4>
 	</div>
 	<div class="container">
-	<!--
-		<table class="table">
-        	<thead>
-          		<tr>
-            		<th width="15%">カテゴリー</th>
-            		<th width="10%">質問時間</th>
-            		<th width="70%">質問内容</th>
-            		<th width="5%">返答可否</th>
-          		</tr>
-        	</thead>
-        	<tbody>
-          		<tr th:each="questionInfo:${questionInfos}" th:object="${questionInfo}">
-            		<td th:text="*{q_category}"></td>
-            		<td th:text="*{create_at}"></td>
-            		<td th:text="*{q_contents}"></td>
-            		<td>
-              			<form th:action="@{/seminar/{q_no}(q_no=*{q_no})}" th:method="update">
-                			<input class="btn btn-default btn-xs" type="submit" value="削除" /><td th:text="*{is_selected}"></td>
-              			</form>
-            		</td>
-          		</tr>
-        	</tbody>
-      	</table>
-      -->
 		<table class="table q" style="table-layout: fixed; width: 100%">
         	<thead>
           		<tr　class="row" style="word-wrap: break-word">

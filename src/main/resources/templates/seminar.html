@@ -102,27 +102,26 @@ Copyright@ LINE 2019
 		</div>
 		<table class="table">
         	<thead>
-          		<tr>
-            		<th>カテゴリー</th>
-            		<th>質問時間</th>
-            		<th>返答可否</th>
-            		<th>質問内容</th>
-            		<th></th>
+          		<tr class="row" style="word-wrap: break-word">
+            		<th class="col-sm-3">カテゴリー</th>
+            		<th class="col-sm-5">質問内容</th>
+            		<th class="col-sm-2">返答可否</th>
+            		<th class="col-sm-3">質問時間</th>
+            		<th class="col-sm-2"></th>
           		</tr>
         	</thead>
-        	<tbody> <!-- TODO td size -->
-          		<tr th:each="questionInfo:${questionInfos}" th:object="${questionInfo}">
-            		<td th:text="*{q_category}"></td>
-            		<td th:text="*{create_at}"></td>
-            		<td th:text="*{is_selected}"></td>
-            		<td th:text="*{q_contents}"></td>
-            		<td>
-              			<form th:action="@{/seminar/{q_no}(q_no=*{q_no})}" th:method="delete">
+        	<tbody>
+          		<tr class="row" th:each="questionInfo:${questionInfos}" th:object="${questionInfo}" style="word-wrap: break-word">
+            		<td class="col-sm-3" th:text="*{q_category}"></td>
+            		<td class="col-sm-5" th:text="*{q_contents}"></td>
+            		<td class="col-sm-2" th:text="*{is_selected}"></td>
+            		<td class="col-sm-3" th:text="*{update_at}"></td>
+            		<td class="col-sm-2">
+              			<form th:action="@{/seminar/{q_no}(q_no=*{q_no})}" th:method="update">
                 			<input class="btn btn-default btn-xs" type="submit" value="削除" />
               			</form>
             		</td>
           		</tr>
-        	</tbody>
       	</table>
 	</div>
 
