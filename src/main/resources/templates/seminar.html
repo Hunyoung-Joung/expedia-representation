@@ -98,7 +98,7 @@ Copyright@ LINE 2019
 	  	
 		<div class="text-center">
 		  	<h5>質問リスト</h5>
-		  	<h6>場合によっては即答出来ない場合もありますので、ご了承お願いします。</h6>
+		  	<h6>質問内容によっては即答出来ない場合もありますので、ご了承お願いします。</h6>
 		</div>
 		<table class="table">
         	<thead>
@@ -112,7 +112,10 @@ Copyright@ LINE 2019
         	</thead>
         	<tbody>
           		<tr class="row" th:each="questionInfo:${questionInfos}" th:object="${questionInfo}" style="word-wrap: break-word">
-            		<td class="col-sm-3" th:text="*{q_category}"></td>
+            		<td class="col-sm-3"　 th:text="*{q_category}">
+            			<span th:if="${q_category} == '1'" >最新API状況アップデート</span>
+
+            		</td>
             		<td class="col-sm-5" th:text="*{q_contents}"></td>
             		<td class="col-sm-2" th:text="*{is_selected}"></td>
             		<td class="col-sm-3" th:text="*{update_at}"></td>
