@@ -108,4 +108,12 @@ public class QuestionInfoController {
     	questionInfoService.deleteById(q_no);
     	return init(encryptId_, model);
     }
+    
+    @PutMapping("{q_no}")
+    public String update(Model model, @PathVariable Long id, @ModelAttribute QuestionInfo questionInfo) {
+    	logger.info("#########################"+questionInfo.isIs_selected());
+//    	questionInfo.setIs_selected(is_selected);
+//        playerService.save(player);
+        return "redirect:/admin";
+    }
 }
