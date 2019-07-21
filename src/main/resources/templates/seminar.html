@@ -124,7 +124,7 @@ Copyright@ LINE 2019
             		<td class="col-sm-2" th:text="*{is_selected}"></td>
             		<td class="col-sm-3" th:text="*{update_at}"></td>
             		<td class="col-sm-2">
-              			<form th:action="@{/seminar/{q_no}(q_no=*{q_no})}" th:method="update">
+              			<form th:action="@{/seminar/{q_no}(q_no=*{q_no})}" th:method="delete">
                 			<input class="btn btn-default btn-xs" type="submit" value="削除" />
               			</form>
             		</td>
