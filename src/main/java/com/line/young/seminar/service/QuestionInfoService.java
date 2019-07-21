@@ -37,9 +37,9 @@ public class QuestionInfoService {
     public QuestionInfo saveOfQuestionInfo(QuestionInfo questionInfo) {
         return questionInfoRepository.save(questionInfo);
     }
-
-    public void deleteOfQuestionInfo(String encryptId) {
-        questionInfoRepository.deleteById(encryptId);
+    
+    public void deleteById(Long qNo) {
+        questionInfoRepository.deleteById(qNo);
     }
     
     public void deleteAllOfQuestionInfo() {
