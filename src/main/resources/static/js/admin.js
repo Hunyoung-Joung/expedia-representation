@@ -68,11 +68,11 @@ $(document).ready(function(){
         questionList.push(questions);
 	});
     
-	var innerHtml = "<tr class='inner' style='word-wrap: break-word'><td class='col-sm-3'>" +
-			"</td><input id='qNo' name='q_no' type='hidden' class='form-control'/><td>" +
-			"</td><td class='col-sm-3'>" +
-			"</td><td class='col-sm-5'>" +
-			"</td><td class='col-sm-2'>" +
+	var innerHtml = "<tr class='inner' style='word-wrap: break-word'>" +
+			"<td class='col-sm-3'><input id='qNo' name='q_no' type='hidden' class='form-control'/><td>" +
+			"<td class='col-sm-3'></td>" +
+			"<td class='col-sm-5'></td>" +
+			"<td class='col-sm-2'>" +
 //			"<form th:action='@{/seminar/{q_no}(q_no=*{q_no})}' th:method='put' th:object='${questionInfo}'>" +
 			"<div class='radio text-center'>" +
 			"<label><input id='isSelected1' name='is_selected' type='radio' value='true' >可能</label> " +
