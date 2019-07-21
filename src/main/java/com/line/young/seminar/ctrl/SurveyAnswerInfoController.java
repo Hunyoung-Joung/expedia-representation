@@ -51,8 +51,6 @@ public class SurveyAnswerInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
-//    private String userId_ = "";
-    
     @GetMapping
     public String init(@RequestParam("encryptId") String encryptId, Model model) throws Exception {
 //        this.userId_ = userId;

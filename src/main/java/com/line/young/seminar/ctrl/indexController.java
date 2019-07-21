@@ -76,7 +76,6 @@ public class indexController {
         String password = userInfos.get().getPassword();
         
         if (null == id) {
-//            throw new Exception(); // TODO
             return "index";
         } else {
         	List<AdminQuestionInfo> adminQuestionInfos = new ArrayList<AdminQuestionInfo>();
