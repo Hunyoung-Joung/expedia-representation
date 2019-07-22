@@ -70,7 +70,8 @@ $(document).ready(function(){
         questionList.push(questions);
 	});
 		
-	var questionInnerHtml = "<tr class='innerQ' style='word-wrap: break-word'>" +
+	var questionInnerHtml = 
+			"<tr class='innerQ' style='word-wrap: break-word'>" +
 			"<td class='col-sm-3'><td>" +
 			"<td class='col-sm-3'></td>" +
 			"<td class='col-sm-5'></td>" +
@@ -93,11 +94,11 @@ $(document).ready(function(){
         		$(this).find('.innerQ').each(function() {
         			if ($(this).index() == idx) {
             			$(this).find('td').each(function(i) {
-            				if (i == 0) {
+            				if (i == 1) {
 //            					$($(this).find("#qNo")).val(val[i]);
             					console.log(val[i]);
-            				} else if (i == 3) {
-            					$(this).find("form").attr("action","/"+val[0]);
+            				} else if (i == 4) {
+            					$(this).find("form").attr("action","/"+val[1]);
             					if (val[i] == true) {
             						$($(this).find("#isSelected1")).prop("checked", true);
             						$($(this).find("#isSelected2")).prop("checked", false);
