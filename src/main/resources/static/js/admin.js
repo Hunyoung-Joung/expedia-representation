@@ -124,7 +124,7 @@ $(document).ready(function(){
 	
     $.each(surveySums, function(idx, val) {
     	console.log(idx+" >> "+val);
-    	$('.s tbody').append(innerHtml);
+    	$('.s tbody').append(innerHtmlTot);
         $('.s').each(function() {
         	$(this).find('tbody').each(function() {
         		$(this).find('.innerTot').each(function() {
