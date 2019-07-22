@@ -119,9 +119,9 @@ $(document).ready(function(){
     	$(this).closest("form").submit();
     });
     
-	$(".users").show();
-	$(".questions").hide();
-	$(".survey").hide();
+//	$(".users").show();
+//	$(".questions").hide();
+//	$(".survey").hide();
 });
 
 
