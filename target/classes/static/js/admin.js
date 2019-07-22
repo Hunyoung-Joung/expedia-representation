@@ -71,11 +71,11 @@ $(document).ready(function(){
         questionList.push(questions);
 	});
     
-	var innerHtml = "<tr class='inner' style='word-wrap: break-word'>" +
-			"<td ><td>" +
-			"<td ><input id='qNo' name='q_no' type='hidden' class='form-control'/></td>" +
-			"<td ></td>" +
-			"<td >" +
+	var innerHtml = "<tr class='inner' >" +
+			"<td style='word-wrap: break-word'><td>" +
+			"<td style='word-wrap: break-word'><input id='qNo' name='q_no' type='hidden' class='form-control'/></td>" +
+			"<td style='word-wrap: break-word'></td>" +
+			"<td style='word-wrap: break-word'>" +
 			"<form action='' method='post' >" +
 			"<input type='hidden' name='_method' value='put'>" +
 			"<div class='radio text-center'>" +
@@ -84,8 +84,8 @@ $(document).ready(function(){
 			"</div>" +
 			"</form>" +
 			"</td>" +
-			"<td ></td>" +
-			"<td ></td>" +
+			"<td style='word-wrap: break-word'></td>" +
+			"<td style='word-wrap: break-word'></td>" +
 			"</tr>";
     // Array stack to reverse order by question no
     $.each((questionList), function(idx, val) {
@@ -97,7 +97,7 @@ $(document).ready(function(){
             			$(this).find('td').each(function(i) {
             				if (i == 1) {
             					$($(this).find("#qNo")).val(val[i]);
-            				} else if (i == 3) {
+            				} else if (i == 4) {
             					$(this).find("form").attr("action","/"+val[1]);
             					if (val[i] == true) {
             						$($(this).find("#isSelected1")).prop("checked", true);
