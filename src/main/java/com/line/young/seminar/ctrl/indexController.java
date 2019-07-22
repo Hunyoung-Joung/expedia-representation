@@ -37,7 +37,7 @@ import com.line.young.seminar.service.SurveyInfoService;
 
 /**
  * 
- * Index controller without service
+ * Index controller
  * 
  * @author jounghunyoung@gmail.com
  *
@@ -70,6 +70,13 @@ public class indexController {
         return "index";
     }
     
+    /**
+     * Show users, user's questions, and survey.
+     * 
+     * @param model
+     * @param userInfo
+     * @return
+     */
     @PostMapping(value = {"/auth"})
     public String index(Model model, @ModelAttribute("userInfo") @Valid UserInfo userInfo) {
         
@@ -111,12 +118,19 @@ public class indexController {
         }
     }
     
+    /**
+     * Update user question will answer or not.
+     * 
+     * @param model
+     * @param q_no
+     * @param questionInfo
+     * @return
+     */
     @PutMapping("{q_no}")
     public String update(Model model, @PathVariable Long q_no, @ModelAttribute QuestionInfo questionInfo) {
         boolean is_selected = questionInfo.isIs_selected();
         questionInfo = questionInfoService.findById(q_no).get();
         questionInfo.setIs_selected(is_selected);
-        logger.info("#########################"+questionInfo.isIs_selected());
         questionInfoService.saveOfQuestionInfo(questionInfo);
         model.addAttribute("userInfo", userInfo_);
         return index(model, userInfo_);

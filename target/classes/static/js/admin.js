@@ -79,7 +79,7 @@ $(document).ready(function(){
 			"<label><input id='isSelected1' name='is_selected' type='radio' value='true' >可能</label> " +
 			"<label><input id='isSelected2' name='is_selected' type='radio' value='false' >不可</label>" +
 			"</div>" +
-			"<button id='submit' type='submit' class='btn btn-default'>変更</button>" +
+			"<button id='submit' type='hidden' class='btn btn-default'></button>" +
 			"</form>" +
 			"</td>" +
 			"<td class='col-sm-2'></td>" +
@@ -114,9 +114,9 @@ $(document).ready(function(){
     
 //    var isSelected = $("input:radio[name='is_selected']");
 //    var selectedIndex = isSelected.index(isSelected.filter(':checked'));
-//    $("input:radio[name='is_selected']").on('change', function () {
-//    	console.log(" -- "+this.index());
-//    });
+    $("input:radio[name='is_selected']").on('change', function () {
+    	console.log(" -- "+this.html());
+    });
 });
 
 
