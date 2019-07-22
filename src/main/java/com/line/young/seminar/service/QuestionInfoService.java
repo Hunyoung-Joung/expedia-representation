@@ -5,6 +5,7 @@
 package com.line.young.seminar.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,6 +35,9 @@ public class QuestionInfoService {
         return questionInfoRepository.findAll();
     }
 
+    public Optional<QuestionInfo> findById(Long qNo) {
+        return questionInfoRepository.findById(qNo);
+    }
     public QuestionInfo saveOfQuestionInfo(QuestionInfo questionInfo) {
         return questionInfoRepository.save(questionInfo);
     }

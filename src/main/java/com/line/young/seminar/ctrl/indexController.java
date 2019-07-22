@@ -60,6 +60,8 @@ public class indexController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
+    private UserInfo userInfo_ = new UserInfo();
+    
     @GetMapping
     public String init(Model model) {
 
@@ -69,15 +71,25 @@ public class indexController {
     }
     
     @PostMapping(value = {"/auth"})
-    public String index(Model model, @ModelAttribute("userInfo") @Valid UserInfo userInfo, BindingResult result) throws Exception {
+    public String index(Model model, @ModelAttribute("userInfo") @Valid UserInfo userInfo) {
         
-        Optional<UserInfo> userInfos = usersRepository.findById(userInfo.getId());
-        String id = userInfos.get().getId();
-        String password = userInfos.get().getPassword();
+        Optional<UserInfo> obj = usersRepository.findById(userInfo.getId());
+        String id = obj.get().getId();
+        String password = obj.get().getPassword();
         
         if (null == id) {
-            return "index";
+            try{
+                throw new Exception(); 
+            }catch (Exception e){
+                 e.printStackTrace(); 
+            }finally{
+                return "error";
+            } 
         } else {
+            if (!password.equals(userInfo.getPassword())) {
+                return "error";
+            }
+            userInfo_ = userInfo;
         	List<AdminQuestionInfo> adminQuestionInfos = new ArrayList<AdminQuestionInfo>();
             if ((id.equals("admin")) && (password.equals(userInfo.getPassword()))) {
             	List<QuestionInfo> questionInfos = (List<QuestionInfo>) questionInfoService.findAllOfQuestionInfo();
@@ -101,8 +113,12 @@ public class indexController {
     
     @PutMapping("{q_no}")
     public String update(Model model, @PathVariable Long q_no, @ModelAttribute QuestionInfo questionInfo) {
+        boolean is_selected = questionInfo.isIs_selected();
+        questionInfo = questionInfoService.findById(q_no).get();
+        questionInfo.setIs_selected(is_selected);
         logger.info("#########################"+questionInfo.isIs_selected());
         questionInfoService.saveOfQuestionInfo(questionInfo);
+        model.addAttribute("userInfo", userInfo_);
         return "auth";
     }
 }
