@@ -87,7 +87,7 @@ $(document).ready(function(){
 			"<td class='col-sm-2'></td>" +
 			"</tr>";
     // Array stack to reverse order by question no
-    $.each((questionList.reverse()), function(idx, val) {
+    $.each((questionList), function(idx, val) {
     	$('.q tbody').append(innerHtml);
         $('.q').each(function() {
         	$(this).find('tbody').each(function() {
