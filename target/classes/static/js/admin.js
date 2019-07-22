@@ -71,7 +71,7 @@ $(document).ready(function(){
 	});
 		
 	var questionInnerHtml = 
-			"<tr class='innerQ' style='word-wrap: break-word'>" +
+			"<tr class='innerQ text-left' style='word-wrap: break-word'>" +
 			"<td class='col-sm-3'><td>" +
 			"<td><td>" +
 			"<td class='col-sm-3'></td>" +
