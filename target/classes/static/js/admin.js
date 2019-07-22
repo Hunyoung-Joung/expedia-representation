@@ -73,6 +73,7 @@ $(document).ready(function(){
 	var questionInnerHtml = 
 			"<tr class='innerQ' style='word-wrap: break-word'>" +
 			"<td class='col-sm-3'><td>" +
+			"<td><td>" +
 			"<td class='col-sm-3'></td>" +
 			"<td class='col-sm-5'></td>" +
 			"<td class='col-sm-2'>" +
