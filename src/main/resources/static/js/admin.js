@@ -9,10 +9,9 @@ var questionList = [];
 
 $(document).ready(function(){
 	
-	$('#showData').on('change', function () {
-		var isChecked = $(this).is(':checked');
+    $("input:radio[name='showData']").on('change', function () {
 		
-		console.log(" -- "+$(this).val());
+		console.log(" -- "+$(this).attr("id"));
 //		if (isChecked) {
 //			checkBoxVals.push($(this).val());
 //		} else {
