@@ -1,13 +1,16 @@
 package com.line.young.seminar.entity;
 
+import javax.persistence.Column;
+
 public class SurveySum  {
 
+	@Column(name="survey_no")
     private String survey_no;
-    
+	@Column(name="question")
     private String question;
-    
+	@Column(name="survey_answer")
     private String survey_answer;
-    
+	@Column(name="answer_count")
     private String answer_count;
 
 	public String getSurvey_no() {
