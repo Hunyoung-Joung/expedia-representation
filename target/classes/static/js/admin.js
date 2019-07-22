@@ -96,7 +96,6 @@ $(document).ready(function(){
         			if ($(this).index() == idx) {
             			$(this).find('td').each(function(i) {
             				if (i == 1) {
-//            					$($(this).find("#qNo")).val(val[i]);
             				} else if (i == 4) {
             					$(this).find("form").attr("action","/"+val[1]);
             					if (val[i] == true) {
@@ -120,9 +119,9 @@ $(document).ready(function(){
     	$(this).closest("form").submit();
     });
     
-//	$(".users").show();
-//	$(".questions").hide();
-//	$(".survey").hide();
+	$(".users").show();
+	$(".questions").hide();
+	$(".survey").hide();
 });
 
 

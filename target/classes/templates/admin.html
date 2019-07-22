@@ -21,6 +21,40 @@ Copyright@ LINE 2019
 		</div>
     </div>
     
+	<div class="container users">
+		<div class="text-center">
+		  	<h4>質問情報</h4>
+		</div>
+
+		<table class="table" style="table-layout: fixed; width: 100%">
+	        <thead>
+	          		<tr style="word-wrap: break-word">
+	          			<th class="col-sm-3">表示名</th>
+	            		<th class="col-sm-3">ユーザー名</th>
+	            		<th class="col-sm-5">会社名</th>
+	            		<th class="col-sm-2">職種</th>
+	            		<th class="col-sm-2">参加可否</th>
+	          		</tr>
+	        </thead>
+	        <tbody>
+	        		<tr th:each="personalInfo:${personalInfos}" th:object="${personalInfo}" style="word-wrap: break-word">
+						<td style='word-wrap: break-word' th:text="*{display_name}"></td>
+						<td style='word-wrap: break-word' th:text="*{user_name}"></td>
+						<td style='word-wrap: break-word' th:text="*{company_name}"></td>
+						<td style='word-wrap: break-word'>
+							<div th:switch="*{job_type}">
+							    <p th:case="1" >営業</p>
+							    <p th:case="2" >開発</p>
+							    <p th:case="3" >企画</p>
+							    <p th:case="*">その他</p>
+							</div>
+						</td>
+						<td style='word-wrap: break-word' th:text="*{is_confirmed}"></td>
+					</tr>
+	        </tbody>
+		</table>
+	</div>
+    
     <div class="container question">
 		<div class="text-center">
 		  	<h4>質問情報</h4>
@@ -38,7 +72,7 @@ Copyright@ LINE 2019
 	          	</tr>
 	        </thead>
 	        <tbody></tbody>
-	      </table>
+	     </table>
 	</div>
 
 	<div class="text-center question">
