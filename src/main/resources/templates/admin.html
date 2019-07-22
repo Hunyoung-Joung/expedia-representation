@@ -79,19 +79,25 @@ Copyright@ LINE 2019
 		<div class="text-center">
 		  	<h4>アンケート情報</h4>
 		</div>
-		<div class="container">
-			<table class="table">
-	        	<thead>
-	          		<tr>
-	          		</tr>
-	        	</thead>
-	        	<tbody>
-	          		<tr th:each="surveyAnswerInfo:${surveyAnswerInfos}" th:object="${surveyAnswerInfo}">
-	
-	          		</tr>
-	        	</tbody>
-	      	</table>
-		</div>
+
+		<table class="table" style="table-layout: fixed; width: 100%">
+	        <thead>
+				<tr style="word-wrap: break-word">
+					<th style="word-wrap: break-word">表示名</th>
+					<th style="word-wrap: break-word">ユーザー名</th>
+					<th style="word-wrap: break-word">会社名</th>
+					<th style="word-wrap: break-word">職種</th>
+				</tr>
+	        </thead>
+	        <tbody>
+				<tr th:each="surveySum:${surveySums}" th:object="${surveySum}" style="word-wrap: break-word">
+						<td style='word-wrap: break-word' th:text="*{survey_no}"></td>
+						<td style='word-wrap: break-word' th:text="*{question}"></td>
+						<td style='word-wrap: break-word' th:text="*{survey_answer}"></td>
+						<td style='word-wrap: break-word' th:text="*{answer_count}"></td>
+				</tr>
+	        </tbody>
+		</table>
 	</div>	
 </body>
 </html>

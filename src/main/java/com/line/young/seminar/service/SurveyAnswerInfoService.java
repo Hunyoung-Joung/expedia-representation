@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.line.young.seminar.entity.SurveyAnswerInfo;
+import com.line.young.seminar.entity.SurveySum;
 import com.line.young.seminar.repo.SurveyAnswerInfoRepository;
 
 
@@ -73,7 +74,7 @@ public class SurveyAnswerInfoService {
     
     
     
-    public Iterable<Object> summary() {
+    public Iterable<SurveySum> summary() {
         return surveyAnswerInfoRepository.summary();
 
     }

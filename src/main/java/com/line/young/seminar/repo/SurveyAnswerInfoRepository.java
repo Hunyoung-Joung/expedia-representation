@@ -8,6 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import com.line.young.seminar.entity.SurveyAnswerInfo;
+import com.line.young.seminar.entity.SurveySum;
 
 /**
  * 
@@ -23,6 +24,6 @@ public interface SurveyAnswerInfoRepository extends CrudRepository<SurveyAnswerI
     
     SurveyAnswerInfo findAllAnswerByIds(@Param("encryptId") String encryptId, @Param("seminarId") String seminarId);
     
-    List<Object> summary();
+    List<SurveySum> summary();
 
 }
