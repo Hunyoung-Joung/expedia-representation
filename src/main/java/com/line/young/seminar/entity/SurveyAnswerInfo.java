@@ -36,12 +36,12 @@ import org.hibernate.annotations.UpdateTimestamp;
     @NamedQuery(name = "SurveyAnswerInfo.summary",
     query = " SELECT answer.survey_no, " + 
     		"CASE " + 
-    		"WHEN answer.survey_no = '1' THEN '勉強会内容について、理解できましたでしょうか。' " + 
-    		"WHEN answer.survey_no = '2' THEN '勉強会内容について、満足できましたでしょうか。' \r\n" + 
-    		"WHEN answer.survey_no = '3' THEN '勉強会の時間について、適切な長さでしたでしょうか。' \r\n" + 
-    		"WHEN answer.survey_no = '4' THEN '勉強会で参考になったアジェンダはございますか。（複数可）。' \r\n" + 
-    		"WHEN answer.survey_no = '5' THEN '後の勉強会で取り上げて欲しいテーマ等のご希望がございましたら、お聞かせ下さい。' \r\n" + 
-    		"WHEN answer.survey_no = '6' THEN 'その他にご意見、ご要望がございましたら、お聞かせ下さい。' \r\n" + 
+    		"WHEN answer.survey_no = '1' THEN '勉強会内容について、理解できましたでしょうか。'  " + 
+    		"WHEN answer.survey_no = '2' THEN '勉強会内容について、満足できましたでしょうか。'  " + 
+    		"WHEN answer.survey_no = '3' THEN '勉強会の時間について、適切な長さでしたでしょうか。'  " + 
+    		"WHEN answer.survey_no = '4' THEN '勉強会で参考になったアジェンダはございますか。（複数可）。'  " + 
+    		"WHEN answer.survey_no = '5' THEN '後の勉強会で取り上げて欲しいテーマ等のご希望がございましたら、お聞かせ下さい。'  " + 
+    		"WHEN answer.survey_no = '6' THEN 'その他にご意見、ご要望がございましたら、お聞かせ下さい。'  " + 
     		"END AS question, " + 
     		"answer.survey_answer, " + 
     		"CASE " + 

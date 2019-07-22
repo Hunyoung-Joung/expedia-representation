@@ -9,6 +9,7 @@ Copyright@ LINE 2019
 <script th:inline="javascript">
 /*<![CDATA[*/
     adminQuestionInfos = /*[[${adminQuestionInfos}]]*/ 'default';
+    surveySums = /*[[${surveySums}]]*/ 'default';
 /*]]>*/
 </script>
     <div class="error_division"></div>
@@ -91,7 +92,7 @@ Copyright@ LINE 2019
 	        </thead>
 	        <tbody>
 				<tr th:each="surveySum:${surveySums}" th:object="${surveySum}" style="word-wrap: break-word">
-						<td style='word-wrap: break-word' th:text="*{survey_no}"></td>
+						<td style='word-wrap: break-word' th:text="*{surveySum}"></td>
 						<td style='word-wrap: break-word' th:text="*{question}"></td>
 						<td style='word-wrap: break-word' th:text="*{survey_answer}"></td>
 						<td style='word-wrap: break-word' th:text="*{answer_count}"></td>

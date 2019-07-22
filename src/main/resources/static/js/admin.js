@@ -115,6 +115,12 @@ $(document).ready(function(){
     	});
 	});
     
+    
+    $.each(surveySums, function(idx, val) {
+    	var sums = [];
+    	console.log(idx+" >> "+val);
+	});
+    
     $("input:radio[name='is_selected']").on('change', function () {
     	$(this).closest("form").submit();
     });
