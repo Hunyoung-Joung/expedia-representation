@@ -95,7 +95,6 @@ $(document).ready(function(){
         		$(this).find('.inner').each(function() {
         			if ($(this).index() == idx) {
             			$(this).find('td').each(function(i) {
-            				$(this).text(val[i]);
             				if (i == 1) {
             					$($(this).find("#qNo")).val(val[i]);
             				} else if (i == 3) {
