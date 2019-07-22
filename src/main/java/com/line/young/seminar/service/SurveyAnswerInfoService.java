@@ -73,7 +73,7 @@ public class SurveyAnswerInfoService {
     
     
     
-    public Iterable<SurveyAnswerInfo> summary() {
+    public Iterable<Object> summary() {
         return surveyAnswerInfoRepository.summary();
 
     }
