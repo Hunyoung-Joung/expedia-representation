@@ -119,6 +119,6 @@ public class indexController {
         logger.info("#########################"+questionInfo.isIs_selected());
         questionInfoService.saveOfQuestionInfo(questionInfo);
         model.addAttribute("userInfo", userInfo_);
-        return "auth";
+        return index(model, userInfo_);
     }
 }
