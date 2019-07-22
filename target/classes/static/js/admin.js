@@ -98,7 +98,9 @@ $(document).ready(function(){
             					$(this).find("form").attr("action","/"+val[1]);
             					if (val[i] == true) {
             						$($(this).find("#isSelected1")).prop("checked", true);
+            						$($(this).find("#isSelected2")).prop("checked", false);
             					} else {
+            						$($(this).find("#isSelected1")).prop("checked", false);
             						$($(this).find("#isSelected2")).prop("checked", true);
             					}
             				} else {
@@ -112,11 +114,8 @@ $(document).ready(function(){
 
 	});
     
-//    var isSelected = $("input:radio[name='is_selected']");
-//    var selectedIndex = isSelected.index(isSelected.filter(':checked'));
     $("input:radio[name='is_selected']").on('change', function () {
     	$(this).closest("form").submit();
-//    	alert(" -- "+$(this).closest("form").attr("action"));
     });
 });
 
