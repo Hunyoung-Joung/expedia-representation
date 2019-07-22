@@ -33,7 +33,7 @@ import org.hibernate.annotations.UpdateTimestamp;
             + "WHERE answer.encrypt_id = :encryptId "
             + "  AND answer.seminar_id = :seminarId "
             + "ORDER BY answer.survey_no DESC"),
-    @NamedQuery(name = "summary",
+    @NamedQuery(name = "SurveyAnswerInfo.summary",
     query = " SELECT answer.survey_no, " + 
     		"CASE " + 
     		"WHEN answer.survey_no = '1' THEN '勉強会内容について、理解できましたでしょうか。' " + 
