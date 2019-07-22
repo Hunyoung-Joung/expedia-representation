@@ -85,6 +85,7 @@ $(document).ready(function(){
 			"</form>" +
 			"</td>" +
 			"<td ></td>" +
+			"<td ></td>" +
 			"</tr>";
     // Array stack to reverse order by question no
     $.each((questionList), function(idx, val) {
@@ -97,7 +98,7 @@ $(document).ready(function(){
             				$(this).text(val[i]);
             				if (i == 1) {
             					$($(this).find("#qNo")).val(val[i]);
-            				} else if (i == 4) {
+            				} else if (i == 3) {
             					$(this).find("form").attr("action","/"+val[1]);
             					if (val[i] == true) {
             						$($(this).find("#isSelected1")).prop("checked", true);
