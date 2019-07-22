@@ -72,10 +72,10 @@ $(document).ready(function(){
 	});
     
 	var innerHtml = "<tr class='inner' style='word-wrap: break-word'>" +
-			"<td class='col-sm-2'><input id='qNo' name='q_no' type='hidden' class='form-control'/><td>" +
-			"<td class='col-sm-3'></td>" +
-			"<td class='col-sm-5'></td>" +
-			"<td class='col-sm-2'>" +
+			"<td ><input id='qNo' name='q_no' type='hidden' class='form-control'/><td>" +
+			"<td ></td>" +
+			"<td ></td>" +
+			"<td >" +
 			"<form action='' method='post' >" +
 			"<input type='hidden' name='_method' value='put'>" +
 			"<div class='radio text-center'>" +
@@ -84,7 +84,7 @@ $(document).ready(function(){
 			"</div>" +
 			"</form>" +
 			"</td>" +
-			"<td class='col-sm-2'></td>" +
+			"<td ></td>" +
 			"</tr>";
     // Array stack to reverse order by question no
     $.each((questionList), function(idx, val) {
