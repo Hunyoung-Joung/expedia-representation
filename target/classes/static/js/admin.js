@@ -115,8 +115,8 @@ $(document).ready(function(){
 //    var isSelected = $("input:radio[name='is_selected']");
 //    var selectedIndex = isSelected.index(isSelected.filter(':checked'));
     $("input:radio[name='is_selected']").on('change', function () {
-    	$(this).parent("form").submit();
-    	alert(" -- "+$(this).closest("form").attr("action"));
+    	$(this).closest("form").submit();
+//    	alert(" -- "+$(this).closest("form").attr("action"));
     });
 });
 
