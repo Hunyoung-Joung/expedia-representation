@@ -6,13 +6,11 @@
 
 var adminQuestionInfos;
 var questionList = [];
+var userList = [];
 
 $(document).ready(function(){
-	$(".users").show();
 	
     $("input:radio[name='showData']").on('change', function () {
-		
-		console.log(" -- "+$(this).attr("id"));
 		
 		if ($(this).attr("id") == "showData1") {
 			$(".users").show();
@@ -30,12 +28,37 @@ $(document).ready(function(){
 	});
 	
     $.each(adminQuestionInfos, function(idx, val) {
+    	var users = [];
     	var questions = [];
         $.each(val, function(idx_, val_) {
 			if (idx_ == "personalInfo") {
 				$.each(val_, function(key, value) {
 					if (key == "display_name") {
 						questions.push(value);
+						users.push(value)
+					} else if (key == "user_name") {
+						users.push(value)
+					} else if (key == "company_name") {
+						users.push(value)
+					} else if (key == "job_type") {
+						var jobName;
+						switch (parseInt(value)) {
+						  case 1:
+							  jobName = "営業";
+						    break;
+						  case 2:
+							  jobName = "開発";
+						    break;
+						  case 3:
+							  jobName = "企画<";
+						    break;
+						  case 4:
+							  jobName = "その他";
+						    break;
+						}
+						users.push(jobName);
+					} else if (key == "is_confirmed") {
+						users.push(is_confirmed);
 					}
 				});
 			} else if (idx_ == "questionInfo") {
@@ -71,6 +94,7 @@ $(document).ready(function(){
 				
 			}
   		});
+        userList.push(users);
         questionList.push(questions);
 	});
     
@@ -122,6 +146,8 @@ $(document).ready(function(){
     $("input:radio[name='is_selected']").on('change', function () {
     	$(this).closest("form").submit();
     });
+    
+    $(".users").show();
 });
 
 
