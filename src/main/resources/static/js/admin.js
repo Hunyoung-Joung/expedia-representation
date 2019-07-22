@@ -116,7 +116,7 @@ $(document).ready(function(){
 //    var selectedIndex = isSelected.index(isSelected.filter(':checked'));
     $("input:radio[name='is_selected']").on('change', function () {
     	$(this).parent("form").submit();
-    	alert(" -- "+$(this).parent("div").closest("form").attr("action"));
+    	alert(" -- "+$(this).closest("form").attr("action"));
     });
 });
 
