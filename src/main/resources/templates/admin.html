@@ -13,13 +13,13 @@ Copyright@ LINE 2019
 </script>
     <div class="error_division"></div>
     <div class="text-left">
-		<div class="radio text-center">
+		<div class="radio text-left">
 			<label><input id="showData1" name="showData" type="radio" value="personalData" checked>参加者情報 </label> 
 			<label><input id="showData2" name="showData" type="radio" value="questionData">質問情報 </label> 
 			<label><input id="showData3" name="showData" type="radio" value="surveyData">アンケート結果 </label> 
 		</div>
     </div>
-    
+    <br><br><br>
 	<div class="text-center users">
 		<div class="text-center">
 		  	<h4>参加者情報</h4>
@@ -36,7 +36,7 @@ Copyright@ LINE 2019
 	          		</tr>
 	        	</thead>
 	        	<tbody>
-	        		<tr th:each="personalInfo:${personalInfos}" th:object="${personalInfo}">
+	        		<tr th:each="personalInfo:${personalInfos}" th:object="${personalInfo}" style="word-wrap: break-word">
 						<td class="col-sm-3" th:text="*{display_name}"></td>
 						<td class="col-sm-3" th:text="*{user_name}"></td>
 						<td class="col-sm-5" th:text="*{company_name}"></td>
