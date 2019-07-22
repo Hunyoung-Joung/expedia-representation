@@ -81,22 +81,16 @@ Copyright@ LINE 2019
 		  	<h4>アンケート情報</h4>
 		</div>
 
-		<table class="table" style="table-layout: fixed; width: 100%">
+		<table class="table s" style="table-layout: fixed; width: 100%">
 	        <thead>
 				<tr style="word-wrap: break-word">
-					<th style="word-wrap: break-word">表示名</th>
-					<th style="word-wrap: break-word">ユーザー名</th>
-					<th style="word-wrap: break-word">会社名</th>
-					<th style="word-wrap: break-word">職種</th>
+					<th style="word-wrap: break-word">アンケート番号</th>
+					<th style="word-wrap: break-word">アンケート内容</th>
+					<th style="word-wrap: break-word">満足度</th>
+					<th style="word-wrap: break-word">個数</th>
 				</tr>
 	        </thead>
 	        <tbody>
-				<tr th:each="surveySum:${surveySums}" th:object="${surveySum}" style="word-wrap: break-word">
-						<td style='word-wrap: break-word' th:text="*{surveySum}"></td>
-						<td style='word-wrap: break-word' th:text="*{question}"></td>
-						<td style='word-wrap: break-word' th:text="*{survey_answer}"></td>
-						<td style='word-wrap: break-word' th:text="*{answer_count}"></td>
-				</tr>
 	        </tbody>
 		</table>
 	</div>	

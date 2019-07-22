@@ -115,10 +115,27 @@ $(document).ready(function(){
     	});
 	});
     
-    
+	var innerHtmlTot = "<tr class='innerTot' >" +
+	"<td style='word-wrap: break-word'><td>" +
+	"<td style='word-wrap: break-word'><td>" +
+	"<td style='word-wrap: break-word'></td>" +
+	"<td style='word-wrap: break-word'></td>" +
+	"</tr>";
+	
     $.each(surveySums, function(idx, val) {
-    	var sums = [];
     	console.log(idx+" >> "+val);
+    	$('.s tbody').append(innerHtml);
+        $('.s').each(function() {
+        	$(this).find('tbody').each(function() {
+        		$(this).find('.innerTot').each(function() {
+        			if ($(this).index() == idx) {
+            			$(this).find('td').each(function(i) {
+            				$(this).text(val[i]);
+            			});
+        			}
+        		});
+        	});        	
+    	});
 	});
     
     $("input:radio[name='is_selected']").on('change', function () {
