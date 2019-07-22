@@ -109,7 +109,7 @@ public class indexController {
             	}
             	model.addAttribute("displayName", "Admin");
             	model.addAttribute("adminQuestionInfos", adminQuestionInfos);
-                model.addAttribute("questionInfos", questionInfoService.findAllOfQuestionInfo());
+                model.addAttribute("personalInfos", personalInfoService.findAll());
                 model.addAttribute("surveyAnswerInfos", surveyAnswerInfoService.findAllOfSurveyAnswerInfo());
                 return "admin";
             } else {

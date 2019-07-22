@@ -35,7 +35,22 @@ Copyright@ LINE 2019
 	            		<th class="col-sm-2">参加可否</th>
 	          		</tr>
 	        	</thead>
-	        	<tbody></tbody>
+	        	<tbody>
+	        		<tr th:each="personalInfo:${personalInfos}" th:object="${personalInfo}">
+						<td class="col-sm-3" th:text="*{display_name}"></td>
+						<td class="col-sm-3" th:text="*{user_name}"></td>
+						<td class="col-sm-3" th:text="*{company_name}"></td>
+						<td class="col-sm-3">
+						<div th:switch="*{job_type}">
+						    <p th:case="1" >営業</p>
+						    <p th:case="2" >開発</p>
+						    <p th:case="3" >企画</p>
+						    <p th:case="*">その他</p>
+						</div>
+						</td>
+						<td class="col-sm-2" th:text="*{is_confirmed}"></td>
+					</tr>
+	        	</tbody>
 	      	</table>
 		</div>
 	</div>	
