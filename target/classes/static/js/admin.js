@@ -71,7 +71,7 @@ $(document).ready(function(){
 	});
 		
 	var questionInnerHtml = "<tr class='innerQ' style='word-wrap: break-word'>" +
-//			"<td class='col-sm-3'><input id='qNo' name='q_no' type='hidden' class='form-control'/><td>" +
+			"<td class='col-sm-3'><td>" +
 			"<td class='col-sm-3'></td>" +
 			"<td class='col-sm-5'></td>" +
 			"<td class='col-sm-2'>" +
