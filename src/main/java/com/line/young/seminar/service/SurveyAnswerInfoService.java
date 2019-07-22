@@ -68,24 +68,16 @@ public class SurveyAnswerInfoService {
                 this.deleteOfSurveyAnswerInfo(surveyAnswerInfo);
             }
         }
-
         return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
-
     }
     
     
     
-//    public Iterable<SurveyAnswerInfo> saveOfSurveyAnswerInfos(List<SurveyAnswerInfo> surveyAnswerInfos) {
-//        for (SurveyAnswerInfo surveyAnswerInfo: surveyAnswerInfos) {
-//            
-////            surveyAnswerInfoRepository.save(surveyAnswerInfo);
-//            
-//            logger.info("##### saveOfSurveyAnswerInfos?"+surveyAnswerInfo.toString());
-//        }
-//        return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
-////        return surveyAnswerInfos;
-//    }
-//
+    public Iterable<SurveyAnswerInfo> summary() {
+        return surveyAnswerInfoRepository.summary();
+
+    }
+
     public void deleteOfSurveyAnswerInfo(SurveyAnswerInfo surveyAnswerInfo) {
     	surveyAnswerInfoRepository.delete(surveyAnswerInfo);
     }

@@ -33,6 +33,28 @@ import org.hibernate.annotations.UpdateTimestamp;
             + "WHERE answer.encrypt_id = :encryptId "
             + "  AND answer.seminar_id = :seminarId "
             + "ORDER BY answer.survey_no DESC"),
+    @NamedQuery(name = "SurveyAnswerInfo.summary",
+    query = " SELECT survey_no, \r\n" + 
+    		"CASE\r\n" + 
+    		"WHEN survey_no = '1' THEN '勉強会内容について、理解できましたでしょうか。' \r\n" + 
+    		"WHEN survey_no = '2' THEN '勉強会内容について、満足できましたでしょうか。' \r\n" + 
+    		"WHEN survey_no = '3' THEN '勉強会の時間について、適切な長さでしたでしょうか。' \r\n" + 
+    		"WHEN survey_no = '4' THEN '勉強会で参考になったアジェンダはございますか。（複数可）。' \r\n" + 
+    		"WHEN survey_no = '5' THEN '後の勉強会で取り上げて欲しいテーマ等のご希望がございましたら、お聞かせ下さい。' \r\n" + 
+    		"WHEN survey_no = '6' THEN 'その他にご意見、ご要望がございましたら、お聞かせ下さい。' \r\n" + 
+    		"END AS question,\r\n" + 
+    		"survey_answer,\r\n" + 
+    		"CASE \r\n" + 
+    		"WHEN survey_answer = '1' THEN COUNT(survey_answer) \r\n" + 
+    		"WHEN survey_answer = '2' THEN COUNT(survey_answer) \r\n" + 
+    		"WHEN survey_answer = '3' THEN COUNT(survey_answer) \r\n" + 
+    		"WHEN survey_answer = '4' THEN COUNT(survey_answer) \r\n" + 
+    		"WHEN survey_answer = '5' THEN COUNT(survey_answer) \r\n" + 
+    		"END AS answer_count\r\n" + 
+    		"FROM survey_answer_info\r\n" + 
+    		"WHERE survey_no in (1,2,3,4)\r\n" + 
+    		"GROUP BY survey_no, survey_answer\r\n" + 
+    		"ORDER BY survey_no"),
     }
 )
 public class SurveyAnswerInfo {

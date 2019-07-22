@@ -22,5 +22,7 @@ public interface SurveyAnswerInfoRepository extends CrudRepository<SurveyAnswerI
     List<SurveyAnswerInfo> findAllAnswerBySeminarId(@Param("seminarId") String seminarId);
     
     SurveyAnswerInfo findAllAnswerByIds(@Param("encryptId") String encryptId, @Param("seminarId") String seminarId);
+    
+    List<SurveyAnswerInfo> summary();
 
 }
