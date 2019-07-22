@@ -116,7 +116,7 @@ public class QuestionInfoController {
     }
     
     @PutMapping("{q_no}")
-    public String update(Model model, @PathVariable Long id, @ModelAttribute QuestionInfo questionInfo) {
+    public String update(Model model, @PathVariable Long q_no, @ModelAttribute QuestionInfo questionInfo) {
     	logger.info("#########################"+questionInfo.isIs_selected());
 //    	questionInfo.setIs_selected(is_selected);
 //        playerService.save(player);
