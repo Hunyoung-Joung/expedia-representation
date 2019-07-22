@@ -14,13 +14,32 @@ Copyright@ LINE 2019
     <div class="error_division"></div>
     <div class="text-center">
 		<div class="radio text-center">
-			<label><input id="showData1" name="showData" type="radio" value="personalData" checked>参加者情報</label> 
-			<label><input id="showData2" name="showData" type="radio" value="questionData">質問情報</label> 
-			<label><input id="showData3" name="showData" type="radio" value="surveyData">アンケート結果</label> 
+			<label><input id="showData1" name="showData" type="radio" value="personalData" checked>参加者情報 </label> 
+			<label><input id="showData2" name="showData" type="radio" value="questionData">質問情報 </label> 
+			<label><input id="showData3" name="showData" type="radio" value="surveyData">アンケート結果 </label> 
 		</div>
     </div>
     
-    <div class="text-center question">
+	<div class="text-center users">
+		<div class="text-center">
+		  	<h4>参加者情報</h4>
+		</div>
+		<div class="container">
+			<table class="table">
+	        	<thead>
+	          		<tr>
+	          		</tr>
+	        	</thead>
+	        	<tbody>
+	          		<tr th:each="surveyAnswerInfo:${surveyAnswerInfos}" th:object="${surveyAnswerInfo}">
+	
+	          		</tr>
+	        	</tbody>
+	      	</table>
+		</div>
+	</div>	
+    
+    <div class="text-center questions">
 		<div class="text-center">
 		  	<h4>質問情報</h4>
 		</div>
@@ -41,7 +60,7 @@ Copyright@ LINE 2019
 		</div>
 	</div>
 
-	<div class="text-center question">
+	<div class="text-center survey">
 		<div class="text-center">
 		  	<h4>アンケート情報</h4>
 		</div>

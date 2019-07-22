@@ -8,18 +8,25 @@ var adminQuestionInfos;
 var questionList = [];
 
 $(document).ready(function(){
+	$(".users").show();
 	
     $("input:radio[name='showData']").on('change', function () {
 		
 		console.log(" -- "+$(this).attr("id"));
-//		if (isChecked) {
-//			checkBoxVals.push($(this).val());
-//		} else {
-//			var idx = checkBoxVals.indexOf($(this).val());
-//			if (idx > -1) {
-//				checkBoxVals.splice(idx, 1);
-//			}
-//		}
+		
+		if ($(this).attr("id") == "showData1") {
+			$(".users").show();
+			$(".questions").hide();
+			$(".survey").hide();
+		} else if ($(this).attr("id") == "showData2") {
+			$(".users").hide();
+			$(".questions").show();
+			$(".survey").hide();
+		} else {
+			$(".users").hide();
+			$(".questions").hide();
+			$(".survey").show();
+		}
 	});
 	
     $.each(adminQuestionInfos, function(idx, val) {
