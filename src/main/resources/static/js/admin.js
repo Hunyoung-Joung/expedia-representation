@@ -95,6 +95,7 @@ $(document).ready(function(){
             			$(this).find('td').each(function(i) {
             				if (i == 0) {
 //            					$($(this).find("#qNo")).val(val[i]);
+            					console.log(val[i]);
             				} else if (i == 3) {
             					$(this).find("form").attr("action","/"+val[0]);
             					if (val[i] == true) {
