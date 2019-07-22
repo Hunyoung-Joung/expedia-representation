@@ -75,7 +75,7 @@ $(document).ready(function(){
 			"<td style='word-wrap: break-word'><td>" +
 			"<td width='1px' style='word-wrap: break-word'></td>" +
 			"<td style='word-wrap: break-word'></td>" +
-			"<td width='50%' style='word-wrap: break-word'>" +
+			"<td width='40%' style='word-wrap: break-word'>" +
 			"<form action='' method='post' >" +
 			"<input type='hidden' name='_method' value='put'>" +
 			"<div class='radio text-center'>" +
