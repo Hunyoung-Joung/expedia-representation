@@ -94,20 +94,21 @@ $(document).ready(function(){
         		$(this).find('.inner').each(function() {
         			if ($(this).index() == idx) {
             			$(this).find('td').each(function(i) {
-            				if (i == 1) {
-            					$($(this).find("#qNo")).val(val[i]);
-            				} else if (i == 4) {
-            					$(this).find("form").attr("action","/"+val[1]);
-            					if (val[i] == true) {
-            						$($(this).find("#isSelected1")).prop("checked", true);
-            						$($(this).find("#isSelected2")).prop("checked", false);
-            					} else {
-            						$($(this).find("#isSelected1")).prop("checked", false);
-            						$($(this).find("#isSelected2")).prop("checked", true);
-            					}
-            				} else {
-            					$(this).text(val[i]);
-            				}
+            				$(this).text(val[i]);
+//            				if (i == 1) {
+//            					$($(this).find("#qNo")).val(val[i]);
+//            				} else if (i == 4) {
+//            					$(this).find("form").attr("action","/"+val[1]);
+//            					if (val[i] == true) {
+//            						$($(this).find("#isSelected1")).prop("checked", true);
+//            						$($(this).find("#isSelected2")).prop("checked", false);
+//            					} else {
+//            						$($(this).find("#isSelected1")).prop("checked", false);
+//            						$($(this).find("#isSelected2")).prop("checked", true);
+//            					}
+//            				} else {
+//            					$(this).text(val[i]);
+//            				}
             			});
         			}
         		});
