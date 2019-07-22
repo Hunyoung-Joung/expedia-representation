@@ -52,12 +52,18 @@ public class QuestionInfoController {
     private String encryptId_ = "";
     
     @GetMapping
-    public String init(@RequestParam("encryptId") String encryptId, Model model) throws Exception {
+    public String init(@RequestParam("encryptId") String encryptId, Model model) {
         this.encryptId_ = encryptId;
         PersonalInfo personalInfo = new PersonalInfo();
 
         if (null == encryptId) {
-        	return "error";
+            try{
+                throw new Exception(); 
+            }catch (Exception e){
+                 e.printStackTrace(); 
+            }finally{
+                return "error";
+            } 
         } else {
             if (personalInfoService.findByEncryptId(encryptId).isPresent()) {
                 personalInfo = personalInfoService.findByEncryptId(encryptId).get();
