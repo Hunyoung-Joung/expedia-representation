@@ -71,7 +71,7 @@ $(document).ready(function(){
 	});
 		
 	var questionInnerHtml = "<tr class='innerQ' style='word-wrap: break-word'>" +
-			"<td class='col-sm-3'><input id='qNo' name='q_no' type='hidden' class='form-control'/><td>" +
+//			"<td class='col-sm-3'><input id='qNo' name='q_no' type='hidden' class='form-control'/><td>" +
 			"<td class='col-sm-3'></td>" +
 			"<td class='col-sm-5'></td>" +
 			"<td class='col-sm-2'>" +
@@ -93,9 +93,10 @@ $(document).ready(function(){
         		$(this).find('.innerQ').each(function() {
         			if ($(this).index() == idx) {
             			$(this).find('td').each(function(i) {
-            				if (i == 1) {
-            					$($(this).find("#qNo")).val(val[i]);
-            				} else if (i == 4) {
+//            				if (i == 1) {
+//            					$($(this).find("#qNo")).val(val[i]);
+//            				} else 
+            				if (i == 4) {
             					$(this).find("form").attr("action","/"+val[1]);
             					if (val[i] == true) {
             						$($(this).find("#isSelected1")).prop("checked", true);
