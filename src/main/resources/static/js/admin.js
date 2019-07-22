@@ -13,15 +13,15 @@ $(document).ready(function(){
 		
 		if ($(this).attr("id") == "showData1") {
 			$(".users").show();
-			$(".questions").hide();
+			$(".question").hide();
 			$(".survey").hide();
 		} else if ($(this).attr("id") == "showData2") {
 			$(".users").hide();
-			$(".questions").show();
+			$(".question").show();
 			$(".survey").hide();
 		} else {
 			$(".users").hide();
-			$(".questions").hide();
+			$(".question").hide();
 			$(".survey").show();
 		}
 	});
@@ -120,7 +120,7 @@ $(document).ready(function(){
     });
     
 	$(".users").show();
-	$(".questions").hide();
+	$(".question").hide();
 	$(".survey").hide();
 });
 

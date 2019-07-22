@@ -13,7 +13,7 @@ Copyright@ LINE 2019
 </script>
     <div class="error_division"></div>
 
-    <div class="text-center" style="padding: 50px; margin: 20px;">
+    <div class="text-center" style="padding: 20px; margin: 20px;">
 		<div class="radio text-left">
 			<label><input id="showData1" name="showData" type="radio" value="personalData" checked>参加者情報</label>&nbsp;&nbsp;  
 			<label><input id="showData2" name="showData" type="radio" value="questionData">質問情報</label>&nbsp;&nbsp; 
@@ -28,16 +28,16 @@ Copyright@ LINE 2019
 
 		<table class="table" style="table-layout: fixed; width: 100%">
 	        <thead>
-	          		<tr style="word-wrap: break-word">
-	          			<th class="col-sm-3">表示名</th>
-	            		<th class="col-sm-3">ユーザー名</th>
-	            		<th class="col-sm-5">会社名</th>
-	            		<th class="col-sm-2">職種</th>
-	            		<th class="col-sm-2">参加可否</th>
-	          		</tr>
+				<tr style="word-wrap: break-word">
+					<th style="word-wrap: break-word">表示名</th>
+					<th style="word-wrap: break-word">ユーザー名</th>
+					<th style="word-wrap: break-word">会社名</th>
+					<th style="word-wrap: break-word">職種</th>
+					<th style="word-wrap: break-word">参加可否</th>
+				</tr>
 	        </thead>
 	        <tbody>
-	        		<tr th:each="personalInfo:${personalInfos}" th:object="${personalInfo}" style="word-wrap: break-word">
+				<tr th:each="personalInfo:${personalInfos}" th:object="${personalInfo}" style="word-wrap: break-word">
 						<td style='word-wrap: break-word' th:text="*{display_name}"></td>
 						<td style='word-wrap: break-word' th:text="*{user_name}"></td>
 						<td style='word-wrap: break-word' th:text="*{company_name}"></td>
@@ -50,7 +50,7 @@ Copyright@ LINE 2019
 							</div>
 						</td>
 						<td style='word-wrap: break-word' th:text="*{is_confirmed}"></td>
-					</tr>
+				</tr>
 	        </tbody>
 		</table>
 	</div>
