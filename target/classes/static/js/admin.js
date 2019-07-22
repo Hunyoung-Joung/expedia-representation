@@ -72,8 +72,8 @@ $(document).ready(function(){
 	});
     
 	var innerHtml = "<tr class='inner' style='word-wrap: break-word'>" +
-			"<td ><input id='qNo' name='q_no' type='hidden' class='form-control'/><td>" +
-			"<td ></td>" +
+			"<td ><td>" +
+			"<td ><input id='qNo' name='q_no' type='hidden' class='form-control'/></td>" +
 			"<td ></td>" +
 			"<td >" +
 			"<form action='' method='post' >" +
@@ -95,20 +95,20 @@ $(document).ready(function(){
         			if ($(this).index() == idx) {
             			$(this).find('td').each(function(i) {
             				$(this).text(val[i]);
-//            				if (i == 1) {
-//            					$($(this).find("#qNo")).val(val[i]);
-//            				} else if (i == 4) {
-//            					$(this).find("form").attr("action","/"+val[1]);
-//            					if (val[i] == true) {
-//            						$($(this).find("#isSelected1")).prop("checked", true);
-//            						$($(this).find("#isSelected2")).prop("checked", false);
-//            					} else {
-//            						$($(this).find("#isSelected1")).prop("checked", false);
-//            						$($(this).find("#isSelected2")).prop("checked", true);
-//            					}
-//            				} else {
-//            					$(this).text(val[i]);
-//            				}
+            				if (i == 1) {
+            					$($(this).find("#qNo")).val(val[i]);
+            				} else if (i == 4) {
+            					$(this).find("form").attr("action","/"+val[1]);
+            					if (val[i] == true) {
+            						$($(this).find("#isSelected1")).prop("checked", true);
+            						$($(this).find("#isSelected2")).prop("checked", false);
+            					} else {
+            						$($(this).find("#isSelected1")).prop("checked", false);
+            						$($(this).find("#isSelected2")).prop("checked", true);
+            					}
+            				} else {
+            					$(this).text(val[i]);
+            				}
             			});
         			}
         		});
