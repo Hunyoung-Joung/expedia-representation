@@ -10,6 +10,7 @@ var questionList = [];
 $(document).ready(function(){
 	
     $("input:radio[name='showData']").on('change', function () {
+		
 		if ($(this).attr("id") == "showData1") {
 			$(".users").show();
 			$(".questions").hide();
@@ -69,11 +70,9 @@ $(document).ready(function(){
   		});
         questionList.push(questions);
 	});
-		
-	var questionInnerHtml = 
-			"<tr class='innerQ text-left' style='word-wrap: break-word'>" +
-			"<td class='col-sm-3'><td>" +
-			"<td><td>" +
+    
+	var innerHtml = "<tr class='inner' style='word-wrap: break-word'>" +
+			"<td class='col-sm-3'><input id='qNo' name='q_no' type='hidden' class='form-control'/><td>" +
 			"<td class='col-sm-3'></td>" +
 			"<td class='col-sm-5'></td>" +
 			"<td class='col-sm-2'>" +
@@ -89,15 +88,14 @@ $(document).ready(function(){
 			"</tr>";
     // Array stack to reverse order by question no
     $.each((questionList.reverse()), function(idx, val) {
-    	$('.q tbody').append(questionInnerHtml);
+    	$('.q tbody').append(innerHtml);
         $('.q').each(function() {
         	$(this).find('tbody').each(function() {
-        		$(this).find('.innerQ').each(function() {
+        		$(this).find('.inner').each(function() {
         			if ($(this).index() == idx) {
             			$(this).find('td').each(function(i) {
             				if (i == 1) {
-//            					$($(this).find("#qNo")).val(val[i]);
-            					console.log(val[i]);
+            					$($(this).find("#qNo")).val(val[i]);
             				} else if (i == 4) {
             					$(this).find("form").attr("action","/"+val[1]);
             					if (val[i] == true) {
