@@ -73,7 +73,7 @@ $(document).ready(function(){
     
 	var innerHtml = "<tr class='inner' >" +
 			"<td style='word-wrap: break-word'><td>" +
-			"<td style='word-wrap: break-word'><input id='qNo' name='q_no' type='hidden' class='form-control'/></td>" +
+			"<td width='0' style='word-wrap: break-word'></td>" +
 			"<td style='word-wrap: break-word'></td>" +
 			"<td style='word-wrap: break-word'>" +
 			"<form action='' method='post' >" +
@@ -96,7 +96,7 @@ $(document).ready(function(){
         			if ($(this).index() == idx) {
             			$(this).find('td').each(function(i) {
             				if (i == 1) {
-            					$($(this).find("#qNo")).val(val[i]);
+//            					$($(this).find("#qNo")).val(val[i]);
             				} else if (i == 4) {
             					$(this).find("form").attr("action","/"+val[1]);
             					if (val[i] == true) {
