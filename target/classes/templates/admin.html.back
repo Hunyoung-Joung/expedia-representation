@@ -12,7 +12,6 @@ Copyright@ LINE 2019
 /*]]>*/
 </script>
     <div class="error_division"></div>
-
     <div class="text-center" style="padding: 50px; margin: 20px;">
 		<div class="radio text-left">
 			<label><input id="showData1" name="showData" type="radio" value="personalData" checked>参加者情報</label>&nbsp;&nbsp;  
@@ -20,15 +19,52 @@ Copyright@ LINE 2019
 			<label><input id="showData3" name="showData" type="radio" value="surveyData">アンケート結果</label>&nbsp;&nbsp;  
 		</div>
     </div>
+
+	<div class="text-center users">
+	<!-- 
+		<div class="text-center">
+		  	<h4>参加者情報</h4>
+		</div>
+		<div class="container">
+			<table class="table u" style="table-layout: fixed; width: 100%">
+	        	<thead>
+	          		<tr class="row" style="word-wrap: break-word">
+	          			<th class="col-sm-3">表示名</th>
+	            		<th class="col-sm-3">ユーザー名</th>
+	            		<th class="col-sm-5">会社名</th>
+	            		<th class="col-sm-2">職種</th>
+	            		<th class="col-sm-2">参加可否</th>
+	          		</tr>
+	        	</thead>
+	        	<tbody>
+	        		<tr th:each="personalInfo:${personalInfos}" th:object="${personalInfo}" style="word-wrap: break-word">
+						<td class="col-sm-3" th:text="*{display_name}"></td>
+						<td class="col-sm-3" th:text="*{user_name}"></td>
+						<td class="col-sm-5" th:text="*{company_name}"></td>
+						<td class="col-sm-2">
+							<div th:switch="*{job_type}">
+							    <p th:case="1" >営業</p>
+							    <p th:case="2" >開発</p>
+							    <p th:case="3" >企画</p>
+							    <p th:case="*">その他</p>
+							</div>
+						</td>
+						<td class="col-sm-2" th:text="*{is_confirmed}"></td>
+					</tr>
+	        	</tbody>
+	      	</table>
+		</div>
+		 -->
+	</div>	
     
-    <div class="text-center question">
+    <div class="text-center questions">
 		<div class="text-center">
 		  	<h4>質問情報</h4>
 		</div>
 		<div class="container">
 			<table class="table q" style="table-layout: fixed; width: 100%">
 	        	<thead>
-	          		<tr　class="row" style="word-wrap: break-word">
+	          		<tr class="row " style="word-wrap: break-word">
 	          			<th class="col-sm-3">質問者</th>
 	          			<th></th>
 	            		<th class="col-sm-3">カテゴリー</th>
@@ -42,12 +78,12 @@ Copyright@ LINE 2019
 		</div>
 	</div>
 
-	<div class="text-center question">
+	<div class="text-center survey">
 		<div class="text-center">
 		  	<h4>アンケート情報</h4>
 		</div>
 		<div class="container">
-			<table class="table">
+			<table class="table s"  style="table-layout: fixed; width: 100%">
 	        	<thead>
 	          		<tr>
 	          		</tr>
