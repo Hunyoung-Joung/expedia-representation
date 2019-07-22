@@ -58,7 +58,7 @@ $(document).ready(function(){
 						}
 						users.push(jobName);
 					} else if (key == "is_confirmed") {
-						users.push(is_confirmed);
+						users.push(value);
 					}
 				});
 			} else if (idx_ == "questionInfo") {
@@ -98,7 +98,32 @@ $(document).ready(function(){
         questionList.push(questions);
 	});
     
-	var innerHtml = "<tr class='inner' style='word-wrap: break-word'>" +
+
+	var userInnerHtml = "<tr class='innerU' style='word-wrap: break-word'>" +
+	"<td class='col-sm-3'>><td>" +
+	"<td class='col-sm-3'></td>" +
+	"<td class='col-sm-3'></td>" +
+	"<td class='col-sm-3'></td>" +
+	"<td class='col-sm-2'></td>" +
+	"</tr>";
+		
+    $.each((userList.reverse()), function(idx, val) {
+    	$('.u tbody').append(userInnerHtml);
+        $('.u').each(function() {
+        	$(this).find('tbody').each(function() {
+        		$(this).find('.innerU').each(function() {
+        			if ($(this).index() == idx) {
+            			$(this).find('td').each(function(i) {
+            				$(this).text(val[i]);
+            			});
+        			}
+        		});
+        	});        	
+    	});
+	});
+		
+    
+	var questionInnerHtml = "<tr class='innerQ' style='word-wrap: break-word'>" +
 			"<td class='col-sm-3'><input id='qNo' name='q_no' type='hidden' class='form-control'/><td>" +
 			"<td class='col-sm-3'></td>" +
 			"<td class='col-sm-5'></td>" +
@@ -115,10 +140,10 @@ $(document).ready(function(){
 			"</tr>";
     // Array stack to reverse order by question no
     $.each((questionList.reverse()), function(idx, val) {
-    	$('.q tbody').append(innerHtml);
+    	$('.q tbody').append(questionInnerHtml);
         $('.q').each(function() {
         	$(this).find('tbody').each(function() {
-        		$(this).find('.inner').each(function() {
+        		$(this).find('.innerQ').each(function() {
         			if ($(this).index() == idx) {
             			$(this).find('td').each(function(i) {
             				if (i == 1) {
@@ -140,7 +165,6 @@ $(document).ready(function(){
         		});
         	});        	
     	});
-
 	});
     
     $("input:radio[name='is_selected']").on('change', function () {

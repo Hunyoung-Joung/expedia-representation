@@ -25,16 +25,17 @@ Copyright@ LINE 2019
 		  	<h4>参加者情報</h4>
 		</div>
 		<div class="container">
-			<table class="table">
+			<table class="table u">
 	        	<thead>
-	          		<tr>
+	          		<tr class="row" style="word-wrap: break-word">
+	          			<th class="col-sm-3">表示名</th>
+	            		<th class="col-sm-3">ユーザー名</th>
+	            		<th class="col-sm-3">会社名</th>
+	            		<th class="col-sm-3">職種</th>
+	            		<th class="col-sm-2">参加可否</th>
 	          		</tr>
 	        	</thead>
-	        	<tbody>
-	          		<tr th:each="surveyAnswerInfo:${surveyAnswerInfos}" th:object="${surveyAnswerInfo}">
-	
-	          		</tr>
-	        	</tbody>
+	        	<tbody></tbody>
 	      	</table>
 		</div>
 	</div>	
@@ -46,7 +47,7 @@ Copyright@ LINE 2019
 		<div class="container">
 			<table class="table q" style="table-layout: fixed; width: 100%">
 	        	<thead>
-	          		<tr　class="row" style="word-wrap: break-word">
+	          		<tr class="row" style="word-wrap: break-word">
 	          			<th class="col-sm-3">質問者</th>
 	          			<th></th>
 	            		<th class="col-sm-3">カテゴリー</th>
