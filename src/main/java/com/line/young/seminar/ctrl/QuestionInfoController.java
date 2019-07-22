@@ -115,11 +115,10 @@ public class QuestionInfoController {
     	return init(encryptId_, model);
     }
     
-    @PutMapping("{q_no}")
-    public String update(Model model, @PathVariable Long q_no, @ModelAttribute QuestionInfo questionInfo) {
-    	logger.info("#########################"+questionInfo.isIs_selected());
-//    	questionInfo.setIs_selected(is_selected);
-//        playerService.save(player);
-        return "redirect:/admin";
-    }
+//    @PutMapping("{q_no}")
+//    public String update(Model model, @PathVariable Long q_no, @ModelAttribute QuestionInfo questionInfo) {
+//    	logger.info("#########################"+questionInfo.isIs_selected());
+//    	questionInfoService.saveOfQuestionInfo(questionInfo);
+//        return "admin";
+//    }
 }

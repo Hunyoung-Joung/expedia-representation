@@ -100,9 +100,9 @@ public class indexController {
     }
     
     @PutMapping("{q_no}")
-    public String update(@PathVariable Long q_no, @ModelAttribute QuestionInfo questionInfo) {
-    	questionInfo.setQ_no(q_no);
-    	questionInfoService.saveOfQuestionInfo(questionInfo);
-        return "redirect:/admin";
+    public String update(Model model, @PathVariable Long q_no, @ModelAttribute QuestionInfo questionInfo) {
+        logger.info("#########################"+questionInfo.isIs_selected());
+        questionInfoService.saveOfQuestionInfo(questionInfo);
+        return "auth";
     }
 }
