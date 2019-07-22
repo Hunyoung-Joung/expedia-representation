@@ -30,8 +30,8 @@ Copyright@ LINE 2019
 	          		<tr class="row" style="word-wrap: break-word">
 	          			<th class="col-sm-3">表示名</th>
 	            		<th class="col-sm-3">ユーザー名</th>
-	            		<th class="col-sm-3">会社名</th>
-	            		<th class="col-sm-3">職種</th>
+	            		<th class="col-sm-5">会社名</th>
+	            		<th class="col-sm-2">職種</th>
 	            		<th class="col-sm-2">参加可否</th>
 	          		</tr>
 	        	</thead>
@@ -39,8 +39,8 @@ Copyright@ LINE 2019
 	        		<tr th:each="personalInfo:${personalInfos}" th:object="${personalInfo}">
 						<td class="col-sm-3" th:text="*{display_name}"></td>
 						<td class="col-sm-3" th:text="*{user_name}"></td>
-						<td class="col-sm-3" th:text="*{company_name}"></td>
-						<td class="col-sm-3">
+						<td class="col-sm-5" th:text="*{company_name}"></td>
+						<td class="col-sm-2">
 						<div th:switch="*{job_type}">
 						    <p th:case="1" >営業</p>
 						    <p th:case="2" >開発</p>

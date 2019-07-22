@@ -6,7 +6,6 @@
 
 var adminQuestionInfos;
 var questionList = [];
-//var userList = [];
 
 $(document).ready(function(){
 	
@@ -27,7 +26,6 @@ $(document).ready(function(){
 	});
 	
     $.each(adminQuestionInfos, function(idx, val) {
-//    	var users = [];
     	var questions = [];
         $.each(val, function(idx_, val_) {
 			if (idx_ == "personalInfo") {
@@ -35,31 +33,6 @@ $(document).ready(function(){
 					if (key == "display_name") {
 						questions.push(value);
 					}
-//						users.push(value)
-//					} else if (key == "user_name") {
-//						users.push(value)
-//					} else if (key == "company_name") {
-//						users.push(value)
-//					} else if (key == "job_type") {
-//						var jobName;
-//						switch (parseInt(value)) {
-//						  case 1:
-//							  jobName = "営業";
-//						    break;
-//						  case 2:
-//							  jobName = "開発";
-//						    break;
-//						  case 3:
-//							  jobName = "企画<";
-//						    break;
-//						  case 4:
-//							  jobName = "その他";
-//						    break;
-//						}
-//						users.push(jobName);
-//					} else if (key == "is_confirmed") {
-//						users.push(value);
-//					}
 				});
 			} else if (idx_ == "questionInfo") {
 				$.each(val_, function(key, value) {
@@ -94,35 +67,9 @@ $(document).ready(function(){
 				
 			}
   		});
-//        userList.push(users);
         questionList.push(questions);
 	});
-    
-
-//	var userInnerHtml = "<tr class='innerU' style='word-wrap: break-word'>" +
-//	"<td class='col-sm-3'>><td>" +
-//	"<td class='col-sm-3'></td>" +
-//	"<td class='col-sm-3'></td>" +
-//	"<td class='col-sm-3'></td>" +
-//	"<td class='col-sm-2'></td>" +
-//	"</tr>";
-//		
-//    $.each((userList.reverse()), function(idx, val) {
-//    	$('.u tbody').append(userInnerHtml);
-//        $('.u').each(function() {
-//        	$(this).find('tbody').each(function() {
-//        		$(this).find('.innerU').each(function() {
-//        			if ($(this).index() == idx) {
-//            			$(this).find('td').each(function(i) {
-//            				$(this).text(val[i]);
-//            			});
-//        			}
-//        		});
-//        	});        	
-//    	});
-//	});
 		
-    
 	var questionInnerHtml = "<tr class='innerQ' style='word-wrap: break-word'>" +
 			"<td class='col-sm-3'><input id='qNo' name='q_no' type='hidden' class='form-control'/><td>" +
 			"<td class='col-sm-3'></td>" +
@@ -171,7 +118,9 @@ $(document).ready(function(){
     	$(this).closest("form").submit();
     });
     
-    $(".users").show();
+	$(".users").show();
+	$(".questions").hide();
+	$(".survey").hide();
 });
 
 
