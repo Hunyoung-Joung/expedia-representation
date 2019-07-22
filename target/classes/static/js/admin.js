@@ -72,8 +72,8 @@ $(document).ready(function(){
 	});
     
 	var innerHtml = "<tr class='inner' style='word-wrap: break-word'>" +
-			"<td class='col-sm-2'><td>" +
-			"<td class='col-sm-1'><input id='qNo' name='q_no' type='hidden' class='form-control'/></td>" +
+			"<td class='col-sm-2'><input id='qNo' name='q_no' type='hidden' class='form-control'/><td>" +
+			"<td class='col-sm-3'></td>" +
 			"<td class='col-sm-5'></td>" +
 			"<td class='col-sm-2'>" +
 			"<form action='' method='post' >" +
