@@ -74,7 +74,7 @@ public class SurveyAnswerInfoService {
     
     
     
-    public List<SurveySum> summary() {
+    public List<Object> summary() {
         return surveyAnswerInfoRepository.summary();
 
     }
