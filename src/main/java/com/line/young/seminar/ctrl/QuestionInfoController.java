@@ -102,11 +102,20 @@ public class QuestionInfoController {
     
 
     @RequestMapping(method = RequestMethod.POST)
-    public String addtquestionInfo(Model model, @Valid QuestionInfo questionInfo) throws Exception  {
-        questionInfo.setEncrypt_id(encryptId_);
-        questionInfo.setSeminar_id("3"); // TODO
-        questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
-
+    public String addtquestionInfo(Model model, @RequestParam("encryptId") String encryptId, @Valid QuestionInfo questionInfo) {
+        if (null == encryptId) {
+            try{
+                throw new Exception(); 
+            }catch (Exception e){
+                 e.printStackTrace(); 
+            }finally{
+                return "error";
+            } 
+        } else {
+            questionInfo.setEncrypt_id(encryptId_);
+            questionInfo.setSeminar_id("3"); // TODO
+            questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
+        }
         return init(questionInfo.getEncrypt_id(), model);
     }
     
