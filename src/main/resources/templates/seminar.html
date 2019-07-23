@@ -13,7 +13,6 @@ Copyright@ LINE 2019
 	</div>
 	<div class="container">	      		
 		<form th:action="@{/seminar/new}" th:method="post" th:object="${questionInfo}">
-		<input id="qNo" name="q_no" type="hidden" class="form-control" th:field="*{q_no}"/>
 	  	<table class="table">
 	    	<tbody>
 	      		<tr>
@@ -88,13 +87,13 @@ Copyright@ LINE 2019
 	      		<tr>
 	        		<td colspan="2" class="col-md-4">
 					    <div class="form-group">
-					      	<textarea class="form-control" rows="5" id="qContents" th:field="*{q_contents}"></textarea>
+					      	<textarea  rows="5" id="qContents" th:field="*{q_contents}"></textarea>
 					    </div>
 	        		</td>
 	      		</tr>
 				<tr>
 	        		<td colspan="2" class="col-md-4  text-center">
-	        			<input id="isSeletecd" name="is_selected" type="hidden" class="form-control" value="true"/>
+	        			<input id="isSeletecd" name="is_selected" type="hidden" value="false"/>
 		        		<button id="submit" type="button" class="btn btn-default">　送　信　</button>
 		        	</td>
 				</tr>
