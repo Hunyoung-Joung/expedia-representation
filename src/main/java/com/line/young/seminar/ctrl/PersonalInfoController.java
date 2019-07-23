@@ -56,6 +56,7 @@ public class PersonalInfoController {
 //            this.encryptId_ = encryptId;
             if (personalInfoService.findOne(encryptId).isPresent()) {
                 personalInfo = personalInfoService.findOne(encryptId).get();
+                model.addAttribute("personalInfo", personalInfo);
                 return "personal_information";
             }
             personalInfo.setUser_id(userId);
