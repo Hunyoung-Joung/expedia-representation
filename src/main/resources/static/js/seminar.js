@@ -13,7 +13,6 @@ $(document).ready(function(){
 	});
 	
     $("#reflesh").click(function() {
-
         location.replace("https://seminar-web.herokuapp.com/seminar?encryptId="+encryptId);
     });
 

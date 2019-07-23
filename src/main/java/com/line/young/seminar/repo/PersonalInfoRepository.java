@@ -5,7 +5,6 @@
  */
 package com.line.young.seminar.repo;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
