@@ -17,7 +17,7 @@ $(document).ready(function(){
         location.reload();
     });
     
-    $(".submit").on('click', function () {
+    $("#submit").on('click', function () {
     	$(this).closest("form").submit();
     });
 
