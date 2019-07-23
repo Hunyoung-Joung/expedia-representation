@@ -18,8 +18,8 @@ $(document).ready(function(){
     });
     
     $("#submit").on('click', function () {
-    	console.log(" click "+$("input:radio[name='add']"));
-    	$("input:radio[name='add']").submit();
+    	console.log(" click "+$("[name='add']"));
+    	$(this).closest("form").submit();
     });
 
 });
