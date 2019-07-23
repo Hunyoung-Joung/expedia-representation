@@ -107,17 +107,17 @@ Copyright@ LINE 2019
 		</div>
 		<table class="table">
         	<thead>
-          		<tr class="row" style="word-wrap: break-word">
-            		<th class="col-sm-3">カテゴリー</th>
-            		<th class="col-sm-5">質問内容</th>
-            		<th class="col-sm-2">返答</th>
-            		<th class="col-sm-3">質問時間</th>
-            		<th class="col-sm-2"></th>
+          		<tr style="word-wrap: break-word">
+            		<th >カテゴリー</th>
+            		<th width='30%'>質問内容</th>
+            		<th >返答</th>
+            		<th >質問時間</th>
+            		<th ></th>
           		</tr>
         	</thead>
         	<tbody>
-          		<tr class="row" th:each="questionInfo:${questionInfos}" th:object="${questionInfo}" style="word-wrap: break-word">
-            		<td class="col-sm-3">
+          		<tr th:each="questionInfo:${questionInfos}" th:object="${questionInfo}" style="word-wrap: break-word">
+            		<td >
 						<div th:switch="*{q_category}">
 						    <p th:case="1" >最新API状況アップデート</p>
 						    <p th:case="2" >LINE Pay APIのご紹介</p>
@@ -125,20 +125,26 @@ Copyright@ LINE 2019
 						    <p th:case="*">その他</p>
 						</div>
             		</td>
-            		<td class="col-sm-5" th:text="*{q_contents}"></td>
-            		<td class="col-sm-2" >
+            		<td width='30%' th:text="*{q_contents}"></td>
+            		<td >
 						<div th:switch="*{is_selected}">
 						    <p th:case="true" >O</p>
 						    <p th:case="*">X</p>
 						</div>
             		</td>
-            		<td class="col-sm-3" th:text="*{update_at}"></td>
-            		<td class="col-sm-2">
+            		<td th:text="*{update_at}"></td>
+            		<td >
               			<form th:action="@{/seminar/{q_no}(q_no=*{q_no})}" th:method="delete">
                 			<input class="btn btn-default btn-xs" type="submit" value="削除" />
               			</form>
             		</td>
           		</tr>
+          	</tbody>
+			<tfoot>
+    			<tr>
+      				<td colspan="5"><p name="reflesh" >再読み</p></td>
+				</tr>
+  			</tfoot>	
       	</table>
 	</div>
 

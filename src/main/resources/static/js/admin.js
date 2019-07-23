@@ -79,8 +79,8 @@ $(document).ready(function(){
 			"<form action='' method='post' >" +
 			"<input type='hidden' name='_method' value='put'>" +
 			"<div class='radio text-center'>" +
-			"<label><input id='isSelected1' name='is_selected' type='radio' value='true' >可能</label> " +
-			"<label><input id='isSelected2' name='is_selected' type='radio' value='false' >不可</label>" +
+			"<label><input id='isSelected1' name='is_selected' type='radio' value='true' >済み</label> " +
+			"<label><input id='isSelected2' name='is_selected' type='radio' value='false' >準備</label>" +
 			"</div>" +
 			"</form>" +
 			"</td>" +
@@ -140,6 +140,10 @@ $(document).ready(function(){
     
     $("input:radio[name='is_selected']").on('change', function () {
     	$(this).closest("form").submit();
+    });
+    
+    $("p:[name='reflesh']").click(function() {
+        location.reload();
     });
     
 	$(".users").show();
