@@ -18,7 +18,7 @@ $(document).ready(function(){
     });
     
     $("#submit").on('click', function () {
-    	console.log(" click "+$("input:radio[name='add']").attr());
+    	console.log(" click "+$("input:radio[name='add']"));
     	$("input:radio[name='add']").submit();
     });
 
