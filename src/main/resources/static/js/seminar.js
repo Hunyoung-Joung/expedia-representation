@@ -17,10 +17,10 @@ $(document).ready(function(){
         location.reload();
     });
     
-//    $("#submit").on('click', function () {
-//    	console.log(" click "+$(this).closest("form").html());
-//    	$(this).closest("form").submit();
-//    });
+    $("#submit").on('click', function () {
+    	console.log(" click "+$(this).closest("form").html());
+    	$(this).closest("form").submit();
+    });
 
 });
 
