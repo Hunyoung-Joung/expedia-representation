@@ -137,7 +137,9 @@ $(document).ready(function(){
         	});        	
     	});
 	});
-    
+    $("input:radio[name='is_selected']").on('change', function () {
+    	$(this).closest("form").submit();
+    });
 	$(".question").show();
 	$(".survey").hide();
 	$(".users").hide();
