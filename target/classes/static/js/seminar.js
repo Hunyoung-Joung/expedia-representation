@@ -18,7 +18,7 @@ $(document).ready(function(){
     });
     
     $("#submit").on('click', function () {
-    	console.log(" click "+$("[name='add']"));
+    	console.log(" click "+$("form:[name='add']").html());
     	$(this).closest("form").submit();
     });
 
