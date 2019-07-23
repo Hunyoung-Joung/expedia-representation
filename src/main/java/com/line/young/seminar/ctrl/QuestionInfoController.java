@@ -71,7 +71,7 @@ public class QuestionInfoController {
             } else {
             	return "error";
             }
-            model.addAttribute("encryptId", encryptId);
+            model.addAttribute("encrypt_id", encryptId);
             model.addAttribute("displayName", personalInfo.getDisplay_name());
             model.addAttribute("questionInfo", new QuestionInfo());
             model.addAttribute("questionInfos", this.findByEncryptId(encryptId, new ArrayList<QuestionInfo>()));
