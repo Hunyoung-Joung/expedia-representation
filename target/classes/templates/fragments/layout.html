@@ -26,17 +26,14 @@ th:fragment="layout (template, menu)">
 	<!-- Header -->
     <div class="container fixed-top text-center" style="background-color: #AEEA00; width:auto;">
 		<ul class="nav navbarrow">
-			<li class="active col-xs-4">
+			<li class="active col-xs-6">
 				<a href="#">
 				<span class="glyphicon glyphicon-user"></span> <span id="headerDisplayName" th:text="${displayName}"></span>
 				</a>
 			</li>
-			<li class="active col-xs-4">
+			<li class="active col-xs-6">
 				<a href="https://terms.line.me/line_rules/?lang=ja"><span class="glyphicon glyphicon-book"></span> 個人情報保護方針</a>
 			</li>
-			<li class="active col-xs-4">
-				<a href="javascript:window.opener='x';window.close();"><span class="glyphicon glyphicon-remove-sign"></span> 閉じる</a>
-			</li>			
 		</ul>
 	</div>
 	
