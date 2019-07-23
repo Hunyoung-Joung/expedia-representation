@@ -93,7 +93,7 @@ public class QuestionInfoController {
 
     @PostMapping("new")
     public String addtquestionInfo(Model model, @Valid QuestionInfo questionInfo) {
-    	if (!questionInfo.getEncrypt_id().isEmpty()) {
+    	if (questionInfo.getQ_no() != null) {
     		return init(questionInfo.getEncrypt_id(), model);
     	}
         questionInfo.setEncrypt_id(encryptId_);

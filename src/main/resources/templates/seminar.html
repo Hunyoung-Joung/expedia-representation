@@ -70,7 +70,7 @@ Copyright@ LINE 2019
 	        		</td>
 	      		</tr>
 	      		<form th:action="@{/seminar/new}" th:method="post" th:object="${questionInfo}">
-	      		<input id="encryptId" name="encrypt_id" type="hidden" class="form-control" th:field="*{encrypt_id}"/>
+	      		<input id="aNo" name="q_no" type="hidden" class="form-control" th:field="*{q_no}"/>
 	      		<tr>
 	        		<td class="col-md-4">
 	                    <select class = "btn dropdown-toggle" id="qCategory" th:field="*{q_category}">
