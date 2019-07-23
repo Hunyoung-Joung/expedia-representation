@@ -96,7 +96,8 @@ public class QuestionInfoController {
         questionInfo.setEncrypt_id(this.encryptId_);
         questionInfo.setSeminar_id("3"); // TODO
         questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
-        return init(questionInfo.getEncrypt_id(), model);
+//        return init(questionInfo.getEncrypt_id(), model);
+        return "redirect:/seminar";
     }
     
     @DeleteMapping("{q_no}")
