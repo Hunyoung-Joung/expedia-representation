@@ -142,10 +142,6 @@ $(document).ready(function(){
     	$(this).closest("form").submit();
     });
     
-    $("p:[name='reflesh']").click(function() {
-        location.reload();
-    });
-    
 	$(".users").show();
 	$(".question").hide();
 	$(".survey").hide();
