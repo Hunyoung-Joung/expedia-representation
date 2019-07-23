@@ -37,6 +37,7 @@ public class PersonalInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
 
+//    private String encryptId_ = "";
     
     /**
      * Initial method
@@ -48,14 +49,17 @@ public class PersonalInfoController {
     @GetMapping
     public String init(@RequestParam("userId") String userId, @RequestParam("encryptId") String encryptId, Model model) {
         PersonalInfo personalInfo = new PersonalInfo();
-        if (null == userId) {
+        if ((null == userId)||(null == encryptId)) {
             model.addAttribute("personalInfo", personalInfo);
             return "error";
         } else {
-            personalInfo = this.findById(userId, new PersonalInfo());
+//            this.encryptId_ = encryptId;
+            if (personalInfoService.findOne(encryptId).isPresent()) {
+                personalInfo = personalInfoService.findOne(encryptId).get();
+            }
             personalInfo.setUser_id(userId);
             personalInfo.setEncrypt_id(encryptId);
-            personalInfoService.save(personalInfo);
+//            personalInfoService.save(personalInfo);
             model.addAttribute("personalInfo", personalInfo);
             return "personal_information";
         }
@@ -68,15 +72,15 @@ public class PersonalInfoController {
      * @param personalInfo
      * @return
      */
-    @RequestMapping(value="/{encryptId}", method=RequestMethod.GET)
-    public PersonalInfo findById(@PathVariable String encryptId, @ModelAttribute PersonalInfo personalInfo) {
-        if (personalInfoService.findOne(encryptId).isPresent()) {
-            personalInfo = personalInfoService.findOne(encryptId).get();
-        } else {
-            personalInfo = new PersonalInfo();
-        }
-        return personalInfo;
-    }
+//    @RequestMapping(value="/{encryptId}", method=RequestMethod.GET)
+//    public PersonalInfo findById(@PathVariable String encryptId, @ModelAttribute PersonalInfo personalInfo) {
+//        if (personalInfoService.findOne(encryptId).isPresent()) {
+//            personalInfo = personalInfoService.findOne(encryptId).get();
+//        } else {
+//            personalInfo = new PersonalInfo();
+//        }
+//        return personalInfo;
+//    }
     
     /**
      * 
@@ -101,7 +105,7 @@ public class PersonalInfoController {
     @RequestMapping(method = RequestMethod.POST)
     public String addtPersonalInfo(Model model, @ModelAttribute("personalInfo") @Valid PersonalInfo personalInfo, BindingResult result)  {
         personalInfo = personalInfoService.save(personalInfo);
-        model.addAttribute("personalInfo", this.findById(personalInfo.getEncrypt_id(), new PersonalInfo()));
+//        model.addAttribute("personalInfo", this.findById(personalInfo.getEncrypt_id(), new PersonalInfo()));
         model.addAttribute("confirmMessage", "登録完了しました");
 
         return init(personalInfo.getUser_id(), personalInfo.getEncrypt_id(), model);
