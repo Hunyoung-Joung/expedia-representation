@@ -65,7 +65,7 @@ public class QuestionInfoController {
                 return "error";
             } 
         } else {
-            logger.info("#############"+personalInfoService.findByEncryptId(encryptId).isPresent());
+            
             if (personalInfoService.findByEncryptId(encryptId).isPresent()) {
                 personalInfo = personalInfoService.findByEncryptId(encryptId).get();
             } else {
@@ -93,13 +93,16 @@ public class QuestionInfoController {
 
     @PostMapping("new")
     public String addtquestionInfo(Model model, @Valid QuestionInfo questionInfo) {
-    	if (questionInfo.getQ_no() != null) {
-    		return init(questionInfo.getEncrypt_id(), model);
+    	logger.info("#############"+questionInfo.getEncrypt_id());
+    	for(QuestionInfo info :this.findByEncryptId(encryptId_, new ArrayList<QuestionInfo>())) {
+    		if (info.getEncrypt_id().equals(questionInfo.getEncrypt_id())) {
+    			
+    		}
     	}
         questionInfo.setEncrypt_id(encryptId_);
         questionInfo.setSeminar_id("3"); // TODO
         questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
-        return "seminar";
+        return init(questionInfo.getEncrypt_id(), model);
     }
     
     @DeleteMapping("{q_no}")
