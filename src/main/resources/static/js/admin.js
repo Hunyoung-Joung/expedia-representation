@@ -12,17 +12,17 @@ $(document).ready(function(){
     $("input:radio[name='showData']").on('change', function () {
 		
 		if ($(this).attr("id") == "showData1") {
-			$(".users").show();
-			$(".question").hide();
-			$(".survey").hide();
-		} else if ($(this).attr("id") == "showData2") {
-			$(".users").hide();
 			$(".question").show();
 			$(".survey").hide();
-		} else {
 			$(".users").hide();
+		} else if ($(this).attr("id") == "showData2") {
 			$(".question").hide();
 			$(".survey").show();
+			$(".users").hide();
+		} else {
+			$(".question").hide();
+			$(".survey").hide();
+			$(".users").show();
 		}
 	});
 	
@@ -142,9 +142,9 @@ $(document).ready(function(){
     	$(this).closest("form").submit();
     });
     
-	$(".users").show();
-	$(".question").hide();
+	$(".question").show();
 	$(".survey").hide();
+	$(".users").hide();
 });
 
 
