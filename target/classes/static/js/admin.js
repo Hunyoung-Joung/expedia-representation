@@ -94,6 +94,7 @@ $(document).ready(function(){
         	$(this).find('tbody').each(function() {
         		$(this).find('.inner').each(function() {
         			if ($(this).index() == idx) {
+        				console.log(idx+" >> "+val);
             			$(this).find('td').each(function(i) {
             				if (i == 1) {
             				} else if (i == 4) {
@@ -123,7 +124,7 @@ $(document).ready(function(){
 	"</tr>";
 	
     $.each(surveySums, function(idx, val) {
-    	console.log(idx+" >> "+val);
+    	
     	$('.s tbody').append(innerHtmlTot);
         $('.s').each(function() {
         	$(this).find('tbody').each(function() {
