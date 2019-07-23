@@ -65,6 +65,7 @@ public class QuestionInfoController {
                 return "error";
             } 
         } else {
+            logger.info("#############"+personalInfoService.findByEncryptId(encryptId).isPresent());
             if (personalInfoService.findByEncryptId(encryptId).isPresent()) {
                 personalInfo = personalInfoService.findByEncryptId(encryptId).get();
             } else {
