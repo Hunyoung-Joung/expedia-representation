@@ -11,7 +11,9 @@ Copyright@ LINE 2019
 	<div class="text-center">
 	  	<h4>セミナー情報</h4>
 	</div>
-	<div class="container">
+	<div class="container">	      		
+		<form th:action="@{/seminar/new}" th:method="post" th:object="${questionInfo}">
+		<input id="qNo" name="q_no" type="hidden" class="form-control" th:field="*{q_no}"/>
 	  	<table class="table">
 	    	<tbody>
 	      		<tr>
@@ -69,8 +71,6 @@ Copyright@ LINE 2019
 						</ul>
 	        		</td>
 	      		</tr>
-	      		<form name="add" th:action="@{/seminar/new}" th:method="post" th:object="${questionInfo}">
-	      		<input id="qNo" name="q_no" type="hidden" class="form-control" th:field="*{q_no}"/>
 	      		<tr>
 	        		<td class="col-md-4">
 	                    <select class = "btn dropdown-toggle" id="qCategory" th:field="*{q_category}">
@@ -98,10 +98,10 @@ Copyright@ LINE 2019
 		        		<button id="submit" type="button" class="btn btn-default">　送　信　</button>
 		        	</td>
 				</tr>
-				</form>
+	
 	    	</tbody>
 	  	</table>
-	  	
+	  	</form>
 		<div class="text-center">
 		  	<h5>質問リスト</h5>
 		  	<h6>質問内容によっては即答出来ない場合もあります。</h6>
