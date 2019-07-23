@@ -12,6 +12,7 @@ Copyright@ LINE 2019
 	  	<h4>セミナー情報</h4>
 	</div>
 	<div class="container">
+	<form th:action="@{/seminar/{encrypt_id}(encrypt_id=*{encrypt_id})}" th:method="put" >
 	  	<table class="table">
 	    	<tbody>
 	      		<tr>
@@ -69,7 +70,7 @@ Copyright@ LINE 2019
 						</ul>
 	        		</td>
 	      		</tr>
-	      		<form th:action="@{/seminar/{encrypt_id}(encrypt_id=*{encrypt_id})}" th:method="put" >
+	      		
 	      		<tr>
 	        		<td class="col-md-4">
 	                    <select class = "btn dropdown-toggle" id="qCategory" name="q_category">
@@ -97,10 +98,10 @@ Copyright@ LINE 2019
 		        		<button id="submit" type="submit" class="btn btn-default">　送　信　</button>
 		        	</td>
 				</tr>
-				</form>
+		
 	    	</tbody>
 	  	</table>
-	  	
+	  	</form>
 		<div class="text-center">
 		  	<h5>質問リスト</h5>
 		  	<h6>質問内容によっては即答出来ない場合もあります。</h6>
