@@ -90,8 +90,8 @@ public class QuestionInfoController {
         return questionInfos;
     }
     
-
-    @PostMapping("new")
+    @PutMapping("")
+//    @PostMapping("new")
     public String addtquestionInfo(Model model, @Valid QuestionInfo questionInfo) {
     	logger.info("#############"+questionInfo.getEncrypt_id());
     	for(QuestionInfo info :this.findByEncryptId(encryptId_, new ArrayList<QuestionInfo>())) {

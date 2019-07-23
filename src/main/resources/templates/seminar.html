@@ -12,7 +12,9 @@ Copyright@ LINE 2019
 	  	<h4>セミナー情報</h4>
 	</div>
 	<div class="container">	      		
-		<form th:action="@{/seminar/new}" th:method="post" th:object="${questionInfo}">
+		<!--  <form th:action="@{/seminar}" th:method="post" th:object="${questionInfo}"> -->
+		<form action='/seminar' method='post' >
+		<input type='hidden' name='_method' value='put'>
 	  	<table class="table">
 	    	<tbody>
 	      		<tr>
