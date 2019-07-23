@@ -99,7 +99,7 @@ public class QuestionInfoController {
         questionInfo.setEncrypt_id(encryptId_);
         questionInfo.setSeminar_id("3"); // TODO
         questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
-        return "seminar/"+encryptId_;
+        return "seminar";
     }
     
     @DeleteMapping("{q_no}")
