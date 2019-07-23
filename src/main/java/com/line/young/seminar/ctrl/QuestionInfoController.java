@@ -71,6 +71,7 @@ public class QuestionInfoController {
             } else {
             	return "error";
             }
+            model.addAttribute("encryptId", encryptId);
             model.addAttribute("displayName", personalInfo.getDisplay_name());
             model.addAttribute("questionInfo", new QuestionInfo());
             model.addAttribute("questionInfos", this.findByEncryptId(encryptId, new ArrayList<QuestionInfo>()));
@@ -90,16 +91,11 @@ public class QuestionInfoController {
         return questionInfos;
     }
     
-    @PutMapping("")
+    @PutMapping("{encrypt_id}")
 //    @PostMapping("new")
-    public String addtquestionInfo(Model model, @Valid QuestionInfo questionInfo) {
-    	logger.info("#############"+questionInfo.getEncrypt_id());
-    	for(QuestionInfo info :this.findByEncryptId(encryptId_, new ArrayList<QuestionInfo>())) {
-    		if (info.getEncrypt_id().equals(questionInfo.getEncrypt_id())) {
-    			
-    		}
-    	}
-        questionInfo.setEncrypt_id(encryptId_);
+//    public String addtquestionInfo(Model model, @Valid QuestionInfo questionInfo) {
+    public String addtquestionInfo(Model model, @PathVariable String encrypt_id, @ModelAttribute QuestionInfo questionInfo) {
+        questionInfo.setEncrypt_id(encrypt_id);
         questionInfo.setSeminar_id("3"); // TODO
         questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
         return init(questionInfo.getEncrypt_id(), model);

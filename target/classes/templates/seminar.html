@@ -11,10 +11,7 @@ Copyright@ LINE 2019
 	<div class="text-center">
 	  	<h4>セミナー情報</h4>
 	</div>
-	<div class="container">	      		
-		<!--  <form th:action="@{/seminar}" th:method="post" th:object="${questionInfo}"> -->
-		<form action='/seminar' method='post' >
-		<input type='hidden' name='_method' value='put'>
+	<div class="container">
 	  	<table class="table">
 	    	<tbody>
 	      		<tr>
@@ -72,10 +69,11 @@ Copyright@ LINE 2019
 						</ul>
 	        		</td>
 	      		</tr>
+	      		<form th:action="@{/seminar/{encrypt_id}(encrypt_id=*{encrypt_id})}}" th:method="put" >
 	      		<tr>
 	        		<td class="col-md-4">
-	                    <select class = "btn dropdown-toggle form-control" id="qCategory" name="q_category">
-	                    	<option value="0">カテゴリーを選択</option>
+	                    <select class = "btn dropdown-toggle" id="qCategory" name="q_category">
+	                    	<option value="0" selected="selected">カテゴリーを選択</option>
 	                        <option value="1">最新API状況アップデート</option>
 	                        <option value="2">LINE Pay APIのご紹介</option>
 	                        <option value="3">クラスメソッド様事例紹介</option>
@@ -95,14 +93,15 @@ Copyright@ LINE 2019
 	      		</tr>
 				<tr>
 	        		<td colspan="2" class="col-md-4  text-center">
+	        			<input id="encryptId" name="encrypt_id" type="hidden" class="form-control" th:field="*{encrypt_id}"/>
 	        			<input id="isSeletecd" name="is_selected" type="hidden" class="form-control" value="false"/>
-		        		<button id="submit" type="button" class="btn btn-default">　送　信　</button>
+		        		<button id="submit" type="submit" class="btn btn-default">　送　信　</button>
 		        	</td>
 				</tr>
-	
+				</form>
 	    	</tbody>
 	  	</table>
-	  	</form>
+	  	
 		<div class="text-center">
 		  	<h5>質問リスト</h5>
 		  	<h6>質問内容によっては即答出来ない場合もあります。</h6>
@@ -146,7 +145,7 @@ Copyright@ LINE 2019
     			<tr>
       				<td colspan="5">
 	      				<div class="text-center">
-	      					<!-- a href="https://seminar-web.herokuapp.com/seminar?encryptId="+encrypt_id"><span id="reflesh" >再読み</span></a-->
+	      					<a href="https://seminar-web.herokuapp.com/seminar?encryptId="+encrypt_id><span id="reflesh" >再読み</span></a>
 	      				</div>
       				</td>
 				</tr>
