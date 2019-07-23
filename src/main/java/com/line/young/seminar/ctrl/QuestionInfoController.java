@@ -91,8 +91,8 @@ public class QuestionInfoController {
         return questionInfos;
     }
     
-    @PutMapping("{encrypt_id}")
-//    @PostMapping("new")
+
+    @PostMapping("{encrypt_id}")
 //    public String addtquestionInfo(Model model, @Valid QuestionInfo questionInfo) {
     public String addtquestionInfo(Model model, @PathVariable String encrypt_id, @ModelAttribute QuestionInfo questionInfo) {
         questionInfo.setEncrypt_id(encrypt_id);
