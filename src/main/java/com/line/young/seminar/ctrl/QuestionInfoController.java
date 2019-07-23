@@ -91,11 +91,9 @@ public class QuestionInfoController {
         return questionInfos;
     }
     
-
-    @PostMapping("{encrypt_id}")
-//    public String addtquestionInfo(Model model, @Valid QuestionInfo questionInfo) {
-    public String addtquestionInfo(Model model, @PathVariable String encrypt_id, @ModelAttribute QuestionInfo questionInfo) {
-        questionInfo.setEncrypt_id(encrypt_id);
+    @PostMapping
+    public String addtquestionInfo(Model model, @ModelAttribute QuestionInfo questionInfo) {
+        questionInfo.setEncrypt_id(this.encryptId_);
         questionInfo.setSeminar_id("3"); // TODO
         questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
         return init(questionInfo.getEncrypt_id(), model);
