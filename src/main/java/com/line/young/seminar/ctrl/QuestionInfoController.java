@@ -91,31 +91,25 @@ public class QuestionInfoController {
     }
     
 
-    @PostMapping("/all_questions")
-    public String findAll(@RequestParam("password") String password, Model model) {
-  
-        Iterable<QuestionInfo> questionInfos = questionInfoService.findAllOfQuestionInfo();
-        model.addAttribute("questionInfos", questionInfos);
-
-        return "all_questions";
+    @PostMapping("")
+    public String show(Model model, @Valid QuestionInfo questionInfo) {
+        return init(this.encryptId_, model);
     }
     
+//    @PutMapping("{q_no}")
+//    public String update(Model model, @PathVariable Long q_no, @ModelAttribute QuestionInfo questionInfo) {
+//        questionInfo.setEncrypt_id(this.encryptId_);
+//        questionInfo.setSeminar_id("3"); // TODO
+//        questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
+//        return init(questionInfo.getEncrypt_id(), model);
+//    }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String addtquestionInfo(Model model, @RequestParam("encryptId") String encryptId, @Valid QuestionInfo questionInfo) {
-        if (null == encryptId) {
-            try{
-                throw new Exception(); 
-            }catch (Exception e){
-                 e.printStackTrace(); 
-            }finally{
-                return "error";
-            } 
-        } else {
-            questionInfo.setEncrypt_id(encryptId_);
-            questionInfo.setSeminar_id("3"); // TODO
-            questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
-        }
+//    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping("new")
+    public String addtquestionInfo(Model model, @Valid QuestionInfo questionInfo) {
+        questionInfo.setEncrypt_id(encryptId_);
+        questionInfo.setSeminar_id("3"); // TODO
+        questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
         return init(questionInfo.getEncrypt_id(), model);
     }
     
