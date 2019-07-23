@@ -22,11 +22,11 @@ query = " SELECT info "
 public class PersonalInfo {
     
     @Id
-    @Column(name="user_id", nullable = false)
-    private String user_id;
-    
     @Column(name="encrypt_id", nullable = false)
     private String encrypt_id;
+    
+    @Column(name="user_id", nullable = false)
+    private String user_id;
     
     @Column(name="display_name", nullable = true)
     private String display_name;

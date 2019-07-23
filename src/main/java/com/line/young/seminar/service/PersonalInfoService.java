@@ -28,8 +28,8 @@ public class PersonalInfoService {
         return personalInfoRepository.findAll();
     }
 
-    public Optional<PersonalInfo> findOne(String userId) {
-        return personalInfoRepository.findById(userId);
+    public Optional<PersonalInfo> findOne(String encryptId) {
+        return personalInfoRepository.findById(encryptId);
     }
 
     public PersonalInfo save(PersonalInfo personalInfo) {
