@@ -69,7 +69,7 @@ Copyright@ LINE 2019
 						</ul>
 	        		</td>
 	      		</tr>
-	      		<form th:action="@{/seminar/new}" th:method="post" th:object="${questionInfo}">
+	      		<form name="add" th:action="@{/seminar/new}" th:method="post" th:object="${questionInfo}">
 	      		<input id="qNo" name="q_no" type="hidden" class="form-control" th:field="*{q_no}"/>
 	      		<tr>
 	        		<td class="col-md-4">
