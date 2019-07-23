@@ -4,9 +4,6 @@
  * 
  */
 
-var apiKey = "";
-const seminarId = "20190313-01";
-// elements
 var encryptId = "";
 var surveyQuestions = [];
 var surveyAnswers = [];
@@ -103,29 +100,6 @@ $(document).ready(function(){
 	});
 });
 
-
-
-/**
- * survey questions set up to each HTML question field
- * 
- * @param questions
- * @returns
- */
-function setSurveyQuestion(questions) {
-	// questions filed length
-	var questionsFieldLength = $(".survey_question").length;
-	// validate questions count
-	if (questionsFieldLength != questions.length) {
-		showError("アンケート問題に不正があります");
-		return;
-	}
-	// the HTML question field already has been field value as the default.
-	// As this function make a reset to renewal each field through the got data.
-	for(var i=0; i<questions.length; i++) {
-		surveyQuestions[i] = JSON.parse(JSON.stringify(questions[i].surveyContent));
-		$($(".survey_question").get(i)).text("Q"+(i+1)+". "+surveyQuestions[i]);
-	}
-}
 
 /**
  * 

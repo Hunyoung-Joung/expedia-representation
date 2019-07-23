@@ -1,3 +1,6 @@
+/**
+ * Copyright@ LINE 2019
+ */
 package com.line.young.seminar.service;
 
 import java.util.Optional;
@@ -8,6 +11,13 @@ import org.springframework.stereotype.Service;
 import com.line.young.seminar.entity.PersonalInfo;
 import com.line.young.seminar.repo.PersonalInfoRepository;
 
+/**
+ * 
+ * User information service 
+ * 
+ * @author jounghunyoung@gmail.com
+ *
+ */
 @Service
 public class PersonalInfoService {
     

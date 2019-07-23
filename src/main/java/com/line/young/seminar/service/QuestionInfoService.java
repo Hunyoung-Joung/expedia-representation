@@ -14,6 +14,13 @@ import org.springframework.stereotype.Service;
 import com.line.young.seminar.entity.QuestionInfo;
 import com.line.young.seminar.repo.QuestionInfoRepository;
 
+/**
+ * 
+ * Question information service 
+ * 
+ * @author jounghunyoung@gmail.com
+ *
+ */
 @Service
 public class QuestionInfoService {
     private final Logger logger = Logger.getLogger(this.getClass().getName());

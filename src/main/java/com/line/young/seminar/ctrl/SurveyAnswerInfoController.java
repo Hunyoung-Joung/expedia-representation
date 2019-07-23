@@ -6,9 +6,11 @@
 package com.line.young.seminar.ctrl;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,13 +55,19 @@ public class SurveyAnswerInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
     
-    @GetMapping
-    public String init(@RequestParam("encryptId") String encryptId, Model model) throws Exception {
-//        this.userId_ = userId;
+    @SuppressWarnings("finally")
+	@GetMapping
+    public String init(@RequestParam("encryptId") String encryptId, Model model) {
         PersonalInfo personalInfo = new PersonalInfo();
         List<SurveyAnswerInfo> surveyAnswerInfos = new ArrayList<SurveyAnswerInfo>();
         if (null == encryptId) {
-        	return "error";
+            try {
+                throw new Exception(); 
+            } catch (Exception e){
+                 logger.log(Level.ALL, "ERROR", e.getCause()); 
+            } finally {
+                return "error";
+            } 
         } else {
             if (personalInfoService.findByEncryptId(encryptId).isPresent()) {
                 personalInfo = personalInfoService.findByEncryptId(encryptId).get();
@@ -98,16 +106,21 @@ public class SurveyAnswerInfoController {
  */
 @RestController
 class SurveyAnswerInfoRestController {
+	private final Logger logger = Logger.getLogger(this.getClass().getName());
     
     @Autowired
     private SurveyAnswerInfoService surveyAnswerInfoService;
 
     @PostMapping("/survey/api/add")
-    public String addAnswerInfo(Model model, @Validated @RequestBody String surveyAnswerInfoList) 
-            throws Exception  {
+    public String addAnswerInfo(Model model, @Validated @RequestBody String surveyAnswerInfoList) {
         String encryptId = "";
         ObjectMapper objectMapper = new ObjectMapper();
-        SurveyAnswerInfo[] surveyAnswerInfos = objectMapper.readValue(surveyAnswerInfoList, SurveyAnswerInfo[].class);
+        SurveyAnswerInfo[] surveyAnswerInfos = null;
+		try {
+			surveyAnswerInfos = objectMapper.readValue(surveyAnswerInfoList, SurveyAnswerInfo[].class);
+		} catch (IOException e) {
+			logger.log(Level.ALL, "ERROR", e.getCause()); 
+		}
         List<SurveyAnswerInfo> list = Arrays.asList(surveyAnswerInfos);  
         encryptId = list.get(0).getEncrypt_id();
 

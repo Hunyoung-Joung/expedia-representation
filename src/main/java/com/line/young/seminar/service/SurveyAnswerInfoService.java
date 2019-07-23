@@ -4,7 +4,6 @@
 
 package com.line.young.seminar.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -12,10 +11,15 @@ import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.line.young.seminar.entity.SurveyAnswerInfo;
-import com.line.young.seminar.entity.SurveySum;
 import com.line.young.seminar.repo.SurveyAnswerInfoRepository;
 
-
+/**
+ * 
+ * Survey answer information service 
+ * 
+ * @author jounghunyoung@gmail.com
+ *
+ */
 @Service
 public class SurveyAnswerInfoService {
     private final Logger logger = Logger.getLogger(this.getClass().getName());
@@ -72,8 +76,6 @@ public class SurveyAnswerInfoService {
         return surveyAnswerInfoRepository.saveAll(surveyAnswerInfos);
     }
     
-    
-    
     public List<Object> summary() {
         return surveyAnswerInfoRepository.summary();
 
@@ -84,11 +86,7 @@ public class SurveyAnswerInfoService {
     }
     
     public void deleteAllOfSurveyAnswerInfo(List<SurveyAnswerInfo> surveyAnswerInfos) {
-    	logger.info("##### deleteAllOfSurveyAnswerInfo?"+surveyAnswerInfos.size());
     	surveyAnswerInfoRepository.deleteAll(surveyAnswerInfos);
     }
-//    
-//    public void deleteAllOfQuestionInfo() {
-//        questionInfoRepository.deleteAll();
-//    }
+
 }
