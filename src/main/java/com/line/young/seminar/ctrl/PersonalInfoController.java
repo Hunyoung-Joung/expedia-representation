@@ -102,6 +102,7 @@ public class PersonalInfoController {
     public String addtPersonalInfo(Model model, @ModelAttribute("personalInfo") @Valid PersonalInfo personalInfo, BindingResult result)  {
         personalInfo = personalInfoService.save(personalInfo);
         model.addAttribute("personalInfo", this.findById(personalInfo.getEncrypt_id(), new PersonalInfo()));
+        model.addAttribute("confirmMessage", "登録完了しました");
 
         return init(personalInfo.getUser_id(), personalInfo.getEncrypt_id(), model);
     }
