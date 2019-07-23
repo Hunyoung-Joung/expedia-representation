@@ -91,22 +91,11 @@ public class QuestionInfoController {
     }
     
 
-    @PostMapping("")
-    public String show(Model model, @Valid QuestionInfo questionInfo) {
-        return init(this.encryptId_, model);
-    }
-    
-//    @PutMapping("{q_no}")
-//    public String update(Model model, @PathVariable Long q_no, @ModelAttribute QuestionInfo questionInfo) {
-//        questionInfo.setEncrypt_id(this.encryptId_);
-//        questionInfo.setSeminar_id("3"); // TODO
-//        questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
-//        return init(questionInfo.getEncrypt_id(), model);
-//    }
-
-//    @RequestMapping(method = RequestMethod.POST)
     @PostMapping("new")
     public String addtquestionInfo(Model model, @Valid QuestionInfo questionInfo) {
+    	if (!questionInfo.getEncrypt_id().isEmpty()) {
+    		return init(questionInfo.getEncrypt_id(), model);
+    	}
         questionInfo.setEncrypt_id(encryptId_);
         questionInfo.setSeminar_id("3"); // TODO
         questionInfo = questionInfoService.saveOfQuestionInfo(questionInfo);
@@ -118,11 +107,4 @@ public class QuestionInfoController {
     	questionInfoService.deleteById(q_no);
     	return init(encryptId_, model);
     }
-    
-//    @PutMapping("{q_no}")
-//    public String update(Model model, @PathVariable Long q_no, @ModelAttribute QuestionInfo questionInfo) {
-//    	logger.info("#########################"+questionInfo.isIs_selected());
-//    	questionInfoService.saveOfQuestionInfo(questionInfo);
-//        return "admin";
-//    }
 }
