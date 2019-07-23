@@ -16,6 +16,10 @@ $(document).ready(function(){
     $(".reflesh").click(function() {
         location.reload();
     });
+    
+    $(".submit").on('click', function () {
+    	$(this).closest("form").submit();
+    });
 
 });
 
