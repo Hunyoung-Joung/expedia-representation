@@ -7,7 +7,9 @@ package com.line.young.seminar.ctrl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +28,7 @@ import com.line.young.seminar.service.QuestionInfoService;
 
 /**
  * 
- * Index controller
+ * Question controller
  * 
  * @author jounghunyoung@gmail.com
  *
@@ -52,17 +54,18 @@ public class QuestionInfoController {
      * @param model
      * @return
      */
-    @GetMapping
+    @SuppressWarnings("finally")
+	@GetMapping
     public String init(@RequestParam("encryptId") String encryptId, Model model) {
         this.encryptId_ = encryptId;
         PersonalInfo personalInfo = new PersonalInfo();
 
         if (null == encryptId) {
-            try{
+            try {
                 throw new Exception(); 
-            }catch (Exception e){
-                 e.printStackTrace(); 
-            }finally{
+            } catch (Exception e){
+                 logger.log(Level.ALL, "ERROR", e.getCause()); 
+            } finally{
                 return "error";
             } 
         } else {

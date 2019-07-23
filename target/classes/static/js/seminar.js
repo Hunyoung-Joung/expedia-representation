@@ -14,7 +14,8 @@ $(document).ready(function(){
 	});
 	
     $("#reflesh").click(function() {
-        location.reload();
+
+        location.replace("https://seminar-web.herokuapp.com/seminar?encryptId="+encrypt_id);
     });
 
 });

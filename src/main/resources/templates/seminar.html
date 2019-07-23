@@ -6,7 +6,11 @@ Copyright@ LINE 2019
 
 <body>
 <script th:src="@{/js/seminar.js}"></script>
-
+<script th:inline="javascript">
+/*<![CDATA[*/
+    encrypt_id = /*[[${encrypt_id}]]*/ '';
+/*]]>*/
+</script>
     <div class="error_division"></div>
 	<div class="text-center">
 	  	<h4>セミナー情報</h4>
