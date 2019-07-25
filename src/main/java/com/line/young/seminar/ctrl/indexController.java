@@ -101,6 +101,7 @@ public class indexController {
             if ((id.equals("admin")) && (password.equals(userInfo.getPassword()))) {
             	List<QuestionInfo> questionInfos = (List<QuestionInfo>) questionInfoService.findAllOfQuestionInfo();
             	for (QuestionInfo questionInfo: questionInfos) {
+            	    logger.info("-----"+questionInfo.getEncrypt_id());
             		Optional<PersonalInfo> personalInfo = personalInfoService.findOne(questionInfo.getEncrypt_id());
             		AdminQuestionInfo adminQuestionInfo = new AdminQuestionInfo();
             		adminQuestionInfo.setPersonalInfo(personalInfo.get());
