@@ -26,18 +26,18 @@ Copyright@ 2019
  		<form th:action="@{/auth}" th:method="post" th:object="${userInfo}">
 	 		<div class="container-fluid">
 			    <div class="row">
-			      	<div class="col-sm-3">
+			      	<div class="col-sm-2">
   						<div class="input-group date">
                       		<span class="input-group-addon">
                         		<span class="glyphicon glyphicon-calendar"></span>
                     		</span>
-      						<input type="text" class="form-control" id="begin_date" placeholder="MM/DD/YYYY">
+      						<input type="text" class="form-control" id="begin_date" placeholder="MM/DD/YYYY" alt="begin date">
   						</div>
 				      	<script type="text/javascript">
 				        	$('#begin_date').datepicker();
 				    	</script>
 		      		</div>
-		      		<div class="col-sm-3">
+		      		<div class="col-sm-2">
   						<div class="input-group date">
                       		<span class="input-group-addon">
                         		<span class="glyphicon glyphicon-calendar"></span>
@@ -48,11 +48,65 @@ Copyright@ 2019
 				        	$('#end_date').datepicker();
 				    	</script>
 		      		</div>
-					<div class="col-sm-3"><input id="id" name="id" type="text" class="form-control" /></div>
-					<div class="col-sm-3"><input id="password" name="password" type="text" class="form-control" /></div>
-					<div class="col-sm-3"><button id="submit" type="submit" class="btn btn-default"> SUBMIT </button></div>
+					<div class="col-sm-2">
+                      		<span class="input-group-addon">
+                        		<span class="glyphicon glyphicon-map-marker"></span>
+                    		</span>
+						<!--  <input id="id" name="id" type="text" class="form-control" />-->
+	
+					</div>
+					<div class="col-sm-2">
+						<span class="input-group-addon">
+                        		<span class="glyphicon glyphicon-user"></span>
+						</span>
+						<!-- <input id="password" name="password" type="text" class="form-control" />-->
+                    	<select class = "btn dropdown-toggle" id="qCategory" name="q_category">
+	                    	<option value="0" selected="selected">カテゴリーを選択</option>
+	                        <option value="1">最新API状況アップデート</option>
+	                        <option value="2">LINE Pay APIのご紹介</option>
+	                        <option value="3">クラスメソッド様事例紹介</option>
+	                        <option value="4">その他</option>
+	                    </select>
+					</div>
+					<div class="col-sm-2"><button id="submit" type="submit" class="btn btn-default"> SUBMIT </button></div>
 				</div>
 			</div>
+			
+			<!-- list -->
+	<div class="container users">
+		<div class="text-center">
+		  	<h4>質問情報</h4>
+		</div>
+
+		<table class="table" style="table-layout: fixed; width: 100%">
+	        <thead>
+				<tr style="word-wrap: break-word">
+					<th style="word-wrap: break-word">表示名</th>
+					<th style="word-wrap: break-word">ユーザー名</th>
+					<th style="word-wrap: break-word">会社名</th>
+					<th style="word-wrap: break-word">職種</th>
+					<th style="word-wrap: break-word">参加可否</th>
+				</tr>
+	        </thead>
+	        <tbody>
+				<tr th:each="personalInfo:${personalInfos}" th:object="${personalInfo}" style="word-wrap: break-word">
+						<td style='word-wrap: break-word' th:text="*{display_name}"></td>
+						<td style='word-wrap: break-word' th:text="*{user_name}"></td>
+						<td style='word-wrap: break-word' th:text="*{company_name}"></td>
+						<td style='word-wrap: break-word'>
+							<div th:switch="*{job_type}">
+							    <p th:case="1" >営業</p>
+							    <p th:case="2" >開発</p>
+							    <p th:case="3" >企画</p>
+							    <p th:case="*">その他</p>
+							</div>
+						</td>
+						<td style='word-wrap: break-word' th:text="*{is_confirmed}"></td>
+				</tr>
+	        </tbody>
+		</table>
+	</div>
+			
 		</form>	
 	</div>
 
