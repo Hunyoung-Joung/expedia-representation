@@ -7,27 +7,30 @@ Copyright@ 2019
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js}"></script>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}"></script>
     
-    <div class="container">
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-	<div class="modal-dialog">
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Modal Header</h4>
-	        </div>
-	        <div class="modal-body">
-				<p>Some text in the modal.</p>
-	        </div>
-	        <div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        </div>
-		</div>
-	</div>
-</div>    
+    <div class="container-fluid">
+    
+		<!-- Modal begin-->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Modal Header</h4>
+			        </div>
+			        <div class="modal-body">
+						<p>Some text in the modal.</p>
+			        </div>
+			        <div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        </div>
+				</div>
+			</div>
+		</div>   
+		<!-- Modal end--> 
+		
  		<form th:action="@{/auth}" th:method="post" th:object="${userInfo}">
-	 		<div class="container-fluid">
+	 		<div class="panel-body">
 			    <div class="row">
 			      	<div class="col-sm-2">
   						<div class="input-group date">
