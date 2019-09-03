@@ -7,7 +7,7 @@ Copyright@ 2019
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js}"></script>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}"></script>
     
-    <div class="container-fluid">
+    <div class="panel-body">
     
 		<!-- Modal begin-->
 		<div class="modal fade" id="myModal" role="dialog">
@@ -30,7 +30,7 @@ Copyright@ 2019
 		<!-- Modal end--> 
 		
  		<form th:action="@{/auth}" th:method="post" th:object="${userInfo}">
-	 		<div class="panel-body">
+	 		<div class="container-fluid">
 			    <div class="row">
 			      	<div class="col-sm-2">
   						<div class="input-group date">
