@@ -10,7 +10,7 @@ Copyright@ 2019
     <div class="panel-body">
     
 		<!-- Modal begin-->
-		<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal fade" id="person_count_modal" role="dialog">
 			<div class="modal-dialog">
 				<!-- Modal content-->
 				<div class="modal-content">
@@ -30,14 +30,14 @@ Copyright@ 2019
 					                      		<span class="input-group-addon">
 					                        		<span class="glyphicon glyphicon-plus"></span>
 					                    		</span>
-					      						<input type="text" class="form-control" id="adult_count" placeholder="0">
+					      						<input type="text" class="form-control" id="adult_count" placeholder="1">
 					                      		<span class="input-group-addon">
 					                        		<span class="glyphicon glyphicon-minus"></span>
 					                    		</span>
 					  						</div>
 										</td>
 								</tr>
-								<tr  style="word-wrap: break-word">
+								<tr style="word-wrap: break-word">
 										<td style='word-wrap: break-word' >
 											<p>子供（2-17）</p>
 										</td>
@@ -53,6 +53,11 @@ Copyright@ 2019
 					  						</div>
 										</td>
 								</tr>
+								<tr style="word-wrap: break-word">
+										<td style='word-wrap: break-word' colspan=2>
+											<span class="glyphicon glyphicon-menu-down">部屋を追加</span>
+										</td>
+								</tr>								
 					        </tbody>
 						</table>
 			        </div>
@@ -105,7 +110,7 @@ Copyright@ 2019
 							</span>
 							<!-- <input id="password" name="password" type="text" class="form-control" />-->
 
-	                    	<input id="person_count" name="person_count" type="text" class="form-control" data-toggle="modal" data-target="#myModal"/>
+	                    	<input id="person_count" name="person_count" type="text" class="form-control" data-toggle="modal" data-target="#person_count_modal"/>
 
 	                    </div>
 					</div>
@@ -116,13 +121,22 @@ Copyright@ 2019
 		</form>	
 	</div>
 
-
-			<!-- list -->
+	<!-- list -->
 	<div class="container users">
 		<div class="text-center">
-		  	<h4>質問情報</h4>
+		  	<h4>検索結果</h4>
 		</div>
-
+		<div class="panel panel-default text-center" style="width:auto;" >
+			<div class="panel-body">
+				<div class="container-fluid">
+				  <div class="row">
+				    <div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div>
+				    <div class="col-sm-8" style="background-color:lavenderblush;">.col-sm-8</div>
+				  </div>
+				</div>
+			</div>
+		</div> 
+		
 		<table class="table" style="table-layout: fixed; width: 100%">
 	        <thead>
 				<tr style="word-wrap: break-word">
