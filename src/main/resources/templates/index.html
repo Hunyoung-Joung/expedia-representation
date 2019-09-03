@@ -8,7 +8,7 @@ Copyright@ 2019
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}"></script>
     
     <div class="panel-body">
-    
+<!-- TODO : to index.js -> when click +/- button then increase the quantity, when click the close button fill out to input of the parent html -->    
 		<!-- Person count modal begin -->
 		<div class="modal fade" id="person_count_modal" role="dialog">
 			<div class="modal-dialog">
@@ -68,7 +68,7 @@ Copyright@ 2019
 			</div>
 		</div>   
 		<!-- Person count modal end -->
-		
+<!-- TODO : to index.js -> when click the close button fill out to input of the parent html, when click another then maybe show the other city used map or something -->  		
 		<!-- Destination modal begin -->
 		<div class="modal fade" id="destination_modal" role="dialog">
 			<div class="modal-dialog">
@@ -80,17 +80,18 @@ Copyright@ 2019
 			        </div>
 			        <div class="modal-body">
 					  	<div class="dropdown">
-					    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">目的地
-					    <span class="caret"></span></button>
-					    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">New York</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Paris</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">London</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sydney</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Singapore</a></li>
-					      <li role="presentation" class="divider"></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">その他</a></li>
-					    </ul>
+						    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">目的地
+						    	<span class="caret"></span>
+						    </button>
+						    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">New York（ニューヨーク）</a></li>
+						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Paris（パリ）</a></li>
+						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">London（ロンドン）</a></li>
+						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sydney（シドニー）</a></li>
+						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Singapore（シンガポール）</a></li>
+						      <li role="presentation" class="divider"></li>
+						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">その他</a></li>
+						    </ul>
 					  	</div>
 			        </div>
 			        <div class="modal-footer">
