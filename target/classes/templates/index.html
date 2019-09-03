@@ -50,6 +50,9 @@ Copyright@ 2019
 							<!-- <input id="password" name="password" type="text" class="form-control" />-->
 
 	                    	<input id="person_count" name="person_count" type="text" class="form-control" data-toggle="modal" data-target="#myModal"/>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" id="myBtn">Open Modal</button>
+
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -70,6 +73,16 @@ Copyright@ 2019
       
     </div>
   </div>
+  
+</div>
+
+<script>
+$(document).ready(function(){
+  $("#myBtn").click(function(){
+    $("#myModal").modal();
+  });
+});
+</script>
 	                    </div>
 					</div>
 					<div class="col-sm-2">
