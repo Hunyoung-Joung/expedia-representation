@@ -1,0 +1,98 @@
+<!-- 
+Copyright@ LINE 2019
+-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
+
+<body>
+<script th:src="@{/js/admin.js}"></script>
+<script th:inline="javascript">
+/*<![CDATA[*/
+    adminQuestionInfos = /*[[${adminQuestionInfos}]]*/ 'default';
+    surveySums = /*[[${surveySums}]]*/ 'default';
+/*]]>*/
+</script>
+    <div class="error_division"></div>
+
+    <div class="text-center" style="padding: 20px; margin: 20px;">
+		<div class="radio text-left">
+			<label><input id="showData1" name="showData" type="radio" value="questionData" checked>質問情報</label>&nbsp;&nbsp; 
+			<label><input id="showData2" name="showData" type="radio" value="surveyData">アンケート結果</label>&nbsp;&nbsp;  
+			<label><input id="showData3" name="showData" type="radio" value="personalData">参加者情報</label>&nbsp;&nbsp;  
+		</div>
+    </div>
+    
+	<div class="container users">
+		<div class="text-center">
+		  	<h4>質問情報</h4>
+		</div>
+
+		<table class="table" style="table-layout: fixed; width: 100%">
+	        <thead>
+				<tr style="word-wrap: break-word">
+					<th style="word-wrap: break-word">表示名</th>
+					<th style="word-wrap: break-word">ユーザー名</th>
+					<th style="word-wrap: break-word">会社名</th>
+					<th style="word-wrap: break-word">職種</th>
+					<th style="word-wrap: break-word">参加可否</th>
+				</tr>
+	        </thead>
+	        <tbody>
+				<tr th:each="personalInfo:${personalInfos}" th:object="${personalInfo}" style="word-wrap: break-word">
+						<td style='word-wrap: break-word' th:text="*{display_name}"></td>
+						<td style='word-wrap: break-word' th:text="*{user_name}"></td>
+						<td style='word-wrap: break-word' th:text="*{company_name}"></td>
+						<td style='word-wrap: break-word'>
+							<div th:switch="*{job_type}">
+							    <p th:case="1" >営業</p>
+							    <p th:case="2" >開発</p>
+							    <p th:case="3" >企画</p>
+							    <p th:case="*">その他</p>
+							</div>
+						</td>
+						<td style='word-wrap: break-word' th:text="*{is_confirmed}"></td>
+				</tr>
+	        </tbody>
+		</table>
+	</div>
+    
+    <div class="container question">
+		<div class="text-center">
+		  	<h4>質問情報</h4>
+		</div>
+
+		<table class="table q" style="table-layout: fixed; width: 100%">
+	        <thead>
+	          	<tr >
+	          		<th >質問者</th>
+	          		<th width='1px'></th>
+	            	<th >カテゴリー</th>
+	            	<th width='40%'>質問内容</th>
+	            	<th >返答可否</th>
+	            	<th >質問時間</th>
+	          	</tr>
+	        </thead>
+	        <tbody></tbody>
+	     </table>
+	</div>
+
+	<div class="text-center survey">
+		<div class="text-center">
+		  	<h4>アンケート情報</h4>
+		</div>
+
+		<table class="table s" style="table-layout: fixed; width: 100%">
+	        <thead>
+				<tr style="word-wrap: break-word">
+					<th style="word-wrap: break-word">アンケート番号</th>
+					<th style="word-wrap: break-word">アンケート内容</th>
+					<th style="word-wrap: break-word">満足度</th>
+					<th style="word-wrap: break-word">個数</th>
+				</tr>
+	        </thead>
+	        <tbody></tbody>
+		</table>
+	</div>	
+	
+</body>
+</html>

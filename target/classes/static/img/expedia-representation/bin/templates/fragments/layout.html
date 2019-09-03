@@ -1,0 +1,57 @@
+<!-- 
+Copyright@ LINE 2019
+-->
+<!doctype html>
+<html lang="jp" th:fragment="layout (template, menu)">
+<head>
+    <title>LINE Technical Partner Seminar</title>
+    <meta charset="UTF-8">
+  	<meta name="description" content="LINE Technical Partner ChatBot">
+  	<meta name="keywords" content="LINE, ChatBot, Seminar, LIFF, FlexMessage">
+  	<meta name="author" content="jounghunyoung@gmail.com">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" >
+</head>
+
+<body>
+    
+	<!-- Header -->
+    <div class="container fixed-top w-100 text-center" style="background-color: #AEEA00;">
+
+	    	<div class="navbar-inner">
+	      		<div class="container">
+		        	<ul class="nav navbar-nav row">
+		          		<li class="active col-xs-6">
+		          			<a href="https://devcenter.heroku.com/articles/how-heroku-works"><span class="glyphicon glyphicon-user"></span> user name</a>
+		          		</li>
+		          		<li class="active col-xs-6">
+		          			<a href="https://devcenter.heroku.com"><span class="glyphicon glyphicon-book"></span> 個人情報保護方針</a>
+		          		</li>
+	        		</ul>
+	      		</div>
+			</div>
+
+	</div>
+	
+    <!-- Html contents here -->
+    <div class="container text-center">
+		<div th:replace="${template}"/>
+	</div> 
+    
+    <!-- Footer -->
+    <div class="container fixed-bottom w-100 text-center" style="background-color: #AEEA00;">
+
+	    	<div class="navbar-inner">
+	      		<div class="container row">
+					<p class="col-xs-6">Copyright@ LINE 2019</p>
+	      		</div>
+			</div>
+
+	</div>  
+	
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+</body>

@@ -1,0 +1,1 @@
+web: java -jar target/seminar-web-1.0.jar
