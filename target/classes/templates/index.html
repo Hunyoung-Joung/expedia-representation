@@ -1,11 +1,22 @@
 <!-- 
-Copyright@ LINE 2019
+Copyright@ 2019
 -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
+<head>
+<!-- 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+ -->
+</head>
 <body>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js}"></script>
 
+    
     <div class="error_division"></div>
     <div class="text-center">
 	     <h4>Partner Seminar Admin</h4>
@@ -13,27 +24,108 @@ Copyright@ LINE 2019
     
     <div class="container">
  		<form th:action="@{/auth}" th:method="post" th:object="${userInfo}">
-	  	<table class="table">
-	    	<tbody>
-	      		<tr>
-	        		<td align="right">ID</td>
-	        		<td align="left" width="50%">
-	        			<input id="id" name="id" type="text" class="form-control" />
-	        		</td>
-	      		</tr>
-	      		<tr>
-	        		<td align="right">PASSWORD</td>
-	        		<td align="left" width="50%">
-	        			<input id="password" name="password" type="text" class="form-control" />
-	        		</td>
-	      		</tr>
-	      		<tr>
-	        		<td colspan="2" class="col-md-4 text-center">
-	        			<button id="submit" type="submit" class="btn btn-default"> SUBMIT </button>
-	        		</td>
-	      		</tr>	      		
-	      	</tbody>
-		</table>			
+	 		<div class="container-fluid">
+			    <div class="row">
+			      	<div class="col-sm-2">
+  						<div class="input-group date">
+                      		<span class="input-group-addon">
+                        		<span class="glyphicon glyphicon-calendar"></span>
+                    		</span>
+      						<input type="text" class="form-control" id="begin_date" placeholder="MM/DD/YYYY" alt="begin date">
+  						</div>
+				      	<script type="text/javascript">
+				        	$('#begin_date').datepicker();
+				    	</script>
+		      		</div>
+		      		<div class="col-sm-2">
+  						<div class="input-group date">
+                      		<span class="input-group-addon">
+                        		<span class="glyphicon glyphicon-calendar"></span>
+                    		</span>
+      						<input type="text" class="form-control" id="end_date" placeholder="MM/DD/YYYY">
+  						</div>
+				      	<script type="text/javascript">
+				        	$('#end_date').datepicker();
+				    	</script>
+		      		</div>
+					<div class="col-sm-2">
+						<div class="input-group location">
+                      		<span class="input-group-addon">
+                        		<span class="glyphicon glyphicon-map-marker"></span>
+                    		</span>
+						<!--  <input id="id" name="id" type="text" class="form-control" />-->
+							<input id="location" name="location" type="text" class="form-control" />
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="input-group location">
+							<span class="input-group-addon">
+	                        		<span class="glyphicon glyphicon-user"></span>
+							</span>
+							<!-- <input id="password" name="password" type="text" class="form-control" />-->
+	                    	<select class = "btn dropdown-toggle" id="adult" name="adult">
+		                    	<option value="0" selected="selected">カテゴリーを選択</option>
+		                        <option value="1">最新API状況アップデート</option>
+		                        <option value="2">LINE Pay APIのご紹介</option>
+		                        <option value="3">クラスメソッド様事例紹介</option>
+		                        <option value="4">その他</option>
+		                    </select>
+	                    </div>
+					</div>
+					<div class="col-sm-2">
+						<div class="input-group location">
+							<span class="input-group-addon">
+	                        		<span class="glyphicon glyphicon-user"></span>
+							</span>
+							<!-- <input id="password" name="password" type="text" class="form-control" />-->
+	                    	<select class = "btn dropdown-toggle" id="child" name="child">
+		                    	<option value="0" selected="selected">カテゴリーを選択</option>
+		                        <option value="1">最新API状況アップデート</option>
+		                        <option value="2">LINE Pay APIのご紹介</option>
+		                        <option value="3">クラスメソッド様事例紹介</option>
+		                        <option value="4">その他</option>
+		                    </select>
+	                    </div>
+					</div>
+					<div class="col-sm-2"><button id="submit" type="submit" class="btn btn-default"> SUBMIT </button></div>
+				</div>
+			</div>
+			
+			<!-- list -->
+	<div class="container users">
+		<div class="text-center">
+		  	<h4>質問情報</h4>
+		</div>
+
+		<table class="table" style="table-layout: fixed; width: 100%">
+	        <thead>
+				<tr style="word-wrap: break-word">
+					<th style="word-wrap: break-word">表示名</th>
+					<th style="word-wrap: break-word">ユーザー名</th>
+					<th style="word-wrap: break-word">会社名</th>
+					<th style="word-wrap: break-word">職種</th>
+					<th style="word-wrap: break-word">参加可否</th>
+				</tr>
+	        </thead>
+	        <tbody>
+				<tr th:each="personalInfo:${personalInfos}" th:object="${personalInfo}" style="word-wrap: break-word">
+						<td style='word-wrap: break-word' th:text="*{display_name}"></td>
+						<td style='word-wrap: break-word' th:text="*{user_name}"></td>
+						<td style='word-wrap: break-word' th:text="*{company_name}"></td>
+						<td style='word-wrap: break-word'>
+							<div th:switch="*{job_type}">
+							    <p th:case="1" >営業</p>
+							    <p th:case="2" >開発</p>
+							    <p th:case="3" >企画</p>
+							    <p th:case="*">その他</p>
+							</div>
+						</td>
+						<td style='word-wrap: break-word' th:text="*{is_confirmed}"></td>
+				</tr>
+	        </tbody>
+		</table>
+	</div>
+			
 		</form>	
 	</div>
 

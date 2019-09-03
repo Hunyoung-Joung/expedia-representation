@@ -15,36 +15,35 @@ th:fragment="layout (template, menu)">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" >
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="/css/main.css" />
+    
 </head>
 <body>
     <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
     <script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
     
+    
 	<!-- Header -->
     <div class="container fixed-top text-center" style="background-color: #AEEA00; width:auto;">
 		<ul class="nav navbarrow">
 			<li class="active col-xs-6">
 				<a href="#">
-				<span class="glyphicon glyphicon-user"></span> <span id="headerDisplayName" th:text="${displayName}"></span>
+					<h1>Example Shop Representation</h1>
 				</a>
-			</li>
-			<li class="active col-xs-6">
-				<a href="https://terms.line.me/line_rules/?lang=ja"><span class="glyphicon glyphicon-book"></span> 個人情報保護方針</a>
 			</li>
 		</ul>
 	</div>
 	
     <!-- Html contents here -->
-    <div class="container text-center" style="width:auto;" th:replace="${template}">
+    <div class="container-fluid text-center" style="width:auto;" th:replace="${template}">
+
 	</div> 
     
     <!-- Footer -->
     <div class="container fixed-bottom text-center" style="background-color: #AEEA00; width:auto;">
 	    <div class="row">
-	        <div class="col text-center"><H5>Copyright@ 2019 By jounghunyoung@gmail.com</H5></div>
+	        <div class="col text-center"><H5>Copyright@ 2019 by jounghunyoung@gmail.com</H5></div>
 	    </div>
 	</div>  
 </body>
