@@ -4,13 +4,6 @@ Copyright@ 2019
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
 <head>
-<!-- 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
- -->
 </head>
 <body>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js}"></script>
@@ -63,13 +56,38 @@ Copyright@ 2019
 	                        		<span class="glyphicon glyphicon-user"></span>
 							</span>
 							<!-- <input id="password" name="password" type="text" class="form-control" />-->
-	                    	<select class = "btn dropdown-toggle" id="adult" name="adult">
-		                    	<option value="0" selected="selected">カテゴリーを選択</option>
-		                        <option value="1">最新API状況アップデート</option>
-		                        <option value="2">LINE Pay APIのご紹介</option>
-		                        <option value="3">クラスメソッド様事例紹介</option>
-		                        <option value="4">その他</option>
-		                    </select>
+	                    	<input id="person_count" name="person_count" type="text" class="form-control" />
+  <!-- The Modal -->
+  <div class="modal fade" id="person_count_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <script>
+$(document).ready(function(){
+  $("#person_count").click(function(){
+    $("#person_count_modal").modal();
+  });
+});
+</script>
 	                    </div>
 					</div>
 					<div class="col-sm-2">
