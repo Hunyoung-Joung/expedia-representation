@@ -24,26 +24,50 @@ Copyright@ 2019
     
     <div class="container">
  		<form th:action="@{/auth}" th:method="post" th:object="${userInfo}">
+	 		<div class="container-fluid">
+			    <div class="row">
+			      	<div class="col">
+  						<div class="input-group date">
+                      		<span class="input-group-addon">
+                        		<span class="glyphicon glyphicon-calendar"></span>
+                    		</span>
+      						<input type="text" class="form-control" id="begin_date" placeholder="MM/DD/YYYY">
+  						</div>
+				      	<script type="text/javascript">
+				        	$('#begin_date').datepicker();
+				    	</script>
+		      		</div>
+		      		<div class="col">
+  						<div class="input-group date">
+                      		<span class="input-group-addon">
+                        		<span class="glyphicon glyphicon-calendar"></span>
+                    		</span>
+      						<input type="text" class="form-control" id="end_date" placeholder="MM/DD/YYYY">
+  						</div>
+				      	<script type="text/javascript">
+				        	$('#end_date').datepicker();
+				    	</script>
+		      		</div>
+					<div class="col">25%</div>
+					<div class="col">25%</div>
+				</div>
+			</div>
+ 		
+ 		
 	  	<table class="table">
 	    	<tbody>
 	      		<tr>
 	        		<td align="right">ID</td>
 	        		<td align="left" width="50%">
-	        		
-	        		
-<div class="container">
-  <div class="input-group date">
-                      <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-      <input type="text" class="form-control" id="datepicker" placeholder="MM/DD/YYYY">
-  </div>
-      <script type="text/javascript">
-        $('#datepicker').datepicker();
-    </script>
-</div>
-
-
+  						<div class="input-group date">
+                      		<span class="input-group-addon">
+                        		<span class="glyphicon glyphicon-calendar"></span>
+                    		</span>
+      						<input type="text" class="form-control" id="begin_date" placeholder="MM/DD/YYYY">
+  						</div>
+				      	<script type="text/javascript">
+				        	$('#begin_date').datepicker();
+				    	</script>
 	        			<input id="id" name="id" type="text" class="form-control" />
 	        		</td>
 	      		</tr>
