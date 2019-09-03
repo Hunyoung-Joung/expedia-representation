@@ -1,1 +1,1 @@
-web: java -jar target/seminar-web-1.0.jar
+web: java -jar target/expedia-representation-1.0.jar
