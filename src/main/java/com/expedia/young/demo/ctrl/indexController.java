@@ -117,7 +117,7 @@ public class indexController {
     	headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
     	headers.set("Accept-Encoding", "gzip");
     	headers.set("Authorization", authHeaderValue);
-    	headers.set("User-Agent", "Mozilla/5.0");
+    	headers.set("User-Agent", "desk/1.0");
 //    	headers.set("Content-Type", "application/json");
     	
     	MultiValueMap<String, String> paramsMap = new LinkedMultiValueMap<String, String>();
@@ -125,10 +125,11 @@ public class indexController {
     	paramsMap.add("language", "ja-JP");
     	paramsMap.add("include", "property_ids");
     	
-    	HttpEntity<?> entity = new HttpEntity<>(paramsMap, headers);
-    	logger.info("######################entity? "+entity.getHeaders());
-    	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-    	
+    	HttpEntity<?> entity = new HttpEntity<>(headers);
+//    	HttpEntity<?> entity = new HttpEntity<>(paramsMap, headers);
+    	logger.info("######################entity? "+entity.toString());
+    	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class, paramsMap);
+
     	logger.info("######################response? "+response.getBody());
     	
 //    	POST
