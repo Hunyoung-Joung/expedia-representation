@@ -16,11 +16,11 @@ $(document).ready(function(){
     			var adult_count = parseInt($("#adult_count").val());
     			console.log(adult_count);
     			if (idx == 0) {
-    				adult_count += 1
+    				adult_count =+ 1;
     			} 
     			if (idx == 2) {
     				if (adult_count != 0) {
-    					adult_count -= 1
+    					adult_count =+ 1;
     				}
     			} 
     			$("#adult_count").val(adult_count);
