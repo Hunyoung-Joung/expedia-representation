@@ -15,32 +15,32 @@ $(document).ready(function(){
     		
     		var adult_count = parseInt($("#adult_count").val());
     		var child_count = parseInt($("#child_count").val());
+    		
     		var id = $(val).attr("id")
     		if (id == "adult_count_increase") {
     			adult_count = parseInt($("#adult_count").val())+1;
     			$("#adult_count").val(adult_count);
     			console.log(adult_count+", "+$("#adult_count").val());
     		} 
-    		if (id == "adult_count_decrease") {
+    		else if (id == "adult_count_decrease") {
     			if (adult_count > 0) {
     				adult_count = parseInt($("#adult_count").val())-1;
     				$("#adult_count").val(adult_count);
     				console.log(adult_count+", "+$("#adult_count").val());
     			}
     		} 
-    		if (id == "child_count_increase") {
-    			child_count = parseInt($("#adult_count").val())+1;
+    		else if (id == "child_count_increase") {
+    			child_count = parseInt($("#child_count").val())+1;
     			$("#child_count").val(child_count);
     			console.log(adult_count+", "+$("#child_count").val());
     		} 
-    		if (id == "child_count_decrease") {
+    		else if (id == "child_count_decrease") {
     			if (child_count > 0) {
     				child_count = parseInt($("#child_count").val())-1;
     				$("#child_count").val(child_count);
     				console.log(adult_count+", "+$("#child_count").val());
     			}
     		} 
-
 		});
 //    	var adult_count = $("#adult_count").val()+1;
 //    	 $("#adult_count").val(adult_count);
