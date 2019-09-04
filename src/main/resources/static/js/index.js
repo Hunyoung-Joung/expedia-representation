@@ -76,7 +76,7 @@ $(document).ready(function(){
 	});
     
     $("#child_ages").on('click', function (event) {
-    	console.log("li? "+event.target.id);
+    	console.log("li? "+$(this).attr("id"));
     	var val = $(event.target).text();
     	if (val != val.startsWith("子供年齢")) {
     		$("#child_ages_field_"+val+"").val($(event.target).text());
