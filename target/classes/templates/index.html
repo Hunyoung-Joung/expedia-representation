@@ -27,7 +27,7 @@ Copyright@ 2019
 											<p>大人</p>
 										</td>
 										<td style='word-wrap: break-word' >
-					  						<div class="input-group date">
+					  						<div class="input-group input-number-group">
 					                      		<span id="adult_count_increase" class="input-group-addon">
 					                        		<span class="glyphicon glyphicon-plus"></span>
 					                    		</span>
@@ -43,7 +43,7 @@ Copyright@ 2019
 											<p>子供（2-17）</p>
 										</td>
 										<td style='word-wrap: break-word' >
-					  						<div class="input-group date">
+					  						<div class="input-group input-number-group">
 					                      		<span id="child_count_increase" class="input-group-addon">
 					                        		<span class="glyphicon glyphicon-plus"></span>
 					                    		</span>
@@ -81,19 +81,24 @@ Copyright@ 2019
 			        </div>
 			        <div class="modal-body">
 					  	<div class="dropdown">
-						    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">目的地
-						    	<span class="caret"></span>
-						    </button>
-						    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">New York（ニューヨーク）</a></li>
-						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Paris（パリ）</a></li>
-						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">London（ロンドン）</a></li>
-						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sydney（シドニー）</a></li>
-						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Singapore（シンガポール）</a></li>
-						      <li role="presentation" class="divider"></li>
-						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">その他</a></li>
-						    </ul>
-					  	</div>
+							<div class="input-group">
+	                      		<span class="input-group-addon">
+	                        		<span class="glyphicon glyphicon-map-marker"></span>
+	                    		</span>
+							    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">目的地
+							    	<span class="caret"></span>
+							    </button>
+							    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+							      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">New York（ニューヨーク）</a></li>
+							      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Paris（パリ）</a></li>
+							      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">London（ロンドン）</a></li>
+							      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sydney（シドニー）</a></li>
+							      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Singapore（シンガポール）</a></li>
+							      <li role="presentation" class="divider"></li>
+							      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">その他</a></li>
+							    </ul>
+						  	</div>
+						</div>
 			        </div>
 			        <div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
@@ -129,22 +134,22 @@ Copyright@ 2019
 				    	</script>
 		      		</div>
 					<div class="col-sm-2">
-						<div class="input-group location">
+						<div class="input-group">
                       		<span class="input-group-addon">
                         		<span class="glyphicon glyphicon-map-marker"></span>
                     		</span>
 						<!--  <input id="id" name="id" type="text" class="form-control" />-->
-							<input id="location" name="location" type="text" class="form-control" data-toggle="modal" data-target="#destination_modal"/>
+							<input id="location" name="location" type="text" class="form-control" data-toggle="modal" data-target="#destination_modal" placeholder="目的地"/>
 						</div>
 					</div>
 					<div class="col-sm-2">
-						<div class="input-group location">
+						<div class="input-group">
 							<span class="input-group-addon">
 	                        		<span class="glyphicon glyphicon-user"></span>
 							</span>
 							<!-- <input id="password" name="password" type="text" class="form-control" />-->
 
-	                    	<input id="person_count" name="person_count" type="text" class="form-control" data-toggle="modal" data-target="#person_count_modal"/>
+	                    	<input id="person_count" name="person_count" type="text" class="form-control" data-toggle="modal" data-target="#person_count_modal" placeholder="大人１、子供０"/>
 
 	                    </div>
 					</div>

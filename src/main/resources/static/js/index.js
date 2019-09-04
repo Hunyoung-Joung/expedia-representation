@@ -9,7 +9,8 @@ var questionList = [];
 
 $(document).ready(function(){
 	
-    $("#adult_count_increase").on('change', function () {
+    $("#input-number-group").on('change', function () {
+    	console.log($(this).children().attr("id"));
     	var adult_count = $("#adult_count").val()+1;
     	 $("#adult_count").val(adult_count);
 	});
