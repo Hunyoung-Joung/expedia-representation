@@ -56,7 +56,8 @@ $(document).ready(function(){
 			if (child_count > 0) {
 				child_count = parseInt($("#child_count").val())-1;
 				$("#child_count").val(child_count);
-				$("#child_ages").remove("#child_age_"+child_count+"");
+				var list = document.getElementById("child_ages");
+				list.removeChild(list.childNodes[child_count]);
 			}
 		} else if (id == "room_count_increase") {
 			if (child_count < 8) {
