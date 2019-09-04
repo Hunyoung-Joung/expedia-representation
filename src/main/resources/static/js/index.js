@@ -79,7 +79,7 @@ $(document).ready(function(){
     $(".input-text-group").on('click', function (event) {
     	var val_name = $(event.target).text();
     	var val_code = $(event.target).attr("rel");
-    	if (val != "undefined") {
+    	if (val_code != "undefined") {
         	$("#destination").val(val_name);
         	$("#destination_id").val(val_code);
     	}
