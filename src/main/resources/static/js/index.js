@@ -82,11 +82,11 @@ $(document).ready(function(){
     		}
     	}).get();
 
-    	console.log("id? "+id.split("child_age_")[1]);
+    	console.log("id? "+id.replace("child_age_",""));
     	var val = $(event.target).text();
     	console.log("val? "+val);
     	if (val != val.startsWith("子供年齢")) {
-    		$("#child_ages_field_"+id.split("child_age_")[1]+"").val(val);
+    		$("#child_ages_field_"+id.replace("child_age_","")+"").val(val);
     	}
     });
 	
