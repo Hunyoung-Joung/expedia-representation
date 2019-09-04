@@ -12,27 +12,29 @@ $(document).ready(function(){
     $(".input-number-group").on('mousedown', function () {
     	var person_type = $(this).children().attr("id")
     	$(this).children().each(function(idx, val) {
-    		if (person_type == "adult_count_increase") {
-    			var adult_count = parseInt($("#adult_count").val());
-    			console.log(adult_count);
-    			if (idx == 0) {
-    				adult_count =+ 1;
-    			} 
-    			if (idx == 2) {
-    				if (adult_count != 0) {
-    					adult_count =+ 1;
-    				}
-    			} 
-    			$("#adult_count").val(adult_count);
-    		} else {
-    			if (idx == 0) {
-
-    			} 
-    			if (idx == 2) {
-
-    			} 
-    		}
-
+    		console.log($(val).attr("id"));
+    	
+//    		if (person_type == "adult_count_increase") {
+//    			var adult_count = parseInt($("#adult_count").val());
+//    			console.log(adult_count);
+//    			if (idx == 0) {
+//    				adult_count =+ 1;
+//    			} 
+//    			if (idx == 2) {
+//    				if (adult_count != 0) {
+//    					adult_count =+ 1;
+//    				}
+//    			} 
+//    			$("#adult_count").val(adult_count);
+//    		} else {
+//    			if (idx == 0) {
+//
+//    			} 
+//    			if (idx == 2) {
+//
+//    			} 
+//    		}
+//
 		});
 //    	var adult_count = $("#adult_count").val()+1;
 //    	 $("#adult_count").val(adult_count);
