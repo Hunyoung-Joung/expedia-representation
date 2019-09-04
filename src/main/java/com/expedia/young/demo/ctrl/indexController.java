@@ -117,10 +117,8 @@ public class indexController {
     	headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
     	headers.set("Accept-Encoding", "gzip");
     	headers.set("Authorization", authHeaderValue);
-    	headers.set("User-Agent", "expedia-representation/1.0");
+    	headers.set("User-Agent", "Mozilla/5.0");
 //    	headers.set("Content-Type", "application/json");
-    	
-    	logger.info("######################authHeaderValue? "+authHeaderValue);
     	
     	MultiValueMap<String, String> paramsMap = new LinkedMultiValueMap<String, String>();
     	paramsMap.add("region_id", conditionInfo.getRegion_id());
@@ -128,8 +126,8 @@ public class indexController {
     	paramsMap.add("include", "property_ids");
     	
     	HttpEntity<?> entity = new HttpEntity<>(paramsMap, headers);
-    	ResponseEntity<String> response = restTemplate.getForEntity(url,String.class);//(url, HttpMethod.GET, entity, String.class);
-//    	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+    	logger.info("######################entity? "+entity.getBody());
+    	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
     	
     	logger.info("######################response? "+response.getBody());
     	
