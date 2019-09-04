@@ -30,7 +30,7 @@ $(document).ready(function(){
 				child_count = parseInt($("#child_count").val())+1;
 				$("#child_count").val(child_count);
 				$("#child_ages").append("<div class='dropdown'>" +
-						"<button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>　年齢 "+child_count+"　<span class='caret'></span></button" +
+						"<button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>　年齢 "+child_count+"　<span class='caret'></span></button>" +
 						"<ul class='dropdown-menu'>" +
 						"<li><a href='#'>0</a></li>" +
 						"<li><a href='#'>1</a></li>" +
