@@ -77,9 +77,10 @@ $(document).ready(function(){
     
     $("#child_ages").on('click', function (event) {
     	console.log("li? "+$(event.target).text());
-    	var id = event.target.id.split("child_age_")[1];
-    	console.log("id? "+id);
-    	$("#child_ages_field_"+id+"").val();
+    	var id = $(event.target).text();
+    	if (id != id.startsWith("子供年齢")) {
+    		$("#child_ages_field_"+id+"").val($(event.target).text());
+    	}
     });
 	
     $("#person_count_modal_confirm").click(function(){
