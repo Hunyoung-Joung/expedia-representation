@@ -9,8 +9,8 @@ Copyright@ 2019
     <script th:src="@{/js/index.js}"></script>
     
     <div class="panel-body">
-<!-- TODO : to index.js -> when click +/- button then increase the quantity, when click the close button fill out to input of the parent html -->    
-		<!-- Person count modal begin -->
+
+		<!-- occupancy modal begin -->
 		<div class="modal fade" id="person_count_modal" role="dialog">
 			<div class="modal-dialog">
 				<!-- Modal content-->
@@ -97,8 +97,8 @@ Copyright@ 2019
 				</div>
 			</div>
 		</div>   
-		<!-- Person count modal end -->
-<!-- TODO : to index.js -> when click the close button fill out to input of the parent html, when click another then maybe show the other city used map or something -->  		
+		<!-- occupancy modal end -->
+ 		
 		<!-- Destination modal begin -->
 		<div class="modal fade" id="destination_modal" role="dialog">
 			<div class="modal-dialog">
@@ -110,22 +110,23 @@ Copyright@ 2019
 			        </div>
 			        <div class="modal-body">
 					  	<div class="dropdown">
-							<div class="input-group">
+							<div class="input-group input-text-group">
 	                      		<span class="input-group-addon">
 	                        		<span class="glyphicon glyphicon-map-marker"></span>
 	                    		</span>
-							    <button id="destination" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">目的地
+							    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">目的地
 							    	<span class="caret"></span>
 							    </button>
 							    <ul class="dropdown-menu">
-							      	<li><a href="#">New York（ニューヨーク）</a></li>
-							      	<li><a href="#">Paris（パリ）</a></li>
-							      	<li><a href="#">London（ロンドン）</a></li>
-							      	<li><a href="#">Sydney（シドニー）</a></li>
-							      	<li><a href="#">Singapore（シンガポール）</a></li>
+							      	<li><a href="#">New York （ニューヨーク）</a></li>
+							      	<li><a href="#">Paris （パリ）</a></li>
+							      	<li><a href="#">London （ロンドン）</a></li>
+							      	<li><a href="#">Sydney （シドニー）</a></li>
+							      	<li><a href="#">Singapore （シンガポール）</a></li>
 							      	<li class="divider"></li>
 							      	<li ><a href="#">その他</a></li>
 							    </ul>
+							    <input id="destination" name="destination" type="text" class="form-control" readonly/>
 						  	</div>
 						</div>
 			        </div>
@@ -162,16 +163,16 @@ Copyright@ 2019
 				        	$('#end_date').datepicker();
 				    	</script>
 		      		</div>
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<div class="input-group">
                       		<span class="input-group-addon">
                         		<span class="glyphicon glyphicon-map-marker"></span>
                     		</span>
 						<!--  <input id="id" name="id" type="text" class="form-control" />-->
-							<input id="location" name="location" type="text" class="form-control" data-toggle="modal" data-target="#destination_modal" placeholder="目的地"/>
+							<input id="region_id" name="region_id" type="text" class="form-control" data-toggle="modal" data-target="#destination_modal" placeholder="目的地"/>
 						</div>
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<div class="input-group">
 							<span class="input-group-addon">
 	                        		<span class="glyphicon glyphicon-user"></span>

@@ -8,7 +8,7 @@ var adminQuestionInfos;
 var questionList = [];
 
 $(document).ready(function(){
-	// occupancy=2-9,4 -> adult 2, 9 years old 1, 4 years old 1
+	// occupancy
     $(".input-number-group").on('mousedown', function (event) {
     	var id = event.target.id;
 		var adult_count = parseInt($("#adult_count").val());
@@ -74,6 +74,14 @@ $(document).ready(function(){
 			}
 		} 
 	});
+
+	// region_id
+    $(".input-text-group").on('click', function (event) {
+    	var val = $(event.target).text();
+//    	if (val.length < 3) {
+//    		$("#child_ages_field_"+id.toString().replace("child_age_","")+"").val(val);
+//    	}
+    });
     
     $("#child_ages").on('click', function (event) {
     	var id =  $(event.target).parents().map(function() {
@@ -93,7 +101,6 @@ $(document).ready(function(){
     	$("#child_ages_field").each(function () {
     		var total = $(this).find("input").length;
     		$(this).find("input").each(function(idx, val){
-    			console.log(idx+" - "+$(val).attr("id"));
     			if (idx === total-1) {
     				child_string = child_string+$("#"+$(val).attr("id")+"").val();
     			} else {
