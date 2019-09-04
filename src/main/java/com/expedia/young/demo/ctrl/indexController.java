@@ -101,7 +101,7 @@ public class indexController {
     @PostMapping(value = {"/search"})
     public String index(Model model, @ModelAttribute("conditionInfo") @Valid ConditionInfo conditionInfo) {
 
-    	logger.info("###################### "+conditionInfo.toString());
+    	logger.info("######################conditionInfo? "+conditionInfo.toString());
     	RestTemplate restTemplate = new RestTemplate();
     	String url = keyInfo.getUri()+"regions";
 //    	String url = keyInfo.getUri()+"properties/geography";
@@ -116,17 +116,19 @@ public class indexController {
     	headers.set("Accept-Encoding", "gzip");
     	headers.set("Authorization", authHeaderValue);
     	headers.set("User-Agent", "Mozilla/5.0");
-    	headers.set("Content-Type", "application/json");
+//    	headers.set("Content-Type", "application/json");
     	
-    	Map<String, Object> paramsMap = new HashMap<>();
+    	logger.info("######################authHeaderValue? "+authHeaderValue);
+    	
+    	Map<String, String> paramsMap = new HashMap<String, String>();
     	paramsMap.put("region_id", conditionInfo.getRegion_id());
     	paramsMap.put("language", "ja-JP");
     	paramsMap.put("include", "property_ids");
     	
-    	HttpEntity<Map<String, Object>> entity = new HttpEntity<>(paramsMap, headers);
+    	HttpEntity<Map<String, String>> entity = new HttpEntity<Map<String, String>>(paramsMap, headers);
     	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
     	
-    	logger.info("###################### "+response.toString());
+    	logger.info("######################response? "+response.toString());
     	
 //    	POST
 //    	HttpHeaders headers = new HttpHeaders();
