@@ -81,23 +81,35 @@ $(document).ready(function(){
     			return $(this).attr("id");
     		}
     	}).get();
-
-    	console.log("id? "+id.toString().replace("child_age_",""));
     	var val = $(event.target).text();
-    	console.log("val? "+val);
-    	if (val.length < 2) {
+    	if (val.length < 3) {
     		$("#child_ages_field_"+id.toString().replace("child_age_","")+"").val(val);
     	}
     });
 	
     $("#person_count_modal_confirm").click(function(){
+    	var occupancy_string = "";
+    	var child_string = "-";
     	$("#child_ages_field").each(function () {
     		$(this).find("input").each(function(idx, val){
     			console.log(idx+" - "+$(val).attr("id"));
+    			if (idx === total-1) {
+    				child_string = child_string+$("#"+$(val).attr("id")+"").val();
+    			} else {
+    				child_string = child_string+$("#"+$(val).attr("id")+"").val()+",";
+    			}
     		});
     	});
     	
     	$("#person_count").val("大人"+$("#adult_count").val()+","+"子供"+$("#child_count").val()+","+"部屋"+$("#room_count").val());
-    	$("#occupancy").val($("#adult_count").val()+"-"+$("#child_count").val());
+    	// Single room
+    	if (parseInt($("#room_count").val()) < 2) {
+    		occupancy_string = $("#adult_count").val()+child_string;
+    	} else {
+    		occupancy_string = $("#adult_count").val()+child_string+"&"+$("#room_count").val();
+    	}
+    	
+    	console.log("occupancy_string? "+occupancy_string);
+    	$("#occupancy").val(occupancy_string);
 	});
 });
