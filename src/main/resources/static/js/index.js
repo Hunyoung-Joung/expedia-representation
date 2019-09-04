@@ -29,15 +29,28 @@ $(document).ready(function(){
 			if (child_count < 6) {
 				child_count = parseInt($("#child_count").val())+1;
 				$("#child_count").val(child_count);
-				$("#child_ages").html('<div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">HTML</a></li>
-      <li><a href="#">CSS</a></li>
-      <li><a href="#">JavaScript</a></li>
-    </ul>
-  </div>');
+				$("#child_ages").html("<div class='dropdown'>" +
+						"<button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>年齢<span class='caret'></span></button" +
+						"<ul class='dropdown-menu'>" +
+						"<li>0</li>" +
+						"<li>1</li>" +
+						"<li>2</li>" +
+						"<li>3</li>" +
+						"<li>4</li>" +
+						"<li>5</li>" +
+						"<li>6</li>" +
+						"<li>7</li>" +
+						"<li>8</li>" +
+						"<li>9</li>" +
+						"<li>10</li>" +
+						"<li>11</li>" +
+						"<li>12</li>" +
+						"<li>13</li>" +
+						"<li>14</li>" +
+						"<li>15</li>" +
+						"<li>16</li>" +
+						"<li>17</li>" +
+						"</ul></div>");
 			}
 		} else if (id == "child_count_decrease") {
 			if (child_count > 0) {
