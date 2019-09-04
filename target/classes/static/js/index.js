@@ -64,13 +64,13 @@ $(document).ready(function(){
 			}
 		} else if (id == "room_count_increase") {
 			if (room_count < 8) {
-				child_count = parseInt($("#room_count").val())+1;
+				room_count = parseInt($("#room_count").val())+1;
 				$("#room_count").val(room_count);
 			}
 		} else if (id == "room_count_decrease") {
 			if (room_count > 1) {
 				room_count = parseInt($("#room_count").val())-1;
-				$("#room_count").val(child_count);
+				$("#room_count").val(room_count);
 			}
 		} 
 	});
@@ -82,7 +82,7 @@ $(document).ready(function(){
     		}
     	}).get();
 
-    	console.log("id? "+ids);
+    	console.log("id? "+id);
     	var val = $(event.target).text();
     	console.log("val? "+val);
     	if (val != val.startsWith("子供年齢")) {
