@@ -82,7 +82,7 @@ $(document).ready(function(){
     		}
     	}).get();
 
-    	console.log("id? "+id.replace("child_age_",""));
+    	console.log("id? "+id.toString().replace("child_age_",""));
     	var val = $(event.target).text();
     	console.log("val? "+val);
     	if (val != val.startsWith("子供年齢")) {
