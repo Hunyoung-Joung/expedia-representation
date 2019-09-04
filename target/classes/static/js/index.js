@@ -13,21 +13,26 @@ $(document).ready(function(){
     	var person_type = $(this).children().attr("id")
     	$(this).children().each(function(idx, val) {
     		if (person_type == "adult_count_increase") {
+    			var adult_count = parseInt($("#adult_count").val());
+    			console.log(adult_count);
     			if (idx == 0) {
-    				console.log(idx+" - "+parseInt($(val[1]).val()));
-    				$(val).val(parseInt($(val).val())+1)
+    				adult_count += 1
     			} 
     			if (idx == 2) {
-    				$(val).val(parseInt($(val).val())-1)
+    				if (adult_count != 0) {
+    					adult_count -= 1
+    				}
     			} 
+    			$("#adult_count").val(adult_count);
     		} else {
     			if (idx == 0) {
-    				$(val).val(parseInt($(val).val())+1)
+
     			} 
     			if (idx == 2) {
-    				$(val).val(parseInt($(val).val())-1)
+
     			} 
     		}
+
 		});
 //    	var adult_count = $("#adult_count").val()+1;
 //    	 $("#adult_count").val(adult_count);
