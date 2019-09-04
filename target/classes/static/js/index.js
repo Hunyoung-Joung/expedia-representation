@@ -14,7 +14,7 @@ $(document).ready(function(){
     	$(this).children().each(function(idx, val) {
     		if (person_type == "adult_count_increase") {
     			if (idx == 0) {
-    				console.log(idx+" - "+parseInt($(val).val()));
+    				console.log(idx+" - "+parseInt($(val[1]).val()));
     				$(val).val(parseInt($(val).val())+1)
     			} 
     			if (idx == 2) {
