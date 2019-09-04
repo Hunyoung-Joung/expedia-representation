@@ -14,6 +14,7 @@ $(document).ready(function(){
     	$(this).children().each(function(idx, val) {
     		if (person_type == "adult_count_increase") {
     			if (idx == 0) {
+    				console.log(idx+" - "+parseInt($(val).val()));
     				$(val).val(parseInt($(val).val())+1)
     			} 
     			if (idx == 2) {
@@ -27,9 +28,6 @@ $(document).ready(function(){
     				$(val).val(parseInt($(val).val())-1)
     			} 
     		}
-
-			console.log(idx+" - "+val);
-
 		});
 //    	var adult_count = $("#adult_count").val()+1;
 //    	 $("#adult_count").val(adult_count);
