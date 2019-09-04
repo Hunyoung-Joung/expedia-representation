@@ -128,7 +128,8 @@ public class indexController {
     	paramsMap.add("include", "property_ids");
     	
     	HttpEntity<?> entity = new HttpEntity<>(paramsMap, headers);
-    	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+    	ResponseEntity<String> response = restTemplate.getForEntity(url,String.class);//(url, HttpMethod.GET, entity, String.class);
+//    	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
     	
     	logger.info("######################response? "+response.getBody());
     	
