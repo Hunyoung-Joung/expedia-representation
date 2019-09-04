@@ -46,6 +46,7 @@ $(document).ready(function(){
 	});
 	
     $("#person_count_modal_confirm").click(function(){
-    	$("#person_count").val("大人"+$("#adult_count").val()++","+"子供"+$("#child_count").val());
+    	$("#person_count").val("大人"+$("#adult_count").val()+","+"子供"+$("#child_count").val());
+    	$("#occupancy").val($("#adult_count").val()+"-"+$("#child_count").val());
 	});
 });
