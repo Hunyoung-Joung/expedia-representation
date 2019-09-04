@@ -76,7 +76,7 @@ $(document).ready(function(){
 	});
     
     $("#child_ages").on('click', function (event) {
-    	var ids = $(this).parents().map(function() {
+    	var ids =  $(event.target).parents().map(function() {
     		if ($(this).attr("class") == "find_out") {
     			return $(this).attr("id");
     		}
