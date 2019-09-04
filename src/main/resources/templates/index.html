@@ -99,7 +99,7 @@ Copyright@ 2019
 		</div>   
 		<!-- occupancy modal end -->
  		
-		<!-- Destination modal begin -->
+		<!-- destination modal begin -->
 		<div class="modal fade" id="destination_modal" role="dialog">
 			<div class="modal-dialog">
 				<!-- Modal content-->
@@ -135,18 +135,19 @@ Copyright@ 2019
 									</td>
 									<td style='word-wrap: break-word' >
 										<input id="destination" name="destination" type="text" class="form-control" readonly/>
+										<input id="destination_id" name="destination_id" type="hidden" class="form-control" value=""/>
 									</td>
 								</tr>			
 					        </tbody>
 						</table>
 			        </div>
 			        <div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="destination_modal_confirm">閉じる</button>
 			        </div>
 				</div>
 			</div>
 		</div>   
-		<!-- Destination modal end -->
+		<!-- destination modal end -->
 		
  		<form th:action="@{/auth}" th:method="post" th:object="${userInfo}">
 	 		<div class="container-fluid">
@@ -179,7 +180,8 @@ Copyright@ 2019
                         		<span class="glyphicon glyphicon-map-marker"></span>
                     		</span>
 						<!--  <input id="id" name="id" type="text" class="form-control" />-->
-							<input id="region_id" name="region_id" type="text" class="form-control" data-toggle="modal" data-target="#destination_modal" placeholder="目的地"/>
+							<input id="region" name="region" type="text" class="form-control" data-toggle="modal" data-target="#destination_modal" placeholder="目的地"/>
+							<input id="region_id" name="region_id" type="hidden" class="form-control" value=""/>
 						</div>
 					</div>
 					<div class="col-sm-3">
