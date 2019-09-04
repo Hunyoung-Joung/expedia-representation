@@ -6,13 +6,20 @@
 package com.expedia.young.demo.ctrl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Logger;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,12 +30,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 
 import com.expedia.young.demo.entity.AdminQuestionInfo;
 import com.expedia.young.demo.entity.ConditionInfo;
 import com.expedia.young.demo.entity.PersonalInfo;
 import com.expedia.young.demo.entity.QuestionInfo;
 import com.expedia.young.demo.entity.UserInfo;
+import com.expedia.young.demo.entity.keyInfo;
 import com.expedia.young.demo.repo.QuestionInfoRepository;
 import com.expedia.young.demo.repo.UsersRepository;
 import com.expedia.young.demo.service.PersonalInfoService;
@@ -42,6 +51,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * 
@@ -75,13 +85,7 @@ public class indexController {
     @GetMapping
     public String init(Model model) {
     	
-    	AuthHeaderValueSingleton authHeaderValueSingleton = AuthHeaderValueSingleton.getInstance();
-    	try {
-			authHeaderValue = authHeaderValueSingleton.getAuthHeaderValue();
-		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-        model.addAttribute("personalInfo", new PersonalInfo());
+        model.addAttribute("conditionInfo", new ConditionInfo());
 
         return "index";
     }
@@ -96,8 +100,46 @@ public class indexController {
     @PostMapping(value = {"/search"})
     public String index(Model model, @ModelAttribute("conditionInfo") @Valid ConditionInfo conditionInfo) {
 
-    	logger.info(conditionInfo.toString());
-    	String checkin = conditionInfo.getCheckin();
+    	logger.info("###################### "+conditionInfo.toString());
+    	RestTemplate restTemplate = new RestTemplate();
+    	String url = keyInfo.getUri()+"regions";
+//    	String url = keyInfo.getUri()+"properties/geography";
+    	AuthHeaderValueSingleton authHeaderValueSingleton = AuthHeaderValueSingleton.getInstance();
+    	try {
+			authHeaderValue = authHeaderValueSingleton.getAuthHeaderValue();
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+    	HttpHeaders headers = new HttpHeaders();
+    	headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+    	headers.set("Accept-Encoding", "gzip");
+    	headers.set("Authorization", authHeaderValue);
+    	headers.set("User-Agent", "Mozilla/5.0");
+    	headers.set("Content-Type", "application/json");
+    	
+    	Map<String, Object> paramsMap = new HashMap<>();
+    	paramsMap.put("region_id", conditionInfo.getRegion_id());
+    	paramsMap.put("language", "ja-JP");
+    	paramsMap.put("include", "property_ids");
+    	
+    	HttpEntity<Map<String, Object>> entity = new HttpEntity<>(paramsMap, headers);
+    	ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+    	
+    	logger.info("###################### "+response.toString());
+    	
+//    	POST
+//    	HttpHeaders headers = new HttpHeaders();
+//    	headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+//    	headers.set("Accept-Encoding", "gzip");
+//    	headers.set("Authorization", authHeaderValue);
+//    	headers.set("User-Agent", "Mozilla/5.0");
+//    	headers.set("Content-Type", "application/json");
+//    	
+//    	Map<String, Object> bodyMap = new HashMap<>();
+//    	bodyMap.put("region_id", conditionInfo.getRegion_id());
+//    	bodyMap.put("language", "ja-JP");
+//    	bodyMap.put("include", "property_ids");
+    	
     	
     	
     	
