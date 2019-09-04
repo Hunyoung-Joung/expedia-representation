@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 //    	$(this).children().each(function(idx, val) {
     		console.log("event.target? "+event.target.nodeName);
-    		console.log("event.target? "+$(event.target).html());
+    		console.log("event.target? "+event.target.id);
     		console.log("event.target? "+$(this).target);
     		var adult_count = parseInt($("#adult_count").val());
     		var child_count = parseInt($("#child_count").val());
