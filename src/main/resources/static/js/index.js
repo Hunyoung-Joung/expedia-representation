@@ -58,7 +58,7 @@ $(document).ready(function(){
 				child_count = parseInt($("#child_count").val())-1;
 				$("#child_count").val(child_count);
 				var child_ages_list = document.getElementById("child_ages");
-				child_ages_list.removeChild(child_ages_list.childNodes[child_count+1]);
+				child_ages_list.removeChild(child_ages_list.childNodes[child_count-1]);
 				var child_ages_field_list = document.getElementById("child_ages_field");
 				child_ages_field_list.removeChild(child_ages_field_list.childNodes[child_count+1]);				
 			}
@@ -75,11 +75,11 @@ $(document).ready(function(){
 		} 
 	});
     
-    $(".child_ages").on('click', function (event) {
+    $("#child_ages").on('click', function (event) {
     	console.log("li? "+event.target.querySelector('li'));
     	var id = event.target.id.split("child_age_")[1];
     	console.log("id? "+id);
-    	$(".child_ages_field'+id+'").val();
+    	$("#child_ages_field'+id+'").val();
     });
 	
     $("#person_count_modal_confirm").click(function(){
