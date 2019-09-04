@@ -12,9 +12,9 @@ $(document).ready(function(){
     $(".input-number-group").on('mousedown', function (event) {
 
 //    	$(this).children().each(function(idx, val) {
-    		console.log("event.target? "+event.currentTarget);
-    		console.log("event.target? "+$(event.currentTarget).attr("id"));
-    		console.log("event.target? "+event.currentTarget.id);
+    		console.log("event.target? "+event.target);
+    		console.log("event.target? "+$(event.target).attr("id"));
+    		console.log("event.target? "+event.target.id);
     		var adult_count = parseInt($("#adult_count").val());
     		var child_count = parseInt($("#child_count").val());
 //    		var id = $(val).attr("id");
