@@ -86,12 +86,19 @@ $(document).ready(function(){
     	var val = $(event.target).text();
     	console.log("val? "+val);
     	if (val != val.startsWith("子供年齢")) {
-    		$("#child_ages_field_"+id.replace("child_age_","")+"").val(val);
+    		$("#child_ages_field_"+id.toString().replace("child_age_","")+"").val(val);
     	}
     });
 	
     $("#person_count_modal_confirm").click(function(){
-    	$("#person_count").val("大人"+$("#adult_count").val()+","+"子供"+$("#child_count").val());
+    	$("#child_ages_field").each(function ()) {
+    		console.log(idx+" - "+$(val).);
+    		$(this).find("input").each(function(idx, val){
+    			console.log(idx+" - "+$(val).attr("id"));
+    		});
+    	});
+    	
+    	$("#person_count").val("大人"+$("#adult_count").val()+","+"子供"+$("#child_count").val()+","+"部屋"+$("#room_count").val());
     	$("#occupancy").val($("#adult_count").val()+"-"+$("#child_count").val());
 	});
 });
