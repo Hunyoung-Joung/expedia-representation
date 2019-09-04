@@ -23,6 +23,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -120,12 +122,12 @@ public class indexController {
     	
     	logger.info("######################authHeaderValue? "+authHeaderValue);
     	
-    	Map<String, String> paramsMap = new HashMap<String, String>();
-    	paramsMap.put("region_id", conditionInfo.getRegion_id());
-    	paramsMap.put("language", "ja-JP");
-    	paramsMap.put("include", "property_ids");
+    	MultiValueMap<String, String> paramsMap = new LinkedMultiValueMap<String, String>();
+    	paramsMap.add("region_id", conditionInfo.getRegion_id());
+    	paramsMap.add("language", "ja-JP");
+    	paramsMap.add("include", "property_ids");
     	
-    	HttpEntity<Map<String, String>> entity = new HttpEntity<Map<String, String>>(paramsMap, headers);
+    	HttpEntity<?> entity = new HttpEntity<>(paramsMap, headers);
     	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
     	
     	logger.info("######################response? "+response.toString());
