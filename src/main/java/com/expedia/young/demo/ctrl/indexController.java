@@ -117,7 +117,7 @@ public class indexController {
     	headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
     	headers.set("Accept-Encoding", "gzip");
     	headers.set("Authorization", authHeaderValue);
-    	headers.set("User-Agent", "Mozilla/5.0");
+    	headers.set("User-Agent", "expedia-representation/1.0");
 //    	headers.set("Content-Type", "application/json");
     	
     	logger.info("######################authHeaderValue? "+authHeaderValue);
@@ -130,7 +130,7 @@ public class indexController {
     	HttpEntity<?> entity = new HttpEntity<>(paramsMap, headers);
     	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
     	
-    	logger.info("######################response? "+response.toString());
+    	logger.info("######################response? "+response.getBody());
     	
 //    	POST
 //    	HttpHeaders headers = new HttpHeaders();
