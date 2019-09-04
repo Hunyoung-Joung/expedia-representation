@@ -26,9 +26,18 @@ $(document).ready(function(){
 				$("#adult_count").val(adult_count);
 			}
 		} else if (id == "child_count_increase") {
-			if (adult_count < 6) {
+			if (child_count < 6) {
 				child_count = parseInt($("#child_count").val())+1;
 				$("#child_count").val(child_count);
+				$("#child_ages").html('<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">HTML</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JavaScript</a></li>
+    </ul>
+  </div>');
 			}
 		} else if (id == "child_count_decrease") {
 			if (child_count > 0) {
@@ -36,7 +45,7 @@ $(document).ready(function(){
 				$("#child_count").val(child_count);
 			}
 		} else if (id == "room_count_increase") {
-			if (adult_count < 8) {
+			if (child_count < 8) {
 				child_count = parseInt($("#room_count").val())+1;
 				$("#room_count").val(room_count);
 			}

@@ -31,7 +31,7 @@ Copyright@ 2019
 					                      		<span class="input-group-addon">
 					                        		<span id="adult_count_increase" class="glyphicon glyphicon-plus"></span>
 					                    		</span>
-					      						<input type="text" class="form-control" id="adult_count" value="1">
+					      						<input type="text" class="form-control" id="adult_count" value="1" readonly>
 					                      		<span class="input-group-addon">
 					                        		<span id="adult_count_decrease" class="glyphicon glyphicon-minus"></span>
 					                    		</span>
@@ -47,7 +47,7 @@ Copyright@ 2019
 					                      		<span class="input-group-addon">
 					                        		<span id="child_count_increase" class="glyphicon glyphicon-plus"></span>
 					                    		</span>
-					      						<input type="text" class="form-control" id="child_count" value="0">
+					      						<input type="text" class="form-control" id="child_count" value="0" readonly>
 					                      		<span class="input-group-addon">
 					                        		<span id="child_count_decrease" class="glyphicon glyphicon-minus"></span>
 					                    		</span>
@@ -63,13 +63,18 @@ Copyright@ 2019
 					                      		<span class="input-group-addon">
 					                        		<span id="room_count_increase" class="glyphicon glyphicon-plus"></span>
 					                    		</span>
-					      						<input type="text" class="form-control" id="room_count" value="1">
+					      						<input type="text" class="form-control" id="room_count" value="1" readonly>
 					                      		<span class="input-group-addon">
 					                        		<span id="room_count_decrease" class="glyphicon glyphicon-minus"></span>
 					                    		</span>
 					  						</div>
 										</td>								
-								</tr>								
+								</tr>
+								<tr style="word-wrap: break-word">
+									<td style='word-wrap: break-word' colspan="2">
+									  	<div id="child_ages" class="dropdown" ></div>
+									</td>							
+								</tr>					
 					        </tbody>
 						</table>
 			        </div>
@@ -96,17 +101,17 @@ Copyright@ 2019
 	                      		<span class="input-group-addon">
 	                        		<span class="glyphicon glyphicon-map-marker"></span>
 	                    		</span>
-							    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">目的地
+							    <button id="destination" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">目的地
 							    	<span class="caret"></span>
 							    </button>
-							    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-							      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">New York（ニューヨーク）</a></li>
-							      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Paris（パリ）</a></li>
-							      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">London（ロンドン）</a></li>
-							      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sydney（シドニー）</a></li>
-							      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Singapore（シンガポール）</a></li>
-							      <li role="presentation" class="divider"></li>
-							      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">その他</a></li>
+							    <ul class="dropdown-menu">
+							      	<li><a href="#">New York（ニューヨーク）</a></li>
+							      	<li><a href="#">Paris（パリ）</a></li>
+							      	<li><a href="#">London（ロンドン）</a></li>
+							      	<li><a href="#">Sydney（シドニー）</a></li>
+							      	<li><a href="#">Singapore（シンガポール）</a></li>
+							      	<li class="divider"></li>
+							      	<li ><a href="#">その他</a></li>
 							    </ul>
 						  	</div>
 						</div>
