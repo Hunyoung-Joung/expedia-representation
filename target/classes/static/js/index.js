@@ -21,6 +21,7 @@ $(document).ready(function(){
     			adult_count = parseInt($("#adult_count").val())+1;
     			$("#adult_count").val(adult_count);
     			console.log(adult_count+", "+$("#adult_count").val());
+    			break;
     		} 
     		else if (id == "adult_count_decrease") {
     			if (adult_count > 0) {
@@ -28,11 +29,13 @@ $(document).ready(function(){
     				$("#adult_count").val(adult_count);
     				console.log(adult_count+", "+$("#adult_count").val());
     			}
+    			break;
     		} 
     		else if (id == "child_count_increase") {
     			child_count = parseInt($("#child_count").val())+1;
     			$("#child_count").val(child_count);
     			console.log(adult_count+", "+$("#child_count").val());
+    			break;
     		} 
     		else if (id == "child_count_decrease") {
     			if (child_count > 0) {
@@ -40,6 +43,7 @@ $(document).ready(function(){
     				$("#child_count").val(child_count);
     				console.log(adult_count+", "+$("#child_count").val());
     			}
+    			break;
     		} 
 		});
 //    	var adult_count = $("#adult_count").val()+1;
