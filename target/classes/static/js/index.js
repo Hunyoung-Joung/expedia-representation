@@ -85,14 +85,13 @@ $(document).ready(function(){
     	console.log("id? "+id.toString().replace("child_age_",""));
     	var val = $(event.target).text();
     	console.log("val? "+val);
-    	if (val != val.startsWith("子供年齢")) {
+    	if (val.length < 2) {
     		$("#child_ages_field_"+id.toString().replace("child_age_","")+"").val(val);
     	}
     });
 	
     $("#person_count_modal_confirm").click(function(){
     	$("#child_ages_field").each(function () {
-    		console.log(idx+" - "+$(val).attr());
     		$(this).find("input").each(function(idx, val){
     			console.log(idx+" - "+$(val).attr("id"));
     		});
