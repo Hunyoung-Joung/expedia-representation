@@ -29,7 +29,7 @@ $(document).ready(function(){
 			if (child_count < 6) {
 				child_count = parseInt($("#child_count").val())+1;
 				$("#child_count").val(child_count);
-				$("#child_ages_field").append("<div class='col-xs-1'><input type='text' class='form-control' id='child_ages_field_"+child_count+"' readonly></div>");
+				$("#child_ages_field").append("<div class='col-xs-2'><input type='text' class='form-control' id='child_ages_field_"+child_count+"' readonly></div>");
 				$("#child_ages").append("<li id='child_age_"+child_count+"' class='find_out'><div class='dropdown'>" +
 						"<button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>子供年齢 "+child_count+"<span class='caret'></span></button>" +
 						"<ul class='dropdown-menu'>" +
@@ -80,13 +80,13 @@ $(document).ready(function(){
     		if ($(this).attr("class") == "find_out") {
     			return $(this).attr("id");
     		}
-    	}).get().split("child_age_")[1];
+    	}).get();
 
-    	console.log("id? "+id);
+    	console.log("id? "+id.split("child_age_")[1]);
     	var val = $(event.target).text();
     	console.log("val? "+val);
     	if (val != val.startsWith("子供年齢")) {
-    		$("#child_ages_field_"+id+"").val(val);
+    		$("#child_ages_field_"+id.split("child_age_")[1]+"").val(val);
     	}
     });
 	
