@@ -12,7 +12,7 @@ $(document).ready(function(){
     $(".input-number-group").on('mousedown', function () {
     	var person_type = $(this).children().attr("id")
     	$(this).children().each(function(idx, val) {
-    		
+    		console.log("event.target? "+$(event.target).attr("id"));
     		var adult_count = parseInt($("#adult_count").val());
     		var child_count = parseInt($("#child_count").val());
     		var id = $(val).attr("id");
