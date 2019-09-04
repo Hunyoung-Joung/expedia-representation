@@ -92,7 +92,7 @@ $(document).ready(function(){
 	
     $("#person_count_modal_confirm").click(function(){
     	$("#child_ages_field").each(function () {
-    		console.log(idx+" - "+$(val).);
+    		console.log(idx+" - "+$(val).attr());
     		$(this).find("input").each(function(idx, val){
     			console.log(idx+" - "+$(val).attr("id"));
     		});
