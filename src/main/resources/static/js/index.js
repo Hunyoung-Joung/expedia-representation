@@ -22,26 +22,26 @@ $(document).ready(function(){
     			adult_count = parseInt($("#adult_count").val())+1;
     			$("#adult_count").val(adult_count);
     			console.log(adult_count+", "+$("#adult_count").val());
-    			return false;
+
     		} else if (id == "adult_count_decrease") {
     			if (adult_count > 0) {
     				adult_count = parseInt($("#adult_count").val())-1;
     				$("#adult_count").val(adult_count);
     				console.log(adult_count+", "+$("#adult_count").val());
     			}
-    			return false;
+
     		} else if (id == "child_count_increase") {
     			child_count = parseInt($("#child_count").val())+1;
     			$("#child_count").val(child_count);
     			console.log(adult_count+", "+$("#child_count").val());
-    			return false;
+
     		} else if (id == "child_count_decrease") {
     			if (child_count > 0) {
     				child_count = parseInt($("#child_count").val())-1;
     				$("#child_count").val(child_count);
     				console.log(adult_count+", "+$("#child_count").val());
     			}
-    			return false;
+
     		} 
 //		});
 	});
