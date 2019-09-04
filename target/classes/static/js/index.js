@@ -77,7 +77,7 @@ $(document).ready(function(){
 
 	// region_id
     $(".input-text-group").on('click', function (event) {
-    	var val = $(event.target).text();
+    	var val = $(event.target).attr("rel");
     	console.log(val);
 //    	if (val.length < 3) {
 //    		$("#child_ages_field_"+id.toString().replace("child_age_","")+"").val(val);
