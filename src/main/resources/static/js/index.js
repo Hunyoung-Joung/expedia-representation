@@ -91,6 +91,7 @@ $(document).ready(function(){
     	var occupancy_string = "";
     	var child_string = "-";
     	$("#child_ages_field").each(function () {
+    		var total = $(this).find("input").length;
     		$(this).find("input").each(function(idx, val){
     			console.log(idx+" - "+$(val).attr("id"));
     			if (idx === total-1) {
@@ -101,7 +102,7 @@ $(document).ready(function(){
     		});
     	});
     	
-    	$("#person_count").val("大人"+$("#adult_count").val()+","+"子供"+$("#child_count").val()+","+"部屋"+$("#room_count").val());
+    	$("#person_count").val("大"+$("#adult_count").val()+","+"子"+$("#child_count").val()+","+"部屋"+$("#room_count").val());
     	// Single room
     	if (parseInt($("#room_count").val()) < 2) {
     		occupancy_string = $("#adult_count").val()+child_string;
