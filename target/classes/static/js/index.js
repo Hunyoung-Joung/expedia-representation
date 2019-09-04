@@ -21,7 +21,7 @@ $(document).ready(function(){
     			adult_count = parseInt($("#adult_count").val())+1;
     			$("#adult_count").val(adult_count);
     			console.log(adult_count+", "+$("#adult_count").val());
-    			return;
+    			return false;
     		} 
     		else if (id == "adult_count_decrease") {
     			if (adult_count > 0) {
