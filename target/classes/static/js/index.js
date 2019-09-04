@@ -76,10 +76,10 @@ $(document).ready(function(){
 	});
     
     $("#child_ages").on('click', function (event) {
-    	console.log("li? "+$(event.target).text());
-    	var id = $(event.target).text();
-    	if (id != id.startsWith("子供年齢")) {
-    		$("#child_ages_field_"+id+"").val($(event.target).text());
+    	console.log("li? "+event.target.id);
+    	var val = $(event.target).text();
+    	if (val != val.startsWith("子供年齢")) {
+    		$("#child_ages_field_"+val+"").val($(event.target).text());
     	}
     });
 	
