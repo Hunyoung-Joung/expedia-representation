@@ -17,7 +17,7 @@ Copyright@ 2019
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">予約人数</h4>
+						<h4 class="modal-title">部屋の予約</h4>
 			        </div>
 			        <div class="modal-body">
 						<table class="table" style="table-layout: fixed; width: 100%">
@@ -55,9 +55,20 @@ Copyright@ 2019
 										</td>
 								</tr>
 								<tr style="word-wrap: break-word">
-										<td style='word-wrap: break-word' colspan=2>
-											<span class="glyphicon glyphicon-menu-down">　部屋を追加　</span>
+										<td style='word-wrap: break-word' >
+											<p>部屋</p>
 										</td>
+										<td style='word-wrap: break-word' >
+					  						<div class="input-group input-number-group">
+					                      		<span class="input-group-addon">
+					                        		<span id="room_count_increase" class="glyphicon glyphicon-plus"></span>
+					                    		</span>
+					      						<input type="text" class="form-control" id="room_count" value="1">
+					                      		<span class="input-group-addon">
+					                        		<span id="room_count_decrease" class="glyphicon glyphicon-minus"></span>
+					                    		</span>
+					  						</div>
+										</td>								
 								</tr>								
 					        </tbody>
 						</table>
@@ -149,7 +160,7 @@ Copyright@ 2019
 							</span>
 							<!-- <input id="password" name="password" type="text" class="form-control" />-->
 
-	                    	<input id="person_count" name="person_count" type="text" class="form-control" data-toggle="modal" data-target="#person_count_modal" placeholder="大人１、子供０"/>
+	                    	<input id="person_count" name="person_count" type="text" class="form-control" data-toggle="modal" data-target="#person_count_modal" placeholder="大人１、子供０" disabled/>
 	                    	<input id="occupancy" name="occupancy" type="hidden" class="form-control" value=""/>
 
 	                    </div>
