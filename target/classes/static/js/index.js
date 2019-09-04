@@ -76,7 +76,7 @@ $(document).ready(function(){
 	});
     
     $("#child_ages").on('click', function (event) {
-    	console.log("li? "+event.target.tagName);
+    	console.log("li? "+$(event.target).text());
     	var id = event.target.id.split("child_age_")[1];
     	console.log("id? "+id);
     	$("#child_ages_field_"+id+"").val();
