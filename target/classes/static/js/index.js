@@ -29,8 +29,8 @@ $(document).ready(function(){
 			if (child_count < 6) {
 				child_count = parseInt($("#child_count").val())+1;
 				$("#child_count").val(child_count);
-				$("#child_ages").append("<div class='dropdown'>" +
-						"<button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>　年齢 "+child_count+"　<span class='caret'></span></button>" +
+				$("#child_ages").append("<li id='child_age_"+child_count+"'><div class='dropdown'>" +
+						"<button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>子供年齢 "+child_count+"<span class='caret'></span></button>" +
 						"<ul class='dropdown-menu'>" +
 						"<li><a href='#'>0</a></li>" +
 						"<li><a href='#'>1</a></li>" +
@@ -50,12 +50,13 @@ $(document).ready(function(){
 						"<li><a href='#'>15</a></li>" +
 						"<li><a href='#'>16</a></li>" +
 						"<li><a href='#'>17</a></li>" +
-						"</ul></div>");
+						"</ul></div></li>");
 			}
 		} else if (id == "child_count_decrease") {
 			if (child_count > 0) {
 				child_count = parseInt($("#child_count").val())-1;
 				$("#child_count").val(child_count);
+				$("#child_ages").remove("#child_age_"+child_count+"");
 			}
 		} else if (id == "room_count_increase") {
 			if (child_count < 8) {
