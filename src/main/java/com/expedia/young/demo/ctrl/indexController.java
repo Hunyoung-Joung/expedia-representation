@@ -18,6 +18,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -123,7 +124,7 @@ public class indexController {
     	paramsMap.put("include", "property_ids");
     	
     	HttpEntity<Map<String, Object>> entity = new HttpEntity<>(paramsMap, headers);
-    	ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+    	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
     	
     	logger.info("###################### "+response.toString());
     	
