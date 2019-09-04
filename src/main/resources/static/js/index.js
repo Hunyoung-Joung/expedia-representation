@@ -77,10 +77,12 @@ $(document).ready(function(){
 
 	// region_id
     $(".input-text-group").on('click', function (event) {
-    	var val = $(event.target).attr("rel");
+    	var val_name = $(event.target).text();
+    	co
+    	var val_code = $(event.target).attr("rel");
     	if (val != "undefined") {
-        	$("#destination").val($(event.target).text);
-        	$("#destination_id").val(val);
+        	$("#destination").val(val_name);
+        	$("#destination_id").val(val_code);
     	}
     });
     
