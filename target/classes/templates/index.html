@@ -6,6 +6,7 @@ Copyright@ 2019
 <body>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js}"></script>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}"></script>
+    <script th:src="@{/js/index.js}"></script>
     
     <div class="panel-body">
 <!-- TODO : to index.js -> when click +/- button then increase the quantity, when click the close button fill out to input of the parent html -->    
@@ -27,11 +28,11 @@ Copyright@ 2019
 										</td>
 										<td style='word-wrap: break-word' >
 					  						<div class="input-group date">
-					                      		<span class="input-group-addon">
+					                      		<span id="adult_count_increase" class="input-group-addon">
 					                        		<span class="glyphicon glyphicon-plus"></span>
 					                    		</span>
 					      						<input type="text" class="form-control" id="adult_count" placeholder="1">
-					                      		<span class="input-group-addon">
+					                      		<span id="adult_count_decrease" class="input-group-addon">
 					                        		<span class="glyphicon glyphicon-minus"></span>
 					                    		</span>
 					  						</div>
@@ -43,11 +44,11 @@ Copyright@ 2019
 										</td>
 										<td style='word-wrap: break-word' >
 					  						<div class="input-group date">
-					                      		<span class="input-group-addon">
+					                      		<span id="child_count_increase" class="input-group-addon">
 					                        		<span class="glyphicon glyphicon-plus"></span>
 					                    		</span>
-					      						<input type="text" class="form-control" id="adult_count" placeholder="0">
-					                      		<span class="input-group-addon">
+					      						<input type="text" class="form-control" id="child_count" placeholder="0">
+					                      		<span id="child_count_decrease" class="input-group-addon">
 					                        		<span class="glyphicon glyphicon-minus"></span>
 					                    		</span>
 					  						</div>
@@ -165,11 +166,7 @@ Copyright@ 2019
 					<div class="row">
 					    <div class="col-sm-4" >設定及びAPI仕様</div>
 					    <div class="col-sm-8" >結果</div>
-				  	</div>
-					<div class="row">
-					    <div class="col-sm-4" >設定及びAPI仕様</div>
-					    <div class="col-sm-8" >結果</div>
-				  	</div>				  
+				  	</div>			  
 				</div>
 			</div>
 		</div> 
