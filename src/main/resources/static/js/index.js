@@ -29,27 +29,27 @@ $(document).ready(function(){
 			if (child_count < 6) {
 				child_count = parseInt($("#child_count").val())+1;
 				$("#child_count").val(child_count);
-				$("#child_ages").html("<div class='dropdown'>" +
-						"<button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>年齢<span class='caret'></span></button" +
+				$("#child_ages").append("<div class='dropdown'>" +
+						"<button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>　年齢 "+child_count+"　<span class='caret'></span></button" +
 						"<ul class='dropdown-menu'>" +
-						"<li>0</li>" +
-						"<li>1</li>" +
-						"<li>2</li>" +
-						"<li>3</li>" +
-						"<li>4</li>" +
-						"<li>5</li>" +
-						"<li>6</li>" +
-						"<li>7</li>" +
-						"<li>8</li>" +
-						"<li>9</li>" +
-						"<li>10</li>" +
-						"<li>11</li>" +
-						"<li>12</li>" +
-						"<li>13</li>" +
-						"<li>14</li>" +
-						"<li>15</li>" +
-						"<li>16</li>" +
-						"<li>17</li>" +
+						"<li><a href="#">0</a></li>" +
+						"<li><a href="#">1</a></li>" +
+						"<li><a href="#">2</a></li>" +
+						"<li><a href="#">3</a></li>" +
+						"<li><a href="#">4</a></li>" +
+						"<li><a href="#">5</a></li>" +
+						"<li><a href="#">6</a></li>" +
+						"<li><a href="#">7</a></li>" +
+						"<li><a href="#">8</a></li>" +
+						"<li><a href="#">9</a></li>" +
+						"<li><a href="#">10</a></li>" +
+						"<li><a href="#">11</a></li>" +
+						"<li><a href="#">12</a></li>" +
+						"<li><a href="#">13</a></li>" +
+						"<li><a href="#">14</a></li>" +
+						"<li><a href="#">15</a></li>" +
+						"<li><a href="#">16</a></li>" +
+						"<li><a href="#">17</a></li>" +
 						"</ul></div>");
 			}
 		} else if (id == "child_count_decrease") {
