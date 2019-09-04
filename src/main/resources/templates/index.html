@@ -149,7 +149,7 @@ Copyright@ 2019
 		</div>   
 		<!-- destination modal end -->
 		
- 		<form th:action="@{/auth}" th:method="post" th:object="${userInfo}">
+ 		<form th:action="@{/search}" th:method="post" th:object="${conditionInfo}">
 	 		<div class="container-fluid">
 			    <div class="row">
 			      	<div class="col-sm-2">
@@ -157,10 +157,10 @@ Copyright@ 2019
                       		<span class="input-group-addon">
                         		<span class="glyphicon glyphicon-calendar"></span>
                     		</span>
-      						<input type="text" class="form-control" id="begin_date" placeholder="YYYY-MM-DD" alt="begin date">
+      						<input type="text" class="form-control" id="checkin" name="checkin" placeholder="MM/DD/YYYY" alt="begin date">
   						</div>
 				      	<script type="text/javascript">
-				        	$('#begin_date').datepicker();
+				        	$('#checkin').datepicker();
 				    	</script>
 		      		</div>
 		      		<div class="col-sm-2">
@@ -168,10 +168,10 @@ Copyright@ 2019
                       		<span class="input-group-addon">
                         		<span class="glyphicon glyphicon-calendar"></span>
                     		</span>
-      						<input type="text" class="form-control" id="end_date" placeholder="YYYY-MM-DD">
+      						<input type="text" class="form-control" id="checkout" name="checkout" placeholder="MM/DD/YYYY">
   						</div>
 				      	<script type="text/javascript">
-				        	$('#end_date').datepicker();
+				        	$('#checkout').datepicker();
 				    	</script>
 		      		</div>
 					<div class="col-sm-3">

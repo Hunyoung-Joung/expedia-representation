@@ -5,11 +5,7 @@
  */
 
 $(document).ready(function(){
-	$('.datepicker').datepicker({
-	    format: 'yyyy-mm-dd',
-	    startDate: '-3d'
-	})
-	
+
 	// occupancy
     $(".input-number-group").on('mousedown', function (event) {
     	var id = event.target.id;
