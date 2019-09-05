@@ -16,6 +16,7 @@ import java.util.zip.GZIPInputStream;
 
 import javax.validation.Valid;
 
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
@@ -24,6 +25,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
@@ -112,7 +114,8 @@ public class indexController {
     public String index(Model model, @ModelAttribute("conditionInfo") @Valid ConditionInfo conditionInfo) throws IOException {
 
     	logger.info("######################conditionInfo? "+conditionInfo.toString());
-    	RestTemplate restTemplate = new RestTemplate();
+    	HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
+    	RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
     	AuthHeaderValueSingleton authHeaderValueSingleton = AuthHeaderValueSingleton.getInstance();
     	try {
 			authHeaderValue = authHeaderValueSingleton.getAuthHeaderValue();
