@@ -142,7 +142,7 @@ public class indexController {
     	model.addAttribute("response", response.getBody());
     	logger.info("######################response? "+response.getBody());
 
-    	return index(model, conditionInfo);
+    	return init(model);
     }
     
 //    /**
