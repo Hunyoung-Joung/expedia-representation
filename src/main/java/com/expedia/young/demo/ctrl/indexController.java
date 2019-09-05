@@ -177,7 +177,7 @@ public class indexController {
 //    	 https://test.ean.com/2.3/properties/content?language=en-US&property_id=9526696
 
     	List<Properties> PropertiesList = new ArrayList<Properties>(); 
-
+    	TypeReference<HashMap<String,Object>> typeRef = new TypeReference<HashMap<String,Object>>() {};
     	for (int i=0; i<5; i++) {
     		String propertyId = propertyIds.get(i);
     		logger.info(i+"    ######################propertyId? "+propertyId);
@@ -185,7 +185,7 @@ public class indexController {
     		
     		ObjectMapper objectMapper = new ObjectMapper();
     		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-    		TypeReference<HashMap<String,Object>> typeRef = new TypeReference<HashMap<String,Object>>() {};
+
     		HashMap<String,Object> o = objectMapper.readValue(response.getBody(), typeRef); 
     		Properties properties= new Properties();
 //    		Properties properties= (Properties) o.get(propertyId);
@@ -193,7 +193,7 @@ public class indexController {
     			System.out.println("Got " + iter.next()); 
     		}
 
-
+    		System.out.println(">>>>>>>>>>>>>> " + o.values().iterator().next()); 
         	logger.info(i+"    ######################getStatusCodeValue? "+response.getStatusCodeValue());
         	PropertiesList.add(properties);
     	}
