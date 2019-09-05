@@ -3,8 +3,16 @@
  * by jounghunyoung@gmail.com
  * 
  */
-
+var propertiesList;
 $(document).ready(function(){
+	
+    $.each(propertiesList, function(idx, val) {
+        $.each(val, function(key, value) {
+
+				console.log(key+" - "+value);
+
+  		});
+	});
 
 	// occupancy
     $(".input-number-group").on('mousedown', function (event) {

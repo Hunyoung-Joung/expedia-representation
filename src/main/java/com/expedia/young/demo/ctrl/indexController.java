@@ -94,7 +94,7 @@ public class indexController {
 //    @Autowired
 //    private PersonalInfoService personalInfoService;
     
-    private UserInfo userInfo_ = new UserInfo();
+//    private UserInfo userInfo_ = new UserInfo();
     
     private String authHeaderValue = null;
     
@@ -141,8 +141,11 @@ public class indexController {
     	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
     	logger.info("######################response.getBody().getPropertyIds().size()? "+response.getBody().getPropertyIds().size());
     	List<Properties> propertiesList = getProperties(response.getBody().getPropertyIds());
+    	for (Properties properties: propertiesList) {
+    		logger.info("######################properties? "+properties.getName());
+    	}
     	model.addAttribute("conditionInfo", conditionInfo);
-    	model.addAttribute("response", response.getStatusCodeValue()+"<br>"+entity.toString());
+    	model.addAttribute("response", response.getStatusCodeValue()+"/\n"+entity.toString());
     	model.addAttribute("propertiesList", propertiesList);
 
     	return init(model);
