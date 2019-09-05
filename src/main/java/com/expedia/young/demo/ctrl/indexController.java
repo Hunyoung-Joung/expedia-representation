@@ -136,6 +136,7 @@ public class indexController {
     	logger.info("######################getStatusCode? "+response.getStatusCode());
     	logger.info("######################getHeaders? "+response.getHeaders());
     	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
+    	logger.info("######################getStatusCodeValue? "+response.getBody());
     	
     	ByteArrayInputStream bais = new ByteArrayInputStream(response.getBody().toString().getBytes());
     	GZIPInputStream gzis = new GZIPInputStream(bais);
