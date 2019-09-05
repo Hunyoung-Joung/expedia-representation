@@ -16,20 +16,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 public class Amenities {
 
-    @JsonProperty("amenities_code")
-    private AmenitiesCode amenitiesCode;
+//    @JsonProperty("amenities_code")
+//    private AmenitiesCode amenitiesCode;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("amenities_code")
-    public AmenitiesCode getAmenitiesCode() {
-        return amenitiesCode;
-    }
-
-    @JsonProperty("amenities_code")
-    public void setAmenitiesCode(AmenitiesCode amenitiesCode) {
-        this.amenitiesCode = amenitiesCode;
-    }
+//
+//    @JsonProperty("amenities_code")
+//    public AmenitiesCode getAmenitiesCode() {
+//        return amenitiesCode;
+//    }
+//
+//    @JsonProperty("amenities_code")
+//    public void setAmenitiesCode(AmenitiesCode amenitiesCode) {
+//        this.amenitiesCode = amenitiesCode;
+//    }
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {

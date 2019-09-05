@@ -125,8 +125,6 @@ public class indexController {
         	ObjectMapper objectMapper = new ObjectMapper();
         	objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
         	objectMapper.configure(Feature.ALLOW_MISSING_VALUES, true);
-        	objectMapper.configure(Feature.ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER, true);
-//        	TypeReference<HashMap<String,HashMap<String,Object>>> typeRef = new TypeReference<HashMap<String,HashMap<String,Object>>>() {};
     		int count = 0;
     		for (Properties properties: propertiesList) {
     			PropertiesAvailabilityUrl = keyInfo.getUri()+"properties/availability?checkin="+checkin+"&checkout="+checkout+"&currency="
@@ -134,17 +132,15 @@ public class indexController {
             				+properties.getProperty_id()+"&sales_channel=website&sales_environment=hotel_only&sort_type=preferred&rate_plan_count=50";
     			logger.info("## PropertiesAvailabilityUrl? "+PropertiesAvailabilityUrl);
     			
-        		ResponseEntity<String> PropertiesAvailabilityResponse = paTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, String.class);
+        		ResponseEntity<PropertiesAvailability> PropertiesAvailabilityResponse = paTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, PropertiesAvailability.class);
         		
-            	if (PropertiesAvailabilityResponse.getStatusCodeValue() == 200) {
+            	if (PropertiesAvailabilityResponse.getStatusCodeValue() != 200) {
             		count++;
-            		PropertiesAvailability o = objectMapper.readValue(PropertiesAvailabilityResponse.getBody(), PropertiesAvailability.class); 
-            		
+            	} else {
             		propertyIds.add(properties.getProperty_id());
             		requestModel = requestModel+"/\n"+headers+"/\n"+PropertiesAvailabilityUrl+"/\n";
                 	responseModel = responseModel+"/\n"+PropertiesAvailabilityResponse.getStatusCodeValue()+"/\n"
                 			+PropertiesAvailabilityResponse.getHeaders()+"/\n"+PropertiesAvailabilityResponse.getBody()+"/\n";
-                	count++;
             	}
             	
             	if (count > 4) {
