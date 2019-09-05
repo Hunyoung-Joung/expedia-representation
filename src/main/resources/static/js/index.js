@@ -125,10 +125,10 @@ $(document).ready(function(){
     	
     	$("#person_count").val("大"+$("#adult_count").val()+","+"子"+$("#child_count").val()+","+"部屋"+$("#room_count").val());
     	// Single room
-    	if (parseInt($("#child_count").val()) < 1) {
+    	if (parseInt($("#room_count").val()) < 1) {
     		occupancy_string = $("#adult_count").val();
     	} else {
-    		occupancy_string = $("#adult_count").val()+child_string+"&"+$("#room_count").val();
+    		occupancy_string = $("#adult_count").val()+child_string+"&occupancy="+$("#room_count").val();
     	}
     	
     	console.log("occupancy_string? "+occupancy_string);
