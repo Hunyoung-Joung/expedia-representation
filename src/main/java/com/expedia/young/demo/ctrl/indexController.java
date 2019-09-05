@@ -56,6 +56,7 @@ import com.expedia.young.demo.service.SurveyAnswerInfoService;
 import com.expedia.young.demo.service.SurveyInfoService;
 import com.expedia.young.demo.util.AuthHeaderValueSingleton;
 import com.fasterxml.jackson.core.JsonParser.Feature;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
@@ -178,7 +179,15 @@ public class indexController {
     		String propertyId = propertyIds.get(i);
     		logger.info(i+"    ######################propertyId? "+propertyId);
     		String url = keyInfo.getUri()+"properties/content?language=ja-JP&property_id"+propertyId;
-    		ResponseEntity<Properties> response = restTemplate.exchange(url, HttpMethod.GET, entity, Properties.class);
+    		
+    		ObjectMapper objectMapper = new ObjectMapper();
+    		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+    		TypeReference<HashMap<String,Object>> typeRef = new TypeReference<HashMap<String,Object>>() {
+    			
+    		};
+    		HashMap<String,Object> o = objectMapper.readValue(response.getBody(), typeRef); 
+    		Properties properties= (Properties) o.get(propertyId);
+    		System.out.println("Got " + properties.getName()); 
 
         	logger.info(i+"    ######################getStatusCodeValue? "+response.getStatusCodeValue());
         	PropertiesList.add(response.getBody());

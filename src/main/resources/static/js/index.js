@@ -7,11 +7,11 @@ var propertiesList;
 $(document).ready(function(){
 	
     $.each(propertiesList, function(idx, val) {
-//        $.each(val, function(key, value) {
+        $.each(val, function(key, value) {
 
-				console.log(idx+" - "+val);
+				console.log(key+" - "+value);
 
-//  		});
+  		});
 	});
 
 	// occupancy
