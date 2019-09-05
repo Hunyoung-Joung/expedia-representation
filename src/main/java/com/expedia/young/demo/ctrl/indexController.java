@@ -120,9 +120,12 @@ public class indexController {
     	headers.set("User-Agent", "Mozilla/5.0");
 
     	HttpEntity<?> entity = new HttpEntity<>(headers);
+  
     	String url = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=ja-JP&include=details&include=property_ids";
     
     	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+    	
+    	
 
     	logger.info("######################getStatusCode? "+response.getStatusCode());
     	logger.info("######################getHeaders? "+response.getHeaders());
