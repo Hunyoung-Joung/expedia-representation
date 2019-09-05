@@ -61,6 +61,7 @@ public class indexController {
     
     @GetMapping
     public String init(Model model) {
+    	logger.info("## init ");
         return "index";
     }
     
@@ -74,7 +75,8 @@ public class indexController {
      */
     @PostMapping(value = {"/search"})
     public String index(Model model, @ModelAttribute("conditionInfo") @Valid ConditionInfo conditionInfo) throws IOException {
-
+    	logger.info("## index? "+conditionInfo.toString());
+    	
     	HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
     	RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
     	AuthHeaderValueSingleton authHeaderValueSingleton = AuthHeaderValueSingleton.getInstance();
@@ -111,6 +113,7 @@ public class indexController {
     	// Variable Occupancy
     	if ((!conditionInfo.getCheckin().isEmpty())&&(!conditionInfo.getCheckout().isEmpty())
     			&&(!conditionInfo.getOccupancy().isEmpty())&&(!conditionInfo.getRegion_id().isEmpty())){
+    		
     		String checkin = sdf.format(conditionInfo.getCheckin());
     		String checkout = sdf.format(conditionInfo.getCheckout());
     		String occupancy = conditionInfo.getOccupancy();
