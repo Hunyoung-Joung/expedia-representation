@@ -21,13 +21,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 import com.expedia.young.demo.entity.ConditionInfo;
 import com.expedia.young.demo.entity.Properties;
 import com.expedia.young.demo.entity.PropertiesAvailability;
 import com.expedia.young.demo.entity.Region;
+import com.expedia.young.demo.entity.Register;
 import com.expedia.young.demo.entity.keyInfo;
 import com.expedia.young.demo.util.AuthHeaderValueSingleton;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -175,6 +178,13 @@ public class indexController {
 
     	return init(model);
     }
+
+    // Register Payments
+    @RequestMapping(value="{property_id}", method=RequestMethod.GET)
+    public boolean register(@PathVariable String property_id, @ModelAttribute Register register) {
+
+        return true;
+    }    
     
     private List<Properties> getProperties(List<String> propertyIds, boolean isPossible) throws JsonParseException, JsonMappingException, IOException {
     	logger.info("## propertiesList.size()? "+propertyIds.size());

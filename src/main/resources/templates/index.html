@@ -252,6 +252,11 @@ Copyright@ 2019
 												<input id="occupancy" name="occupancy" type="hidden" class="form-control" th:value="*{property_id}"/>
 											</td>											
 										</tr>
+										<tr th:each="properties:${propertiesList}" th:object="${properties}" style="word-wrap: break-word">
+											<td colspan="5" align="right" style='word-wrap: break-word' th:text="*{isPossible}">
+												<a class="btn btn-default btn-xs" th:href="@{/{property_id}(property_id=*{property_id})}">予約</a>
+											</td>											
+										</tr>										
 							        </tbody>
 								</table>		
 							</div>
