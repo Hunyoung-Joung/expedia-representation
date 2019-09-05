@@ -188,8 +188,9 @@ public class indexController {
     			
     		};
     		HashMap<String,Object> o = objectMapper.readValue(response.getBody(), typeRef); 
-    		Properties properties= (Properties) o.get(propertyId);
-    		System.out.println("Got " + properties.getName()); 
+    		Properties properties= new Properties();
+//    		Properties properties= (Properties) o.get(propertyId);
+    		System.out.println("Got " + o); 
 
         	logger.info(i+"    ######################getStatusCodeValue? "+response.getStatusCodeValue());
         	PropertiesList.add(properties);
