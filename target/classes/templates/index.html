@@ -238,6 +238,7 @@ Copyright@ 2019
 											<th align="center" style="word-wrap: break-word">FAX</th>
 											<th align="center" style="word-wrap: break-word">ランク</th>
 											<th style="word-wrap: break-word"></th>
+											<th style="word-wrap: break-word"></th>
 										</tr>
 							        </thead>								
 							        <tbody>
@@ -250,13 +251,11 @@ Copyright@ 2019
 											</td>
 											<td align="left" style='word-wrap: break-word' th:text="*{rank}">
 												<input id="occupancy" name="occupancy" type="hidden" class="form-control" th:value="*{property_id}"/>
-											</td>											
-										</tr>
-										<tr th:each="properties:${propertiesList}" th:object="${properties}" style="word-wrap: break-word">
-											<td colspan="5" align="right" style='word-wrap: break-word' >
+											</td>		
+											<td align="left" style='word-wrap: break-word' >
 												<a class="btn btn-default btn-xs" th:href="@{/{property_id}(property_id=*{property_id})}">予約</a>
-											</td>											
-										</tr>										
+											</td>	
+										</tr>									
 							        </tbody>
 								</table>		
 							</div>
