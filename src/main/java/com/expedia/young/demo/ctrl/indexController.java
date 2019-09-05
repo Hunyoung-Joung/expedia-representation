@@ -174,8 +174,8 @@ public class indexController {
     		logger.info("######################conditionInfo? "+propertyIds.get(i));
     		String url = keyInfo.getUri()+"properties/content?language=ja-JP&property_id"+propertyId;
     		ResponseEntity<Properties> response = restTemplate.exchange(url, HttpMethod.GET, entity, Properties.class);
-        	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
-        	logger.info("######################getStatusCodeValue? "+response.getBody().getName());
+
+        	logger.info(i+"    ######################getStatusCodeValue? "+response.getBody().getName());
         	PropertiesList.add(response.getBody());
     	}
     	
