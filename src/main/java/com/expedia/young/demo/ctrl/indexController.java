@@ -163,7 +163,6 @@ public class indexController {
     			}
     		}
     		propertiesList = getProperties(propertyIds, true);
-    		logger.info("## propertiesList.size()? "+propertiesList.size());
 
         	model.addAttribute("propertiesList", propertiesList);
     	} 
@@ -178,7 +177,7 @@ public class indexController {
     }
     
     private List<Properties> getProperties(List<String> propertyIds, boolean isPossible) throws JsonParseException, JsonMappingException, IOException {
-    	
+    	logger.info("## propertiesList.size()? "+propertyIds.size());
     	HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
     	RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
     
