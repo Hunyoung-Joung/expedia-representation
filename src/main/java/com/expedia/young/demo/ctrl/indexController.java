@@ -178,6 +178,8 @@ public class indexController {
 
     	List<Properties> PropertiesList = new ArrayList<Properties>(); 
     	ObjectMapper objectMapper = new ObjectMapper();
+    	objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+    	objectMapper.configure(Feature.ALLOW_MISSING_VALUES, true);
     	TypeReference<HashMap<String,Object>> typeRef = new TypeReference<HashMap<String,Object>>() {};
     	for (int i=0; i<5; i++) {
     		String propertyId = propertyIds.get(i);
@@ -188,8 +190,9 @@ public class indexController {
     		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
 
     		HashMap<String,Object> o = objectMapper.readValue(response.getBody(), typeRef); 
-//    		Properties properties= new Properties();
-    		Properties properties= (Properties) o.get(propertyId);
+    		Properties properties= objectMapper.readValue(response.getBody(), Properties.class); 
+
+    		o.get(propertyId);
 //    		for (Iterator iter = o.keySet().iterator(); iter.hasNext();) {
 //    			System.out.println("Got " + iter.next()); 
 //    		}
