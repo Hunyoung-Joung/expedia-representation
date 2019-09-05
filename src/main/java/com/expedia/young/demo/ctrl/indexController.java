@@ -138,17 +138,6 @@ public class indexController {
     	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
     	logger.info("######################getStatusCodeValue? "+response.getBody());
     	
-    	ByteArrayInputStream bais = new ByteArrayInputStream(response.getBody().toString().getBytes());
-    	GZIPInputStream gzis = new GZIPInputStream(bais);
-    	InputStreamReader reader = new InputStreamReader(gzis);
-    	BufferedReader in = new BufferedReader(reader);
-
-    	String readed;
-    	while ((readed = in.readLine()) != null) {
-
-    	    logger.info("######################response? "+readed);
-    	}
-    	
  
 //    	JsonParser springParser = JsonParserFactory.getJsonParser();
 //    	List<Object> list = springParser.parseList(response.toString());
