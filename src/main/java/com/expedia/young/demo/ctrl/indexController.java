@@ -138,22 +138,21 @@ public class indexController {
     	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
     	logger.info("######################getStatusCodeValue? "+response.getBody());
     	
- 
-//    	JsonParser springParser = JsonParserFactory.getJsonParser();
-//    	List<Object> list = springParser.parseList(response.toString());
-//    	for(Object o : list) {
-//    		if(o instanceof Map) {
-//    			Map<String,Object> map = (Map<String,Object>) o;
-//    			System.out.println("Items found: " + map.size());
-//
-//    			int i = 0;
-//    			for (Map.Entry<String, Object> entry : map.entrySet()) {
-//    				System.out.println(entry.getKey() + " = " + entry.getValue());
-//    				i++;
-//    			}
-//
-//    		}
-//    	}
+    	JsonParser springParser = JsonParserFactory.getJsonParser();
+    	List<Object> list = springParser.parseList(response.toString());
+    	for(Object o : list) {
+    		if(o instanceof Map) {
+    			Map<String,Object> map = (Map<String,Object>) o;
+    			System.out.println("Items found: " + map.size());
+
+    			int i = 0;
+    			for (Map.Entry<String, Object> entry : map.entrySet()) {
+    				System.out.println(entry.getKey() + " = " + entry.getValue());
+    				i++;
+    			}
+
+    		}
+    	}
     	model.addAttribute("conditionInfo", conditionInfo);
     	model.addAttribute("response", response.getBody());
     	
