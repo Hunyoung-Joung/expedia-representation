@@ -127,6 +127,7 @@ public class indexController {
         	objectMapper.configure(Feature.ALLOW_MISSING_VALUES, true);
         	objectMapper.configure(Feature.ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER, true);
         	TypeReference<List<Object>> typeRef = new TypeReference<List<Object>>() {};
+        	TypeReference<HashMap<String,HashMap<String,Object>>> typeRef_ = new TypeReference<HashMap<String,HashMap<String,Object>>>() {};
     		int count = 0;
     		for (Properties properties: propertiesList) {
     			PropertiesAvailabilityUrl = keyInfo.getUri()+"properties/availability?checkin="+checkin+"&checkout="+checkout+"&currency="
@@ -138,7 +139,10 @@ public class indexController {
         		
             	if (PropertiesAvailabilityResponse.getStatusCodeValue() == 200) {
             		count++;
-            		HashMap<String,Object> o = objectMapper.readValue(PropertiesAvailabilityResponse.getBody(), typeRef); 
+            		List<Object> o = objectMapper.readValue(PropertiesAvailabilityResponse.getBody(), typeRef); 
+            		for (Object obj: o) {
+            			logger.info("## obj? "+obj.toString());
+            		}
             		
             		propertyIds.add(properties.getProperty_id());
             		requestModel = requestModel+"/\n"+headers+"/\n"+PropertiesAvailabilityUrl+"/\n";
