@@ -200,7 +200,7 @@ public class indexController {
     	objectMapper.configure(Feature.ALLOW_MISSING_VALUES, true);
     	TypeReference<HashMap<String,HashMap<String,Object>>> typeRef = new TypeReference<HashMap<String,HashMap<String,Object>>>() {};
     	for (int i=0; i<5; i++) {
-    		if ((propertyIds.size() == 0)||(propertyIds.size() == i+1)) {
+    		if ((propertyIds.size() == 0)||(propertyIds.size() < i+1)) {
     			break;
     		}
     		String propertyId = propertyIds.get(i);
