@@ -163,6 +163,7 @@ public class indexController {
     			}
     		}
     		propertiesList = getProperties(propertyIds, true);
+    		logger.info("## propertiesList.size()? "+propertiesList.size());
 
         	model.addAttribute("propertiesList", propertiesList);
     	} 
