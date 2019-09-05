@@ -126,7 +126,7 @@ public class indexController {
         	objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
         	objectMapper.configure(Feature.ALLOW_MISSING_VALUES, true);
         	objectMapper.configure(Feature.ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER, true);
-        	TypeReference<HashMap<String,Object>> typeRef = new TypeReference<HashMap<String,Object>>() {};
+        	TypeReference<List<Object>> typeRef = new TypeReference<List<Object>>() {};
     		int count = 0;
     		for (Properties properties: propertiesList) {
     			PropertiesAvailabilityUrl = keyInfo.getUri()+"properties/availability?checkin="+checkin+"&checkout="+checkout+"&currency="
