@@ -128,8 +128,8 @@ public class indexController {
             				+properties.getProperty_id()+"&sales_channel=website&sales_environment=hotel_only&sort_type=preferred&rate_plan_count=50";
     			logger.info("## PropertiesAvailabilityUrl? "+PropertiesAvailabilityUrl);
     			
-        		ResponseEntity<PropertiesAvailability> PropertiesAvailabilityResponse 
-        			= PropertiesAvailabilityResponseTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, PropertiesAvailability.class);
+        		ResponseEntity<String> PropertiesAvailabilityResponse 
+        			= PropertiesAvailabilityResponseTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, String.class);
         		
             	if (PropertiesAvailabilityResponse.getStatusCodeValue() != 200) {
             		count++;
