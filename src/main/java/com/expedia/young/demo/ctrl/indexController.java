@@ -57,8 +57,6 @@ public class indexController {
     
     private String authHeaderValue = null;
     
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    
     @GetMapping
     public String init(Model model) {
     	logger.info("## init ");
@@ -114,8 +112,8 @@ public class indexController {
     	if ((!conditionInfo.getCheckin().isEmpty())&&(!conditionInfo.getCheckout().isEmpty())
     			&&(!conditionInfo.getOccupancy().isEmpty())&&(!conditionInfo.getRegion_id().isEmpty())){
     		
-    		String checkin = sdf.format(conditionInfo.getCheckin());
-    		String checkout = sdf.format(conditionInfo.getCheckout());
+    		String checkin = authHeaderValueSingleton.getFormattedDate(conditionInfo.getCheckin()).toString();
+    		String checkout = authHeaderValueSingleton.getFormattedDate(conditionInfo.getCheckout()).toString();
     		String occupancy = conditionInfo.getOccupancy();
     		String region_id = conditionInfo.getRegion_id();
     		String PropertiesAvailabilityUrl = "";

@@ -3,6 +3,9 @@ package com.expedia.young.demo.util;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AuthHeaderValueSingleton {
@@ -33,5 +36,20 @@ public class AuthHeaderValueSingleton {
 		return authHeaderValue;
 
 	}
+    
+    public Date getFormattedDate(String tagetDatte) {
+    	DateFormat fromFormat = new SimpleDateFormat("dd-MM-yyyy");
+    	fromFormat.setLenient(false);
+    	DateFormat toFormat = new SimpleDateFormat("yyyy-MM-dd");
+    	toFormat.setLenient(false);
+
+    	Date date = null;
+		try {
+			date = fromFormat.parse(tagetDatte);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return date;
+    }
 
 }
