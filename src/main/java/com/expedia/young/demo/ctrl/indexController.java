@@ -75,9 +75,10 @@ public class indexController {
     public String index(Model model, @ModelAttribute("conditionInfo") @Valid ConditionInfo conditionInfo) throws IOException {
     	logger.info("## index? "+conditionInfo.toString());
     	
-    	HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
-    	RestTemplate RegionResponseTemplate = new RestTemplate(clientHttpRequestFactory);
-    	RestTemplate PropertiesAvailabilityResponseTemplate = new RestTemplate(clientHttpRequestFactory);
+    	HttpComponentsClientHttpRequestFactory pFactory = new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
+    	HttpComponentsClientHttpRequestFactory paFactory = new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
+    	RestTemplate rTemplate = new RestTemplate(pFactory);
+    	RestTemplate paTemplate = new RestTemplate(paFactory);
     	AuthHeaderValueSingleton authHeaderValueSingleton = AuthHeaderValueSingleton.getInstance();
     	try {
 			authHeaderValue = authHeaderValueSingleton.getAuthHeaderValue();
@@ -99,7 +100,7 @@ public class indexController {
     	String regionsUrl = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=ja-JP&include=details&include=property_ids";
     	logger.info("## regionsUrl? "+regionsUrl);
     	
-    	ResponseEntity<Region> RegionResponse = RegionResponseTemplate.exchange(regionsUrl, HttpMethod.GET, entity, Region.class);
+    	ResponseEntity<Region> RegionResponse = rTemplate.exchange(regionsUrl, HttpMethod.GET, entity, Region.class);
     	List<Properties> propertiesList = getProperties(RegionResponse.getBody().getPropertyIds(), false);
     	
     	country_code = RegionResponse.getBody().getCountryCode();
@@ -128,8 +129,7 @@ public class indexController {
             				+properties.getProperty_id()+"&sales_channel=website&sales_environment=hotel_only&sort_type=preferred&rate_plan_count=50";
     			logger.info("## PropertiesAvailabilityUrl? "+PropertiesAvailabilityUrl);
     			
-        		ResponseEntity<String> PropertiesAvailabilityResponse 
-        			= PropertiesAvailabilityResponseTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, String.class);
+        		ResponseEntity<PropertiesAvailability> PropertiesAvailabilityResponse = paTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, PropertiesAvailability.class);
         		
             	if (PropertiesAvailabilityResponse.getStatusCodeValue() != 200) {
             		count++;
