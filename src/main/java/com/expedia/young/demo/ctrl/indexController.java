@@ -102,7 +102,7 @@ public class indexController {
     	List<Properties> propertiesList = getProperties(RegionResponse.getBody().getPropertyIds(), false);
     	
     	country_code = RegionResponse.getBody().getCountryCode();
-    	currency = "USD";
+    	currency = "EUR";
 
     	model.addAttribute("propertiesList", propertiesList);
     	

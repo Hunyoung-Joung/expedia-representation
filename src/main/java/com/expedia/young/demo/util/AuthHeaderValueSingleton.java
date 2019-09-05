@@ -38,7 +38,7 @@ public class AuthHeaderValueSingleton {
 	}
     
     public static String getFormattedDate(String tagetDatte) {
-    	String d = tagetDatte.split("/")[2]+"-"+tagetDatte.split("/")[1]+"-"+tagetDatte.split("/")[0];
+    	String d = tagetDatte.split("/")[2]+"-"+tagetDatte.split("/")[0]+"-"+tagetDatte.split("/")[1];
 		return d;
     }
 
