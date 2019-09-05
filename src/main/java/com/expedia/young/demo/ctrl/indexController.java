@@ -143,7 +143,7 @@ public class indexController {
 //    	int e = response.getBody().toString().indexOf("country_code");
 //    	StringBuilder stringBuilder = new StringBuilder(response.getBody().toString());
 //    	stringBuilder.replace(s, e, "");
-    	logger.info("######################getStatusCodeValue? "+response.getBody().getCoordinates().getBoundingPolygon());
+    	logger.info("######################getStatusCodeValue? "+response.getBody().getCoordinates().getBoundingPolygon().toString());
     	
 //    	ObjectMapper objectMapper = new ObjectMapper();
 //    	
@@ -154,7 +154,7 @@ public class indexController {
 
     	
     	model.addAttribute("conditionInfo", conditionInfo);
-    	model.addAttribute("response", response.getBody().getCoordinates().getBoundingPolygon());
+    	model.addAttribute("response", response.getBody().getCoordinates().getBoundingPolygon().toString());
     	
 
     	return init(model);
