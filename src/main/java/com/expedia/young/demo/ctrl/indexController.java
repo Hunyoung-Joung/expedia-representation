@@ -27,6 +27,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 import com.expedia.young.demo.entity.ConditionInfo;
+import com.expedia.young.demo.entity.Images;
+import com.expedia.young.demo.entity.OnsitePayments;
 import com.expedia.young.demo.entity.Properties;
 import com.expedia.young.demo.entity.PropertiesAvailability;
 import com.expedia.young.demo.entity.Region;
@@ -243,10 +245,10 @@ public class indexController {
     				} else if (key_.equals("fax")) {
     					properties.setFax(inner.get(key_).toString());
     				} else if (key_.equals("images")) {
-    					properties.setFax(inner.get(key_).toString());
+    					properties.setImages((Images) inner.get(key_));
     					
     				} else if (key_.equals("onsite_payments")) {
-    					properties.setFax(inner.get(key_).toString());
+    					properties.setOnsite_payments((OnsitePayments)inner.get(key_));
     				} 
     				
     				if (isPossible) {
