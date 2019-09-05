@@ -122,7 +122,7 @@ public class indexController {
     	HttpEntity<?> entity = new HttpEntity<>(headers);
     	String url = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=en-US&include=details&include=property_ids";
     
-//    	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+    	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
 //    	JsonParser springParser = JsonParserFactory.getJsonParser();
 //    	List<Object> list = springParser.parseList(response.toString());
 //    	for(Object o : list) {
