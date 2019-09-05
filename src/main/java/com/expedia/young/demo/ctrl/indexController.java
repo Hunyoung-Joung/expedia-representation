@@ -134,7 +134,7 @@ public class indexController {
     	HttpEntity<?> entity = new HttpEntity<>(headers);
     	String url = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=ja-JP&include=details&include=property_ids";
     
-    	ResponseEntity<?> response = restTemplate.exchange(url, HttpMethod.GET, entity, Object.class);
+    	ResponseEntity<Region> response = restTemplate.exchange(url, HttpMethod.GET, entity, Region.class);
     	
     	logger.info("######################getStatusCode? "+response.getStatusCode());
     	logger.info("######################getHeaders? "+response.getHeaders());
@@ -145,14 +145,16 @@ public class indexController {
     	stringBuilder.replace(s, e, "");
     	logger.info("######################getStatusCodeValue? "+stringBuilder.toString());
     	
-    	ObjectMapper objectMapper = new ObjectMapper();
-    	objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
-    	objectMapper.configure(Feature.IGNORE_UNDEFINED, true);
-    	Region region = objectMapper.readValue(stringBuilder.toString(), Region.class);
+//    	ObjectMapper objectMapper = new ObjectMapper();
+//    	
+//
+//    	objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+//
+//    	Region region = objectMapper.readValue(stringBuilder.toString(), Region.class);
 
     	
     	model.addAttribute("conditionInfo", conditionInfo);
-    	model.addAttribute("response", region.getCoordinates().getBoundingPolygon());
+    	model.addAttribute("response", response);
     	
 
     	return init(model);
