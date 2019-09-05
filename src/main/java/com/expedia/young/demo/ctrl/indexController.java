@@ -125,7 +125,8 @@ public class indexController {
         	ObjectMapper objectMapper = new ObjectMapper();
         	objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
         	objectMapper.configure(Feature.ALLOW_MISSING_VALUES, true);
-        	TypeReference<HashMap<String,HashMap<String,Object>>> typeRef = new TypeReference<HashMap<String,HashMap<String,Object>>>() {};
+        	objectMapper.configure(Feature.ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER, true);
+//        	TypeReference<HashMap<String,HashMap<String,Object>>> typeRef = new TypeReference<HashMap<String,HashMap<String,Object>>>() {};
     		int count = 0;
     		for (Properties properties: propertiesList) {
     			PropertiesAvailabilityUrl = keyInfo.getUri()+"properties/availability?checkin="+checkin+"&checkout="+checkout+"&currency="
@@ -137,7 +138,7 @@ public class indexController {
         		
             	if (PropertiesAvailabilityResponse.getStatusCodeValue() == 200) {
             		count++;
-            		HashMap<String,Object> o = objectMapper.readValue(PropertiesAvailabilityResponse.getBody(), typeRef); 
+            		PropertiesAvailability o = objectMapper.readValue(PropertiesAvailabilityResponse.getBody(), PropertiesAvailability.class); 
             		
             		propertyIds.add(properties.getProperty_id());
             		requestModel = requestModel+"/\n"+headers+"/\n"+PropertiesAvailabilityUrl+"/\n";
