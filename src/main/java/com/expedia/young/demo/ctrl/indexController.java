@@ -144,8 +144,8 @@ public class indexController {
     	ObjectMapper objectMapper = new ObjectMapper();
     	objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
     	objectMapper.configure(Feature.IGNORE_UNDEFINED, true);
-    	Region region = objectMapper.readValue(response.getBody().toString(), Region.class);
-    	
+    	Region region = objectMapper.readValue(response.getBody().toString().getBytes(), Region.class);
+
     	
     	model.addAttribute("conditionInfo", conditionInfo);
     	model.addAttribute("response", region.getCoordinates().getBoundingPolygon());
