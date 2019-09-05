@@ -37,19 +37,9 @@ public class AuthHeaderValueSingleton {
 
 	}
     
-    public Date getFormattedDate(String tagetDatte) {
-    	DateFormat fromFormat = new SimpleDateFormat("dd-MM-yyyy");
-    	fromFormat.setLenient(false);
-    	DateFormat toFormat = new SimpleDateFormat("yyyy-MM-dd");
-    	toFormat.setLenient(false);
-
-    	Date date = null;
-		try {
-			date = fromFormat.parse(tagetDatte);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return date;
+    public static String getFormattedDate(String tagetDatte) {
+    	String d = tagetDatte.split("/")[2]+"-"+tagetDatte.split("/")[1]+"-"+tagetDatte.split("/")[0];
+		return d;
     }
 
 }
