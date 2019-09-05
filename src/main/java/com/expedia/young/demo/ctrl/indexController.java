@@ -190,7 +190,7 @@ public class indexController {
     		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
 
     		HashMap<String,Object> o = objectMapper.readValue(response.getBody(), typeRef); 
-    		Properties properties= objectMapper.readValue(response.getBody(), Properties.class); 
+    		Properties properties= objectMapper.readValue(o.values().iterator().next().toString(), Properties.class); 
 
     		o.get(propertyId);
 //    		for (Iterator iter = o.keySet().iterator(); iter.hasNext();) {

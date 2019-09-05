@@ -8,9 +8,9 @@ $(document).ready(function(){
 	
     $.each(propertiesList, function(idx, val) {
         $.each(val, function(key, value) {
-
-				console.log(key+" - "+value);
-
+        	$.each(val, function(key_, value_) {
+				console.log(key_+" - "+value_);
+        	});
   		});
 	});
 
