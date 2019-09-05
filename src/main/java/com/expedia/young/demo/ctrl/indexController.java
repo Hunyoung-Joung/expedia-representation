@@ -140,16 +140,15 @@ public class indexController {
 
     	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
     	logger.info("######################getStatusCodeValue? "+response.getBody().getCoordinates().getBoundingPolygon().getCoordinates().size());
-    	
-    	getProperties(response.getBody().getPropertyIds());
+
     	model.addAttribute("conditionInfo", conditionInfo);
-    	model.addAttribute("response", response.getBody().getNameFull());
-    	
+    	model.addAttribute("response", response.getStatusCodeValue()+"<br>"+entity.toString());
+    	model.addAttribute("propertiesList", getProperties(response.getBody().getPropertyIds()));
 
     	return init(model);
     }
     
-    private Properties getProperties(List<String> propertyIds) {
+    private List<Properties> getProperties(List<String> propertyIds) {
     	
     	HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
     	RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
@@ -167,8 +166,9 @@ public class indexController {
     	
     	HttpEntity<?> entity = new HttpEntity<>(headers);
 //    	 https://test.ean.com/2.3/properties/content?language=en-US&property_id=9526696
-    	
-    	
+
+    	List<Properties> PropertiesList = new ArrayList<Properties>(); 
+    	int i=0;
     	for (String propertyId: propertyIds) {
     		
     		logger.info("######################conditionInfo? "+propertyId);
@@ -176,9 +176,14 @@ public class indexController {
     		ResponseEntity<Properties> response = restTemplate.exchange(url, HttpMethod.GET, entity, Properties.class);
         	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
         	logger.info("######################getStatusCodeValue? "+response.getBody().getName());
+        	PropertiesList.add(response.getBody());
+        	if (i > 10) {
+        		break;
+        	}
+        	i++;
     	}
     	
-    	return null;
+    	return PropertiesList;
     }
     
 //    /**
