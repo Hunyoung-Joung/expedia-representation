@@ -139,11 +139,11 @@ public class indexController {
     	logger.info("######################getStatusCode? "+response.getStatusCode());
     	logger.info("######################getHeaders? "+response.getHeaders());
     	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
-    	int s = response.getBody().toString().indexOf("name_full");
-    	int e = response.getBody().toString().indexOf("country_code");
-    	StringBuilder stringBuilder = new StringBuilder(response.getBody().toString());
-    	stringBuilder.replace(s, e, "");
-    	logger.info("######################getStatusCodeValue? "+stringBuilder.toString());
+//    	int s = response.getBody().toString().indexOf("name_full");
+//    	int e = response.getBody().toString().indexOf("country_code");
+//    	StringBuilder stringBuilder = new StringBuilder(response.getBody().toString());
+//    	stringBuilder.replace(s, e, "");
+    	logger.info("######################getStatusCodeValue? "+response.getBody().getCoordinates().getBoundingPolygon());
     	
 //    	ObjectMapper objectMapper = new ObjectMapper();
 //    	
@@ -154,7 +154,7 @@ public class indexController {
 
     	
     	model.addAttribute("conditionInfo", conditionInfo);
-    	model.addAttribute("response", response);
+    	model.addAttribute("response", response.getBody().getCoordinates().getBoundingPolygon());
     	
 
     	return init(model);
