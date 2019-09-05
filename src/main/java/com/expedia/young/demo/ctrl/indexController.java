@@ -141,16 +141,16 @@ public class indexController {
     	String url = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=ja-JP&include=details&include=property_ids";
     
     	ResponseEntity<Region> response = restTemplate.exchange(url, HttpMethod.GET, entity, Region.class);
-
-    	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
-    	logger.info("######################response.getBody().getPropertyIds().size()? "+response.getBody().getPropertyIds().size());
     	List<Properties> propertiesList = getProperties(response.getBody().getPropertyIds());
     	for (Properties properties: propertiesList) {
     		logger.info("######################properties? "+properties.getName());
     	}
+    	
+    	String requestModel = headers+"/\n"+url;
+    	String responseModel = response.getStatusCodeValue()+"/\n"+response.getHeaders()+"/\n"+response.getBody();
     	model.addAttribute("conditionInfo", conditionInfo);
-    	model.addAttribute("request", response.getStatusCodeValue()+"/\n"+entity.toString());
-    	model.addAttribute("response", response.getStatusCodeValue()+"/\n"+entity.toString());
+    	model.addAttribute("request", requestModel);
+    	model.addAttribute("response", responseModel);
     	model.addAttribute("propertiesList", propertiesList);
 
     	return init(model);
@@ -191,22 +191,33 @@ public class indexController {
     		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
 
     		HashMap<String,Object> o = objectMapper.readValue(response.getBody(), typeRef); 
-//    		HashMap<String,Object> oo = objectMapper.readValue(o.values().iterator().next().toString(), typeRef); 
-
-    		
-//    		Properties properties= objectMapper.readValue(o.values().iterator().next().toString(), Properties.class); 
     		Properties properties= new Properties();
     	
     		for (Iterator iter = o.keySet().iterator(); iter.hasNext();) {
     			String key = iter.next().toString();
-    			System.out.println(">>>>>>>>>>>>>> Got 1 " + key);
+
     			HashMap<String,Object> inner = (HashMap<String, Object>) o.get(key);
     			for (Iterator iter_ = inner.keySet().iterator(); iter_.hasNext();) {
-    				System.out.println(">>>>>>>>>>>>>> Got 2 " + iter_.next());
+    				String key_ = iter_.next().toString();
+
+    				if (key_.equals("property_id")) {
+    					properties.setProperty_id(inner.get(key_).toString());
+    				} else if (key_.equals("name")) {
+    					properties.setName(inner.get(key_).toString());
+    					
+    				} else if (key_.equals("rank")) {
+    					properties.setRank(inner.get(key_).toString());
+    					
+    				} else if (key_.equals("phone")) {
+    					properties.setPhone(inner.get(key_).toString());
+    					
+    				} else if (key_.equals("fax")) {
+    					properties.setFax(inner.get(key_).toString());
+    					
+    				} 
     			}
     		}
 
-//    		System.out.println(">>>>>>>>>>>>>> " + o.values().iterator().next()); 
         	logger.info(i+"    ######################getStatusCodeValue? "+response.getStatusCodeValue());
         	PropertiesList.add(properties);
     	}
