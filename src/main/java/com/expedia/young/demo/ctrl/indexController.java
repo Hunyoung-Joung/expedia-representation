@@ -155,6 +155,7 @@ public class indexController {
     	
     	HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
     	RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
+    
     	AuthHeaderValueSingleton authHeaderValueSingleton = AuthHeaderValueSingleton.getInstance();
     	try {
 			authHeaderValue = authHeaderValueSingleton.getAuthHeaderValue();
@@ -166,8 +167,9 @@ public class indexController {
     	headers.set("Accept-Encoding", "gzip");
     	headers.set("Authorization", authHeaderValue);
     	headers.set("User-Agent", "Mozilla/5.0");
-    	
+
     	HttpEntity<?> entity = new HttpEntity<>(headers);
+    	
 //    	 https://test.ean.com/2.3/properties/content?language=en-US&property_id=9526696
 
     	List<Properties> PropertiesList = new ArrayList<Properties>(); 

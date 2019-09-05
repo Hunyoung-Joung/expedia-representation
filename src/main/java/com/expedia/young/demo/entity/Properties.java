@@ -13,230 +13,81 @@ import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
-/**
- * The Root Schema
- * <p>
- * An explanation about the purpose of this instance.
- * 
- */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "checked",
-    "dimensions",
-    "id",
-    "name",
-    "price",
-    "tags"
+	"property_id",
+	"name",
+	"phone",
+	"fax",
+	"rank",
+	"multi_unit",
 })
+
 public class Properties {
 
-    /**
-     * The Checked Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("checked")
-    @JsonPropertyDescription("An explanation about the purpose of this instance.")
-    private Boolean checked = false;
-    /**
-     * The Dimensions Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("dimensions")
-    @JsonPropertyDescription("An explanation about the purpose of this instance.")
-    private Dimensions dimensions;
-    /**
-     * The Id Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("id")
-    @JsonPropertyDescription("An explanation about the purpose of this instance.")
-    private Integer id = 0;
-    /**
-     * The Name Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
+    @JsonProperty("property_id")
+    private String property_id;
     @JsonProperty("name")
-    @JsonPropertyDescription("An explanation about the purpose of this instance.")
-    private String name = "";
-    /**
-     * The Price Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("price")
-    @JsonPropertyDescription("An explanation about the purpose of this instance.")
-    private Double price = 0.0D;
-    /**
-     * The Tags Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("tags")
-    @JsonPropertyDescription("An explanation about the purpose of this instance.")
-    private List<String> tags = null;
+    private String name;
+    @JsonProperty("phone")
+    private String phone;
+    @JsonProperty("fax")
+    private String fax;
+    @JsonProperty("rank")
+    private String rank;
+    @JsonProperty("multi_unit")
+    private String multi_unit;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    /**
-     * The Checked Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("checked")
-    public Boolean getChecked() {
-        return checked;
-    }
-
-    /**
-     * The Checked Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("checked")
-    public void setChecked(Boolean checked) {
-        this.checked = checked;
-    }
-
-    /**
-     * The Dimensions Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("dimensions")
-    public Dimensions getDimensions() {
-        return dimensions;
-    }
-
-    /**
-     * The Dimensions Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("dimensions")
-    public void setDimensions(Dimensions dimensions) {
-        this.dimensions = dimensions;
-    }
-
-    /**
-     * The Id Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("id")
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * The Id Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("id")
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /**
-     * The Name Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
+    
+    @JsonProperty("property_id")
+	public String getProperty_id() {
+		return property_id;
+	}
+    @JsonProperty("property_id")
+	public void setProperty_id(String property_id) {
+		this.property_id = property_id;
+	}
     @JsonProperty("name")
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * The Name Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
+	public String getName() {
+		return name;
+	}
     @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * The Price Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("price")
-    public Double getPrice() {
-        return price;
-    }
-
-    /**
-     * The Price Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("price")
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    /**
-     * The Tags Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("tags")
-    public List<String> getTags() {
-        return tags;
-    }
-
-    /**
-     * The Tags Schema
-     * <p>
-     * An explanation about the purpose of this instance.
-     * (Required)
-     * 
-     */
-    @JsonProperty("tags")
-    public void setTags(List<String> tags) {
-        this.tags = tags;
-    }
-
+	public void setName(String name) {
+		this.name = name;
+	}
+    @JsonProperty("phone")
+	public String getPhone() {
+		return phone;
+	}
+    @JsonProperty("phone")
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+    @JsonProperty("fax")
+	public String getFax() {
+		return fax;
+	}
+    @JsonProperty("fax")
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+    @JsonProperty("rank")
+	public String getRank() {
+		return rank;
+	}
+    @JsonProperty("rank")
+	public void setRank(String rank) {
+		this.rank = rank;
+	}
+    @JsonProperty("multi_unit")
+	public String getMulti_unit() {
+		return multi_unit;
+	}
+    @JsonProperty("multi_unit")
+	public void setMulti_unit(String multi_unit) {
+		this.multi_unit = multi_unit;
+	}
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
@@ -246,5 +97,6 @@ public class Properties {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
+    
 
 }
