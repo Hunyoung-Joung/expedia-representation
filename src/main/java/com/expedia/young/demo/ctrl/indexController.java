@@ -182,7 +182,7 @@ public class indexController {
     	for (int i=0; i<5; i++) {
     		String propertyId = propertyIds.get(i);
 
-    		String url = keyInfo.getUri()+"properties/content?language=ja-JP&property_id"+propertyId;
+    		String url = keyInfo.getUri()+"properties/content?language=ja-JP&property_id="+propertyId;
     		logger.info(i+"    ######################url? "+url);
     		
     		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
