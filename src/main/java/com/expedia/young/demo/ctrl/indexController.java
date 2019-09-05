@@ -140,10 +140,10 @@ public class indexController {
 
     	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
     	logger.info("######################getStatusCodeValue? "+response.getBody().getCoordinates().getBoundingPolygon().getCoordinates().size());
-
+    	List<Properties> propertiesList = getProperties(response.getBody().getPropertyIds());
     	model.addAttribute("conditionInfo", conditionInfo);
     	model.addAttribute("response", response.getStatusCodeValue()+"<br>"+entity.toString());
-    	model.addAttribute("propertiesList", getProperties(response.getBody().getPropertyIds()));
+    	model.addAttribute("propertiesList", propertiesList);
 
     	return init(model);
     }
@@ -171,7 +171,7 @@ public class indexController {
 
     	for (int i=0; i<10; i++) {
     		String propertyId = propertyIds.get(i);
-    		logger.info("######################conditionInfo? "+propertyIds.get(i));
+
     		String url = keyInfo.getUri()+"properties/content?language=ja-JP&property_id"+propertyId;
     		ResponseEntity<Properties> response = restTemplate.exchange(url, HttpMethod.GET, entity, Properties.class);
 
