@@ -71,6 +71,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * 
@@ -184,13 +185,14 @@ public class indexController {
     		
     		ObjectMapper objectMapper = new ObjectMapper();
     		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-    		TypeReference<HashMap<String,Object>> typeRef = new TypeReference<HashMap<String,Object>>() {
-    			
-    		};
+    		TypeReference<HashMap<String,Object>> typeRef = new TypeReference<HashMap<String,Object>>() {};
     		HashMap<String,Object> o = objectMapper.readValue(response.getBody(), typeRef); 
     		Properties properties= new Properties();
 //    		Properties properties= (Properties) o.get(propertyId);
-    		System.out.println("Got " + o); 
+    		for (Iterator iter = o.keySet().iterator(); iter.hasNext();) {
+    			System.out.println("Got " + iter.next()); 
+    		}
+
 
         	logger.info(i+"    ######################getStatusCodeValue? "+response.getStatusCodeValue());
         	PropertiesList.add(properties);
