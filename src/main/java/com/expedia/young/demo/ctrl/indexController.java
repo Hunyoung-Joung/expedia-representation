@@ -244,12 +244,13 @@ public class indexController {
     					
     				} else if (key_.equals("fax")) {
     					properties.setFax(inner.get(key_).toString());
-    				} else if (key_.equals("images")) {
-    					properties.setImages((Images) inner.get(key_));
-    					
-    				} else if (key_.equals("onsite_payments")) {
-    					properties.setOnsite_payments((OnsitePayments)inner.get(key_));
     				} 
+//    				else if (key_.equals("images")) {
+//    					properties.setImages((Images) inner.get(key_));
+//    					
+//    				} else if (key_.equals("onsite_payments")) {
+//    					properties.setOnsite_payments((OnsitePayments)inner.get(key_));
+//    				} 
     				
     				if (isPossible) {
     					properties.setPossible(true);
