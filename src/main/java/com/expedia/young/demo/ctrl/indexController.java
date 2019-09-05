@@ -183,9 +183,9 @@ public class indexController {
 
     // Register Payments
     @RequestMapping(value="{property_id}", method=RequestMethod.GET)
-    public boolean register(@PathVariable String property_id, @ModelAttribute Register register) {
+    public String register(Model model,@PathVariable String property_id, @ModelAttribute Register register) {
 
-        return true;
+        return init(model);
     }    
     
     private List<Properties> getProperties(List<String> propertyIds, boolean isPossible) throws JsonParseException, JsonMappingException, IOException {
