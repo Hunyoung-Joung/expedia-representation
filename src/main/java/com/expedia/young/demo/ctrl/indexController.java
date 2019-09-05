@@ -105,7 +105,7 @@ public class indexController {
     @GetMapping
     public String init(Model model) {
     	
-        model.addAttribute("conditionInfo", new ConditionInfo());
+//        model.addAttribute("conditionInfo", new ConditionInfo());
 
         return "index";
     }
@@ -155,12 +155,12 @@ public class indexController {
 
 //    	 https://test.ean.com/2.3/properties/availability?checkin=2019-10-15&checkout=2019-10-17&currency=USD&language=ko-KR&country_code=US&occupancy=1&property_id=7946632&sales_channel=website&sales_environment=hotel_only&sort_type=preferred&rate_plan_count=50
 
-    	
+    	model.addAttribute("responseModel", responseModel);
     	model.addAttribute("conditionInfo", conditionInfo);
     	model.addAttribute("requestModel", requestModel);
     	model.addAttribute("responseModel", responseModel);
 
-    	return "redirect:init("+model+")";
+    	return init(model);
     }
     
     private List<Properties> getProperties(List<String> propertyIds) throws JsonParseException, JsonMappingException, IOException {
