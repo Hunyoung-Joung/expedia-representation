@@ -96,7 +96,8 @@ public class indexController {
     	String country_code = "";
     	
     	String regionsUrl = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=ja-JP&include=details&include=property_ids";
-        
+    	logger.info("## regionsUrl? "+regionsUrl);
+    	
     	ResponseEntity<Region> RegionResponse = restTemplate.exchange(regionsUrl, HttpMethod.GET, entity, Region.class);
     	List<Properties> propertiesList = getProperties(RegionResponse.getBody().getPropertyIds(), false);
     	
@@ -124,6 +125,8 @@ public class indexController {
     			PropertiesAvailabilityUrl = keyInfo.getUri()+"properties/availability?checkin="+checkin+"&checkout="+checkout+"&currency="
             			+currency+"&language=ja-JP&country_code="+country_code+"&occupancy="+occupancy+"&property_id="
             				+properties.getProperty_id()+"&sales_channel=website&sales_environment=hotel_only&sort_type=preferred&rate_plan_count=50";
+    			logger.info("## PropertiesAvailabilityUrl? "+PropertiesAvailabilityUrl);
+    			
         		ResponseEntity<PropertiesAvailability> PropertiesAvailabilityResponse 
         			= restTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, PropertiesAvailability.class);
         		
