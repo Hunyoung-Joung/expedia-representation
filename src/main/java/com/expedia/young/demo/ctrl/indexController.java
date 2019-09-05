@@ -122,6 +122,10 @@ public class indexController {
     		String PropertiesAvailabilityUrl = "";
     		
     		List<String> propertyIds = new ArrayList<String>();
+        	ObjectMapper objectMapper = new ObjectMapper();
+        	objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+        	objectMapper.configure(Feature.ALLOW_MISSING_VALUES, true);
+        	TypeReference<HashMap<String,HashMap<String,Object>>> typeRef = new TypeReference<HashMap<String,HashMap<String,Object>>>() {};
     		int count = 0;
     		for (Properties properties: propertiesList) {
     			PropertiesAvailabilityUrl = keyInfo.getUri()+"properties/availability?checkin="+checkin+"&checkout="+checkout+"&currency="
@@ -129,15 +133,17 @@ public class indexController {
             				+properties.getProperty_id()+"&sales_channel=website&sales_environment=hotel_only&sort_type=preferred&rate_plan_count=50";
     			logger.info("## PropertiesAvailabilityUrl? "+PropertiesAvailabilityUrl);
     			
-        		ResponseEntity<PropertiesAvailability> PropertiesAvailabilityResponse = paTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, PropertiesAvailability.class);
+        		ResponseEntity<String> PropertiesAvailabilityResponse = paTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, String.class);
         		
-            	if (PropertiesAvailabilityResponse.getStatusCodeValue() != 200) {
+            	if (PropertiesAvailabilityResponse.getStatusCodeValue() == 200) {
             		count++;
-            	} else {
+            		HashMap<String,Object> o = objectMapper.readValue(PropertiesAvailabilityResponse.getBody(), typeRef); 
+            		
             		propertyIds.add(properties.getProperty_id());
             		requestModel = requestModel+"/\n"+headers+"/\n"+PropertiesAvailabilityUrl+"/\n";
                 	responseModel = responseModel+"/\n"+PropertiesAvailabilityResponse.getStatusCodeValue()+"/\n"
                 			+PropertiesAvailabilityResponse.getHeaders()+"/\n"+PropertiesAvailabilityResponse.getBody()+"/\n";
+                	count++;
             	}
             	
             	if (count > 4) {
