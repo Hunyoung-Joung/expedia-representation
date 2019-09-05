@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Logger;
+import java.util.zip.GZIPInputStream;
 
 import javax.validation.Valid;
 
@@ -51,6 +52,10 @@ import com.expedia.young.demo.service.SurveyAnswerInfoService;
 import com.expedia.young.demo.service.SurveyInfoService;
 import com.expedia.young.demo.util.AuthHeaderValueSingleton;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -101,9 +106,10 @@ public class indexController {
      * @param model
      * @param userInfo
      * @return
+     * @throws IOException 
      */
     @PostMapping(value = {"/search"})
-    public String index(Model model, @ModelAttribute("conditionInfo") @Valid ConditionInfo conditionInfo) {
+    public String index(Model model, @ModelAttribute("conditionInfo") @Valid ConditionInfo conditionInfo) throws IOException {
 
     	logger.info("######################conditionInfo? "+conditionInfo.toString());
     	RestTemplate restTemplate = new RestTemplate();
@@ -120,16 +126,26 @@ public class indexController {
     	headers.set("User-Agent", "Mozilla/5.0");
 
     	HttpEntity<?> entity = new HttpEntity<>(headers);
-  
     	String url = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=ja-JP&include=details&include=property_ids";
     
-    	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+    	ResponseEntity<?> response = restTemplate.exchange(url, HttpMethod.GET, entity, Object.class);
     	
-    	
-
     	logger.info("######################getStatusCode? "+response.getStatusCode());
     	logger.info("######################getHeaders? "+response.getHeaders());
     	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
+    	
+    	ByteArrayInputStream bais = new ByteArrayInputStream(response.getBody().toString().getBytes());
+    	GZIPInputStream gzis = new GZIPInputStream(bais);
+    	InputStreamReader reader = new InputStreamReader(gzis);
+    	BufferedReader in = new BufferedReader(reader);
+
+    	String readed;
+    	while ((readed = in.readLine()) != null) {
+
+    	    logger.info("######################response? "+readed);
+    	}
+    	
+ 
 //    	JsonParser springParser = JsonParserFactory.getJsonParser();
 //    	List<Object> list = springParser.parseList(response.toString());
 //    	for(Object o : list) {
@@ -147,7 +163,7 @@ public class indexController {
 //    	}
     	model.addAttribute("conditionInfo", conditionInfo);
     	model.addAttribute("response", response.getBody());
-    	logger.info("######################response? "+response.getBody());
+    	
 
     	return init(model);
     }
