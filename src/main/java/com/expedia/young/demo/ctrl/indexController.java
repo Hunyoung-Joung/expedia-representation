@@ -134,27 +134,34 @@ public class indexController {
             			+currency+"&language=ja-JP&country_code="+country_code+"&occupancy="+occupancy+"&property_id="
             				+properties.getProperty_id()+"&sales_channel=website&sales_environment=hotel_only&sort_type=preferred&rate_plan_count=50";
     			logger.info("## PropertiesAvailabilityUrl? "+PropertiesAvailabilityUrl);
-    			
-        		ResponseEntity<String> PropertiesAvailabilityResponse = paTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, String.class);
-        		
-            	if (PropertiesAvailabilityResponse.getStatusCodeValue() == 200) {
-            		count++;
-            		List<Object> o = objectMapper.readValue(PropertiesAvailabilityResponse.getBody(), typeRef); 
-            		for (Object obj: o) {
-            			logger.info("## obj? "+obj.toString());
-            		}
-            		
-            		propertyIds.add(properties.getProperty_id());
-            		requestModel = requestModel+"/\n"+headers+"/\n"+PropertiesAvailabilityUrl+"/\n";
-                	responseModel = responseModel+"/\n"+PropertiesAvailabilityResponse.getStatusCodeValue()+"/\n"
-                			+PropertiesAvailabilityResponse.getHeaders()+"/\n"+PropertiesAvailabilityResponse.getBody()+"/\n";
-                	count++;
-            	}
-            	
-            	if (count > 4) {
-            		break;
-            	}
-            	count++;
+    			ResponseEntity<String> PropertiesAvailabilityResponse = null;
+    			try {
+    				PropertiesAvailabilityResponse = paTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, String.class);
+    			} catch(Exception e) {
+    				if (PropertiesAvailabilityResponse.getStatusCodeValue() == 404) {
+    					logger.info("## PropertiesAvailabilityResponse.getStatusCodeValue()? "+PropertiesAvailabilityResponse.getStatusCodeValue());
+    				}
+    				e.printStackTrace();
+    			} finally {
+                	if (PropertiesAvailabilityResponse.getStatusCodeValue() == 200) {
+                		count++;
+                		List<Object> o = objectMapper.readValue(PropertiesAvailabilityResponse.getBody(), typeRef); 
+                		for (Object obj: o) {
+                			logger.info("## obj? "+obj.toString());
+                		}
+                		
+                		propertyIds.add(properties.getProperty_id());
+                		requestModel = requestModel+"/\n"+headers+"/\n"+PropertiesAvailabilityUrl+"/\n";
+                    	responseModel = responseModel+"/\n"+PropertiesAvailabilityResponse.getStatusCodeValue()+"/\n"
+                    			+PropertiesAvailabilityResponse.getHeaders()+"/\n"+PropertiesAvailabilityResponse.getBody()+"/\n";
+                    	count++;
+                	}
+                	
+                	if (count > 4) {
+                		break;
+                	}
+                	count++;	
+    			}
     		}
     		propertiesList = getProperties(propertyIds, true);
 
