@@ -143,8 +143,7 @@ public class indexController {
     				}
     				e.printStackTrace();
     			} finally {
-                	if (PropertiesAvailabilityResponse.getStatusCodeValue() == 200) {
-                		count++;
+                	if ((null != PropertiesAvailabilityResponse)&&(PropertiesAvailabilityResponse.getStatusCodeValue() == 200)) {
                 		List<Object> o = objectMapper.readValue(PropertiesAvailabilityResponse.getBody(), typeRef); 
                 		for (Object obj: o) {
                 			logger.info("## obj? "+obj.toString());
