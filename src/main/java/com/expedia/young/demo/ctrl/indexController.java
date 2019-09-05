@@ -43,6 +43,7 @@ import org.springframework.web.client.RestTemplate;
 import com.expedia.young.demo.entity.AdminQuestionInfo;
 import com.expedia.young.demo.entity.ConditionInfo;
 import com.expedia.young.demo.entity.PersonalInfo;
+import com.expedia.young.demo.entity.Properties;
 import com.expedia.young.demo.entity.QuestionInfo;
 import com.expedia.young.demo.entity.Region;
 import com.expedia.young.demo.entity.UserInfo;
@@ -132,32 +133,52 @@ public class indexController {
     	headers.set("User-Agent", "Mozilla/5.0");
 
     	HttpEntity<?> entity = new HttpEntity<>(headers);
+//    	 https://test.ean.com/2.3/properties/availability?checkin=2019-10-15&checkout=2019-10-17&currency=USD&language=ko-KR&country_code=US&occupancy=1&property_id=7946632&sales_channel=website&sales_environment=hotel_only&sort_type=preferred&rate_plan_count=50
     	String url = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=ja-JP&include=details&include=property_ids";
     
     	ResponseEntity<Region> response = restTemplate.exchange(url, HttpMethod.GET, entity, Region.class);
-    	
-    	logger.info("######################getStatusCode? "+response.getStatusCode());
-    	logger.info("######################getHeaders? "+response.getHeaders());
-    	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
-//    	int s = response.getBody().toString().indexOf("name_full");
-//    	int e = response.getBody().toString().indexOf("country_code");
-//    	StringBuilder stringBuilder = new StringBuilder(response.getBody().toString());
-//    	stringBuilder.replace(s, e, "");
-    	logger.info("######################getStatusCodeValue? "+response.getBody().getCoordinates().getBoundingPolygon().toString());
-    	
-//    	ObjectMapper objectMapper = new ObjectMapper();
-//    	
-//
-//    	objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
-//
-//    	Region region = objectMapper.readValue(stringBuilder.toString(), Region.class);
 
+    	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
+    	logger.info("######################getStatusCodeValue? "+response.getBody().getCoordinates().getBoundingPolygon().getCoordinates().size());
     	
+    	getProperties(response.getBody().getPropertyIds());
     	model.addAttribute("conditionInfo", conditionInfo);
-    	model.addAttribute("response", response.getBody().getCoordinates().getBoundingPolygon().toString());
+    	model.addAttribute("response", response.getBody().getNameFull());
     	
 
     	return init(model);
+    }
+    
+    private Properties getProperties(List<String> propertyIds) {
+    	
+    	HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
+    	RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
+    	AuthHeaderValueSingleton authHeaderValueSingleton = AuthHeaderValueSingleton.getInstance();
+    	try {
+			authHeaderValue = authHeaderValueSingleton.getAuthHeaderValue();
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+    	HttpHeaders headers = new HttpHeaders();
+    	headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+    	headers.set("Accept-Encoding", "gzip");
+    	headers.set("Authorization", authHeaderValue);
+    	headers.set("User-Agent", "Mozilla/5.0");
+    	
+    	HttpEntity<?> entity = new HttpEntity<>(headers);
+//    	 https://test.ean.com/2.3/properties/content?language=en-US&property_id=9526696
+    	
+    	
+    	for (String propertyId: propertyIds) {
+    		
+    		logger.info("######################conditionInfo? "+propertyId);
+    		String url = keyInfo.getUri()+"properties/content?language=ja-JP&property_id"+propertyId;
+    		ResponseEntity<Properties> response = restTemplate.exchange(url, HttpMethod.GET, entity, Properties.class);
+        	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
+        	logger.info("######################getStatusCodeValue? "+response.getBody().getName());
+    	}
+    	
+    	return null;
     }
     
 //    /**
