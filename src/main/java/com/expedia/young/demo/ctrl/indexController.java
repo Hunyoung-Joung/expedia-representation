@@ -138,7 +138,7 @@ public class indexController {
     			try {
     				PropertiesAvailabilityResponse = paTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, String.class);
     			} catch(Exception e) {
-    				if (PropertiesAvailabilityResponse.getStatusCodeValue() == 404) {
+    				if ((null != PropertiesAvailabilityResponse)&&(PropertiesAvailabilityResponse.getStatusCodeValue() == 404)) {
     					logger.info("## PropertiesAvailabilityResponse.getStatusCodeValue()? "+PropertiesAvailabilityResponse.getStatusCodeValue());
     				}
     				e.printStackTrace();
