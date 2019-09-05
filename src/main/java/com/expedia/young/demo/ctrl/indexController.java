@@ -168,19 +168,15 @@ public class indexController {
 //    	 https://test.ean.com/2.3/properties/content?language=en-US&property_id=9526696
 
     	List<Properties> PropertiesList = new ArrayList<Properties>(); 
-    	int i=0;
-    	for (String propertyId: propertyIds) {
-    		
-    		logger.info("######################conditionInfo? "+propertyId);
+
+    	for (int i=0; i<10; i++) {
+    		String propertyId = propertyIds.get(i);
+    		logger.info("######################conditionInfo? "+propertyIds.get(i));
     		String url = keyInfo.getUri()+"properties/content?language=ja-JP&property_id"+propertyId;
     		ResponseEntity<Properties> response = restTemplate.exchange(url, HttpMethod.GET, entity, Properties.class);
         	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
         	logger.info("######################getStatusCodeValue? "+response.getBody().getName());
         	PropertiesList.add(response.getBody());
-        	if (i > 10) {
-        		break;
-        	}
-        	i++;
     	}
     	
     	return PropertiesList;
