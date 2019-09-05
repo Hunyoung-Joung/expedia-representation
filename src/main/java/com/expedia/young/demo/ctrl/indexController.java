@@ -169,7 +169,7 @@ public class indexController {
 
     	List<Properties> PropertiesList = new ArrayList<Properties>(); 
 
-    	for (int i=0; i<10; i++) {
+    	for (int i=0; i<5; i++) {
     		String propertyId = propertyIds.get(i);
 
     		String url = keyInfo.getUri()+"properties/content?language=ja-JP&property_id"+propertyId;
