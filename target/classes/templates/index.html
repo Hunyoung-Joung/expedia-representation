@@ -253,7 +253,7 @@ Copyright@ 2019
 											</td>											
 										</tr>
 										<tr th:each="properties:${propertiesList}" th:object="${properties}" style="word-wrap: break-word">
-											<td colspan="5" align="right" style='word-wrap: break-word' th:text="*{isPossible}">
+											<td colspan="5" align="right" style='word-wrap: break-word' >
 												<a class="btn btn-default btn-xs" th:href="@{/{property_id}(property_id=*{property_id})}">予約</a>
 											</td>											
 										</tr>										
