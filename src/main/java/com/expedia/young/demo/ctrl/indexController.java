@@ -44,6 +44,7 @@ import com.expedia.young.demo.entity.AdminQuestionInfo;
 import com.expedia.young.demo.entity.ConditionInfo;
 import com.expedia.young.demo.entity.PersonalInfo;
 import com.expedia.young.demo.entity.QuestionInfo;
+import com.expedia.young.demo.entity.Region;
 import com.expedia.young.demo.entity.UserInfo;
 import com.expedia.young.demo.entity.keyInfo;
 import com.expedia.young.demo.repo.QuestionInfoRepository;
@@ -53,6 +54,7 @@ import com.expedia.young.demo.service.QuestionInfoService;
 import com.expedia.young.demo.service.SurveyAnswerInfoService;
 import com.expedia.young.demo.service.SurveyInfoService;
 import com.expedia.young.demo.util.AuthHeaderValueSingleton;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -138,23 +140,12 @@ public class indexController {
     	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
     	logger.info("######################getStatusCodeValue? "+response.getBody());
     	
-    	JsonParser springParser = JsonParserFactory.getJsonParser();
-    	List<Object> list = springParser.parseList(response.toString());
-    	for(Object o : list) {
-    		if(o instanceof Map) {
-    			Map<String,Object> map = (Map<String,Object>) o;
-    			System.out.println("Items found: " + map.size());
-
-    			int i = 0;
-    			for (Map.Entry<String, Object> entry : map.entrySet()) {
-    				System.out.println(entry.getKey() + " = " + entry.getValue());
-    				i++;
-    			}
-
-    		}
-    	}
+    	ObjectMapper objectMapper = new ObjectMapper();
+    	Region region = objectMapper.readValue(response.getBody().toString(), Region.class);
+    	
+    	
     	model.addAttribute("conditionInfo", conditionInfo);
-    	model.addAttribute("response", response.getBody());
+    	model.addAttribute("response", region.getCoordinates().getBoundingPolygon());
     	
 
     	return init(model);
