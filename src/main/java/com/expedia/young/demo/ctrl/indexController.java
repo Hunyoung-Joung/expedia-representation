@@ -143,6 +143,7 @@ public class indexController {
     	
     	ObjectMapper objectMapper = new ObjectMapper();
     	objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+    	objectMapper.configure(Feature.ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER, true);
     	Region region = objectMapper.readValue(response.getBody().toString(), Region.class);
     	
     	
