@@ -188,13 +188,13 @@ public class indexController {
     		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
 
     		HashMap<String,Object> o = objectMapper.readValue(response.getBody(), typeRef); 
-    		Properties properties= new Properties();
-//    		Properties properties= (Properties) o.get(propertyId);
-    		for (Iterator iter = o.keySet().iterator(); iter.hasNext();) {
-    			System.out.println("Got " + iter.next()); 
-    		}
+//    		Properties properties= new Properties();
+    		Properties properties= (Properties) o.get(propertyId);
+//    		for (Iterator iter = o.keySet().iterator(); iter.hasNext();) {
+//    			System.out.println("Got " + iter.next()); 
+//    		}
 
-    		System.out.println(">>>>>>>>>>>>>> " + o.values().iterator().next()); 
+//    		System.out.println(">>>>>>>>>>>>>> " + o.values().iterator().next()); 
         	logger.info(i+"    ######################getStatusCodeValue? "+response.getStatusCodeValue());
         	PropertiesList.add(properties);
     	}

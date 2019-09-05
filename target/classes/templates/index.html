@@ -221,22 +221,24 @@ Copyright@ 2019
 				  	</div>		
 					<div class="row">
 					    <div class="col-sm-4" >
-						<div class="form-group">
-						  	<textarea class="form-control rounded-0" rows="10" id="response" name="response" th:text="*{response}"></textarea>
-						</div>
+							<div class="form-group">
+							  	<textarea class="form-control rounded-0" rows="10" id="response" name="response" th:text="*{response}"></textarea>
+							</div>
 					    <div class="col-sm-8" >
-		<table class="table" style="table-layout: fixed; width: 100%">
-	        <thead>
-				<tr style="word-wrap: break-word">
-					<th style="word-wrap: break-word">宿泊先</th>
-				</tr>
-	        </thead>
-	        <tbody>
-				<tr th:each="properties:${propertiesList}" th:object="${properties}" style="word-wrap: break-word">
-						<td style='word-wrap: break-word' th:text="*{name}"></td>
-				</tr>
-	        </tbody>
-		</table>
+					    	<div class="form-group">
+								<table class="table" style="table-layout: fixed; width: 100%">
+							        <thead>
+										<tr style="word-wrap: break-word">
+											<th style="word-wrap: break-word">宿泊先</th>
+										</tr>
+							        </thead>
+							        <tbody>
+										<tr th:each="properties:${propertiesList}" th:object="${properties}" style="word-wrap: break-word">
+												<td style='word-wrap: break-word' th:text="*{name}"></td>
+										</tr>
+							        </tbody>
+								</table>		
+							</div>
 					    </div>
 				  	</div>	
 				</div>
