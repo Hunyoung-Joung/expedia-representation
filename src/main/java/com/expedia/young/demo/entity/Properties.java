@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 	"rank",
 	"images",
 	"onsite_payments",
+	"isPossible",
 	"multi_unit",
 })
 
@@ -43,6 +44,8 @@ public class Properties {
     private OnsitePayments onsite_payments;
     @JsonProperty("images")
     private Images images;
+    @JsonProperty("isPossible")
+    private boolean isPossible;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     
@@ -110,7 +113,15 @@ public class Properties {
 	public void setImages(Images images) {
 		this.images = images;
 	}
-	@JsonAnyGetter
+    @JsonProperty("isPossible")
+	public boolean isPossible() {
+		return isPossible;
+	}
+    @JsonAnySetter
+	public void setPossible(boolean isPossible) {
+		this.isPossible = isPossible;
+	}
+    @JsonAnySetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }

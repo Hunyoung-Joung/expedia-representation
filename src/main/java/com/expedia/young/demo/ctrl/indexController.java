@@ -98,7 +98,7 @@ public class indexController {
     	String regionsUrl = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=ja-JP&include=details&include=property_ids";
         
     	ResponseEntity<Region> RegionResponse = restTemplate.exchange(regionsUrl, HttpMethod.GET, entity, Region.class);
-    	List<Properties> propertiesList = getProperties(RegionResponse.getBody().getPropertyIds());
+    	List<Properties> propertiesList = getProperties(RegionResponse.getBody().getPropertyIds(), false);
     	
     	country_code = RegionResponse.getBody().getCountryCode();
     	currency = "USD";
@@ -141,7 +141,7 @@ public class indexController {
             	}
             	count++;
     		}
-    		propertiesList = getProperties(propertyIds);
+    		propertiesList = getProperties(propertyIds, true);
 
         	model.addAttribute("propertiesList", propertiesList);
     	} 
@@ -155,7 +155,7 @@ public class indexController {
     	return init(model);
     }
     
-    private List<Properties> getProperties(List<String> propertyIds) throws JsonParseException, JsonMappingException, IOException {
+    private List<Properties> getProperties(List<String> propertyIds, boolean isPossible) throws JsonParseException, JsonMappingException, IOException {
     	
     	HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
     	RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
@@ -213,8 +213,13 @@ public class indexController {
     					
     				} else if (key_.equals("onsite_payments")) {
     					properties.setFax(inner.get(key_).toString());
-    					
     				} 
+    				
+    				if (isPossible) {
+    					properties.setPossible(true);
+    				} else {
+    					properties.setPossible(false);
+    				}
     			}
     		}
         	PropertiesList.add(properties);
