@@ -191,12 +191,15 @@ public class indexController {
     		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
 
     		HashMap<String,Object> o = objectMapper.readValue(response.getBody(), typeRef); 
-    		Properties properties= objectMapper.readValue(objectMapper.writeValueAsString(o.values().iterator().next().toString()), Properties.class); 
+    		HashMap<String,Object> oo = objectMapper.readValue(o.values().iterator().next().toString(), typeRef); 
 
-    		o.get(propertyId);
-//    		for (Iterator iter = o.keySet().iterator(); iter.hasNext();) {
-//    			System.out.println("Got " + iter.next()); 
-//    		}
+    		
+//    		Properties properties= objectMapper.readValue(o.values().iterator().next().toString(), Properties.class); 
+    		Properties properties= new Properties();
+    	
+    		for (Iterator iter = oo.keySet().iterator(); iter.hasNext();) {
+    			System.out.println("Got " + iter.next()); 
+    		}
 
 //    		System.out.println(">>>>>>>>>>>>>> " + o.values().iterator().next()); 
         	logger.info(i+"    ######################getStatusCodeValue? "+response.getStatusCodeValue());
