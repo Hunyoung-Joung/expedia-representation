@@ -139,7 +139,11 @@ public class indexController {
     	logger.info("######################getStatusCode? "+response.getStatusCode());
     	logger.info("######################getHeaders? "+response.getHeaders());
     	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
-    	logger.info("######################getStatusCodeValue? "+response.toString());
+    	int s = response.getBody().toString().indexOf("name_full");
+    	int e = response.getBody().toString().indexOf("country_code");
+    	StringBuilder stringBuilder = new StringBuilder(response.getBody().toString());
+    	stringBuilder.replace(s, e, "");
+    	logger.info("######################getStatusCodeValue? "+stringBuilder.toString());
     	
     	ObjectMapper objectMapper = new ObjectMapper();
     	objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
