@@ -139,12 +139,12 @@ public class indexController {
     	logger.info("######################getStatusCode? "+response.getStatusCode());
     	logger.info("######################getHeaders? "+response.getHeaders());
     	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
-    	logger.info("######################getStatusCodeValue? "+response.getBody());
+    	logger.info("######################getStatusCodeValue? "+response.toString());
     	
     	ObjectMapper objectMapper = new ObjectMapper();
     	objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
     	objectMapper.configure(Feature.IGNORE_UNDEFINED, true);
-    	Region region = objectMapper.readValue(response.getBody().toString().getBytes(), Region.class);
+    	Region region = objectMapper.readValue(response.getBody().toString(), Region.class);
 
     	
     	model.addAttribute("conditionInfo", conditionInfo);
