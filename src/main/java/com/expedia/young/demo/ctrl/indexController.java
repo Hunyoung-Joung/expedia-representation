@@ -76,7 +76,8 @@ public class indexController {
     	logger.info("## index? "+conditionInfo.toString());
     	
     	HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
-    	RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
+    	RestTemplate RegionResponseTemplate = new RestTemplate(clientHttpRequestFactory);
+    	RestTemplate PropertiesAvailabilityResponseTemplate = new RestTemplate(clientHttpRequestFactory);
     	AuthHeaderValueSingleton authHeaderValueSingleton = AuthHeaderValueSingleton.getInstance();
     	try {
 			authHeaderValue = authHeaderValueSingleton.getAuthHeaderValue();
@@ -98,7 +99,7 @@ public class indexController {
     	String regionsUrl = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=ja-JP&include=details&include=property_ids";
     	logger.info("## regionsUrl? "+regionsUrl);
     	
-    	ResponseEntity<Region> RegionResponse = restTemplate.exchange(regionsUrl, HttpMethod.GET, entity, Region.class);
+    	ResponseEntity<Region> RegionResponse = RegionResponseTemplate.exchange(regionsUrl, HttpMethod.GET, entity, Region.class);
     	List<Properties> propertiesList = getProperties(RegionResponse.getBody().getPropertyIds(), false);
     	
     	country_code = RegionResponse.getBody().getCountryCode();
@@ -128,7 +129,7 @@ public class indexController {
     			logger.info("## PropertiesAvailabilityUrl? "+PropertiesAvailabilityUrl);
     			
         		ResponseEntity<PropertiesAvailability> PropertiesAvailabilityResponse 
-        			= restTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, PropertiesAvailability.class);
+        			= PropertiesAvailabilityResponseTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, PropertiesAvailability.class);
         		
             	if (PropertiesAvailabilityResponse.getStatusCodeValue() != 200) {
             		count++;
