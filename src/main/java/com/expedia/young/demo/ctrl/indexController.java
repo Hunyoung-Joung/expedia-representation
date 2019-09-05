@@ -198,10 +198,15 @@ public class indexController {
     		Properties properties= new Properties();
     	
     		for (Iterator iter = o.keySet().iterator(); iter.hasNext();) {
-    			System.out.println("Got " + iter.next()); 
+    			String key = iter.next().toString();
+    			System.out.println(">>>>>>>>>>>>>> Got 1 " + key);
+    			HashMap<String,Object> inner = (HashMap<String, Object>) o.get(key);
+    			for (Iterator iter_ = inner.keySet().iterator(); iter.hasNext();) {
+    				System.out.println(">>>>>>>>>>>>>> Got 2 " + iter.next());
+    			}
     		}
 
-    		System.out.println(">>>>>>>>>>>>>> " + o.values().iterator().next()); 
+//    		System.out.println(">>>>>>>>>>>>>> " + o.values().iterator().next()); 
         	logger.info(i+"    ######################getStatusCodeValue? "+response.getStatusCodeValue());
         	PropertiesList.add(properties);
     	}
