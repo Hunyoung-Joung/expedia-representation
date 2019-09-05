@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "id",
     "type",
     "name",
-    "name_full",
+//    "name_full",
     "country_code",
     "coordinates",
     "ancestors",
@@ -31,8 +31,8 @@ public class Region {
     private String type;
     @JsonProperty("name")
     private String name;
-    @JsonProperty("name_full")
-    private String nameFull;
+//    @JsonProperty("name_full")
+//    private String nameFull;
     @JsonProperty("country_code")
     private String countryCode;
     @JsonProperty("coordinates")
@@ -75,16 +75,16 @@ public class Region {
     public void setName(String name) {
         this.name = name;
     }
-
-    @JsonProperty("name_full")
-    public String getNameFull() {
-        return nameFull;
-    }
-
-    @JsonProperty("name_full")
-    public void setNameFull(String nameFull) {
-        this.nameFull = nameFull;
-    }
+//
+//    @JsonProperty("name_full")
+//    public String getNameFull() {
+//        return nameFull;
+//    }
+//
+//    @JsonProperty("name_full")
+//    public void setNameFull(String nameFull) {
+//        this.nameFull = nameFull;
+//    }
 
     @JsonProperty("country_code")
     public String getCountryCode() {
