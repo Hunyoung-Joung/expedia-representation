@@ -177,13 +177,14 @@ public class indexController {
 //    	 https://test.ean.com/2.3/properties/content?language=en-US&property_id=9526696
 
     	List<Properties> PropertiesList = new ArrayList<Properties>(); 
+    	ObjectMapper objectMapper = new ObjectMapper();
     	TypeReference<HashMap<String,Object>> typeRef = new TypeReference<HashMap<String,Object>>() {};
     	for (int i=0; i<5; i++) {
     		String propertyId = propertyIds.get(i);
-    		logger.info(i+"    ######################propertyId? "+propertyId);
+
     		String url = keyInfo.getUri()+"properties/content?language=ja-JP&property_id"+propertyId;
+    		logger.info(i+"    ######################url? "+url);
     		
-    		ObjectMapper objectMapper = new ObjectMapper();
     		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
 
     		HashMap<String,Object> o = objectMapper.readValue(response.getBody(), typeRef); 
