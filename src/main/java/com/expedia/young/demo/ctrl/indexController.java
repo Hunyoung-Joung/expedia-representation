@@ -55,8 +55,10 @@ import com.expedia.young.demo.service.QuestionInfoService;
 import com.expedia.young.demo.service.SurveyAnswerInfoService;
 import com.expedia.young.demo.service.SurveyInfoService;
 import com.expedia.young.demo.util.AuthHeaderValueSingleton;
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser.Feature;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
@@ -152,7 +154,7 @@ public class indexController {
     	return init(model);
     }
     
-    private List<Properties> getProperties(List<String> propertyIds) {
+    private List<Properties> getProperties(List<String> propertyIds) throws JsonParseException, JsonMappingException, IOException {
     	
     	HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
     	RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
@@ -190,7 +192,7 @@ public class indexController {
     		System.out.println("Got " + properties.getName()); 
 
         	logger.info(i+"    ######################getStatusCodeValue? "+response.getStatusCodeValue());
-        	PropertiesList.add(response.getBody());
+        	PropertiesList.add(properties);
     	}
     	
     	return PropertiesList;
