@@ -16,6 +16,8 @@ import java.util.logging.Logger;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.json.JsonParser;
+import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -105,8 +107,6 @@ public class indexController {
 
     	logger.info("######################conditionInfo? "+conditionInfo.toString());
     	RestTemplate restTemplate = new RestTemplate();
-//    	String url = keyInfo.getUri()+"regions";
-//    	String url = keyInfo.getUri()+"properties/geography";
     	AuthHeaderValueSingleton authHeaderValueSingleton = AuthHeaderValueSingleton.getInstance();
     	try {
 			authHeaderValue = authHeaderValueSingleton.getAuthHeaderValue();
@@ -118,37 +118,29 @@ public class indexController {
     	headers.set("Accept-Encoding", "gzip");
     	headers.set("Authorization", authHeaderValue);
     	headers.set("User-Agent", "Mozilla/5.0");
-//    	headers.set("Content-Type", "application/json");
-    	
-//    	MultiValueMap<String, String> paramsMap = new LinkedMultiValueMap<String, String>();
-//    	paramsMap.add("region_id", conditionInfo.getRegion_id());
-//    	paramsMap.add("language", "ja-JP");
-//    	paramsMap.add("include", "property_ids");
-//    	
-//    	HttpEntity<?> entity = new HttpEntity<>(paramsMap, headers);
+
     	HttpEntity<?> entity = new HttpEntity<>(headers);
-    	String url = keyInfo.getUri()+"regions/2621?region_id=2621&language=ja-JP&include=details&include=property_ids";
+    	String url = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=en-US&include=details&include=property_ids";
     
     	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+    	JsonParser springParser = JsonParserFactory.getJsonParser();
+    	List<Object> list = springParser.parseList(response.toString());
+    	for(Object o : list) {
+    		if(o instanceof Map) {
+    			Map<String,Object> map = (Map<String,Object>) o;
+    			System.out.println("Items found: " + map.size());
+
+    			int i = 0;
+    			for (Map.Entry<String, Object> entry : map.entrySet()) {
+    				System.out.println(entry.getKey() + " = " + entry.getValue());
+    				i++;
+    			}
+
+    		}
+    	}
     	
     	logger.info("######################response? "+response.getBody());
-    	
-//    	POST
-//    	HttpHeaders headers = new HttpHeaders();
-//    	headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-//    	headers.set("Accept-Encoding", "gzip");
-//    	headers.set("Authorization", authHeaderValue);
-//    	headers.set("User-Agent", "Mozilla/5.0");
-//    	headers.set("Content-Type", "application/json");
-//    	
-//    	Map<String, Object> bodyMap = new HashMap<>();
-//    	bodyMap.put("region_id", conditionInfo.getRegion_id());
-//    	bodyMap.put("language", "ja-JP");
-//    	bodyMap.put("include", "property_ids");
-    	
-    	
-    	
-    	
+
     	return "index";
     }
     
