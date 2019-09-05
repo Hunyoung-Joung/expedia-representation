@@ -139,7 +139,7 @@ public class indexController {
     	ResponseEntity<Region> response = restTemplate.exchange(url, HttpMethod.GET, entity, Region.class);
 
     	logger.info("######################getStatusCodeValue? "+response.getStatusCodeValue());
-    	logger.info("######################getStatusCodeValue? "+response.getBody().getCoordinates().getBoundingPolygon().getCoordinates().size());
+    	logger.info("######################response.getBody().getPropertyIds().size()? "+response.getBody().getPropertyIds().size());
     	List<Properties> propertiesList = getProperties(response.getBody().getPropertyIds());
     	model.addAttribute("conditionInfo", conditionInfo);
     	model.addAttribute("response", response.getStatusCodeValue()+"<br>"+entity.toString());
@@ -171,11 +171,11 @@ public class indexController {
 
     	for (int i=0; i<5; i++) {
     		String propertyId = propertyIds.get(i);
-
+    		logger.info(i+"    ######################propertyId? "+propertyId);
     		String url = keyInfo.getUri()+"properties/content?language=ja-JP&property_id"+propertyId;
     		ResponseEntity<Properties> response = restTemplate.exchange(url, HttpMethod.GET, entity, Properties.class);
 
-        	logger.info(i+"    ######################getStatusCodeValue? "+response.getBody().getName());
+        	logger.info(i+"    ######################getStatusCodeValue? "+response.getStatusCodeValue());
         	PropertiesList.add(response.getBody());
     	}
     	
