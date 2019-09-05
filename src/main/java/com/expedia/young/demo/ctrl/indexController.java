@@ -128,10 +128,10 @@ public class indexController {
 //    	HttpEntity<?> entity = new HttpEntity<>(paramsMap, headers);
     	HttpEntity<?> entity = new HttpEntity<>(headers);
     	String url = keyInfo.getUri()+"regions/2621?region_id=2621&language=ja-JP&include=details&include=property_ids";
-    	String response = restTemplate.getForObject(url, String.class);
-//    	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+    
+    	ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
     	
-    	logger.info("######################response? "+response);
+    	logger.info("######################response? "+response.getBody());
     	
 //    	POST
 //    	HttpHeaders headers = new HttpHeaders();
