@@ -181,7 +181,7 @@ public class indexController {
     	ObjectMapper objectMapper = new ObjectMapper();
     	objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
     	objectMapper.configure(Feature.ALLOW_MISSING_VALUES, true);
-    	TypeReference<HashMap<String,Object>> typeRef = new TypeReference<HashMap<String,Object>>() {};
+    	TypeReference<HashMap<String,HashMap<String,Object>>> typeRef = new TypeReference<HashMap<String,HashMap<String,Object>>>() {};
     	for (int i=0; i<5; i++) {
     		String propertyId = propertyIds.get(i);
 
@@ -191,17 +191,17 @@ public class indexController {
     		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
 
     		HashMap<String,Object> o = objectMapper.readValue(response.getBody(), typeRef); 
-    		HashMap<String,Object> oo = objectMapper.readValue(o.values().iterator().next().toString(), typeRef); 
+//    		HashMap<String,Object> oo = objectMapper.readValue(o.values().iterator().next().toString(), typeRef); 
 
     		
 //    		Properties properties= objectMapper.readValue(o.values().iterator().next().toString(), Properties.class); 
     		Properties properties= new Properties();
     	
-    		for (Iterator iter = oo.keySet().iterator(); iter.hasNext();) {
+    		for (Iterator iter = o.keySet().iterator(); iter.hasNext();) {
     			System.out.println("Got " + iter.next()); 
     		}
 
-//    		System.out.println(">>>>>>>>>>>>>> " + o.values().iterator().next()); 
+    		System.out.println(">>>>>>>>>>>>>> " + o.values().iterator().next()); 
         	logger.info(i+"    ######################getStatusCodeValue? "+response.getStatusCodeValue());
         	PropertiesList.add(properties);
     	}
