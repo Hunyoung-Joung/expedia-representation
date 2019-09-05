@@ -201,7 +201,7 @@ public class indexController {
     			String key = iter.next().toString();
     			System.out.println(">>>>>>>>>>>>>> Got 1 " + key);
     			HashMap<String,Object> inner = (HashMap<String, Object>) o.get(key);
-    			for (Iterator iter_ = inner.keySet().iterator(); iter.hasNext();) {
+    			for (Iterator iter_ = inner.keySet().iterator(); iter_.hasNext();) {
     				System.out.println(">>>>>>>>>>>>>> Got 2 " + iter.next());
     			}
     		}
