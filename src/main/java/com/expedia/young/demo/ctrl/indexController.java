@@ -54,6 +54,7 @@ import com.expedia.young.demo.service.QuestionInfoService;
 import com.expedia.young.demo.service.SurveyAnswerInfoService;
 import com.expedia.young.demo.service.SurveyInfoService;
 import com.expedia.young.demo.util.AuthHeaderValueSingleton;
+import com.fasterxml.jackson.core.JsonParser.Feature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
@@ -141,6 +142,7 @@ public class indexController {
     	logger.info("######################getStatusCodeValue? "+response.getBody());
     	
     	ObjectMapper objectMapper = new ObjectMapper();
+    	objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
     	Region region = objectMapper.readValue(response.getBody().toString(), Region.class);
     	
     	
