@@ -13,62 +13,62 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "property_id",
-    "rooms",
+    "id",
+    "description",
     "links",
-    "score"
+    "configuration"
 })
-public class PropertiesAvailability {
+public class BedGroupsCode {
 
-    @JsonProperty("property_id")
-    private String propertyId;
-    @JsonProperty("rooms")
-    private List<Room> rooms = null;
+    @JsonProperty("id")
+    private String id;
+    @JsonProperty("description")
+    private String description;
     @JsonProperty("links")
-    private Links__ links;
-    @JsonProperty("score")
-    private String score;
+    private Links_ links;
+    @JsonProperty("configuration")
+    private List<Configuration> configuration = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("property_id")
-    public String getPropertyId() {
-        return propertyId;
+    @JsonProperty("id")
+    public String getId() {
+        return id;
     }
 
-    @JsonProperty("property_id")
-    public void setPropertyId(String propertyId) {
-        this.propertyId = propertyId;
+    @JsonProperty("id")
+    public void setId(String id) {
+        this.id = id;
     }
 
-    @JsonProperty("rooms")
-    public List<Room> getRooms() {
-        return rooms;
+    @JsonProperty("description")
+    public String getDescription() {
+        return description;
     }
 
-    @JsonProperty("rooms")
-    public void setRooms(List<Room> rooms) {
-        this.rooms = rooms;
+    @JsonProperty("description")
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @JsonProperty("links")
-    public Links__ getLinks() {
+    public Links_ getLinks() {
         return links;
     }
 
     @JsonProperty("links")
-    public void setLinks(Links__ links) {
+    public void setLinks(Links_ links) {
         this.links = links;
     }
 
-    @JsonProperty("score")
-    public String getScore() {
-        return score;
+    @JsonProperty("configuration")
+    public List<Configuration> getConfiguration() {
+        return configuration;
     }
 
-    @JsonProperty("score")
-    public void setScore(String score) {
-        this.score = score;
+    @JsonProperty("configuration")
+    public void setConfiguration(List<Configuration> configuration) {
+        this.configuration = configuration;
     }
 
     @JsonAnyGetter

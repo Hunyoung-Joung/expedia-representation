@@ -183,7 +183,6 @@ Copyright@ 2019
                       		<span class="input-group-addon">
                         		<span class="glyphicon glyphicon-map-marker"></span>
                     		</span>
-						<!--  <input id="id" name="id" type="text" class="form-control" />-->
 							<input id="region" name="region" type="text" class="form-control" data-toggle="modal" data-target="#destination_modal" placeholder="目的地"/>
 							<input id="region_id" name="region_id" type="hidden" class="form-control" value=""/>
 						</div>
@@ -193,8 +192,6 @@ Copyright@ 2019
 							<span class="input-group-addon">
 	                        		<span class="glyphicon glyphicon-user"></span>
 							</span>
-							<!-- <input id="password" name="password" type="text" class="form-control" />-->
-
 	                    	<input id="person_count" name="person_count" type="text" class="form-control" data-toggle="modal" data-target="#person_count_modal" placeholder="大1、子0、部屋1" readonly/>
 	                    	<input id="occupancy" name="occupancy" type="hidden" class="form-control" value="1"/>
 
@@ -216,11 +213,14 @@ Copyright@ 2019
 			<div class="panel-body">
 				<div class="container-fluid">
 					<div class="row">
-					    <div class="col-sm-4" >設定及びAPI仕様</div>
+					    <div class="col-sm-4" >仕様/REQ/RES</div>
 					    <div class="col-sm-8" >結果</div>
 				  	</div>		
 					<div class="row">
 					    <div class="col-sm-4" >
+							<div class="form-group">
+							  	<textarea class="form-control rounded-0" rows="5" id="condition" name="condition" th:text="*{conditionModel}"></textarea>
+							</div>
 							<div class="form-group">
 							  	<textarea class="form-control rounded-0" rows="10" id="request" name="request" th:text="*{requestModel}"></textarea>
 							</div>					    
@@ -231,15 +231,26 @@ Copyright@ 2019
 					    <div class="col-sm-8" >
 					    	<div class="form-group">
 								<table class="table-responsive">
+							        <thead>
+										<tr style="word-wrap: break-word">
+											<th align="left" style="word-wrap: break-word">名</th>
+											<th align="left" style="word-wrap: break-word">電話番号</th>
+											<th align="left" style="word-wrap: break-word">FAX</th>
+											<th align="left" style="word-wrap: break-word">ランク</th>
+											<th style="word-wrap: break-word"></th>
+										</tr>
+							        </thead>								
 							        <tbody>
 										<tr th:each="properties:${propertiesList}" th:object="${properties}" style="word-wrap: break-word">
-											<td style='word-wrap: break-word' th:text="*{name}"></td>
-											<td style='word-wrap: break-word' th:text="*{phone}"></td>
-											<td style='word-wrap: break-word' th:text="*{fax}"></td>
-											<td style='word-wrap: break-word' th:text="*{rank}">
+											<td align="left" style='word-wrap: break-word' th:text="*{name}"></td>
+											<td align="left" style='word-wrap: break-word' th:text="*{phone}"></td>
+											<td align="left" style='word-wrap: break-word' th:text="*{fax}"></td>
+											<td align="left" style='word-wrap: break-word' th:text="*{rank}">
 												<input id="occupancy" name="occupancy" type="hidden" class="form-control" th:value="*{property_id}"/>
 											</td>
-											
+											<td align="left" style='word-wrap: break-word' th:text="*{rank}">
+												<input id="occupancy" name="occupancy" type="hidden" class="form-control" th:value="*{property_id}"/>
+											</td>											
 										</tr>
 							        </tbody>
 								</table>		

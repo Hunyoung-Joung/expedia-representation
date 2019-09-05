@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 	"phone",
 	"fax",
 	"rank",
+	"images",
+	"onsite_payments",
 	"multi_unit",
 })
 
@@ -37,6 +39,10 @@ public class Properties {
     private String rank;
     @JsonProperty("multi_unit")
     private String multi_unit;
+    @JsonProperty("onsite_payments")
+    private OnsitePayments onsite_payments;
+    @JsonProperty("images")
+    private Images images;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     
@@ -88,7 +94,23 @@ public class Properties {
 	public void setMulti_unit(String multi_unit) {
 		this.multi_unit = multi_unit;
 	}
-    @JsonAnyGetter
+    @JsonProperty("onsite_payments")
+    public OnsitePayments getOnsite_payments() {
+		return onsite_payments;
+	}
+    @JsonProperty("onsite_payments")
+	public void setOnsite_payments(OnsitePayments onsite_payments) {
+		this.onsite_payments = onsite_payments;
+	}
+    @JsonProperty("images")
+	public Images getImages() {
+		return images;
+	}
+    @JsonProperty("images")
+	public void setImages(Images images) {
+		this.images = images;
+	}
+	@JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }

@@ -44,6 +44,7 @@ import com.expedia.young.demo.entity.AdminQuestionInfo;
 import com.expedia.young.demo.entity.ConditionInfo;
 import com.expedia.young.demo.entity.PersonalInfo;
 import com.expedia.young.demo.entity.Properties;
+import com.expedia.young.demo.entity.PropertiesAvailability;
 import com.expedia.young.demo.entity.QuestionInfo;
 import com.expedia.young.demo.entity.Region;
 import com.expedia.young.demo.entity.UserInfo;
@@ -69,6 +70,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -86,21 +88,9 @@ public class indexController {
     
     private final Logger logger = Logger.getLogger(this.getClass().getName());
     
-//    @Autowired
-//    private UsersRepository usersRepository;
-//    
-//    @Autowired
-//    private QuestionInfoService questionInfoService;
-//    
-//    @Autowired
-//    private SurveyAnswerInfoService surveyAnswerInfoService;
-//    
-//    @Autowired
-//    private PersonalInfoService personalInfoService;
-    
-//    private UserInfo userInfo_ = new UserInfo();
-    
     private String authHeaderValue = null;
+    
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     
     @GetMapping
     public String init(Model model) {
@@ -135,26 +125,63 @@ public class indexController {
     	headers.set("Authorization", authHeaderValue);
     	headers.set("User-Agent", "Mozilla/5.0");
     	HttpEntity<?> entity = new HttpEntity<>(headers);
+    	String conditionModel = "";
     	String requestModel = "";
     	String responseModel = "";
+    	String currency = "";
+    	String country_code = "";
+    	
+    	String regionsUrl = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=ja-JP&include=details&include=property_ids";
+        
+    	ResponseEntity<Region> RegionResponse = restTemplate.exchange(regionsUrl, HttpMethod.GET, entity, Region.class);
+    	List<Properties> propertiesList = getProperties(RegionResponse.getBody().getPropertyIds());
+    	
+    	country_code = RegionResponse.getBody().getCountryCode();
+    	currency = "USD";
+
+    	model.addAttribute("propertiesList", propertiesList);
+    	
+    	requestModel = headers+"/\n"+regionsUrl;
+    	responseModel = RegionResponse.getStatusCodeValue()+"/\n"+RegionResponse.getHeaders()+"/\n"+RegionResponse.getBody();
     	
     	// Variable Occupancy
-    	if ((!conditionInfo.getCheckin().isEmpty())&&(!conditionInfo.getCheckin().isEmpty())
-    			&&(!conditionInfo.getCheckin().isEmpty())&&(!conditionInfo.getCheckin().isEmpty())){
+    	if ((!conditionInfo.getCheckin().isEmpty())&&(!conditionInfo.getCheckout().isEmpty())
+    			&&(!conditionInfo.getOccupancy().isEmpty())&&(!conditionInfo.getRegion_id().isEmpty())){
+    		String checkin = sdf.format(conditionInfo.getCheckin());
+    		String checkout = sdf.format(conditionInfo.getCheckout());
+    		String occupancy = conditionInfo.getOccupancy();
+    		String region_id = conditionInfo.getRegion_id();
+    		String PropertiesAvailabilityUrl = "";
     		
-    	// Details
-    	} else {
-        	String url = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=ja-JP&include=details&include=property_ids";
-            
-        	ResponseEntity<Region> response = restTemplate.exchange(url, HttpMethod.GET, entity, Region.class);
-        	List<Properties> propertiesList = getProperties(response.getBody().getPropertyIds());
-        	requestModel = headers+"/\n"+url;
-        	responseModel = response.getStatusCodeValue()+"/\n"+response.getHeaders()+"/\n"+response.getBody();
+    		List<String> propertyIds = new ArrayList<String>();
+    		int count = 0;
+    		for (Properties properties: propertiesList) {
+    			PropertiesAvailabilityUrl = keyInfo.getUri()+"properties/availability?checkin="+checkin+"&checkout="+checkout+"&currency="
+            			+currency+"&language=ja-JP&country_code="+country_code+"&occupancy="+occupancy+"&property_id="
+            				+properties.getProperty_id()+"&sales_channel=website&sales_environment=hotel_only&sort_type=preferred&rate_plan_count=50";
+        		ResponseEntity<PropertiesAvailability> PropertiesAvailabilityResponse 
+        			= restTemplate.exchange(PropertiesAvailabilityUrl, HttpMethod.GET, entity, PropertiesAvailability.class);
+        		
+            	if (PropertiesAvailabilityResponse.getStatusCodeValue() != 200) {
+            		count++;
+            	} else {
+            		propertyIds.add(properties.getProperty_id());
+            		requestModel = requestModel+"/\n"+headers+"/\n"+PropertiesAvailabilityUrl+"/\n";
+                	responseModel = responseModel+"/\n"+PropertiesAvailabilityResponse.getStatusCodeValue()+"/\n"
+                			+PropertiesAvailabilityResponse.getHeaders()+"/\n"+PropertiesAvailabilityResponse.getBody()+"/\n";
+            	}
+            	
+            	if (count > 4) {
+            		break;
+            	}
+            	count++;
+    		}
+    		propertiesList = getProperties(propertyIds);
+
         	model.addAttribute("propertiesList", propertiesList);
-    	}
-
-//    	 https://test.ean.com/2.3/properties/availability?checkin=2019-10-15&checkout=2019-10-17&currency=USD&language=ko-KR&country_code=US&occupancy=1&property_id=7946632&sales_channel=website&sales_environment=hotel_only&sort_type=preferred&rate_plan_count=50
-
+    	} 
+    	conditionModel = keyInfo.getUri()+"regions/"+"/\n"+keyInfo.getUri()+"properties/content"+"/\n"+keyInfo.getUri()+"properties/availability";
+    	model.addAttribute("conditionModel", conditionModel);
     	model.addAttribute("responseModel", responseModel);
     	model.addAttribute("conditionInfo", conditionInfo);
     	model.addAttribute("requestModel", requestModel);
@@ -179,10 +206,7 @@ public class indexController {
     	headers.set("Accept-Encoding", "gzip");
     	headers.set("Authorization", authHeaderValue);
     	headers.set("User-Agent", "Mozilla/5.0");
-
     	HttpEntity<?> entity = new HttpEntity<>(headers);
-    	
-//    	 https://test.ean.com/2.3/properties/content?language=en-US&property_id=9526696
 
     	List<Properties> PropertiesList = new ArrayList<Properties>(); 
     	ObjectMapper objectMapper = new ObjectMapper();
@@ -193,7 +217,6 @@ public class indexController {
     		String propertyId = propertyIds.get(i);
 
     		String url = keyInfo.getUri()+"properties/content?language=ja-JP&property_id="+propertyId;
-    		logger.info(i+"    ######################url? "+url);
     		
     		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
 
@@ -220,12 +243,15 @@ public class indexController {
     					
     				} else if (key_.equals("fax")) {
     					properties.setFax(inner.get(key_).toString());
+    				} else if (key_.equals("images")) {
+    					properties.setFax(inner.get(key_).toString());
+    					
+    				} else if (key_.equals("onsite_payments")) {
+    					properties.setFax(inner.get(key_).toString());
     					
     				} 
     			}
     		}
-
-        	logger.info(i+"    ######################getStatusCodeValue? "+response.getStatusCodeValue());
         	PropertiesList.add(properties);
     	}
     	
