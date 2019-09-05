@@ -228,7 +228,7 @@ Copyright@ 2019
 							  	<textarea class="form-control rounded-0" rows="10" id="response" name="response" th:text="*{responseModel}"></textarea>
 							</div>
 						</div>
-					    <div class="col-sm-5" >
+					    <div class="col-sm-8" >
 					    	<div class="form-group">
 								<table class="table-responsive">
 							        <tbody>
@@ -236,7 +236,10 @@ Copyright@ 2019
 											<td style='word-wrap: break-word' th:text="*{name}"></td>
 											<td style='word-wrap: break-word' th:text="*{phone}"></td>
 											<td style='word-wrap: break-word' th:text="*{fax}"></td>
-											<td style='word-wrap: break-word' th:text="*{rank}"></td>
+											<td style='word-wrap: break-word' th:text="*{rank}">
+												<input id="occupancy" name="occupancy" type="hidden" class="form-control" th:value="*{property_id}"/>
+											</td>
+											
 										</tr>
 							        </tbody>
 								</table>		

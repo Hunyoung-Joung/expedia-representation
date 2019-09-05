@@ -121,7 +121,6 @@ public class indexController {
     @PostMapping(value = {"/search"})
     public String index(Model model, @ModelAttribute("conditionInfo") @Valid ConditionInfo conditionInfo) throws IOException {
 
-    	logger.info("######################conditionInfo? "+conditionInfo.toString());
     	HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
     	RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
     	AuthHeaderValueSingleton authHeaderValueSingleton = AuthHeaderValueSingleton.getInstance();
@@ -135,25 +134,33 @@ public class indexController {
     	headers.set("Accept-Encoding", "gzip");
     	headers.set("Authorization", authHeaderValue);
     	headers.set("User-Agent", "Mozilla/5.0");
-
     	HttpEntity<?> entity = new HttpEntity<>(headers);
-//    	 https://test.ean.com/2.3/properties/availability?checkin=2019-10-15&checkout=2019-10-17&currency=USD&language=ko-KR&country_code=US&occupancy=1&property_id=7946632&sales_channel=website&sales_environment=hotel_only&sort_type=preferred&rate_plan_count=50
-    	String url = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=ja-JP&include=details&include=property_ids";
-    
-    	ResponseEntity<Region> response = restTemplate.exchange(url, HttpMethod.GET, entity, Region.class);
-    	List<Properties> propertiesList = getProperties(response.getBody().getPropertyIds());
-    	for (Properties properties: propertiesList) {
-    		logger.info("######################properties? "+properties.getName());
-    	}
+    	String requestModel = "";
+    	String responseModel = "";
     	
-    	String requestModel = headers+"/\n"+url;
-    	String responseModel = response.getStatusCodeValue()+"/\n"+response.getHeaders()+"/\n"+response.getBody();
-    	model.addAttribute("conditionInfo", conditionInfo);
-    	model.addAttribute("request", requestModel);
-    	model.addAttribute("response", responseModel);
-    	model.addAttribute("propertiesList", propertiesList);
+    	// Variable Occupancy
+    	if ((!conditionInfo.getCheckin().isEmpty())&&(!conditionInfo.getCheckin().isEmpty())
+    			&&(!conditionInfo.getCheckin().isEmpty())&&(!conditionInfo.getCheckin().isEmpty())){
+    		
+    	// Details
+    	} else {
+        	String url = keyInfo.getUri()+"regions/"+conditionInfo.getRegion_id()+"?region_id="+conditionInfo.getRegion_id()+"&language=ja-JP&include=details&include=property_ids";
+            
+        	ResponseEntity<Region> response = restTemplate.exchange(url, HttpMethod.GET, entity, Region.class);
+        	List<Properties> propertiesList = getProperties(response.getBody().getPropertyIds());
+        	requestModel = headers+"/\n"+url;
+        	responseModel = response.getStatusCodeValue()+"/\n"+response.getHeaders()+"/\n"+response.getBody();
+        	model.addAttribute("propertiesList", propertiesList);
+    	}
 
-    	return init(model);
+//    	 https://test.ean.com/2.3/properties/availability?checkin=2019-10-15&checkout=2019-10-17&currency=USD&language=ko-KR&country_code=US&occupancy=1&property_id=7946632&sales_channel=website&sales_environment=hotel_only&sort_type=preferred&rate_plan_count=50
+
+    	
+    	model.addAttribute("conditionInfo", conditionInfo);
+    	model.addAttribute("requestModel", requestModel);
+    	model.addAttribute("responseModel", responseModel);
+
+    	return "redirect:init("+model+")";
     }
     
     private List<Properties> getProperties(List<String> propertyIds) throws JsonParseException, JsonMappingException, IOException {
